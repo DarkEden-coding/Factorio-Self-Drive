@@ -7,6 +7,9 @@ local function init() storage.autodrive=storage.autodrive or {} end
 script.on_init(init)
 -- In-flight drives from an older version lack fields the driver now needs; drop them.
 script.on_configuration_changed(function()
+  for _,s in pairs(storage.autodrive or {}) do
+    if s.vehicle and s.vehicle.valid then vehicle_api.brake(s.vehicle) end
+  end
   storage.autodrive={}
 end)
 -- physical_vehicle, not vehicle: in map/remote view player.vehicle is nil even

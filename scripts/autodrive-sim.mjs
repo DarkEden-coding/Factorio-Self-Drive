@@ -2,8 +2,7 @@
 import {readFile} from 'node:fs/promises';
 import init,{Sim} from '../crates/fsim-wasm/pkg/fsim_wasm.js';
 await init({module_or_path:await readFile(new URL('../crates/fsim-wasm/pkg/fsim_wasm_bg.wasm',import.meta.url))});
-// `drive` cases run the old dense-only student (mlp64-stop); the shipped map student needs
-// python/src/fsim_rl/student_ref.py.
+// `drive` cases run the dense field-route student (mlp64-stop) shipped in the mod.
 const model=JSON.parse(await readFile(new URL('../python/runs/students/mlp64-stop/mlp64-stop.json',import.meta.url),'utf8'));
 function action(features){
  let x=Array.from(features,(v,i)=>Math.max(-model.normalizer.clip,Math.min(model.normalizer.clip,(v-model.normalizer.mean[i])/model.normalizer.std[i])));

@@ -10,7 +10,7 @@ function M.draw(s,player)
         time_to_live=13,players={player.index},render_mode=mode})
     end
     -- The game's path (waypoints), grey under the blue route the student reads.
-    local path=s.path and s.path.waypoints or {}
+    local path=s.path or {}
     for i=2,#path do
       rendering.draw_line({surface=surface,from=path[i-1],to=path[i],color={0.6,0.6,0.6,0.5},width=1,
         time_to_live=13,players={player.index},render_mode=mode})

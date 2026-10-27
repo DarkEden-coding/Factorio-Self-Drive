@@ -24,7 +24,7 @@ spec = importlib.util.spec_from_file_location('build_weights', ROOT / 'scripts/b
 build_weights = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(build_weights)
 GROUPS = {'hard': (0,32), 'tree': (32,64), 'zone': (64,96), 'route': (96,105), 'state': (105,135),
-          'map': (135,903)}
+          }
 # Map reach: 8 cells of 8 tiles times sqrt(2), plus a block.
 MAP_REACH = 112
 
@@ -84,8 +84,10 @@ def fixture(path, result, data):
     friction=next(t for t in data['tiles'] if t['name']==tile_name)['vehicle_friction_modifier']
     blocks=[]
     vx,vy=math.floor(v['x']),math.floor(v['y'])
-    for y in range((vy-MAP_REACH)//16*16,(vy+MAP_REACH+16)//16*16,16):
-        for x in range((vx-MAP_REACH)//16*16,(vx+MAP_REACH+16)//16*16,16):
+    x0, y0 = min(vx-MAP_REACH,f['x_min']-3), min(vy-MAP_REACH,f['y_min']-3)
+    x1, y1 = max(vx+MAP_REACH,f['x_min']+f['width']+3), max(vy+MAP_REACH,f['y_min']+f['height']+3)
+    for y in range(y0//16*16,(y1+16)//16*16,16):
+        for x in range(x0//16*16,(x1+16)//16*16,16):
             water=[]
             for dy in range(16):
                 for dx in range(16):
@@ -94,7 +96,7 @@ def fixture(path, result, data):
             nearby=[a for a in entities if x-26<=a['x']<x+42 and y-26<=a['y']<y+42]
             blocks.append(dict(x=x,y=y,tiles=water,entities=nearby))
     route=[dict(x=a,y=b) for a,b in zip(result['route'][::2],result['route'][1::2])]
-    return dict(state=state,stats=stats(data,v['kind'],v['fuel'],friction),blocks=blocks,bounds=bounds,route=route)
+    return dict(state=state,stats=stats(data,v['kind'],v['fuel'],friction),blocks=blocks,bounds=bounds,route=route,field=f)
 
 
 def main():
@@ -143,7 +145,7 @@ def main():
             maxima[group]=max(maxima[group],max(abs(obs[j]-r['observation'][j]) for j in range(a,b)))
         expected=student_ref.logits(model,obs)
         logit_max=max(logit_max,max(abs(a-b) for a,b in zip(logits,expected)))
-        agreement+=action==student_ref.act(model,r['observation'])
+        agreement+=action==student_ref.act(model,r['observation'][:model['obs']['size']])
     report=dict(source='offline Lua vs existing Rust/WASM on real map exports',cases=len(results),
         max_abs_by_feature_group=maxima,logits_max_abs=logit_max,action_agreement=agreement,
         engine_verified=False)
@@ -176,7 +178,7 @@ def check_engine(directory,model):
             maxima[group]=max(maxima[group],max(abs(obs[j]-r['observation'][j]) for j in range(a,b)))
         expected=student_ref.logits(model,obs)
         logit_max=max(logit_max,max(abs(a-b) for a,b in zip(s['logits'],expected)))
-        agreement+=s['action']==student_ref.act(model,r['observation'])
+        agreement+=s['action']==student_ref.act(model,r['observation'][:model['obs']['size']])
     assert max(maxima.values())<1e-5 and logit_max<1e-8 and agreement==len(cases)
     return dict(cases=len(cases),max_abs_by_feature_group=maxima,logits_max_abs=logit_max,action_agreement=agreement)
 

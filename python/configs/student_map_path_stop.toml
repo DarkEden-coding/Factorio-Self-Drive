@@ -2,7 +2,7 @@
 # student_mlp64_stop.toml. Start it from the pathfinder student's PPO run:
 #   fsim-rl train --config configs/student_map_path_stop.toml \
 #     --init-from runs/students/path-rl/checkpoints/latest.pt --run-name students/path-stop
-# This is the model the Factorio mod ships (docs/autodrive-mod.md).
+# Experimental model shipped in mod 0.3.0; mod 0.4.0 restores mlp64-stop.
 base = "student_map_path.toml"
 
 [env]

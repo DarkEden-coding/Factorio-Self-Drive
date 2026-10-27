@@ -1,107 +1,79 @@
 # In-game autodrive
 
-`mod/fsim-autodrive` (0.3.0) runs the `path-stop` student entirely in Factorio Lua: the
-pathfinder-route map student (`configs/student_map_path_stop.toml`) fine-tuned to stop in the
-middle of the target. It needs Factorio 2.1.23 or newer in the 2.1 series. No external policy
-server is used. Model export: `python/runs/students/path-stop/path-stop.json`, format
-`fsim-student-v2`, spec hash `a38878852fab9d85`, about 62,000 multiply-adds per decision.
-
-Holdout suite (200 episodes per scenario, stop-in-target rules), against the field-route
-`mlp64-stop` the mod shipped before:
-
-| Scenario | mlp64-stop (0.1-0.2) | path-stop (0.3) |
-|---|---:|---:|
-| standard | 99.0% | 99.5% |
-| long | 98.5% | 96.5% |
-| forest | 99.5% | 100% |
-| reverse | 98.5% | 97.5% |
-| nest | 98.0% (zone time 0.02%) | 97.0% (zone time 1.1%) |
-| arrival | 99.5% | 99.5% |
+Version 0.4.0 restores the previous `mlp64-stop` field-route student and the segmented
+local field planner from 0.2.0. The 0.3.0 pathfinder-route map student has been replaced.
+Model export: `python/runs/students/mlp64-stop/mlp64-stop.json`, format `fsim-student-v1`,
+spec hash `49e75f8a02cb7e16`, 13,312 multiply-adds per decision. The mod runs entirely
+in Factorio Lua and requires Factorio 2.1.23 or newer in the 2.1 series.
 
 ## Controls
 
 1. Sit in the driver's seat of a base car or tank and supply fuel.
-2. Click **Set autodrive target** in the shortcut bar, or press Ctrl+Alt+T.
-3. Click or select the destination in the world or on the map (map/remote view works:
-   the mod reads `LuaPlayer.physical_vehicle`). The target must be on the vehicle's
-   surface, in a generated chunk, and at most 4096 tiles away. A target on water, a
-   rock or (for the car) a tree moves to the nearest drivable tile within 8 tiles;
-   otherwise the trip is reported unreachable at once.
-4. Driving starts once the blocks under the rays are cached and Factorio's pathfinder
-   (`LuaSurface.request_path`) has answered, usually a fraction of a second. If no path
-   arrives within 2 seconds the vehicle heads straight for the target until one does.
-   Arrival means the center is within 1.0 tile and absolute speed is at most 0.01
-   tiles/tick. The vehicle keeps braking after arrival.
+2. Click **Set autodrive target** or press Ctrl+Alt+T.
+3. Click or select a destination in the world or on the map. Map/remote view uses
+   `LuaPlayer.physical_vehicle`. Targets must be on the same surface, in a generated chunk,
+   and within 4096 tiles. A blocked target snaps to drivable ground within 8 tiles.
+4. The vehicle brakes while preparing the first local field, then drives toward the target.
+   Arrival requires the center within 1 tile and absolute speed at most 0.01 tiles/tick.
 
-Movement keys immediately hand control back. Ctrl+Alt+D resumes toward the saved
-target with a fresh path. Selecting a new target also resumes. `/autodrive <x> <y>`
-sets an exact world coordinate; `/autodrive stop` returns manual control. Passengers
-cannot control the driver. Leaving the vehicle or disconnecting cancels the controller.
+Movement keys return manual control. Ctrl+Alt+D resumes with fresh planning. Selecting a new
+target also resumes. `/autodrive <x> <y>` sets exact coordinates; `/autodrive stop` returns
+manual control. Leaving the vehicle or disconnecting cancels driving.
 
-The per-player **Show autodrive route and target** setting draws a green 1-tile stop
-ring, the blue route the student reads, the game's waypoints in grey and four amber
-lookahead points, in the world and on the map. The global profiling setting writes
-local timings to `script-output/fsim-autodrive/timing.txt`. Decisions occur every four
-ticks; the acceleration/brake/reverse mapping is updated each tick as signed speed
-crosses zero. `/autodrive-dump` writes the current observation, logits, route,
-waypoints, cache and state under `script-output/fsim-autodrive/`.
+The overlay draws the final stop ring in green, the local field route in blue, the coarse
+Factorio path in grey, and the four student lookaheads in amber. Profiling writes local timings
+to `script-output/fsim-autodrive/timing.txt`; `/autodrive-dump` writes a diagnostic snapshot.
 
-## Implementation
+## Routing and model
 
-- `path.lua` follows the game's waypoints as the simulator's stand-in does in training
-  (`crates/fsim-core/src/pathfinder.rs`, docs/rl.md "Pathfinder route"): the route is the
-  vehicle, its projection on the waypoints (never moving back along them), then the later
-  waypoints and the target. It asks for a new path when the vehicle is more than 16 tiles
-  off the waypoints, or on their last segment more than 16 tiles from the target (at most
-  every 60 ticks). Requests are asynchronous, unlike the simulator: until an answer
-  arrives the old waypoints, or a straight line, stand in. Failed requests are retried
-  after 5 seconds (1 second for `try_again_later`). The game's pathfinder ignores nest
-  zones; the map keeps the vehicle out of them.
-- `observation.lua` builds the 135 student features (32 rays x hard/tree/zone, route
-  lookaheads at 4/8/16/32 tiles and route length, vehicle state) and the coarse map: 16x16
-  cells of 8x8 tiles in the vehicle frame, the fraction of 4x4 sample points per cell that
-  are hard, tree and zone. Map blocks not cached yet read as open ground.
-- `network.lua` normalizes, runs the two zero-padded stride-2 map convs (3->8->16 channels)
-  and the 64x64 dense layers in exactly the reference's accumulation order
-  (`python/src/fsim_rl/student_ref.py`). The first maximum wins ties.
-- `raster.lua` uses oriented collision boxes, strict SAT overlap, tile-center nest zones of
-  radius 18, and water/void masks. Cliff geometry comes from the pinned 2.1.23 prototype
-  snapshot, including intrinsic orientation.
-- `grid.lua` caches 16x16 blocks: the 36 tiles around the vehicle the rays need are urgent
-  (the vehicle brakes until they are built), the 92 tiles the map covers fill in the
-  background. 12 blocks per tick while stopped, 4 while driving. Blocks are invalidated on
-  death, mining and raised script destruction, and pruned away from the vehicle.
-- Progress is the remaining route length: stall is 1,200 ticks without a 1-tile
-  improvement; timeout is 600 + 12 x the first route length in driving ticks, extended when
-  a new path arrives. Both end the trip and hold the brake.
-- All control, cache and path state lives in `storage`. Profilers remain local and never
-  affect control. No clock, OS, external process or random sampling is used in play.
+The restored driver computes bounded, resumable distance fields in Lua. Water, rocks, cliffs,
+and nests block travel. Trees block the car and cost extra for the tank. Nest zones add cost,
+so the local route can choose a detour rather than follow Factorio's waypoints directly.
+The 135 model inputs contain rays, field-route lookaheads and length, vehicle state, and target
+state. The model has no coarse-map convolution. It chooses throttle and steering every four
+ticks; brake/reverse mapping is updated each tick as speed crosses zero.
 
-Regenerate the checked-in model and geometry modules with:
+Trips within 64 tiles use one field with a 48-tile margin. Longer trips start with a 48-tile
+segment, then plan roughly 160-tile segments in the background and hand over before reaching
+an intermediate target. Factorio's pathfinder only helps select distant sub-targets. The model
+reads the local field route. Failed plans try wider margins and alternative sub-targets;
+timeouts, stalls and bounded detour counts stop unsuccessful attempts.
+
+Version 0.4.0 clears incompatible saved drive state and brakes controlled vehicles during
+configuration changes. Set a target again after loading the update. Restart Factorio to load
+changed mod files.
+
+Regenerate the checked-in weights and geometry with:
 
 ```sh
 python3 scripts/build-autodrive-weights.py
 ```
 
-### Offline checks for 0.3.0
+## Rollback verification
 
-- `scripts/check-autodrive-parity.py`: Lua vs Rust/WASM (`policy_student_map`) on 16 fixed
-  real-map states (car and tank, stopped, moving and reversing), given the Rust route. Rays,
-  route features, state and map all differ by 0; Lua logits match `student_ref.py`
-  exactly; 16/16 actions agree.
-- Plain Lua 5.5 on the Mac: about 1.25 ms for rays and map plus 1.0 ms for the network per
-  decision. Factorio's Lua is likely somewhat slower. A plain-Lua trip harness with stubbed
-  engine calls and toy kinematics (not Factorio physics) drove 40-950 tile trips: driving
-  started 14 ticks after the target was set, every trip with a path stopped 0.06-0.74 tiles
-  from the center, and the slowest tick was 3.7 ms.
-- `check-mod-api.py` passes against the installed 2.1.23 docs; `check-mod.lua` passes.
+The restored field planner builds its own route in the parity test. On 16 fixed real-map
+states, all 135 observations, network logits and chosen actions match the simulator/reference
+exactly. This checks the local field calculation as well as inference.
 
-On 2026-10-27, 0.3.0 completed all eight existing isolated Factorio 2.1.23 smoke trips
-with zero measured damage. These sparse fixtures do not establish tree avoidance or route
-optimality. The fresh holdout investigation finds tree contacts in 76.5% of forest episodes.
-See [the investigation](pathfinder-investigation.md) for ablations, limitations, and next steps.
-Run `python3 scripts/test-autodrive.py --engine-only` for the current mod's engine smoke test.
-The default simulator comparison below still uses the older dense mlp64-stop student.
+The restored mod also completed all eight isolated Factorio smoke trips with zero measured
+damage and zero blocked-powered-tick contact estimates. Mean decision time was 0.80 ms,
+p95 0.99 ms in this run. Short smoke fixtures do not establish general tree avoidance.
+The plain-Lua driver harness completed 600-tile and diagonal long trips using multiple segments.
+Raw results are in `data/autodrive/field-restored-engine/` and
+`data/autodrive/field-restored-parity.json`.
+
+Run the current segmented driver's engine smoke test with:
+
+```sh
+python3 scripts/test-autodrive.py --engine-only --output data/autodrive/field-restored-engine
+```
+
+The default simulator comparison treats each initial snapshot as a standalone trip. For a
+segmented trip that snapshot targets the first sub-target, so it is not a full-trip comparison.
+
+The earlier pathfinder investigation is preserved in [pathfinder-investigation.md](pathfinder-investigation.md).
+Its results describe the replaced 0.3.0 model. Historical engine measurements below describe
+0.1.0; segmented routing in 0.2.0 and 0.4.0 can have different timing and routes.
 
 ## Verification (0.1.0 field-route model)
 
@@ -200,11 +172,11 @@ from its JSON APIs. API auditing is a name/record check, not a type checker.
 
 ## Installation
 
-Installed and enabled as `~/Library/Application Support/factorio/mods/fsim-autodrive_0.3.0`,
+Installed and enabled as `~/Library/Application Support/factorio/mods/fsim-autodrive_0.4.0`,
 a symlink to this repository (earlier version links removed). Factorio was not running when enabling the mod.
 All existing mod-list entries were preserved. Backup:
 
 `~/Library/Application Support/factorio/mods/mod-list.json.autodrive-backup-20261027-142319`
 
 No user saves were touched. All started Factorio processes were terminated and reaped.
-No commits were made.
+The repository now tracks the mod source and generated Lua weights.
