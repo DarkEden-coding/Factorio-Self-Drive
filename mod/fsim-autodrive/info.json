@@ -1,11 +1,11 @@
 {
   "name": "fsim-autodrive",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "title": "Fsim autodrive",
   "author": "Fsim",
   "factorio_version": "2.1",
   "dependencies": [
     "base >= 2.1.23"
   ],
-  "description": "In-game car and tank driving using the mlp64-stop field-route student. Local distance fields plan around obstacles and nest zones; coarse Factorio paths guide long trips. Select a target, press a movement key to take over."
+  "description": "Car and tank autodrive with the field-efficient student, fine-tuned for shorter, faster trips. Local fields avoid obstacles and nest zones; coarse Factorio paths guide long trips."
 }

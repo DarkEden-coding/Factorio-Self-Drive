@@ -1,7 +1,7 @@
 //! Reward terms from docs/rl.md. Each term is reported separately; the reward is their sum.
 use serde::{Deserialize, Serialize};
 
-pub const TERMS: [&str; 9] = [
+pub const TERMS: [&str; 10] = [
     "progress",
     "time",
     "damage",
@@ -11,6 +11,7 @@ pub const TERMS: [&str; 9] = [
     "destroyed",
     "arrival",
     "target_speed",
+    "path_length",
 ];
 
 #[derive(Clone, Copy, Debug, Default, Deserialize, Serialize, PartialEq)]
@@ -25,11 +26,13 @@ pub struct RewardTerms {
     pub destroyed: f64,
     pub arrival: f64,
     pub target_speed: f64,
+    /// Cost of actual distance traveled, including detours and reversing.
+    pub path_length: f64,
 }
 
 impl RewardTerms {
     /// Values in `TERMS` order.
-    pub fn values(&self) -> [f64; 9] {
+    pub fn values(&self) -> [f64; 10] {
         [
             self.progress,
             self.time,
@@ -40,6 +43,7 @@ impl RewardTerms {
             self.destroyed,
             self.arrival,
             self.target_speed,
+            self.path_length,
         ]
     }
 
@@ -58,5 +62,6 @@ impl RewardTerms {
         self.destroyed += scale * other.destroyed;
         self.arrival += scale * other.arrival;
         self.target_speed += scale * other.target_speed;
+        self.path_length += scale * other.path_length;
     }
 }

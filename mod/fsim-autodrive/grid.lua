@@ -46,18 +46,23 @@ local function build(grid,surface,next)
       tiles[#tiles+1] = tile.name == "out-of-map" and "offmap" or tile.collides_with("water_tile")
     end
   end
-  local reach = raster.nest_radius + 8
-  for _, entity in pairs(surface.find_entities_filtered({
-    area={{x0-reach,y0-reach},{x0+16+reach,y0+16+reach}},
-    type={"tree","simple-entity","cliff","unit-spawner"}})) do
-    if entity.type ~= "simple-entity" or entity.prototype.count_as_rock_for_filtered_deconstruction then
-      entities[#entities+1] = {x=entity.position.x,y=entity.position.y,
-        kind=({tree="tree",["simple-entity"]="rock",cliff="cliff",["unit-spawner"]="nest"})[entity.type],
-        orientation=entity.orientation,health=entity.health,
-        box=box(entity.prototype.collision_box),
-        cliff_orientation=entity.type == "cliff" and entity.cliff_orientation or nil}
+  -- Only nest zones need the wide query. Querying every tree in that area
+  -- repeatedly dominates cache construction in forests. Eight tiles covers the
+  -- pinned base collision boxes, including the rotated cliff offsets.
+  local function collect(types,reach)
+    for _, entity in pairs(surface.find_entities_filtered({
+      area={{x0-reach,y0-reach},{x0+16+reach,y0+16+reach}},type=types})) do
+      if entity.type ~= "simple-entity" or entity.prototype.count_as_rock_for_filtered_deconstruction then
+        entities[#entities+1] = {x=entity.position.x,y=entity.position.y,
+          kind=({tree="tree",["simple-entity"]="rock",cliff="cliff",["unit-spawner"]="nest"})[entity.type],
+          orientation=entity.orientation,health=entity.health,
+          box=box(entity.prototype.collision_box),
+          cliff_orientation=entity.type == "cliff" and entity.cliff_orientation or nil}
+      end
     end
   end
+  collect({"tree","simple-entity","cliff"},8)
+  collect({"unit-spawner"},raster.nest_radius+8)
   local block = raster.build(x0,y0,tiles,entities)
   grid.blocks[next.key] = block
   local bx,by=math.floor(x0/16),math.floor(y0/16)

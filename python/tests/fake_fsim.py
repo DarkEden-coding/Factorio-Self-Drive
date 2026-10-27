@@ -14,7 +14,7 @@ C, LOCAL, COARSE = 8, 64, 64 // 2
 VECTOR_FEATURES = [f"f{i}" for i in range(12)]
 REWARD_TERMS = [
     "progress", "time", "damage", "collision", "nest_zone", "success", "destroyed", "arrival",
-    "target_speed",
+    "target_speed", "path_length",
 ]
 SCENARIOS = ["standard", "long", "forest", "reverse", "nest", "arrival"]
 COLLISION_KINDS = ["tree", "rock", "cliff", "nest", "water"]

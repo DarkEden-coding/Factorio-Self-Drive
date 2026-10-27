@@ -165,9 +165,41 @@ fn sampled_targets_are_reachable_within_distance_and_tortuosity() {
 }
 
 #[test]
+fn path_length_reward_charges_actual_forward_and_reverse_travel() {
+    let mut c = config(Mode::Reactive, "car");
+    c.reward.path_length = -0.02;
+    let term = fsim_core::reward::TERMS
+        .iter()
+        .position(|t| *t == "path_length")
+        .unwrap();
+    for direction in [-1, 1] {
+        let mut e = env(c.clone(), 1, 17);
+        let mut b = Buffers::new(1);
+        b.reset(&mut e);
+        let mut previous = 0.0;
+        let mut moved = false;
+        for action in [4, encode_action(direction, 0), encode_action(direction, 0)] {
+            let info = b.step(&mut e, Actions::Reactive(&[action as i64]));
+            let traveled = info[0].path_length as f64 - previous;
+            assert!(traveled >= 0.0);
+            assert!((info[0].terms[term] as f64 + 0.02 * traveled).abs() < 1e-6);
+            moved |= if direction < 0 {
+                info[0].reverse_distance > 0.0
+            } else {
+                info[0].speed > 0.0
+            };
+            previous = info[0].path_length as f64;
+            assert!(!info[0].terminated && !info[0].truncated);
+        }
+        assert!(previous > 0.0 && moved);
+    }
+}
+
+#[test]
 fn reward_terms_sum_to_reward_and_macro_steps_discount() {
     let mut c = config(Mode::DirectPlan, "car");
     c.gamma = 0.9;
+    c.reward.path_length = -0.02;
     let mut plan_env = env(c.clone(), 2, 17);
     c.mode = Mode::Reactive;
     let mut reactive_env = env(c, 2, 17);

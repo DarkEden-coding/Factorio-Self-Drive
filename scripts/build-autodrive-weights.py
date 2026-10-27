@@ -6,7 +6,7 @@ import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = ROOT / 'python/runs/students/mlp64-stop/mlp64-stop.json'
+DEFAULT = ROOT / 'python/runs/students/field-efficient-v1/field-efficient.json'
 FIELD_HASH = '49e75f8a02cb7e16'
 
 
@@ -31,7 +31,7 @@ def build(model_path, destination):
     if (model['format'] != 'fsim-student-v1' or model['spec_hash'] != FIELD_HASH
             or model.get('map') or model['decision_ticks'] != 4
             or model['obs']['size'] != 135 or model['ray_conv']):
-        raise ValueError('expected the dense field-route student (mlp64-stop), interval 4')
+        raise ValueError('expected the dense field-route student, interval 4')
     size = model['obs']['size']
     if len(model['normalizer']['mean']) != size or len(model['normalizer']['std']) != size:
         raise ValueError('normalizer dimensions')

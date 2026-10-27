@@ -2,8 +2,8 @@
 import {readFile} from 'node:fs/promises';
 import init,{Sim} from '../crates/fsim-wasm/pkg/fsim_wasm.js';
 await init({module_or_path:await readFile(new URL('../crates/fsim-wasm/pkg/fsim_wasm_bg.wasm',import.meta.url))});
-// `drive` cases run the dense field-route student (mlp64-stop) shipped in the mod.
-const model=JSON.parse(await readFile(new URL('../python/runs/students/mlp64-stop/mlp64-stop.json',import.meta.url),'utf8'));
+// `drive` cases run the dense field-route student (field-efficient) shipped in the mod.
+const model=JSON.parse(await readFile(new URL('../python/runs/students/field-efficient-v1/field-efficient.json',import.meta.url),'utf8'));
 function action(features){
  let x=Array.from(features,(v,i)=>Math.max(-model.normalizer.clip,Math.min(model.normalizer.clip,(v-model.normalizer.mean[i])/model.normalizer.std[i])));
  for(let n=0;n<model.dense.length;n++){const l=model.dense[n];x=l.bias.map((b,o)=>{let v=b;for(let i=0;i<l.in;i++)v+=l.weight[o][i]*x[i];return n+1<model.dense.length?Math.max(0,v):v;});}

@@ -27,5 +27,5 @@ for _,case in ipairs(input) do
   local route = field.route(f,{x=state.x,y=state.y})
   local obs=observation.build(grid,route,state,stats)
   local action,logits=network.forward(obs)
-  line(obs); line(logits); print(action)
+  line(obs); line(logits); print(action); line(f.values)
 end

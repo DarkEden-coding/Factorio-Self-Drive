@@ -115,6 +115,8 @@ pub struct RewardWeights {
     /// `stop` arrival only: per decision ending within the target radius, times |speed| in
     /// tiles/tick.
     pub target_speed: f64,
+    /// Per tile actually traveled; zero preserves existing training rewards.
+    pub path_length: f64,
 }
 
 impl Default for RewardWeights {
@@ -129,6 +131,7 @@ impl Default for RewardWeights {
             destroyed: -10.0,
             arrival: 2.0,
             target_speed: -1.0,
+            path_length: 0.0,
         }
     }
 }

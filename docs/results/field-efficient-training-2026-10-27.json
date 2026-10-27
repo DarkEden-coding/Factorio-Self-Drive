@@ -1,0 +1,245 @@
+{
+  "base_checkpoint": "python/runs/students/mlp64-stop/checkpoints/latest.pt",
+  "base_sha256": "954b965988edd118bd72efa3e7f919bca70696d7ff3657419593dacdada4c3d1",
+  "selected_checkpoint": "python/runs/students/field-efficient-v1/checkpoints/iter_000200.pt",
+  "selected_sha256": "b43cc380875e4b32d4562107cb61a2d139f7d328d9e52bc318b2ff39aebcc724",
+  "export": "python/runs/students/field-efficient-v1/field-efficient.json",
+  "export_sha256": "4e6c745d6e70d6a77ad1fa4272d0f3a10e4f7273fa09d9974f6f87dc6845a3b1",
+  "training_config": "python/configs/student_mlp64_efficient.toml",
+  "device": "NVIDIA GeForce RTX 5060",
+  "completed_steps": 7995392,
+  "selected_steps": 6553600,
+  "selected_iteration": 200,
+  "approx_training_seconds": 584.8967366330035,
+  "selection_split": "train",
+  "selection_seed": 54321,
+  "selection_episodes_per_scenario": 200,
+  "selection_reason": "Iteration 200 improved time and distance with lower tree/rock/cliff/water contact counts and zone time on validation. The final checkpoint was slightly faster but had more nest contacts and zone time.",
+  "holdout_seeds": [
+    67890,
+    12345
+  ],
+  "holdout_episodes_per_scenario": [
+    400,
+    200
+  ],
+  "reward": {
+    "progress": 0.1,
+    "time": -0.02,
+    "damage": -10.0,
+    "collision": -0.75,
+    "nest_zone": -0.3,
+    "success": 10.0,
+    "destroyed": -10.0,
+    "arrival": 2.0,
+    "target_speed": -1.0,
+    "path_length": -0.02
+  },
+  "validation": {
+    "80": {
+      "safety": {
+        "episodes": 1200,
+        "success_rate": 0.9908333333333333,
+        "collision_free_success_rate": 0.7016666666666667,
+        "tree_hit_rate": 0.27416666666666667,
+        "contact_ticks_per_episode": {
+          "tree": 2.1708333333333334,
+          "rock": 2.7733333333333334,
+          "cliff": 6.245833333333334,
+          "nest": 0.0,
+          "water": 0.9975
+        },
+        "mean_damage": 0.3867475763956706,
+        "nest_zone_fraction": 0.0011570898378269094
+      },
+      "paired": {
+        "matched_episodes": 1200,
+        "common_successes": 1183,
+        "time_s": {
+          "reference_mean": 7.658903916596224,
+          "candidate_mean": 7.522231614539306,
+          "change_percent": -1.7844890541159564,
+          "mean_paired_delta": -0.1366723020569174,
+          "delta_95_percent_bootstrap": [
+            -0.1819484361792054,
+            -0.08535573400958019
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 105.79998162686704,
+          "candidate_mean": 105.55010129410914,
+          "change_percent": -0.2361818300112506,
+          "mean_paired_delta": -0.2498803327579073,
+          "delta_95_percent_bootstrap": [
+            -0.3799042328828094,
+            -0.11817385588352532
+          ]
+        }
+      }
+    },
+    "120": {
+      "safety": {
+        "episodes": 1200,
+        "success_rate": 0.9966666666666667,
+        "collision_free_success_rate": 0.71,
+        "tree_hit_rate": 0.2725,
+        "contact_ticks_per_episode": {
+          "tree": 2.24,
+          "rock": 1.49,
+          "cliff": 2.316666666666667,
+          "nest": 0.54,
+          "water": 0.3625
+        },
+        "mean_damage": 0.05894404093424479,
+        "nest_zone_fraction": 0.003108834512400996
+      },
+      "paired": {
+        "matched_episodes": 1200,
+        "common_successes": 1187,
+        "time_s": {
+          "reference_mean": 7.705897219882057,
+          "candidate_mean": 7.589834316203314,
+          "change_percent": -1.5061569129067531,
+          "mean_paired_delta": -0.11606290367874192,
+          "delta_95_percent_bootstrap": [
+            -0.16772395394552095,
+            -0.062111766357764664
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 106.55290058526273,
+          "candidate_mean": 106.35507525920632,
+          "change_percent": -0.18565925936302463,
+          "mean_paired_delta": -0.19782532605641856,
+          "delta_95_percent_bootstrap": [
+            -0.3497777269182103,
+            -0.0367208156728947
+          ]
+        }
+      }
+    },
+    "160": {
+      "safety": {
+        "episodes": 1200,
+        "success_rate": 0.9941666666666666,
+        "collision_free_success_rate": 0.7158333333333333,
+        "tree_hit_rate": 0.2683333333333333,
+        "contact_ticks_per_episode": {
+          "tree": 1.97,
+          "rock": 0.8083333333333333,
+          "cliff": 4.125,
+          "nest": 0.17416666666666666,
+          "water": 0.37916666666666665
+        },
+        "mean_damage": 0.2682416280110677,
+        "nest_zone_fraction": 0.006477137708245304
+      },
+      "paired": {
+        "matched_episodes": 1200,
+        "common_successes": 1185,
+        "time_s": {
+          "reference_mean": 7.694233473980309,
+          "candidate_mean": 7.563895921237692,
+          "change_percent": -1.6939640990019544,
+          "mean_paired_delta": -0.13033755274261602,
+          "delta_95_percent_bootstrap": [
+            -0.1811824894514768,
+            -0.0779226441631505
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 106.42014475519166,
+          "candidate_mean": 106.14349863680955,
+          "change_percent": -0.2599565326832587,
+          "mean_paired_delta": -0.2766461183821044,
+          "delta_95_percent_bootstrap": [
+            -0.4248931449164443,
+            -0.11420020423079867
+          ]
+        }
+      }
+    },
+    "200": {
+      "safety": {
+        "episodes": 1200,
+        "success_rate": 0.9958333333333333,
+        "collision_free_success_rate": 0.71,
+        "tree_hit_rate": 0.27,
+        "contact_ticks_per_episode": {
+          "tree": 1.9466666666666668,
+          "rock": 1.6425,
+          "cliff": 2.2641666666666667,
+          "nest": 0.0,
+          "water": 0.2816666666666667
+        },
+        "mean_damage": 0.26500873565673827,
+        "nest_zone_fraction": 0.0009741885390437351
+      },
+      "paired": {
+        "matched_episodes": 1200,
+        "common_successes": 1186,
+        "time_s": {
+          "reference_mean": 7.708431703204048,
+          "candidate_mean": 7.5672568858909495,
+          "change_percent": -1.831433717631803,
+          "mean_paired_delta": -0.1411748173130972,
+          "delta_95_percent_bootstrap": [
+            -0.18849740022484535,
+            -0.08765914839797631
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 106.66160154508127,
+          "candidate_mean": 106.31010227789693,
+          "change_percent": -0.3295462116568504,
+          "mean_paired_delta": -0.3514992671843125,
+          "delta_95_percent_bootstrap": [
+            -0.4757909653262858,
+            -0.22600975999620967
+          ]
+        }
+      }
+    },
+    "final": {
+      "safety": {
+        "episodes": 1200,
+        "success_rate": 0.9941666666666666,
+        "collision_free_success_rate": 0.7091666666666666,
+        "tree_hit_rate": 0.2733333333333333,
+        "contact_ticks_per_episode": {
+          "tree": 2.1133333333333333,
+          "rock": 0.9658333333333333,
+          "cliff": 3.355,
+          "nest": 0.47,
+          "water": 0.26416666666666666
+        },
+        "mean_damage": 0.41780216217041016,
+        "nest_zone_fraction": 0.003067428953332946
+      },
+      "paired": {
+        "matched_episodes": 1200,
+        "common_successes": 1184,
+        "time_s": {
+          "reference_mean": 7.691173986486487,
+          "candidate_mean": 7.5271537162162145,
+          "change_percent": -2.1325778165785736,
+          "mean_paired_delta": -0.16402027027027027,
+          "delta_95_percent_bootstrap": [
+            -0.20439189189189186,
+            -0.12672754786036033
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 106.42565768864215,
+          "candidate_mean": 106.14532883765501,
+          "change_percent": -0.26340344713420283,
+          "mean_paired_delta": -0.28032885098713034,
+          "delta_95_percent_bootstrap": [
+            -0.40892566269842,
+            -0.14679710608242438
+          ]
+        }
+      }
+    }
+  }
+}

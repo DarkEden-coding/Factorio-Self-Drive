@@ -13,7 +13,8 @@ for _,vehicle in ipairs({"car","tank"}) do
     {name="flat15",start={-48,-96},target={-33,-96},fuel="coal",speed=0},
     {name="obstacles40",start={-48,-40},target={-8,-40},fuel="rocket-fuel",speed=0.12},
     {name="nest100",start={-48,48},target={52,48},fuel="nuclear-fuel",speed=0},
-    {name="real60",start={-48,0},target={12,0},fuel="coal",speed=-0.08,real=true}
+    {name="real60",start={-48,0},target={12,0},fuel="coal",speed=-0.08,real=true},
+    {name="forest80",start={-48,-80},target={32,-80},fuel="coal",speed=0}
   }) do
     cases[#cases+1]={vehicle=vehicle,name=vehicle.."-"..scenario.name,scenario=scenario}
   end
@@ -56,6 +57,11 @@ local function prepare(job)
         force=e.name=="biter-spawner" and "enemy" or "neutral",snap_to_grid=false})
       assert(entity,"Failed to create test obstacle")
     end
+    for y=-92,-68,4 do
+      for x=-20,8,4 do
+        assert(flat.create_entity({name="tree-02",position={x,y},force="neutral"}),"Failed to create forest fixture")
+      end
+    end
     job.phase="spawn"
   end
 end
@@ -92,7 +98,8 @@ local function spawn(job)
   job.state=driver.start(job.vehicle,{x=target.x,y=target.y})
   job.state.profile=true
   job.health=job.vehicle.health
-  job.contacts,job.damage,job.ticks=0,0,0
+  job.contacts,job.damage,job.ticks,job.path_length=0,0,0,0
+  job.last_position,job.last_speed=nil,nil
   job.phase="planning"
 end
 local function snapshot(job)
@@ -101,8 +108,10 @@ local function snapshot(job)
   job.chunk,job.phase=0,"export"
 end
 local function finish(job,result)
-  job.results[#job.results+1]={name=cases[job.index].name,status=result,ticks=job.state.elapsed,
-    seconds=job.state.elapsed/60,contacts_estimate=job.contacts,damage=job.damage,
+  job.results[#job.results+1]={name=cases[job.index].name,status=result,ticks=job.ticks,
+    seconds=job.ticks/60,planning_ticks=job.state.planning_ticks,
+    total_ticks=job.ticks+job.state.planning_ticks,path_length=job.path_length,
+    segment_ticks=job.state.elapsed,contacts_estimate=job.contacts,damage=job.damage,
     distance=job.vehicle.valid and u.distance(job.vehicle.position,job.state.target) or -1,
     speed=job.vehicle.valid and job.vehicle.speed or 0,decisions=job.state.decisions,
     route_slices=job.state.slices}
@@ -138,6 +147,8 @@ function M.tick()
         local _,sample=driver.observe(job.state)
         sample.vehicle,sample.fuel=case.vehicle,case.scenario.fuel
         write("parity-"..case.name,sample)
+        job.last_position={x=job.vehicle.position.x,y=job.vehicle.position.y}
+        job.last_speed=job.vehicle.speed
         local result=driver.tick(job.state)
         if result then finish(job,result) end
       end
@@ -147,6 +158,7 @@ function M.tick()
       if v.valid then
         -- Engine has no contact event. Count blocked powered ticks as a proxy,
         -- and label it explicitly rather than calling it exact collision data.
+        if job.last_position then job.path_length=job.path_length+u.distance(v.position,job.last_position) end
         local throttle=math.floor(job.state.action/3)-1
         local powered=throttle~=0 and throttle*(job.last_speed or 0)>=0
         if job.last_position and u.distance(v.position,job.last_position)==0 and powered then

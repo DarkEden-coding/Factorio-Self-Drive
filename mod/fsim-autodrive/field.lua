@@ -6,8 +6,8 @@ local M = {}
 local SQRT2 = math.sqrt(2)
 local steps = {{1,0,1},{-1,0,1},{0,1,1},{0,-1,1},
   {1,1,SQRT2},{-1,1,SQRT2},{1,-1,SQRT2},{-1,-1,SQRT2}}
--- A heap pop does several times the work of one cell in the other phases.
-local POP_COST = 4
+-- A bucket pop and its neighbor relaxations cost more than one cell in the other phases.
+local POP_COST = 2
 local ZONE_REACH = 2
 local function index(f, x, y)
   if x < f.x0 or y < f.y0 or x >= f.x1 or y >= f.y1 then return nil end
@@ -17,37 +17,26 @@ function M.tile(f, x, y)
   local i = index(f, x, y)
   return i and f.values[i] or math.huge
 end
--- Binary heap in two parallel arrays (node index, distance). Same sift order as
--- a heap of {i, d} records, so ties pop in the same order.
+-- Unit-width circular buckets. Every edge costs at least 1, so nodes in the
+-- current distance bucket cannot relax one another. The ring exceeds the largest
+-- edge cost: sqrt(2) * (1 + tree cost 4 + zone cost 3). No heap sifting is needed.
+local BUCKETS = 14
 local function push(f, node, distance)
-  local hi, hd = f.hi, f.hd
-  local i = f.hn + 1
-  f.hn = i
-  while i > 1 do
-    local p = math.floor(i / 2)
-    if hd[p] <= distance then break end
-    hi[i], hd[i], i = hi[p], hd[p], p
-  end
-  hi[i], hd[i] = node, distance
+  local slot = math.floor(distance) % BUCKETS + 1
+  local ids, distances = f.bucket_nodes[slot], f.bucket_distances[slot]
+  if not ids then ids, distances = {}, {}; f.bucket_nodes[slot], f.bucket_distances[slot] = ids, distances end
+  ids[#ids + 1], distances[#distances + 1] = node, distance
+  f.pending = f.pending + 1
 end
 local function pop(f)
-  local hi, hd, n = f.hi, f.hd, f.hn
-  local first_i, first_d = hi[1], hd[1]
-  local last_i, last_d = hi[n], hd[n]
-  hi[n], hd[n] = nil, nil
-  n = n - 1
-  f.hn = n
-  if n > 0 then
-    local i = 1
-    while i * 2 <= n do
-      local child = i * 2
-      if child < n and hd[child + 1] < hd[child] then child = child + 1 end
-      if last_d <= hd[child] then break end
-      hi[i], hd[i], i = hi[child], hd[child], child
-    end
-    hi[i], hd[i] = last_i, last_d
+  local slot = f.current % BUCKETS + 1
+  while not f.bucket_nodes[slot] or #f.bucket_nodes[slot] == 0 do
+    f.current = f.current + 1
+    slot = f.current % BUCKETS + 1
   end
-  return first_i, first_d
+  local ids, distances = f.bucket_nodes[slot], f.bucket_distances[slot]
+  f.pending = f.pending - 1
+  return table.remove(ids), table.remove(distances)
 end
 -- `margin` defaults to the simulator's 48 tiles.
 function M.new(position, target, half_width, tank, bounds, margin)
@@ -57,7 +46,7 @@ function M.new(position, target, half_width, tank, bounds, margin)
     x1 = math.floor(math.max(position.x, target.x)) + margin + 1,
     y1 = math.floor(math.max(position.y, target.y)) + margin + 1,
     dilation = math.ceil(half_width), tank = tank, target = target,
-    hi = {}, hd = {}, hn = 0, cursor = 1, phase = "base"}
+    bucket_nodes = {}, bucket_distances = {}, pending = 0, current = 0, cursor = 1, phase = "base"}
   if bounds then
     f.x0,f.y0=math.max(f.x0,bounds.x0),math.max(f.y0,bounds.y0)
     f.x1,f.y1=math.min(f.x1,bounds.x1),math.min(f.y1,bounds.y1)
@@ -126,21 +115,19 @@ local function search_step(f)
   local i, du = pop(f)
   if f.done[i] or du ~= f.distances[i] then return end
   f.done[i] = true
-  local w = f.w
-  local x, y = f.x0 + (i - 1) % w, f.y0 + math.floor((i - 1) / w)
+  local w, h = f.w, f.h
+  local col, row = (i - 1) % w, math.floor((i - 1) / w)
   local flags, done, distances, extra = f.flags, f.done, f.distances, f.extra
+  local own_extra = extra[i]
   for k = 1, 8 do
     local step = steps[k]
     local dx, dy = step[1], step[2]
-    local j = index(f, x + dx, y + dy)
-    if j and not flags[j] and not done[j] then
-      local ok = k <= 4
-      if not ok then
-        local ox, oy = index(f, x + dx, y), index(f, x, y + dy)
-        ok = ox and oy and not flags[ox] and not flags[oy]
-      end
-      if ok then
-        local distance = du + step[3] * (1 + 0.5 * (extra[i] + extra[j]))
+    local x, y = col + dx, row + dy
+    if x >= 0 and x < w and y >= 0 and y < h then
+      local j = i + dy * w + dx
+      if not flags[j] and not done[j] and
+        (k <= 4 or (not flags[i + dx] and not flags[i + dy * w])) then
+        local distance = du + step[3] * (1 + 0.5 * (own_extra + extra[j]))
         if distance < (distances[j] or math.huge) then
           distances[j] = distance
           push(f, j, distance)
@@ -149,7 +136,7 @@ local function search_step(f)
     end
   end
 end
--- Budget is in work units: one per cell in the cell phases, POP_COST per heap pop.
+-- Budget is in work units: one per cell in the cell phases, POP_COST per bucket pop.
 -- Returns true once the field is ready.
 function M.slice(f, mask, budget)
   while budget > 0 do
@@ -182,7 +169,7 @@ function M.slice(f, mask, budget)
         start_search(f)
       end
     elseif phase == "search" then
-      if f.hn == 0 then
+      if f.pending == 0 then
         f.phase, f.cursor, f.values = "values", 1, {}
       else
         search_step(f)
@@ -197,7 +184,7 @@ function M.slice(f, mask, budget)
       f.cursor = last + 1
       if f.cursor > n then
         f.phase = "ready"
-        f.hi, f.hd, f.distances, f.done, f.flags, f.extra = nil, nil, nil, nil, nil, nil
+        f.bucket_nodes, f.bucket_distances, f.distances, f.done, f.flags, f.extra = nil, nil, nil, nil, nil, nil
         return true
       end
     else

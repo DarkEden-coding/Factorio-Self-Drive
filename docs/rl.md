@@ -125,6 +125,7 @@ Per decision step, weights from `reward` config (defaults in brackets):
 |---|---|
 | `progress` [0.1] | per tile of path-distance decrease (negative when moving away) |
 | `time` [-0.005] | per decision step |
+| `path_length` [0.0] | per tile actually traveled during the decision, including reverse travel |
 | `damage` [-5.0] | times damage taken / max health |
 | `collision` [-0.2] | per decision step with a new collision event |
 | `nest_zone` [-0.15] | per decision step with the vehicle center inside a nest penalty radius |
@@ -135,7 +136,11 @@ Per decision step, weights from `reward` config (defaults in brackets):
 
 The env reports each term separately (info) and their sum (reward). `damage` uses health lost
 during the decision. `collision` counts collisions with entities, water and the map edge.
-`progress` and `nest_zone` use the state at the end of the decision.
+`progress` and `nest_zone` use the state at the end of the decision. `path_length` sums
+actual displacement at every physics tick, so circling and backing up cannot cancel travel.
+Its zero default preserves rewards for older configs and checkpoints. The supplemental
+`student_mlp64_efficient.toml` uses -0.02 per tile, time -0.02 per decision, and collision -0.75.
+Observation features and their spec hashes are unchanged.
 
 Why the stop terms: with `stop`, `progress` already measures to the target point (the field is 0
 there), so overshooting costs the progress it earned. `arrival` keeps a small reward for getting

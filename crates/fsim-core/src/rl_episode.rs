@@ -397,6 +397,7 @@ impl Episode {
         let max_health = ctx.data.vehicles[v.prototype[0]].max_health;
         let health_before = v.health[0];
         let distance_before = self.path_distance;
+        let length_before = self.path_length;
         let mut collided = false;
         let mut reached_now = false;
         let mut ticks = 0;
@@ -457,6 +458,7 @@ impl Episode {
         let damage = (health_before - v.health[0]).max(0.0);
         self.damage += damage;
         terms.progress = weights.progress * (distance_before - self.path_distance);
+        terms.path_length = weights.path_length * (self.path_length - length_before);
         terms.damage = weights.damage * damage / max_health;
         if collided {
             terms.collision = weights.collision;

@@ -44,7 +44,7 @@ def timings(path):
 def run(args,temp):
     mods,write=temp/'mods',temp/'write'
     mods.mkdir();write.mkdir();(write/"saves").mkdir()
-    shutil.copytree(ROOT/'mod/fsim-autodrive',mods/'fsim-autodrive')
+    shutil.copytree(args.mod_source,mods/'fsim-autodrive')
     companion=mods/'fsim-autodrive-verify';companion.mkdir()
     (companion/'info.json').write_text(json.dumps(dict(name='fsim-autodrive-verify',version='0.1.0',
         title='Isolated autodrive verification',author='Fsim',factorio_version='2.1',
@@ -125,6 +125,8 @@ end)
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--factorio',type=Path,default=collector.DEFAULT_BINARY)
+    parser.add_argument('--mod-source',type=Path,default=ROOT/'mod/fsim-autodrive',
+        help='production mod directory to copy into the disposable test')
     parser.add_argument('--timeout',type=float,default=90)
     parser.add_argument('--output',type=Path,default=ROOT/'data/autodrive/engine')
     parser.add_argument('--keep-temp',action='store_true')
@@ -133,6 +135,7 @@ def main():
     parser.add_argument('--save-reload',action='store_true',help='also verify a checkpoint saved by a disposable private server')
     parser.add_argument('--allow-low-battery',action='store_true',help='explicitly authorized short-run battery override')
     args=parser.parse_args();args.factorio=args.factorio.expanduser().resolve()
+    args.mod_source=args.mod_source.expanduser().resolve()
     try:
         battery_guard(args.allow_low_battery)
         temp=Path(tempfile.mkdtemp(prefix='fsim-autodrive-'))

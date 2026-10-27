@@ -136,26 +136,34 @@ def main():
             capture_output=True,text=True,check=True)
     lines=raw.stdout.splitlines()
     model=student_ref.load(str(args.model))
-    maxima={g:0.0 for g in GROUPS};logit_max=0;agreement=0
+    maxima={g:0.0 for g in GROUPS};logit_max=0;agreement=0;field_max=0
     for i,r in enumerate(results):
-        obs=[float(v) for v in lines[i*3].split(',')]
-        logits=[float(v) for v in lines[i*3+1].split(',')]
-        action=int(lines[i*3+2])
+        obs=[float(v) for v in lines[i*4].split(',')]
+        logits=[float(v) for v in lines[i*4+1].split(',')]
+        action=int(lines[i*4+2])
         for group,(a,b) in GROUPS.items():
             maxima[group]=max(maxima[group],max(abs(obs[j]-r['observation'][j]) for j in range(a,b)))
+        values=[float(v) for v in lines[i*4+3].split(',')]
+        assert len(values)==len(r['values'])
+        for actual, expected_value in zip(values,r['values']):
+            if expected_value is None:
+                assert actual==math.inf
+            else:
+                assert math.isfinite(actual)
+                field_max=max(field_max,abs(actual-expected_value))
         expected=student_ref.logits(model,obs)
         logit_max=max(logit_max,max(abs(a-b) for a,b in zip(logits,expected)))
         agreement+=action==student_ref.act(model,r['observation'][:model['obs']['size']])
     report=dict(source='offline Lua vs existing Rust/WASM on real map exports',cases=len(results),
         max_abs_by_feature_group=maxima,logits_max_abs=logit_max,action_agreement=agreement,
-        engine_verified=False)
+        field_max_abs=field_max,engine_verified=False)
     if args.engine_output:
         report['engine']=check_engine(args.engine_output,model)
         report['engine_verified']=True
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
-    assert max(maxima.values())<1e-5 and logit_max<1e-8 and agreement==len(results)
+    assert max(maxima.values())<1e-5 and logit_max<1e-8 and agreement==len(results) and field_max==0
 
 
 def check_engine(directory,model):

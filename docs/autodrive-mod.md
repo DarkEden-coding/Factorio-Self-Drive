@@ -1,10 +1,15 @@
 # In-game autodrive
 
-Version 0.4.0 restores the previous `mlp64-stop` field-route student and the segmented
-local field planner from 0.2.0. The 0.3.0 pathfinder-route map student has been replaced.
-Model export: `python/runs/students/mlp64-stop/mlp64-stop.json`, format `fsim-student-v1`,
-spec hash `49e75f8a02cb7e16`, 13,312 multiply-adds per decision. The mod runs entirely
-in Factorio Lua and requires Factorio 2.1.23 or newer in the 2.1 series.
+Version 0.5.0 runs the `field-efficient` student, a supplemental PPO fine-tune of
+`mlp64-stop` for shorter, faster trips. It keeps the segmented field planner restored in 0.4.0,
+with faster queue processing and terrain caching. The pathfinder-route map model from 0.3.0
+is not used. Model export: `python/runs/students/field-efficient-v1/field-efficient.json`,
+format `fsim-student-v1`, spec hash `49e75f8a02cb7e16`, 13,312 multiply-adds per decision.
+The mod runs entirely in Factorio Lua and requires Factorio 2.1.23 or newer in the 2.1 series.
+
+On 2,400 paired holdout tasks, arrival time improves 1.78%, path length improves 0.28%, and
+success increases from 98.50% to 99.46%. See [the training and planner results](efficient-driving-results.md)
+for the comparison, collision metrics, limitations and reproduction commands.
 
 ## Controls
 
@@ -39,7 +44,7 @@ an intermediate target. Factorio's pathfinder only helps select distant sub-targ
 reads the local field route. Failed plans try wider margins and alternative sub-targets;
 timeouts, stalls and bounded detour counts stop unsuccessful attempts.
 
-Version 0.4.0 clears incompatible saved drive state and brakes controlled vehicles during
+Version 0.5.0 clears incompatible saved drive state and brakes controlled vehicles during
 configuration changes. Set a target again after loading the update. Restart Factorio to load
 changed mod files.
 
@@ -49,16 +54,18 @@ Regenerate the checked-in weights and geometry with:
 python3 scripts/build-autodrive-weights.py
 ```
 
-## Rollback verification
+## Verification for the current model
 
 The restored field planner builds its own route in the parity test. On 16 fixed real-map
 states, all 135 observations, network logits and chosen actions match the simulator/reference
 exactly. This checks the local field calculation as well as inference.
 
-The restored mod also completed all eight isolated Factorio smoke trips with zero measured
+Version 0.4.0 completed eight isolated Factorio smoke trips with zero measured
 damage and zero blocked-powered-tick contact estimates. Mean decision time was 0.80 ms,
 p95 0.99 ms in this run. Short smoke fixtures do not establish general tree avoidance.
-The plain-Lua driver harness completed 600-tile and diagonal long trips using multiple segments.
+Version 0.5.0 passes ten engine fixtures, including forest detours. Its complete before/after
+results and current model parity are in [efficient-driving-results.md](efficient-driving-results.md).
+The plain-Lua driver harness also completed 600-tile and diagonal long trips using multiple segments.
 Raw results are in `data/autodrive/field-restored-engine/` and
 `data/autodrive/field-restored-parity.json`.
 
@@ -172,7 +179,7 @@ from its JSON APIs. API auditing is a name/record check, not a type checker.
 
 ## Installation
 
-Installed and enabled as `~/Library/Application Support/factorio/mods/fsim-autodrive_0.4.0`,
+Installed and enabled as `~/Library/Application Support/factorio/mods/fsim-autodrive_0.5.0`,
 a symlink to this repository (earlier version links removed). Factorio was not running when enabling the mod.
 All existing mod-list entries were preserved. Backup:
 

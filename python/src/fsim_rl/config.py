@@ -57,6 +57,7 @@ class RewardConfig:
     destroyed: float = -10.0
     arrival: float = 2.0         # stop arrival only: once, on first entering the target radius
     target_speed: float = -1.0   # stop arrival only: per decision inside the radius, times |speed| (tiles/tick)
+    path_length: float = 0.0     # per tile actually traveled, including reverse travel
 
 
 @dataclass
