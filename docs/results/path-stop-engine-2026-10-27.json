@@ -1,0 +1,124 @@
+{
+  "engine": "Factorio 2.1.23",
+  "save_reload_verified": false,
+  "results": [
+    {
+      "name": "car-flat15",
+      "status": "arrived",
+      "ticks": 98,
+      "seconds": 1.6333333333333333,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "distance": 0.2139897800750365,
+      "speed": 0,
+      "decisions": 25,
+      "route_slices": 0
+    },
+    {
+      "name": "car-obstacles40",
+      "status": "arrived",
+      "ticks": 184,
+      "seconds": 3.066666666666667,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "distance": 0.15934435979977452,
+      "speed": 0,
+      "decisions": 46,
+      "route_slices": 0
+    },
+    {
+      "name": "car-nest100",
+      "status": "arrived",
+      "ticks": 307,
+      "seconds": 5.116666666666666,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "distance": 0.28127712542804206,
+      "speed": 0,
+      "decisions": 77,
+      "route_slices": 0
+    },
+    {
+      "name": "car-real60",
+      "status": "arrived",
+      "ticks": 253,
+      "seconds": 4.216666666666667,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "distance": 0.0964772580877224,
+      "speed": 0,
+      "decisions": 64,
+      "route_slices": 0
+    },
+    {
+      "name": "tank-flat15",
+      "status": "arrived",
+      "ticks": 177,
+      "seconds": 2.95,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "distance": 0.7881337355780743,
+      "speed": 0.009462396904234062,
+      "decisions": 45,
+      "route_slices": 0
+    },
+    {
+      "name": "tank-obstacles40",
+      "status": "arrived",
+      "ticks": 310,
+      "seconds": 5.166666666666667,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "distance": 0.8297908510253127,
+      "speed": 0.008509051612617032,
+      "decisions": 78,
+      "route_slices": 0
+    },
+    {
+      "name": "tank-nest100",
+      "status": "arrived",
+      "ticks": 531,
+      "seconds": 8.85,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "distance": 0.6783166851778194,
+      "speed": 0,
+      "decisions": 133,
+      "route_slices": 0
+    },
+    {
+      "name": "tank-real60",
+      "status": "arrived",
+      "ticks": 456,
+      "seconds": 7.6,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "distance": 0.33698057540921406,
+      "speed": 0,
+      "decisions": 114,
+      "route_slices": 0
+    }
+  ],
+  "success_rate": 1.0,
+  "timing": {
+    "cache": {
+      "samples": 20,
+      "mean_ms": 2.2134729,
+      "max_ms": 4.634875,
+      "p95_ms": 3.949
+    },
+    "route": {
+      "samples": 16,
+      "mean_ms": 2.77705475,
+      "max_ms": 6.577334,
+      "p95_ms": 6.207
+    },
+    "decision": {
+      "samples": 582,
+      "mean_ms": 3.444066486254296,
+      "max_ms": 11.449584,
+      "p95_ms": 4.205083
+    }
+  },
+  "contacts": "blocked moving powered tick estimate, not engine collision events"
+}

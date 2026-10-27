@@ -103,6 +103,8 @@ end)
         timing=timings(output/'timing.txt'),contacts='blocked moving powered tick estimate, not engine collision events')
     (args.output/'driving-report.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
+    if args.engine_only:
+        return
     subprocess.run([sys.executable,'scripts/check-autodrive-parity.py','--engine-output',args.output,
         '--output',args.output/'parity-report.json'],cwd=ROOT,check=True)
     # Use identical initial terrain, pose, target and speed for a short simulator
@@ -126,6 +128,8 @@ def main():
     parser.add_argument('--timeout',type=float,default=90)
     parser.add_argument('--output',type=Path,default=ROOT/'data/autodrive/engine')
     parser.add_argument('--keep-temp',action='store_true')
+    parser.add_argument('--engine-only',action='store_true',
+        help='run the production mod in Factorio; skip the legacy field-route simulator comparison')
     parser.add_argument('--save-reload',action='store_true',help='also verify a checkpoint saved by a disposable private server')
     parser.add_argument('--allow-low-battery',action='store_true',help='explicitly authorized short-run battery override')
     args=parser.parse_args();args.factorio=args.factorio.expanduser().resolve()

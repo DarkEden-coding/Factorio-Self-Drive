@@ -96,9 +96,12 @@ python3 scripts/build-autodrive-weights.py
   from the center, and the slowest tick was 3.7 ms.
 - `check-mod-api.py` passes against the installed 2.1.23 docs; `check-mod.lua` passes.
 
-Not yet done for 0.3.0: an engine run. The engine suite below (`test-autodrive.py`) and its
-simulator comparison were written for the field-route model; its simulator side still drives
-the dense mlp64-stop student, so it needs updating before it can verify 0.3.0.
+On 2026-10-27, 0.3.0 completed all eight existing isolated Factorio 2.1.23 smoke trips
+with zero measured damage. These sparse fixtures do not establish tree avoidance or route
+optimality. The fresh holdout investigation finds tree contacts in 76.5% of forest episodes.
+See [the investigation](pathfinder-investigation.md) for ablations, limitations, and next steps.
+Run `python3 scripts/test-autodrive.py --engine-only` for the current mod's engine smoke test.
+The default simulator comparison below still uses the older dense mlp64-stop student.
 
 ## Verification (0.1.0 field-route model)
 
