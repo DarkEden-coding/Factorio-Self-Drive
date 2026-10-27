@@ -1,0 +1,5 @@
+# Student MLP actor [32, 32] (see student.toml).
+base = "student.toml"
+
+[model]
+student_hidden = [32, 32]

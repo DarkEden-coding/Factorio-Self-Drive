@@ -1,0 +1,40 @@
+# Fine-tune a trained reactive policy (reactive-1) on its weak spots: trees, backing up, nest
+# zones and long routes. Start it with
+#   fsim-rl train --config configs/finetune_moderate.toml --init-from runs/reactive-1/best/model.pt
+# and set num_envs/device per machine with --set ppo.num_envs=... --set device=...
+base = "reactive.toml"
+
+[env]
+# Weights count episodes. A* baseline episode lengths on holdout, in decisions: standard ~70 at
+# 16-64 tiles (~100 at the fine-tune range), long ~440, forest ~60, reverse ~75, nest ~150. This
+# mix gives about 28% standard, 20% long, 17% forest, 14% reverse and 21% nest of the samples.
+scenarios = [
+    { kind = "standard", weight = 0.3 },
+    { kind = "long", weight = 0.05 },
+    { kind = "forest", weight = 0.3 },
+    { kind = "reverse", weight = 0.2 },
+    { kind = "nest", weight = 0.15 },
+]
+
+[env.reward] # the defaults, spelled out to compare with finetune_strong.toml
+collision = -0.2
+nest_zone = -0.15
+damage = -5.0
+
+[env.distance_field]
+nest_zone_cost = 3.0
+
+[ppo]
+total_steps = 20_000_000
+learning_rate = 1e-4         # a third of the from-scratch rate: adapt without forgetting
+
+[curriculum]
+# The standard episodes pick up where reactive-1 ended (stage 3) and then stretch further.
+# Only standard episodes count toward advancing.
+success_threshold = 0.85
+window = 400
+min_episodes = 400
+stages = [
+    { min_distance = 16, max_distance = 128, max_tortuosity = 2.0 },
+    { min_distance = 16, max_distance = 192, max_tortuosity = 2.5 },
+]

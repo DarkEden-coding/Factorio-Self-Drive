@@ -1,0 +1,6 @@
+# Student with circular 1D convs over the rays (3x32 -> 8x32 -> 8x16) before a [64, 64] MLP.
+base = "student.toml"
+
+[model]
+student_hidden = [64, 64]
+ray_conv = [8, 8]

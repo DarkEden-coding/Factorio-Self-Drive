@@ -1,0 +1,8 @@
+base = "base.toml"
+
+[model]
+kind = "path_planner"
+
+[ppo]
+rollout_steps = 64
+ent_coef = 0.0

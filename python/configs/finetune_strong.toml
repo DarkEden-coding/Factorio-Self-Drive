@@ -1,0 +1,11 @@
+# Like finetune_moderate.toml with stronger penalties: a contact costs 5 tiles of progress, a
+# zone crossing about the success bonus, and damage weighs twice as much.
+base = "finetune_moderate.toml"
+
+[env.reward]
+collision = -0.5
+nest_zone = -0.3
+damage = -10.0
+
+[env.distance_field]
+nest_zone_cost = 4.0

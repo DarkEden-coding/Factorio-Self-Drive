@@ -1,0 +1,32 @@
+[project]
+name = "fsim-rl"
+version = "0.1.0"
+description = "PPO training, evaluation and policy server for the Factorio driving simulator"
+requires-python = "==3.12.*"
+dependencies = [
+    "fsim",
+    "numpy>=2.0",
+    "tensorboard>=2.18",
+    "torch>=2.5",
+    "websockets>=14.0",
+]
+
+[project.scripts]
+fsim-rl = "fsim_rl.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.uv.sources]
+# PyO3 extension built by maturin. After changing Rust code: uv sync --reinstall-package fsim
+fsim = { path = "../crates/fsim-py" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fsim_rl"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

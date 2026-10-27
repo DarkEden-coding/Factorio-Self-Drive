@@ -1,0 +1,40 @@
+# Student policy for the Factorio mod: an MLP on the compact `student` observation (docs/rl.md,
+# "Student observation"), distilled from a full-observation teacher and then fine-tuned with PPO
+# on the same rewards and scenarios as the teacher (finetune_strong.toml).
+#   fsim-rl distill --teacher runs/ft-strong/best/model.pt --student-config configs/student_mlp64.toml
+#   fsim-rl train --config configs/student_mlp64.toml --init-from runs/<distill run>/best/model.pt
+# The size variants (student_mlp32/64/128, student_conv) only change [model].
+base = "finetune_strong.toml"
+
+[env]
+observation = "student"
+
+[model]
+arch = "student"
+student_hidden = [64, 64]  # the shipped actor
+ray_conv = []              # optional circular 1D convs over the rays before the MLP
+critic_hidden = [256, 256] # training only; not exported
+precision = "fp32"
+
+[distill]
+num_envs = 256
+rollout_steps = 64
+iterations = 400
+beta_start = 1.0
+beta_iterations = 60
+buffer_size = 1_000_000
+minibatch = 4096
+updates_per_iteration = 32
+learning_rate = 1e-3
+final_learning_rate = 1e-4
+value_coef = 0.5
+student_sample = true
+patience = 40
+
+[ppo]
+num_envs = 256
+total_steps = 15_000_000
+num_minibatches = 8
+learning_rate = 2e-4
+teacher_kl_coef = 0.0                          # e.g. 0.05 to keep the student near the teacher
+teacher_checkpoint = "runs/ft-strong/best/model.pt" # used only when teacher_kl_coef > 0

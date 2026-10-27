@@ -1,0 +1,11 @@
+{
+  "name": "fsim-autodrive",
+  "version": "0.3.0",
+  "title": "Fsim autodrive",
+  "author": "Fsim",
+  "factorio_version": "2.1",
+  "dependencies": [
+    "base >= 2.1.23"
+  ],
+  "description": "In-game car and tank driving using the pathfinder-route map student: the game's pathfinder gives the route, a coarse map around the vehicle covers obstacles and nest zones. Select a target, press a movement key to take over."
+}

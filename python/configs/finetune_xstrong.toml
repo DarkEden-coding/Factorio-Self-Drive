@@ -1,0 +1,7 @@
+# One step past finetune_strong.toml: a contact costs 10 tiles of progress and damage weighs
+# three times the default. Meant to be started from a finetune_strong checkpoint.
+base = "finetune_strong.toml"
+
+[env.reward]
+collision = -1.0
+damage = -15.0

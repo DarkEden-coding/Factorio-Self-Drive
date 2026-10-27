@@ -1,0 +1,33 @@
+# Student MLP [64, 64] fine-tuned to stop in the middle of the target (docs/rl.md, "Episodes":
+# arrival = "stop"). Start it from the PPO-tuned student:
+#   fsim-rl train --config configs/student_mlp64_stop.toml \
+#     --init-from runs/students/mlp64-rl/checkpoints/latest.pt --run-name students/mlp64-stop
+# Same observation and actor as student_mlp64.toml, so the checkpoint loads and the viewer runs it.
+base = "student_mlp64.toml"
+device = "cuda"
+
+[env]
+# Half the episodes are short `arrival` ones (mostly approach and braking); the other kinds keep
+# their student_mlp64 proportions so the policy doesn't forget them.
+scenarios = [
+    { kind = "arrival", weight = 0.5 },
+    { kind = "standard", weight = 0.15 },
+    { kind = "long", weight = 0.025 },
+    { kind = "forest", weight = 0.15 },
+    { kind = "reverse", weight = 0.1 },
+    { kind = "nest", weight = 0.075 },
+]
+
+[env.arrival]
+mode = "stop"
+stop_radius = 1.0  # tiles from the target point
+stop_speed = 0.01  # tiles/tick (2.2 km/h); braking reaches exactly 0
+
+[env.reward]
+arrival = 2.0        # once, on first entering the 3-tile target radius
+target_speed = -1.0  # per decision inside the radius, times |speed|: -0.3 at 65 km/h
+
+[ppo]
+num_envs = 256
+total_steps = 8_000_000  # about 17 minutes at 8k steps/s; stop earlier on a plateau
+learning_rate = 1e-4

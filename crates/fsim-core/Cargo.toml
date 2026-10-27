@@ -1,0 +1,16 @@
+[package]
+name = "fsim-core"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json = { workspace = true, features = ["float_roundtrip"] }
+flate2 = "1"
+rand = { version = "0.8", default-features = false }
+rand_pcg = "0.3"
+rayon = { version = "1", optional = true }
+
+[features]
+default = ["parallel"]
+parallel = ["dep:rayon"]

@@ -1,0 +1,8 @@
+base = "base.toml"
+
+[model]
+kind = "direct_plan"
+
+[ppo]
+# Fewer, longer macro steps (4 decisions each): keep samples per iteration comparable.
+rollout_steps = 64

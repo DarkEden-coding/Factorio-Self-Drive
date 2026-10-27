@@ -1,0 +1,12 @@
+# Map student with route features from a stand-in for Factorio's pathfinder (docs/rl.md,
+# "Pathfinder route"): zone-blind waypoints re-requested when the vehicle strays, so the map has
+# to keep it out of nest zones. Distill from the teacher, then PPO:
+#   fsim-rl distill --teacher runs/ft-strong/best/model.pt --student-config configs/student_map_path.toml
+#   fsim-rl train --config configs/student_map_path.toml --init-from runs/<distill run>/best/model.pt
+base = "student_map.toml"
+
+[env]
+route_source = "pathfinder"
+
+[model]
+student_route = true

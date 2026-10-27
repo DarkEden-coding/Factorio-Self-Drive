@@ -1,0 +1,20 @@
+# student_map.toml with PPO focused on long trips. Start it from the map student's fine-tune:
+#   fsim-rl train --config configs/student_map_long.toml \
+#     --init-from runs/students/map-rl/checkpoints/latest.pt --run-name students/map-long
+base = "student_map.toml"
+
+[env]
+# A long episode runs ~440 decisions against ~60-150 for the others, so this mix gives about 75%
+# long samples; the rest keep the other kinds from being forgotten. Tortuosity up to 4 asks for
+# more detours around cliff lines and lakes.
+scenarios = [
+    { kind = "long", weight = 0.4, max_tortuosity = 4.0 },
+    { kind = "standard", weight = 0.25 },
+    { kind = "forest", weight = 0.15 },
+    { kind = "reverse", weight = 0.1 },
+    { kind = "nest", weight = 0.1 },
+]
+
+[ppo]
+total_steps = 12_000_000
+learning_rate = 1e-4

@@ -1,0 +1,24 @@
+# Build outputs and local dependencies.
+/target/
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Training checkpoints, event logs, and machine-specific engine test output.
+runs/
+/data/autodrive/
+
+# Assets copied from a local Factorio installation.
+/app/public/game-assets/
+
+# Local configuration and credentials.
+.env
+.env.*
+!.env.example
+.DS_Store

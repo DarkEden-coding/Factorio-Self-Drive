@@ -1,0 +1,15 @@
+# Route-free student: rays, vehicle features and a 16x16 coarse map of 8-tile cells around the
+# vehicle (128x128 tiles) instead of the route features. Same pipeline as student_mlp64.toml:
+#   fsim-rl distill --teacher runs/ft-strong/best/model.pt --student-config configs/student_map.toml
+#   fsim-rl train --config configs/student_map.toml --init-from runs/<distill run>/best/model.pt
+base = "student_mlp64.toml"
+
+[env]
+student_map = true
+
+[model]
+student_route = false
+map_conv = [8, 16]  # 16x16x3 -> 8x8x8 -> 4x4x16 = 256 actor inputs
+
+[distill]
+buffer_size = 400_000  # 903 floats per sample

@@ -1,0 +1,4215 @@
+{
+  "schema_version": 1,
+  "wall_seconds": 522.916,
+  "mods": {
+    "base": true,
+    "fsim-export": true,
+    "fsim-autorun": true,
+    "space-age": false,
+    "quality": false,
+    "elevated-rails": false,
+    "recycler": false
+  },
+  "map_generation": "default Nauvis, no map-gen overrides",
+  "runs": [
+    {
+      "seed": 12345,
+      "wall_seconds": 5.256,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2654448106,
+      "wall_seconds": 4.503,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1013916571,
+      "wall_seconds": 4.377,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3668352332,
+      "wall_seconds": 4.637,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2027820797,
+      "wall_seconds": 4.58,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 387289262,
+      "wall_seconds": 4.713,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3041725023,
+      "wall_seconds": 4.314,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1401193488,
+      "wall_seconds": 4.697,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4055629249,
+      "wall_seconds": 4.594,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2415097714,
+      "wall_seconds": 4.853,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 774566179,
+      "wall_seconds": 4.613,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3429001940,
+      "wall_seconds": 4.488,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1788470405,
+      "wall_seconds": 4.402,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 147938870,
+      "wall_seconds": 4.488,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2802374631,
+      "wall_seconds": 4.322,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1161843096,
+      "wall_seconds": 4.302,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3816278857,
+      "wall_seconds": 4.782,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2175747322,
+      "wall_seconds": 4.409,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 535215787,
+      "wall_seconds": 4.755,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3189651548,
+      "wall_seconds": 4.746,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1549120013,
+      "wall_seconds": 4.423,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4203555774,
+      "wall_seconds": 4.606,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2563024239,
+      "wall_seconds": 4.612,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 922492704,
+      "wall_seconds": 4.266,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3576928465,
+      "wall_seconds": 4.483,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1936396930,
+      "wall_seconds": 4.812,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 295865395,
+      "wall_seconds": 4.695,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2950301156,
+      "wall_seconds": 4.632,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1309769621,
+      "wall_seconds": 4.523,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3964205382,
+      "wall_seconds": 4.696,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2323673847,
+      "wall_seconds": 4.708,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 683142312,
+      "wall_seconds": 4.468,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3337578073,
+      "wall_seconds": 4.293,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1697046538,
+      "wall_seconds": 4.767,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 56515003,
+      "wall_seconds": 4.836,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2710950764,
+      "wall_seconds": 4.592,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1070419229,
+      "wall_seconds": 4.985,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3724854990,
+      "wall_seconds": 5.386,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2084323455,
+      "wall_seconds": 6.967,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 443791920,
+      "wall_seconds": 5.159,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3098227681,
+      "wall_seconds": 5.088,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1457696146,
+      "wall_seconds": 4.971,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4112131907,
+      "wall_seconds": 5.22,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2471600372,
+      "wall_seconds": 4.863,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 831068837,
+      "wall_seconds": 9.118,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3485504598,
+      "wall_seconds": 9.573,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1844973063,
+      "wall_seconds": 5.716,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 204441528,
+      "wall_seconds": 4.837,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2858877289,
+      "wall_seconds": 4.827,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1218345754,
+      "wall_seconds": 4.73,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3872781515,
+      "wall_seconds": 4.73,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2232249980,
+      "wall_seconds": 4.697,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 591718445,
+      "wall_seconds": 4.724,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3246154206,
+      "wall_seconds": 4.576,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1605622671,
+      "wall_seconds": 4.627,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4260058432,
+      "wall_seconds": 4.733,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2619526897,
+      "wall_seconds": 4.775,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 978995362,
+      "wall_seconds": 4.833,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3633431123,
+      "wall_seconds": 4.727,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1992899588,
+      "wall_seconds": 4.495,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 352368053,
+      "wall_seconds": 4.72,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3006803814,
+      "wall_seconds": 4.944,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1366272279,
+      "wall_seconds": 4.499,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4020708040,
+      "wall_seconds": 4.629,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2380176505,
+      "wall_seconds": 4.916,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 739644970,
+      "wall_seconds": 5.38,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3394080731,
+      "wall_seconds": 4.767,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1753549196,
+      "wall_seconds": 4.552,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 113017661,
+      "wall_seconds": 4.774,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2767453422,
+      "wall_seconds": 4.859,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1126921887,
+      "wall_seconds": 5.7,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3781357648,
+      "wall_seconds": 6.38,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2140826113,
+      "wall_seconds": 4.858,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 500294578,
+      "wall_seconds": 5.099,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3154730339,
+      "wall_seconds": 5.13,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1514198804,
+      "wall_seconds": 4.7,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4168634565,
+      "wall_seconds": 5.024,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2528103030,
+      "wall_seconds": 4.982,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 887571495,
+      "wall_seconds": 4.955,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3542007256,
+      "wall_seconds": 8.867,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1901475721,
+      "wall_seconds": 8.727,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 260944186,
+      "wall_seconds": 6.532,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2915379947,
+      "wall_seconds": 5.091,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1274848412,
+      "wall_seconds": 4.772,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3929284173,
+      "wall_seconds": 4.841,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2288752638,
+      "wall_seconds": 4.775,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 648221103,
+      "wall_seconds": 4.438,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3302656864,
+      "wall_seconds": 4.834,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1662125329,
+      "wall_seconds": 4.779,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 21593794,
+      "wall_seconds": 4.506,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2676029555,
+      "wall_seconds": 4.504,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1035498020,
+      "wall_seconds": 4.496,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3689933781,
+      "wall_seconds": 4.73,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2049402246,
+      "wall_seconds": 4.57,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 408870711,
+      "wall_seconds": 4.742,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3063306472,
+      "wall_seconds": 4.187,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1422774937,
+      "wall_seconds": 4.442,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4077210698,
+      "wall_seconds": 4.571,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2436679163,
+      "wall_seconds": 4.819,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 796147628,
+      "wall_seconds": 4.821,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3450583389,
+      "wall_seconds": 5.414,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1810051854,
+      "wall_seconds": 5.207,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 169520319,
+      "wall_seconds": 4.814,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2823956080,
+      "wall_seconds": 4.69,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 1089,
+        "game_version": "2.1.23",
+        "active_mods": {
+          "base": "2.1.23",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": []
+        },
+        "completed": [],
+        "players": 0
+      }
+    }
+  ],
+  "replayed_traces": 341,
+  "files": [
+    {
+      "path": "data/game/graphics.json",
+      "bytes": 431866
+    },
+    {
+      "path": "data/game/map-collection.json",
+      "bytes": 6639
+    },
+    {
+      "path": "data/game/maps/index.json",
+      "bytes": 29973
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1013916571.fsmap",
+      "bytes": 198716
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1035498020.fsmap",
+      "bytes": 188611
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1070419229.fsmap",
+      "bytes": 157782
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1126921887.fsmap",
+      "bytes": 202910
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-113017661.fsmap",
+      "bytes": 260161
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1161843096.fsmap",
+      "bytes": 89965
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1218345754.fsmap",
+      "bytes": 238453
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-12345.fsmap",
+      "bytes": 275704
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1274848412.fsmap",
+      "bytes": 322974
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1309769621.fsmap",
+      "bytes": 244301
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1366272279.fsmap",
+      "bytes": 173235
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1401193488.fsmap",
+      "bytes": 333626
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1422774937.fsmap",
+      "bytes": 163048
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1457696146.fsmap",
+      "bytes": 223834
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-147938870.fsmap",
+      "bytes": 182360
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1514198804.fsmap",
+      "bytes": 145335
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1549120013.fsmap",
+      "bytes": 151301
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1605622671.fsmap",
+      "bytes": 197176
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1662125329.fsmap",
+      "bytes": 298838
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-169520319.fsmap",
+      "bytes": 310697
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1697046538.fsmap",
+      "bytes": 269817
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1753549196.fsmap",
+      "bytes": 219581
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1788470405.fsmap",
+      "bytes": 150558
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1810051854.fsmap",
+      "bytes": 252800
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1844973063.fsmap",
+      "bytes": 310353
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1901475721.fsmap",
+      "bytes": 246506
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1936396930.fsmap",
+      "bytes": 315653
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1992899588.fsmap",
+      "bytes": 197517
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2027820797.fsmap",
+      "bytes": 292484
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-204441528.fsmap",
+      "bytes": 112889
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2049402246.fsmap",
+      "bytes": 158238
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2084323455.fsmap",
+      "bytes": 260201
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2140826113.fsmap",
+      "bytes": 309999
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-21593794.fsmap",
+      "bytes": 225392
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2175747322.fsmap",
+      "bytes": 149008
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2232249980.fsmap",
+      "bytes": 274223
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2288752638.fsmap",
+      "bytes": 255170
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2323673847.fsmap",
+      "bytes": 265618
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2380176505.fsmap",
+      "bytes": 305978
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2415097714.fsmap",
+      "bytes": 309966
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2436679163.fsmap",
+      "bytes": 218746
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2471600372.fsmap",
+      "bytes": 220751
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2528103030.fsmap",
+      "bytes": 236940
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2563024239.fsmap",
+      "bytes": 254730
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-260944186.fsmap",
+      "bytes": 324758
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2619526897.fsmap",
+      "bytes": 290532
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2654448106.fsmap",
+      "bytes": 172172
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2676029555.fsmap",
+      "bytes": 168443
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2710950764.fsmap",
+      "bytes": 231813
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2767453422.fsmap",
+      "bytes": 317013
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2802374631.fsmap",
+      "bytes": 116802
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2823956080.fsmap",
+      "bytes": 267902
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2858877289.fsmap",
+      "bytes": 329012
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2915379947.fsmap",
+      "bytes": 248828
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2950301156.fsmap",
+      "bytes": 212884
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-295865395.fsmap",
+      "bytes": 254971
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3006803814.fsmap",
+      "bytes": 251155
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3041725023.fsmap",
+      "bytes": 99905
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3063306472.fsmap",
+      "bytes": 70888
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3098227681.fsmap",
+      "bytes": 328500
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3154730339.fsmap",
+      "bytes": 298906
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3189651548.fsmap",
+      "bytes": 258459
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3246154206.fsmap",
+      "bytes": 181492
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3302656864.fsmap",
+      "bytes": 266156
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3337578073.fsmap",
+      "bytes": 82138
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3394080731.fsmap",
+      "bytes": 313636
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3429001940.fsmap",
+      "bytes": 227999
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3450583389.fsmap",
+      "bytes": 260089
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3485504598.fsmap",
+      "bytes": 354901
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-352368053.fsmap",
+      "bytes": 259817
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3542007256.fsmap",
+      "bytes": 246331
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3576928465.fsmap",
+      "bytes": 170479
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3633431123.fsmap",
+      "bytes": 247120
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3668352332.fsmap",
+      "bytes": 261833
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3689933781.fsmap",
+      "bytes": 272674
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3724854990.fsmap",
+      "bytes": 314109
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3781357648.fsmap",
+      "bytes": 181940
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3816278857.fsmap",
+      "bytes": 317868
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3872781515.fsmap",
+      "bytes": 311191
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-387289262.fsmap",
+      "bytes": 306115
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3929284173.fsmap",
+      "bytes": 306487
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3964205382.fsmap",
+      "bytes": 325504
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4020708040.fsmap",
+      "bytes": 258005
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4055629249.fsmap",
+      "bytes": 246682
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4077210698.fsmap",
+      "bytes": 77673
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-408870711.fsmap",
+      "bytes": 207300
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4112131907.fsmap",
+      "bytes": 301372
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4168634565.fsmap",
+      "bytes": 281825
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4203555774.fsmap",
+      "bytes": 278858
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4260058432.fsmap",
+      "bytes": 232747
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-443791920.fsmap",
+      "bytes": 279371
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-500294578.fsmap",
+      "bytes": 270624
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-535215787.fsmap",
+      "bytes": 325770
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-56515003.fsmap",
+      "bytes": 330910
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-591718445.fsmap",
+      "bytes": 276753
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-648221103.fsmap",
+      "bytes": 102583
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-683142312.fsmap",
+      "bytes": 185658
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-739644970.fsmap",
+      "bytes": 223481
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-774566179.fsmap",
+      "bytes": 302878
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-796147628.fsmap",
+      "bytes": 287089
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-831068837.fsmap",
+      "bytes": 311248
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-887571495.fsmap",
+      "bytes": 208655
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-922492704.fsmap",
+      "bytes": 96517
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-978995362.fsmap",
+      "bytes": 281608
+    },
+    {
+      "path": "data/game/prototypes.diff",
+      "bytes": 0
+    },
+    {
+      "path": "data/game/prototypes.json",
+      "bytes": 14734
+    },
+    {
+      "path": "data/game/replay-report.json",
+      "bytes": 211078
+    },
+    {
+      "path": "data/game/traces/car-accelerate-dirt-1-coal.json",
+      "bytes": 1269582
+    },
+    {
+      "path": "data/game/traces/car-accelerate-dirt-1-nuclear-fuel.json",
+      "bytes": 1269182
+    },
+    {
+      "path": "data/game/traces/car-accelerate-dirt-1-rocket-fuel.json",
+      "bytes": 1267955
+    },
+    {
+      "path": "data/game/traces/car-accelerate-dirt-1-solid-fuel.json",
+      "bytes": 1269127
+    },
+    {
+      "path": "data/game/traces/car-accelerate-dirt-1-wood.json",
+      "bytes": 1269582
+    },
+    {
+      "path": "data/game/traces/car-accelerate-grass-1-coal.json",
+      "bytes": 1277444
+    },
+    {
+      "path": "data/game/traces/car-accelerate-grass-1-nuclear-fuel.json",
+      "bytes": 1275355
+    },
+    {
+      "path": "data/game/traces/car-accelerate-grass-1-rocket-fuel.json",
+      "bytes": 1268529
+    },
+    {
+      "path": "data/game/traces/car-accelerate-grass-1-solid-fuel.json",
+      "bytes": 1262504
+    },
+    {
+      "path": "data/game/traces/car-accelerate-grass-1-wood.json",
+      "bytes": 1277444
+    },
+    {
+      "path": "data/game/traces/car-accelerate-sand-1-coal.json",
+      "bytes": 1269475
+    },
+    {
+      "path": "data/game/traces/car-accelerate-sand-1-nuclear-fuel.json",
+      "bytes": 1272398
+    },
+    {
+      "path": "data/game/traces/car-accelerate-sand-1-rocket-fuel.json",
+      "bytes": 1258326
+    },
+    {
+      "path": "data/game/traces/car-accelerate-sand-1-solid-fuel.json",
+      "bytes": 1270591
+    },
+    {
+      "path": "data/game/traces/car-accelerate-sand-1-wood.json",
+      "bytes": 1269475
+    },
+    {
+      "path": "data/game/traces/car-brake-reverse.json",
+      "bytes": 441043
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-0.json",
+      "bytes": 1018
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-1.json",
+      "bytes": 1020
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-10.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-100.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-101.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-102.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-103.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-104.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-105.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-106.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-107.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-108.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-109.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-11.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-110.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-111.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-112.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-113.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-114.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-115.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-116.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-117.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-118.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-119.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-12.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-120.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-121.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-122.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-123.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-124.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-125.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-126.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-127.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-128.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-129.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-13.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-130.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-131.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-132.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-133.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-134.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-135.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-136.json",
+      "bytes": 1013
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-137.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-138.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-139.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-14.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-140.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-141.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-142.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-143.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-144.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-145.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-146.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-147.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-148.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-149.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-15.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-150.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-151.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-152.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-153.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-154.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-155.json",
+      "bytes": 1009
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-156.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-157.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-158.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-159.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-16.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-160.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-161.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-162.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-163.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-164.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-165.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-166.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-167.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-168.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-169.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-17.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-170.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-171.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-172.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-173.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-174.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-175.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-176.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-177.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-178.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-179.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-18.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-180.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-181.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-182.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-183.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-184.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-185.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-186.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-187.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-188.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-189.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-19.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-190.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-191.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-192.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-193.json",
+      "bytes": 1024
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-194.json",
+      "bytes": 1024
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-195.json",
+      "bytes": 1020
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-196.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-197.json",
+      "bytes": 1024
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-198.json",
+      "bytes": 1024
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-199.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-2.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-20.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-200.json",
+      "bytes": 1008
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-21.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-22.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-23.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-24.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-25.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-26.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-27.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-28.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-29.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-3.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-30.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-31.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-32.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-33.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-34.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-35.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-36.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-37.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-38.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-39.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-4.json",
+      "bytes": 1020
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-40.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-41.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-42.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-43.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-44.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-45.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-46.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-47.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-48.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-49.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-5.json",
+      "bytes": 1016
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-50.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-51.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-52.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-53.json",
+      "bytes": 1013
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-54.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-55.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-56.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-57.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-58.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-59.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-6.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-60.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-61.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-62.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-63.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-64.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-65.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-66.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-67.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-68.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-69.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-7.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-70.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-71.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-72.json",
+      "bytes": 1011
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-73.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-74.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-75.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-76.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-77.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-78.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-79.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-8.json",
+      "bytes": 1012
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-80.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-81.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-82.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-83.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-84.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-85.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-86.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-87.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-88.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-89.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-9.json",
+      "bytes": 1020
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-90.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-91.json",
+      "bytes": 1013
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-92.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-93.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-94.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-95.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-96.json",
+      "bytes": 1018
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-97.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-98.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-99.json",
+      "bytes": 1018
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0--1.json",
+      "bytes": 18434
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0-1.json",
+      "bytes": 18311
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0.05--1.json",
+      "bytes": 28701
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0.05-1.json",
+      "bytes": 28462
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0.2--1.json",
+      "bytes": 27912
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0.2-1.json",
+      "bytes": 27670
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.002--0.008.json",
+      "bytes": 1601
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.002-0.008.json",
+      "bytes": 1598
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.002-0.2.json",
+      "bytes": 1592
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.002-0.json",
+      "bytes": 1470
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.014--0.008.json",
+      "bytes": 1601
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.014-0.008.json",
+      "bytes": 1598
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.014-0.2.json",
+      "bytes": 1613
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.014-0.json",
+      "bytes": 1470
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.016--0.008.json",
+      "bytes": 1731
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.016-0.008.json",
+      "bytes": 1728
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.016-0.2.json",
+      "bytes": 1748
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.016-0.json",
+      "bytes": 1464
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.124--0.008.json",
+      "bytes": 1654
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.124-0.008.json",
+      "bytes": 1647
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.124-0.2.json",
+      "bytes": 1634
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.124-0.json",
+      "bytes": 1458
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.248--0.008.json",
+      "bytes": 1619
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.248-0.008.json",
+      "bytes": 1608
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.248-0.2.json",
+      "bytes": 1602
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.248-0.json",
+      "bytes": 1476
+    },
+    {
+      "path": "data/game/traces/car-calibration-turn-0.13.json",
+      "bytes": 40352
+    },
+    {
+      "path": "data/game/traces/car-calibration-turn-0.375.json",
+      "bytes": 40227
+    },
+    {
+      "path": "data/game/traces/car-calibration-turn-0.62.json",
+      "bytes": 40521
+    },
+    {
+      "path": "data/game/traces/car-calibration-turn-0.875.json",
+      "bytes": 40548
+    },
+    {
+      "path": "data/game/traces/car-coast.json",
+      "bytes": 1458282
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.05-0.0625.json",
+      "bytes": 58224
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.05-0.json",
+      "bytes": 48984
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.2-0.0625.json",
+      "bytes": 55584
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.2-0.json",
+      "bytes": 45969
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.43-0.0625.json",
+      "bytes": 55079
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.43-0.json",
+      "bytes": 45704
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.05-0.0625.json",
+      "bytes": 54164
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.05-0.json",
+      "bytes": 44412
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.2-0.0625.json",
+      "bytes": 48231
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.2-0.json",
+      "bytes": 39197
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.43-0.0625.json",
+      "bytes": 47511
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.43-0.json",
+      "bytes": 38308
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.05-0.0625.json",
+      "bytes": 58965
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.05-0.json",
+      "bytes": 49366
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.2-0.0625.json",
+      "bytes": 55579
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.2-0.json",
+      "bytes": 46612
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.43-0.0625.json",
+      "bytes": 63681
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.43-0.json",
+      "bytes": 53897
+    },
+    {
+      "path": "data/game/traces/car-steer--0.15--1.json",
+      "bytes": 89355
+    },
+    {
+      "path": "data/game/traces/car-steer--0.15-1.json",
+      "bytes": 89038
+    },
+    {
+      "path": "data/game/traces/car-steer-0--1.json",
+      "bytes": 64292
+    },
+    {
+      "path": "data/game/traces/car-steer-0-1.json",
+      "bytes": 64050
+    },
+    {
+      "path": "data/game/traces/car-steer-0.005--1.json",
+      "bytes": 64304
+    },
+    {
+      "path": "data/game/traces/car-steer-0.005-1.json",
+      "bytes": 64062
+    },
+    {
+      "path": "data/game/traces/car-steer-0.05--1.json",
+      "bytes": 89272
+    },
+    {
+      "path": "data/game/traces/car-steer-0.05-1.json",
+      "bytes": 89058
+    },
+    {
+      "path": "data/game/traces/car-steer-0.25--1.json",
+      "bytes": 85749
+    },
+    {
+      "path": "data/game/traces/car-steer-0.25-1.json",
+      "bytes": 85070
+    },
+    {
+      "path": "data/game/traces/car-water-0.125.json",
+      "bytes": 23077
+    },
+    {
+      "path": "data/game/traces/car-water-0.json",
+      "bytes": 21151
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-dirt-1-coal.json",
+      "bytes": 1282960
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-dirt-1-nuclear-fuel.json",
+      "bytes": 1276850
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-dirt-1-rocket-fuel.json",
+      "bytes": 1286871
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-dirt-1-solid-fuel.json",
+      "bytes": 1287139
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-dirt-1-wood.json",
+      "bytes": 1282960
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-grass-1-coal.json",
+      "bytes": 1287599
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-grass-1-nuclear-fuel.json",
+      "bytes": 1276612
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-grass-1-rocket-fuel.json",
+      "bytes": 1282556
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-grass-1-solid-fuel.json",
+      "bytes": 1281505
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-grass-1-wood.json",
+      "bytes": 1287599
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-sand-1-coal.json",
+      "bytes": 1283095
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-sand-1-nuclear-fuel.json",
+      "bytes": 1277287
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-sand-1-rocket-fuel.json",
+      "bytes": 1282374
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-sand-1-solid-fuel.json",
+      "bytes": 1286995
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-sand-1-wood.json",
+      "bytes": 1283095
+    },
+    {
+      "path": "data/game/traces/tank-brake-reverse.json",
+      "bytes": 443232
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0--1.json",
+      "bytes": 24041
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0-1.json",
+      "bytes": 23918
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0.05--1.json",
+      "bytes": 25394
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0.05-1.json",
+      "bytes": 25271
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0.2--1.json",
+      "bytes": 30618
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0.2-1.json",
+      "bytes": 30376
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.002--0.008.json",
+      "bytes": 1606
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.002-0.008.json",
+      "bytes": 1603
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.002-0.2.json",
+      "bytes": 1600
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.002-0.json",
+      "bytes": 1478
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.014--0.008.json",
+      "bytes": 1738
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.014-0.008.json",
+      "bytes": 1735
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.014-0.2.json",
+      "bytes": 1750
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.014-0.json",
+      "bytes": 1478
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.016--0.008.json",
+      "bytes": 1736
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.016-0.008.json",
+      "bytes": 1733
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.016-0.2.json",
+      "bytes": 1756
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.016-0.json",
+      "bytes": 1472
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.124--0.008.json",
+      "bytes": 1659
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.124-0.008.json",
+      "bytes": 1652
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.124-0.2.json",
+      "bytes": 1641
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.124-0.json",
+      "bytes": 1466
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.248--0.008.json",
+      "bytes": 1624
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.248-0.008.json",
+      "bytes": 1613
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.248-0.2.json",
+      "bytes": 1610
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.248-0.json",
+      "bytes": 1484
+    },
+    {
+      "path": "data/game/traces/tank-calibration-turn-0.13.json",
+      "bytes": 40544
+    },
+    {
+      "path": "data/game/traces/tank-calibration-turn-0.375.json",
+      "bytes": 39678
+    },
+    {
+      "path": "data/game/traces/tank-calibration-turn-0.62.json",
+      "bytes": 39800
+    },
+    {
+      "path": "data/game/traces/tank-calibration-turn-0.875.json",
+      "bytes": 39832
+    },
+    {
+      "path": "data/game/traces/tank-coast.json",
+      "bytes": 1487614
+    },
+    {
+      "path": "data/game/traces/tank-rock-0.1.json",
+      "bytes": 44180
+    },
+    {
+      "path": "data/game/traces/tank-rock-0.23.json",
+      "bytes": 50741
+    },
+    {
+      "path": "data/game/traces/tank-steer--0.15--1.json",
+      "bytes": 89863
+    },
+    {
+      "path": "data/game/traces/tank-steer--0.15-1.json",
+      "bytes": 89309
+    },
+    {
+      "path": "data/game/traces/tank-steer-0--1.json",
+      "bytes": 64776
+    },
+    {
+      "path": "data/game/traces/tank-steer-0-1.json",
+      "bytes": 63964
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.005--1.json",
+      "bytes": 83235
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.005-1.json",
+      "bytes": 82786
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.05--1.json",
+      "bytes": 89815
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.05-1.json",
+      "bytes": 88883
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.25--1.json",
+      "bytes": 89947
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.25-1.json",
+      "bytes": 88882
+    },
+    {
+      "path": "data/game/traces/tank-trees-0.1.json",
+      "bytes": 65887
+    },
+    {
+      "path": "data/game/traces/tank-trees-0.23.json",
+      "bytes": 65949
+    },
+    {
+      "path": "data/game/traces/tank-water-0.125.json",
+      "bytes": 23687
+    },
+    {
+      "path": "data/game/traces/tank-water-0.json",
+      "bytes": 21180
+    }
+  ]
+}

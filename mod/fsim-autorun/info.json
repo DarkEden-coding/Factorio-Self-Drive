@@ -1,0 +1,9 @@
+{
+  "name": "fsim-autorun",
+  "version": "0.1.0",
+  "title": "Isolated fsim data collection",
+  "author": "fsim",
+  "factorio_version": "2.1",
+  "dependencies": ["base >= 2.1.23", "fsim-export = 0.1.0"],
+  "description": "Runs export jobs without players. Install only in disposable collection saves."
+}

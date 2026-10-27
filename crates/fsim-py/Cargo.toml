@@ -1,0 +1,14 @@
+[package]
+name = "fsim-py"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+name = "fsim"
+crate-type = ["cdylib"]
+
+[dependencies]
+fsim-core = { path = "../fsim-core" }
+serde_json.workspace = true
+pyo3 = { version = "0.30", features = ["abi3-py312"] }
+numpy = "0.30"

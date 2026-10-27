@@ -1,0 +1,110 @@
+# Shared defaults. Other configs set `base = "base.toml"` and override keys (tables merge, lists replace).
+seed = 1
+device = "auto"          # auto picks cuda, then mps, then cpu
+run_dir = "runs"         # relative to python/
+checkpoint_interval = 10 # iterations
+
+# Everything under [env] goes to fsim.VecEnv as config JSON (docs/rl.md). `mode` comes from model.kind.
+[env]
+map_pool = "data/game/maps" # relative to the repo root
+split = "train"
+decision_ticks = 4
+gamma = 0.99
+# One shared policy for both vehicles; fuel changes acceleration and top speed.
+vehicle_mix = [
+    { vehicle = "car", fuel = "wood", weight = 1.0 },
+    { vehicle = "car", fuel = "coal", weight = 1.0 },
+    { vehicle = "car", fuel = "solid-fuel", weight = 1.0 },
+    { vehicle = "car", fuel = "rocket-fuel", weight = 1.0 },
+    { vehicle = "car", fuel = "nuclear-fuel", weight = 1.0 },
+    { vehicle = "tank", fuel = "wood", weight = 1.0 },
+    { vehicle = "tank", fuel = "coal", weight = 1.0 },
+    { vehicle = "tank", fuel = "solid-fuel", weight = 1.0 },
+    { vehicle = "tank", fuel = "rocket-fuel", weight = 1.0 },
+    { vehicle = "tank", fuel = "nuclear-fuel", weight = 1.0 },
+]
+# Weighted scenario kinds per reset (docs/rl.md, "Scenarios"): standard, long, forest, reverse,
+# nest. Each entry may set that kind's parameters; Rust fills the rest. Weights count episodes,
+# not samples: a long episode runs about 7x as many decisions as a standard one.
+scenarios = [{ kind = "standard", weight = 1.0 }]
+
+[env.target] # evaluation task; training follows the curriculum when it is enabled
+min_distance = 16
+max_distance = 64
+max_tortuosity = 1.5
+radius = 3
+
+[env.time_limit]
+base_ticks = 600
+per_tile_ticks = 12
+stall_ticks = 1200
+
+[env.reward]
+progress = 0.1
+time = -0.005
+damage = -5.0
+collision = -0.2   # per decision with a contact: 2 tiles of progress
+nest_zone = -0.15  # per decision in a zone: crossing one (~30 decisions) costs about half the success bonus
+success = 10.0
+destroyed = -10.0
+
+[env.distance_field]
+margin = 48
+tank_tree_cost = 4.0
+nest_zone_cost = 3.0   # extra cost per tile near a nest zone, so progress leads around zones
+nest_zone_margin = 2   # tiles of zone dilation for that cost, so routes keep clear of the edge
+
+[env.direct_plan]
+horizon = 24
+execute = 4
+
+[env.path_planner]
+waypoints = 8
+max_reach = 100.0
+replan_ticks = 30
+drift_tiles = 3.0
+
+[model]
+kind = "reactive"            # reactive | direct_plan | path_planner
+local_cnn = [32, 64, 64]     # conv channels, each layer halves 64x64
+coarse_cnn = [32, 64]        # each layer halves 32x32
+local_features = 256
+coarse_features = 128
+vector_hidden = 128
+torso_hidden = [512, 256]
+normalize_vector = true      # running mean/std of the vector features, saved with the model
+precision = "bf16"           # bf16 | fp32: encoder compute on mps/cuda (about 1.8x faster on M5); heads stay fp32
+plan_consistency_coef = 0.5  # direct_plan: weight of the loss on unexecuted plan steps
+segment_min_length = 1.0     # path_planner: tiles per waypoint segment
+segment_max_length = 12.0    # waypoints * segment_max_length must be <= env.path_planner.max_reach
+max_turn = 0.6               # path_planner: max heading change per segment, radians
+init_log_std = -0.5          # path_planner: initial Gaussian log std (pre-tanh)
+
+[ppo]
+num_envs = 128               # the update, not the env, is the bottleneck; 128 x 128 = 16k samples per iteration
+rollout_steps = 128          # policy steps per env per iteration
+total_steps = 50_000_000     # policy steps over all envs
+epochs = 3                   # env data is cheap, so fewer passes over each batch
+num_minibatches = 4          # 4096 samples; the M5 GPU saturates around 1k-4k
+learning_rate = 3e-4
+lr_schedule = "linear"       # linear | constant
+gae_lambda = 0.95
+clip_coef = 0.2
+clip_value = 0.2             # 0 disables value clipping
+vf_coef = 0.5
+ent_coef = 0.01
+max_grad_norm = 0.5
+target_kl = 0.03             # 0 disables KL early stopping
+norm_adv = true
+
+[curriculum]
+enabled = true
+success_threshold = 0.7      # rolling success rate needed to advance
+window = 200                 # episodes in the rolling window
+min_episodes = 100           # episodes at a stage before it may advance
+stages = [
+    { min_distance = 8, max_distance = 24, max_tortuosity = 1.2 },
+    { min_distance = 16, max_distance = 48, max_tortuosity = 1.4 },
+    { min_distance = 16, max_distance = 64, max_tortuosity = 1.5 },
+    { min_distance = 32, max_distance = 128, max_tortuosity = 2.0 },
+]
