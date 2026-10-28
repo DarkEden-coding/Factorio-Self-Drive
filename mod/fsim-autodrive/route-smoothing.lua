@@ -40,6 +40,8 @@ local function line_cost(a,b,cost,budget)
   end
   return total
 end
+-- Shared by corridor coverage checks; includes every touched corner/border cell.
+M.line_cost=line_cost
 function M.route(points,cost)
   if #points<3 then return points end
   local prefix,invalid={[1]=0},{[1]=0}

@@ -1,11 +1,11 @@
 {
   "name": "fsim-autodrive",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "title": "Fsim autodrive",
   "author": "Fsim",
   "factorio_version": "2.1",
   "dependencies": [
     "base >= 2.1.23"
   ],
-  "description": "Car and tank autodrive with cost-aware any-angle field routes and a model fine-tuned for smooth guidance. Clear segments connect directly rather than following grid-angle steps; obstacles and nest-zone costs are retained."
+  "description": "Car and tank autodrive with cached progressive any-angle route planning. Extends verified guidance while driving, refines distant sections, and keeps nearby guidance stable."
 }

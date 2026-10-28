@@ -167,6 +167,28 @@ def main():
     assert max(maxima.values())<1e-5 and logit_max<1e-8 and agreement==len(results) and field_max==0
 
 
+def published_route_features(route, state, lookaheads):
+    """Independently encode the published corridor; Rust still checks rays/state."""
+    def distance(a,b):
+        return math.hypot(b['x']-a['x'],b['y']-a['y'])
+    def point_along(length):
+        for a,b in zip(route,route[1:]):
+            span=distance(a,b)
+            if span>=length and span>0:
+                return dict(x=a['x']+length/span*(b['x']-a['x']),y=a['y']+length/span*(b['y']-a['y']))
+            length-=span
+        return route[-1]
+    h=state['orientation']*2*math.pi
+    sine,cosine=math.sin(h),math.cos(h)
+    out=[]
+    for length in lookaheads:
+        point=point_along(length)
+        dx,dy=point['x']-state['x'],point['y']-state['y']
+        out.extend(((dx*cosine+dy*sine)/length,(dx*sine-dy*cosine)/length))
+    out.append(min(8,sum(distance(a,b) for a,b in zip(route,route[1:]))/64))
+    return [struct.unpack('<f',struct.pack('<f',v))[0] for v in out]
+
+
 def check_engine(directory,model,model_path):
     # Engine snapshots each have a matching .fsmap encoded by test-autodrive.py.
     cases=[];snapshots=[]
@@ -183,13 +205,19 @@ def check_engine(directory,model,model_path):
     maxima={g:0.0 for g in GROUPS};agreement=0;logit_max=0
     for s,r in zip(snapshots,json.loads(raw.stdout)):
         obs=s['observation']
+        if 'destination' in s:
+            # A progressive route intentionally differs from a standalone full
+            # field. Compare its feature encoding separately, preserving the
+            # independent Rust checks of every ray and vehicle/target feature.
+            r['observation'][96:105]=published_route_features(s['route'],s['state'],model['obs']['route_lookaheads'])
         for group,(a,b) in GROUPS.items():
             maxima[group]=max(maxima[group],max(abs(obs[j]-r['observation'][j]) for j in range(a,b)))
         expected=student_ref.logits(model,obs)
         logit_max=max(logit_max,max(abs(a-b) for a,b in zip(s['logits'],expected)))
         agreement+=s['action']==student_ref.act(model,r['observation'][:model['obs']['size']])
-    assert max(maxima.values())<1e-5 and logit_max<1e-8 and agreement==len(cases)
-    return dict(cases=len(cases),max_abs_by_feature_group=maxima,logits_max_abs=logit_max,action_agreement=agreement)
+    assert max(maxima.values())<1e-5 and logit_max<1e-8 and agreement==len(cases), (maxima,logit_max,agreement)
+    return dict(cases=len(cases),max_abs_by_feature_group=maxima,logits_max_abs=logit_max,action_agreement=agreement,
+        published_corridor_features=sum('destination' in s for s in snapshots))
 
 
 if __name__=='__main__':

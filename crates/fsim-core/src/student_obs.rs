@@ -261,16 +261,31 @@ fn cast(
     } else {
         f64::INFINITY
     };
-    let mut next_x = if dx > 0.0 {
-        ix as f64 + 1.0 - x
-    } else {
-        x - ix as f64
-    } * delta_x;
-    let mut next_y = if dy > 0.0 {
-        iy as f64 + 1.0 - y
-    } else {
-        y - iy as f64
-    } * delta_y;
+    // A parallel ray on an integer boundary otherwise evaluates 0 * infinity
+    // and stops traversing when the resulting NaN reaches `t`.
+    let crossing = |offset: f64, delta: f64| {
+        if delta.is_finite() {
+            offset * delta
+        } else {
+            f64::INFINITY
+        }
+    };
+    let mut next_x = crossing(
+        if dx > 0.0 {
+            ix as f64 + 1.0 - x
+        } else {
+            x - ix as f64
+        },
+        delta_x,
+    );
+    let mut next_y = crossing(
+        if dy > 0.0 {
+            iy as f64 + 1.0 - y
+        } else {
+            y - iy as f64
+        },
+        delta_y,
+    );
     let (mut tree, mut zone) = (max_t, max_t);
     let mut t = 0.0;
     let mut visited = 0;
@@ -420,6 +435,26 @@ fn point_along(points: &[[f64; 2]], s: f64) -> [f64; 2] {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn parallel_rays_from_integer_boundaries_hit_obstacles() {
+        let mut raster = MapRaster {
+            x_min: 0,
+            y_min: 0,
+            width: 16,
+            height: 16,
+            mask: vec![0; 256],
+            friction: vec![0; 256],
+            nests: Vec::new(),
+        };
+        raster.mask[8 * 16 + 10] = WATER;
+        raster.mask[10 * 16 + 8] = WATER;
+        let patches = RasterPatches::default();
+        for [dx, dy] in [[1.0, 0.0], [1.0, -1e-16], [0.0, 1.0], [-1e-16, 1.0]] {
+            let (hits, _) = cast(&raster, &patches, [8.0, 8.0], [dx, dy], 32.0);
+            assert_eq!(hits[0], 2.0);
+        }
+    }
 
     #[test]
     fn layout_is_consistent() {

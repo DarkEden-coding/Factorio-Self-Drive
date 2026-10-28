@@ -187,7 +187,8 @@ function M.slice(f, mask, budget)
       f.cursor = last + 1
       if f.cursor > n then
         f.phase = "ready"
-        if f.smooth then f.route_flags,f.route_extra=f.flags,f.extra end
+        -- Corridor verification also needs costs when grid-angle guidance is selected.
+        f.route_flags,f.route_extra=f.flags,f.extra
         f.bucket_nodes, f.bucket_distances, f.distances, f.done, f.flags, f.extra = nil, nil, nil, nil, nil, nil
         return true
       end
@@ -244,6 +245,13 @@ local function grid_route(f, position)
   end
   route[#route+1] = f.target
   return route
+end
+-- nil means outside this section; infinity means a known blocked cell.
+function M.cost(f,x,y)
+  local i=index(f,x,y)
+  if not i then return nil end
+  if not f.route_flags or f.route_flags[i] then return math.huge end
+  return 1+f.route_extra[i]
 end
 function M.route(f,position)
   local route=grid_route(f,position)

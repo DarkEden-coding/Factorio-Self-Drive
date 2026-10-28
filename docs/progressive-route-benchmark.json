@@ -1,0 +1,313 @@
+{
+  "version": "0.7.0",
+  "checkpoint": "7f5a4db",
+  "engine": "Factorio 2.1.23",
+  "model_spec_hash": "d1c084cc679f1f71",
+  "description": "Paired 480\u2013988 tile engine trips. Time includes startup and all waits. Flat fixtures repeat across seeds. Negative changes indicate improvement. Contact estimates count blocked powered ticks, not collision events.",
+  "results": [
+    {
+      "seed": 12345,
+      "common_successes": 12,
+      "total_time_change_pct": -1.57968096639306,
+      "total_path_change_pct": -1.5745150918081041,
+      "baseline": {
+        "arrived": 12,
+        "total": 12,
+        "damage": 0,
+        "contacts_estimate": 1
+      },
+      "candidate": {
+        "arrived": 12,
+        "total": 12,
+        "damage": 0,
+        "contacts_estimate": 2
+      },
+      "pairs": [
+        {
+          "name": "car-straight480",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 1269,
+          "candidate_total_ticks": 1288,
+          "time_change_pct": 1.4972419227738287,
+          "baseline_path": 479.3953560324912,
+          "candidate_path": 479.7112394135572,
+          "path_change_pct": 0.06589204027347417
+        },
+        {
+          "name": "car-angle800",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 2116,
+          "candidate_total_ticks": 2070,
+          "time_change_pct": -2.1739130434782594,
+          "baseline_path": 837.8278043620194,
+          "candidate_path": 811.4822882356422,
+          "path_change_pct": -3.144502484784273
+        },
+        {
+          "name": "car-forest700",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 1941,
+          "candidate_total_ticks": 1864,
+          "time_change_pct": -3.967027305512627,
+          "baseline_path": 761.6358971022789,
+          "candidate_path": 725.6441697719633,
+          "path_change_pct": -4.725581799288847
+        },
+        {
+          "name": "car-real700",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 1785,
+          "candidate_total_ticks": 1796,
+          "time_change_pct": 0.6162464985994376,
+          "baseline_path": 719.2595280429729,
+          "candidate_path": 720.2524655721468,
+          "path_change_pct": 0.13804996534081404
+        },
+        {
+          "name": "car-diagonal980",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 2628,
+          "candidate_total_ticks": 2571,
+          "time_change_pct": -2.168949771689499,
+          "baseline_path": 1053.4776873165931,
+          "candidate_path": 1026.9463519205149,
+          "path_change_pct": -2.5184525230580457
+        },
+        {
+          "name": "car-return980",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 1909,
+          "candidate_total_ticks": 1804,
+          "time_change_pct": -5.50026191723415,
+          "baseline_path": 1056.0133793313196,
+          "candidate_path": 1050.6575280055858,
+          "path_change_pct": -0.5071764648592936
+        },
+        {
+          "name": "tank-straight480",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 2281,
+          "candidate_total_ticks": 2288,
+          "time_change_pct": 0.3068829460762812,
+          "baseline_path": 479.5028658554869,
+          "candidate_path": 479.2401300114231,
+          "path_change_pct": -0.054793383475415514
+        },
+        {
+          "name": "tank-angle800",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 3808,
+          "candidate_total_ticks": 3718,
+          "time_change_pct": -2.363445378151263,
+          "baseline_path": 835.8552760956284,
+          "candidate_path": 808.1306425228025,
+          "path_change_pct": -3.3169179361205448
+        },
+        {
+          "name": "tank-forest700",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 3252,
+          "candidate_total_ticks": 3248,
+          "time_change_pct": -0.12300123001229846,
+          "baseline_path": 704.9830771347482,
+          "candidate_path": 703.806059196783,
+          "path_change_pct": -0.1669569066464538
+        },
+        {
+          "name": "tank-real700",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 3233,
+          "candidate_total_ticks": 3264,
+          "time_change_pct": 0.9588617383235354,
+          "baseline_path": 706.6067882199904,
+          "candidate_path": 707.3105054049211,
+          "path_change_pct": 0.09959105922310307
+        },
+        {
+          "name": "tank-diagonal980",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 4737,
+          "candidate_total_ticks": 4640,
+          "time_change_pct": -2.04770952079375,
+          "baseline_path": 1050.7101063993252,
+          "candidate_path": 1024.556617621415,
+          "path_change_pct": -2.489125080136101
+        },
+        {
+          "name": "tank-return980",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 3326,
+          "candidate_total_ticks": 3224,
+          "time_change_pct": -3.066746843054724,
+          "baseline_path": 1051.2571806770213,
+          "candidate_path": 1045.4838941917178,
+          "path_change_pct": -0.5491792675875407
+        }
+      ]
+    },
+    {
+      "seed": 67890,
+      "common_successes": 11,
+      "total_time_change_pct": -1.5526126948920305,
+      "total_path_change_pct": -1.7310692643643266,
+      "baseline": {
+        "arrived": 11,
+        "total": 12,
+        "damage": 0,
+        "contacts_estimate": 29
+      },
+      "candidate": {
+        "arrived": 11,
+        "total": 12,
+        "damage": 0,
+        "contacts_estimate": 40
+      },
+      "pairs": [
+        {
+          "name": "car-straight480",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 1269,
+          "candidate_total_ticks": 1288,
+          "time_change_pct": 1.4972419227738287,
+          "baseline_path": 479.3953560324912,
+          "candidate_path": 479.7112394135572,
+          "path_change_pct": 0.06589204027347417
+        },
+        {
+          "name": "car-angle800",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 2116,
+          "candidate_total_ticks": 2070,
+          "time_change_pct": -2.1739130434782594,
+          "baseline_path": 837.8278043620194,
+          "candidate_path": 811.4822882356422,
+          "path_change_pct": -3.144502484784273
+        },
+        {
+          "name": "car-forest700",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 1941,
+          "candidate_total_ticks": 1864,
+          "time_change_pct": -3.967027305512627,
+          "baseline_path": 761.6358971022789,
+          "candidate_path": 725.6441697719633,
+          "path_change_pct": -4.725581799288847
+        },
+        {
+          "name": "car-real700",
+          "baseline_status": "unreachable",
+          "candidate_status": "unreachable",
+          "baseline_total_ticks": 231,
+          "candidate_total_ticks": 231,
+          "time_change_pct": null,
+          "baseline_path": 0,
+          "candidate_path": 0,
+          "path_change_pct": null
+        },
+        {
+          "name": "car-diagonal980",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 2628,
+          "candidate_total_ticks": 2571,
+          "time_change_pct": -2.168949771689499,
+          "baseline_path": 1053.4776873165931,
+          "candidate_path": 1026.9463519205149,
+          "path_change_pct": -2.5184525230580457
+        },
+        {
+          "name": "car-return980",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 1909,
+          "candidate_total_ticks": 1804,
+          "time_change_pct": -5.50026191723415,
+          "baseline_path": 1056.0133793313196,
+          "candidate_path": 1050.6575280055858,
+          "path_change_pct": -0.5071764648592936
+        },
+        {
+          "name": "tank-straight480",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 2281,
+          "candidate_total_ticks": 2288,
+          "time_change_pct": 0.3068829460762812,
+          "baseline_path": 479.5028658554869,
+          "candidate_path": 479.236403306589,
+          "path_change_pct": -0.05557058526073355
+        },
+        {
+          "name": "tank-angle800",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 3808,
+          "candidate_total_ticks": 3717,
+          "time_change_pct": -2.389705882352944,
+          "baseline_path": 835.8552760956284,
+          "candidate_path": 807.9899778604024,
+          "path_change_pct": -3.333746765993728
+        },
+        {
+          "name": "tank-forest700",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 3252,
+          "candidate_total_ticks": 3256,
+          "time_change_pct": 0.12300123001229846,
+          "baseline_path": 704.9830771347482,
+          "candidate_path": 704.0162375914729,
+          "path_change_pct": -0.1371436527533243
+        },
+        {
+          "name": "tank-real700",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 3391,
+          "candidate_total_ticks": 3460,
+          "time_change_pct": 2.0347979946918393,
+          "baseline_path": 721.8857333161699,
+          "candidate_path": 720.4600564354714,
+          "path_change_pct": -0.197493427962514
+        },
+        {
+          "name": "tank-diagonal980",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 4737,
+          "candidate_total_ticks": 4640,
+          "time_change_pct": -2.04770952079375,
+          "baseline_path": 1050.7101063993252,
+          "candidate_path": 1024.556617621415,
+          "path_change_pct": -2.489125080136101
+        },
+        {
+          "name": "tank-return980",
+          "baseline_status": "arrived",
+          "candidate_status": "arrived",
+          "baseline_total_ticks": 3326,
+          "candidate_total_ticks": 3224,
+          "time_change_pct": -3.066746843054724,
+          "baseline_path": 1051.2571806770213,
+          "candidate_path": 1045.4838941917178,
+          "path_change_pct": -0.5491792675875407
+        }
+      ]
+    }
+  ]
+}

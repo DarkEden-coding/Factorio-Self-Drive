@@ -1,16 +1,15 @@
 # In-game autodrive
 
-Version 0.6.0 runs the `field-smooth` student with cost-aware arbitrary-angle field routes.
-Clear route spans connect directly rather than following 45-degree grid steps. The model was
-fine-tuned with the same smoothing used in the mod. Model export:
-`python/runs/students/field-smooth-v1/field-smooth.json`, format `fsim-student-v1`,
-spec hash `d1c084cc679f1f71`, 13,312 multiply-adds per decision. It runs entirely in Factorio Lua
-and requires Factorio 2.1.23 or newer in the 2.1 series.
+Version 0.7.0 extends and refines a cached any-angle corridor while driving. It retains the
+`field-smooth-v1` controller, 135 inputs and spec hash `d1c084cc679f1f71`. The destination and
+trip clock stay fixed across field handoffs. On the paired long-trip suite, the planner
+reduces total time and driven distance modestly, with unchanged completion counts and some
+individual regressions. See [progressive-route-results.md](progressive-route-results.md)
+for the complete measurements and limits.
 
-On 2,400 holdout tasks against 0.5.0, arrival time improves 2.34%, driven path length improves
-1.35%, and success rises from 99.46% to 99.71%. The explicit engine angle test uses one 18.4-degree
-segment instead of 62 grid waypoints. See [smooth-route-results.md](smooth-route-results.md)
-for geometry, training, engine checks and limitations.
+The model export is `python/runs/students/field-smooth-v1/field-smooth.json`, format
+`fsim-student-v1`, with 13,312 multiply-adds per decision. Inference runs entirely in Factorio
+Lua and requires Factorio 2.1.23 or newer in the 2.1 series.
 
 ## Controls
 
@@ -26,7 +25,7 @@ Movement keys return manual control. Ctrl+Alt+D resumes with fresh planning. Sel
 target also resumes. `/autodrive <x> <y>` sets exact coordinates; `/autodrive stop` returns
 manual control. Leaving the vehicle or disconnecting cancels driving.
 
-The overlay draws the final stop ring in green, the local field route in blue, the coarse
+The overlay draws the final stop ring in green, the verified rolling corridor in blue, the coarse
 Factorio path in grey, and the four student lookaheads in amber. Profiling writes local timings
 to `script-output/fsim-autodrive/timing.txt`; `/autodrive-dump` writes a diagnostic snapshot.
 
@@ -42,12 +41,24 @@ state. The model has no coarse-map convolution. It chooses throttle and steering
 ticks; brake/reverse mapping is updated each tick as speed crosses zero.
 
 Trips within 64 tiles use one field with a 48-tile margin. Longer trips start with a 48-tile
-segment, then plan roughly 160-tile segments in the background and hand over before reaching
-an intermediate target. Factorio's pathfinder only helps select distant sub-targets. The model
-reads the local field route. Failed plans try wider margins and alternative sub-targets;
-timeouts, stalls and bounded detour counts stop unsuccessful attempts.
+section, then extend overlapping sections of roughly 160 tiles toward a soft 768-tile horizon,
+retaining at most six solved sections. Factorio's pathfinder suggests distant sub-targets;
+verified cost-aware shortcuts can skip those endpoints. Refinements preserve the next 24 tiles
+and reconsider the distant tail every 120 ticks and when another section becomes ready.
 
-Version 0.6.0 clears incompatible saved drive state and brakes controlled vehicles during
+Per tick, terrain preparation builds at most four cache blocks and one worker advances at
+most 4,000 field work units. Consumed sections and terrain behind the vehicle are pruned.
+Destruction/mining events trigger selective repairs while conservative old guidance remains
+available. Frontier braking prevents driving past verified guidance while extension catches up.
+These are deterministic work limits, with no wall-clock scheduling or hard millisecond guarantee.
+
+The controller still reads 4/8/16/32-tile lookaheads, now across section boundaries, and the real
+final destination. Longer model lookaheads and a new actor architecture were not needed for this
+planner change. Diagnostic dumps include `route_continues` and `verified_horizon`; these are
+planner metadata, not additional network inputs. Axis-aligned ray traversal now handles exact
+tile boundaries consistently in Lua and Rust.
+
+Version 0.7.0 clears incompatible saved drive state and brakes controlled vehicles during
 configuration changes. Set a target again after loading the update. Restart Factorio to load
 changed mod files.
 
@@ -57,36 +68,26 @@ Regenerate the checked-in weights and geometry with:
 python3 scripts/build-autodrive-weights.py
 ```
 
-## Verification for the current model
+## Verification for the current planner
 
-Version 0.6.0 passes twelve engine fixtures, including open arbitrary-angle targets.
-Its current results and parity checks are in [smooth-route-results.md](smooth-route-results.md).
-
-The restored field planner builds its own route in the parity test. On 16 fixed real-map
-states, all 135 observations, network logits and chosen actions match the simulator/reference
-exactly. This checks the local field calculation as well as inference.
-
-Version 0.4.0 completed eight isolated Factorio smoke trips with zero measured
-damage and zero blocked-powered-tick contact estimates. Mean decision time was 0.80 ms,
-p95 0.99 ms in this run. Short smoke fixtures do not establish general tree avoidance.
-Version 0.5.0 passed ten engine fixtures, including forest detours. Its complete before/after
-results and current model parity are in [efficient-driving-results.md](efficient-driving-results.md).
-The plain-Lua driver harness also completed 600-tile and diagonal long trips using multiple segments.
-Raw results are in `data/autodrive/field-restored-engine/` and
-`data/autodrive/field-restored-parity.json`.
-
-Run the current segmented driver's engine smoke test with:
+See [progressive-route-results.md](progressive-route-results.md) for paired long engine trips,
+short regression fixtures, save/reload replay, geometry checks and observation parity.
+The older model-training comparisons remain in [smooth-route-results.md](smooth-route-results.md)
+and [efficient-driving-results.md](efficient-driving-results.md).
 
 ```sh
-python3 scripts/test-autodrive.py --engine-only --output data/autodrive/field-restored-engine
+python3 scripts/test-autodrive.py --engine-only --suite long --save-reload --timeout 300
+python3 scripts/test-autodrive.py --engine-only --output data/autodrive/progressive-short
+lua scripts/check-progressive-route.lua
+lua scripts/check-progressive-driver.lua
 ```
 
-The default simulator comparison treats each initial snapshot as a standalone trip. For a
-segmented trip that snapshot targets the first sub-target, so it is not a full-trip comparison.
+The default simulator comparison is a standalone episode using each snapshot's final destination.
+It does not reproduce the asynchronous rolling planner. Use the engine-only long suite to compare
+complete long trips, including planning and waits.
 
 The earlier pathfinder investigation is preserved in [pathfinder-investigation.md](pathfinder-investigation.md).
-Its results describe the replaced 0.3.0 model. Historical engine measurements below describe
-0.1.0; segmented routing in 0.2.0 and 0.4.0 can have different timing and routes.
+Historical measurements below describe 0.1.0 and do not describe the current planner.
 
 ## Verification (0.1.0 field-route model)
 
@@ -185,7 +186,7 @@ from its JSON APIs. API auditing is a name/record check, not a type checker.
 
 ## Installation
 
-Installed and enabled as `~/Library/Application Support/factorio/mods/fsim-autodrive_0.6.0`,
+Installed and enabled as `~/Library/Application Support/factorio/mods/fsim-autodrive_0.7.0`,
 a symlink to this repository (earlier version links removed). Factorio was not running when enabling the mod.
 All existing mod-list entries were preserved. Backup:
 

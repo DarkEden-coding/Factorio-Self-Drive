@@ -9,8 +9,9 @@ local function cast(grid,x,y,dx,dy,max_t)
   local sx,sy = dx > 0 and 1 or -1,dy > 0 and 1 or -1
   local delta_x = math.abs(dx)>1e-12 and 1/math.abs(dx) or math.huge
   local delta_y = math.abs(dy)>1e-12 and 1/math.abs(dy) or math.huge
-  local nx = (dx>0 and ix+1-x or x-ix)*delta_x
-  local ny = (dy>0 and iy+1-y or y-iy)*delta_y
+  -- Parallel rays starting on a tile boundary must not evaluate 0 * infinity.
+  local nx = delta_x<math.huge and (dx>0 and ix+1-x or x-ix)*delta_x or math.huge
+  local ny = delta_y<math.huge and (dy>0 and iy+1-y or y-iy)*delta_y or math.huge
   local t,tree,zone = 0,max_t,max_t
   while t < max_t do
     local mask = raster.mask(grid,ix,iy)
