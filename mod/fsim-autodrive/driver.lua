@@ -1,18 +1,16 @@
--- Drives toward a far target in segments. Each segment is a simulator-style
--- distance field to a sub-target; the student sees that segment exactly as in
--- training. The first segment is short so driving starts within a fraction of a
--- second; later segments are planned in the background while driving and take
--- over before the current sub-target is reached. A coarse engine path
--- (LuaSurface.request_path) picks sub-targets around large obstacles; until it
--- arrives (or if it fails) sub-targets lie on the straight line to the target.
+-- Rolling, cached any-angle corridor with deterministic background work budgets.
 local field = require("field")
 local grid = require("grid")
+local corridor = require("corridor")
 local raster = require("raster")
 local observation = require("observation")
 local network = require("network")
 local vehicle_api = require("vehicle")
 local u = require("math-util")
 local M = {}
+local field_options = {}
+for k,v in pairs(network.model.field or {}) do field_options[k]=v end
+field_options.smooth = network.model.route_source == "field_smooth"
 
 local FIRST_SEGMENT = 48     -- tiles to the first sub-target
 local SEGMENT = 160          -- tiles to each later sub-target
@@ -20,9 +18,11 @@ local FINAL_WITHIN = 200     -- the final target becomes the sub-target when thi
 local SINGLE_WITHIN = 64     -- targets this close are planned as one segment, like training
 local MARGIN = 32            -- field margin around a segment
 local FINAL_MARGIN = 48      -- the simulator's margin, for single-segment trips
-local HANDOFF = 50           -- switch to the next segment with this much route left
+local HANDOFF = 50           -- overlap includes 20 extra tiles beyond the old handoff span
 local FIELD_BUDGET = 4000    -- field work units per tick (~1-2 ms)
 local GRID_BLOCKS = 4        -- 16x16 cache blocks built per tick (forest blocks are costly)
+local HORIZON = 768          -- soft horizon; one section may extend past it
+local MAX_SECTIONS = 6
 local MAX_TARGET = 4096
 
 -- Sub-targets must be clear of trees and nest zones too; the final target only
@@ -82,14 +82,14 @@ end
 
 local function new_plan(s,from,target,final,margin)
   local stats = s.stats
-  local f = field.new(from,target,stats.half_width,stats.tank_driving,nil,margin)
+  local f = field.new(from,target,stats.half_width,stats.tank_driving,nil,margin,field_options)
   grid.ensure(s.grid,f.x0-3,f.y0-3,f.x1+3,f.y1+3,false)
   return {from=from,target=target,aim=target,final=final,margin=margin,field=f,phase="grid",attempt=0}
 end
 -- Advances a plan by one tick of work. Returns "ready", "failed" or nil.
 local function step_plan(s,p,probe)
   if p.phase == "grid" then
-    if grid.background_pending(s.grid) then return end
+    if grid.background_pending(s.grid) or grid.urgent_pending(s.grid) then return end
     local t, tank = p.target, s.stats.tank_driving
     if p.final then
       -- A clicked target on water, a rock or (for the car) a tree moves to the
@@ -172,7 +172,8 @@ function M.start(vehicle,target)
   assert(generated(vehicle.surface,target),"Target must be in an explored (generated) chunk")
   local s = {vehicle=vehicle,target={x=target.x,y=target.y},grid=grid.new(),status="planning",
     elapsed=0,stall=0,best_tick=0,decisions=0,slices=0,planning_ticks=0,action=4,route={},segments=0,
-    stats=vehicle_api.stats(vehicle)}
+    stats=vehicle_api.stats(vehicle),single=u.distance(vehicle.position,target)<=SINGLE_WITHIN,
+    corridor={},refinements=0,max_horizon=0,frontier_wait_ticks=0}
   local from = {x=vehicle.position.x,y=vehicle.position.y}
   -- Check the clicked target before anything else; and bound the number of
   -- segments so no failure mode can circle forever.
@@ -190,21 +191,19 @@ function M.start(vehicle,target)
   return s
 end
 
--- Makes plan p the active segment from the vehicle's current position.
+-- Handoffs change field coverage, never the trip's destination or clock.
 local function activate(s,p)
   s.field, s.seg_target, s.final_segment = p.field, p.target, p.final
-  local v = s.vehicle
-  local distance = field.sample(p.field,v.position.x,v.position.y)
-  s.best_distance,s.time_limit = distance,math.max(1,math.ceil(600+12*distance))
-  s.elapsed,s.best_tick,s.stall,s.started = 0,0,0,false
+  s.best_distance=field.sample(p.field,s.vehicle.position.x,s.vehicle.position.y)
+  s.time_limit=s.time_limit or math.max(1,math.ceil(600+12*u.distance(s.vehicle.position,s.target)))
   s.segments = s.segments + 1
-  s.plan, s.next = nil, nil
+  s.plan=nil
 end
 
 function M.snapshot(s)
   local v = s.vehicle
   return {x=v.position.x,y=v.position.y,orientation=v.orientation,speed=v.speed,health=v.health,
-    target=s.seg_target or s.target,elapsed=s.elapsed,stall=s.stall,time_limit=s.time_limit,
+    target=s.target,elapsed=s.elapsed,stall=s.stall,time_limit=s.time_limit,
     previous_action=s.previous_action}
 end
 local function profile(s,kind,profiler)
@@ -213,15 +212,27 @@ local function profile(s,kind,profiler)
   -- them for simulation decisions. Local output only, safe in multiplayer.
   if s.profile then helpers.write_file("fsim-autodrive/timing.txt",{"",kind," ",profiler,"\n"},true) end
 end
+local function route_at(s)
+  local route,cursor=corridor.trim(s.guidance,s.vehicle.position,s.guidance_cursor)
+  if route then s.guidance_cursor=cursor; return route end
+  -- Recover from a real deviation using verified fields. Do not feed the
+  -- vehicle-to-route correction back into the cached polyline every decision.
+  s.guidance=corridor.refine(s.corridor,s.vehicle.position)
+  s.guidance_cursor=2
+  return s.guidance
+end
 function M.observe(s)
-  s.route = field.route(s.field,s.vehicle.position)
+  if s.single then s.route=field.route(s.field,s.vehicle.position)
+  else s.route=route_at(s) end
   local state = M.snapshot(s)
   s.stats = vehicle_api.stats(s.vehicle)
   local obs,look = observation.build(s.grid,s.route,state,s.stats)
   local action,logits = network.forward(obs)
   s.look = look
   return action,{state=state,stats=s.stats,observation=obs,logits=logits,action=action,route=s.route,
-    spec_hash=network.model.spec_hash,segment=s.segments,final_segment=s.final_segment}
+    spec_hash=network.model.spec_hash,segment=s.segments,final_segment=s.final_segment,
+    route_continues=not s.corridor[#s.corridor].final,verified_horizon=u.length(s.route),
+    destination=s.target}
 end
 function M.dump(s,path)
   assert(s.field.phase=="ready","Route is still computing")
@@ -236,33 +247,96 @@ local function finish(s,status)
   return status
 end
 
--- Background planning of the segment after the active one.
+local function publish(s)
+  local previous=corridor.trim(s.guidance,s.vehicle.position,s.guidance_cursor)
+  s.guidance=corridor.refine(s.corridor,s.vehicle.position,previous)
+  s.guidance_cursor=2
+  s.route=s.guidance
+  s.max_horizon=math.max(s.max_horizon,u.length(s.guidance))
+  s.refinements=s.refinements+1
+  s.max_cached_sections=math.max(s.max_cached_sections or 0,#s.corridor)
+end
+-- One worker, one field slice per tick. Reuse every solved section until it is
+-- consumed, extending multiple sections ahead instead of waiting for a handoff.
 local function plan_ahead(s,v)
-  if s.final_segment then return end
-  if not s.next then
-    -- The next field must cover where the vehicle will be at the handoff.
-    local route = field.route(s.field,v.position)
-    local from = u.point_along(route,math.max(0,u.length(route)-HANDOFF-20))
-    local target, final = pick(s,s.seg_target,SEGMENT)
-    s.next = new_plan(s,{x=from.x,y=from.y},target,final,final and FINAL_MARGIN or MARGIN)
-    -- The next field must reach the point where the handoff happens.
-    s.next.probe = s.next.from
+  if s.repair_index then
+    local i=s.repair_index
+    local old=s.corridor[i]
+    if not s.repair then
+      local from=i==1 and {x=v.position.x,y=v.position.y} or old.from
+      s.repair=new_plan(s,from,old.target,old.final,old.margin)
+    end
+    local result=step_plan(s,s.repair,s.repair.from)
+    s.slices=s.slices+1
+    if result=="ready" then
+      s.corridor[i]=s.repair
+      for j=#s.corridor,i+1,-1 do s.corridor[j]=nil end
+      if i==1 then
+        s.field,s.seg_target,s.final_segment=s.repair.field,s.repair.target,s.repair.final
+        s.best_distance=field.sample(s.field,v.position.x,v.position.y)
+      end
+      s.path_cursor=nil
+      s.repair,s.repair_index,s.extension=nil,nil,nil
+      publish(s)
+    elseif result=="failed" then
+      s.repair=retry(s,s.repair)
+      if not s.repair then return "unreachable" end
+    end
+    return
   end
-  local p = s.next
-  if p.phase == "ready" or p.phase == "exhausted" then return end
-  local result = step_plan(s,p,p.probe)
-  if result == "failed" then
-    -- If nothing is left to try, the vehicle stops at the current sub-target and
-    -- the stall timer ends the trip there.
-    s.next = retry(s,p) or {phase="exhausted"}
+  local last=s.corridor[#s.corridor]
+  if last.final then return end
+  if not s.extension then
+    local route=route_at(s)
+    if #s.corridor>=MAX_SECTIONS or (route and u.length(route)>=HORIZON) then return end
+    local tail=field.route(last.field,last.from)
+    local from=u.point_along(tail,math.max(0,u.length(tail)-HANDOFF-20))
+    local target,final=pick(s,last.target,SEGMENT)
+    s.extension=new_plan(s,from,target,final,final and FINAL_MARGIN or MARGIN)
   end
+  local p=s.extension
+  if p.phase=="exhausted" then return end
+  local result=step_plan(s,p,p.from)
+  s.slices=s.slices+1
+  if result=="ready" then
+    -- Both endpoints must connect; never splice an unverified gap.
+    if field.sample(p.field,last.target.x,last.target.y)==math.huge then
+      s.extension=retry(s,p) or {phase="exhausted"}
+      return
+    end
+    s.corridor[#s.corridor+1]=p
+    s.extension=nil
+    publish(s)
+  elseif result=="failed" then s.extension=retry(s,p) or {phase="exhausted"} end
 end
 
-local function keep_regions(s,v)
-  local keep = {{x0=v.position.x-48,y0=v.position.y-48,x1=v.position.x+49,y1=v.position.y+49}}
-  for _, p in ipairs({s.field, s.next and s.next.field, s.plan and s.plan.field}) do
-    if p then keep[#keep+1] = {x0=p.x0-3,y0=p.y0-3,x1=p.x1+3,y1=p.y1+3} end
+-- Removals leave the old route conservative. Rebuild affected coverage in the
+-- background and replace dependent sections only after its replacement is ready.
+function M.dirty(s,position)
+  grid.dirty(s.grid,position)
+  local function affected(f)
+    return f and position.x>=f.x0-32 and position.x<f.x1+32 and
+      position.y>=f.y0-32 and position.y<f.y1+32
   end
+  for i,p in ipairs(s.corridor or {}) do
+    if affected(p.field) then
+      s.repair_index=math.min(s.repair_index or i,i)
+      s.repair=nil
+      break
+    end
+  end
+  for _,key in ipairs({"plan","extension"}) do
+    local p=s[key]
+    if p and affected(p.field) then s[key]=new_plan(s,p.from,p.target,p.final,p.margin) end
+  end
+end
+local function keep_regions(s,v)
+  local keep={{x0=v.position.x-48,y0=v.position.y-48,x1=v.position.x+49,y1=v.position.y+49}}
+  local function add(f)
+    if f then keep[#keep+1]={x0=f.x0-3,y0=f.y0-3,x1=f.x1+3,y1=f.y1+3} end
+  end
+  for _,p in ipairs(s.corridor) do add(p.field) end
+  for _,key in ipairs({"plan","extension","repair"}) do if s[key] then add(s[key].field) end end
   return keep
 end
 
@@ -272,6 +346,10 @@ function M.tick(s)
   if s.status == "paused" then return end
   if s.status ~= "planning" and s.status ~= "driving" then vehicle_api.brake(v); return end
   local profiler = helpers.create_profiler()
+  if s.status=="driving" then
+    grid.ensure(s.grid,math.floor(v.position.x)-36,math.floor(v.position.y)-36,
+      math.floor(v.position.x)+37,math.floor(v.position.y)+37,true)
+  end
   grid.slice(s.grid,v.surface,GRID_BLOCKS)
   if s.status=="planning" then
     s.planning_ticks=s.planning_ticks+1
@@ -301,9 +379,10 @@ function M.tick(s)
     local p = s.plan
     local result = step_plan(s,p,here)
     s.slices=s.slices+1
-    profile(s,"route",profiler)
     if result == "ready" then
       activate(s,p)
+      s.corridor={p}
+      publish(s)
       s.status,s.previous_action = "driving",nil
     elseif result == "failed" then
       local q = retry(s,p)
@@ -312,6 +391,7 @@ function M.tick(s)
       else return finish(s,"unreachable") end
     end
     if s.planning_ticks>=3600 then return finish(s,"planning-timeout") end
+    profile(s,"route",profiler)
     return
   end
   -- Engine-tick arrival check, only at the final target.
@@ -319,48 +399,69 @@ function M.tick(s)
     return finish(s,"arrived")
   end
   if s.path_retry_at and game.tick >= s.path_retry_at then s.path_retry_at = nil; request_path(s) end
-  plan_ahead(s,v)
-  if s.next and s.next.phase == "exhausted" and math.abs(v.speed) <= 0.01 and
-    u.distance(v.position,s.seg_target) <= 5 then
-    return finish(s,"unreachable")
-  end
-  -- Hand over to the next segment before this sub-target is reached.
-  if s.segments > s.max_segments then return finish(s,"unreachable (too many detours)") end
-  if s.next and s.next.phase == "ready" and game.tick % 4 == 0 then
-    local remaining = u.length(field.route(s.field,v.position))
-    if remaining <= HANDOFF and field.sample(s.next.field,v.position.x,v.position.y) < math.huge then
-      activate(s,s.next)
+  local failure=plan_ahead(s,v)
+  if failure then return finish(s,failure) end
+  if s.segments>s.max_segments then return finish(s,"unreachable (too many detours)") end
+  if #s.corridor>1 and not s.repair_index and game.tick%16==0 then
+    local route=route_at(s)
+    -- A union shortcut can skip several section windows. Select the farthest
+    -- covering field whose remaining corridor still verifies the entire route.
+    for i=#s.corridor,2,-1 do
+      local next=s.corridor[i]
+      local f=next.field
+      if v.position.x>f.x0+4 and v.position.x<f.x1-4 and
+        v.position.y>f.y0+4 and v.position.y<f.y1-4 and
+        field.sample(f,v.position.x,v.position.y)<math.huge and corridor.covered(s.corridor,route,i) then
+        for _=1,i-1 do table.remove(s.corridor,1) end
+        activate(s,next)
+        break
+      end
     end
   end
+  if not s.single and #s.corridor>1 and game.tick%120==0 then publish(s) end
   s.elapsed=s.elapsed+(s.started and 1 or 0)
   s.started=true
   local distance=field.sample(s.field,v.position.x,v.position.y)
   if distance<math.huge and distance<s.best_distance-1 then s.best_distance,s.best_tick=distance,s.elapsed end
   s.stall=s.elapsed-s.best_tick
+  -- Stop safely at the verified frontier if extension has not caught up.
+  -- The fixed destination stays visible to the policy; frontier braking is a
+  -- planner constraint, not a temporary destination the actor learns to stop at.
   if s.elapsed>=s.time_limit then return finish(s,"timeout") end
   if s.stall>=1200 then return finish(s,"stalled") end
+  local frontier=not s.corridor[#s.corridor].final
+  local remaining=frontier and u.length(route_at(s)) or math.huge
+  -- Braking removes a fixed amount of kinetic energy per tick. Integrating
+  -- v(t) gives m*v^3/(3*power), not the constant-force v^2/(2*a).
+  local braking=s.stats.weight*(math.abs(v.speed)*60)^3/(3*math.max(s.stats.braking_power,1))
+  if frontier and remaining<math.max(12,braking+8) then
+    if s.extension and s.extension.phase=="exhausted" and math.abs(v.speed)<=0.01 then return finish(s,"unreachable") end
+    s.frontier_wait_ticks=s.frontier_wait_ticks+1
+    vehicle_api.brake(v)
+    profile(s,"frontier",profiler)
+    return
+  end
   -- Rays need cached blocks around the vehicle. Wait only for those.
-  grid.ensure(s.grid,math.floor(v.position.x)-36,math.floor(v.position.y)-36,
-    math.floor(v.position.x)+37,math.floor(v.position.y)+37,true)
   if grid.urgent_pending(s.grid) then
-    grid.slice(s.grid,v.surface,GRID_BLOCKS)
-    if grid.urgent_pending(s.grid) then
-      vehicle_api.brake(v)
-      profile(s,"cache",profiler)
-      return
-    end
+    vehicle_api.brake(v)
+    profile(s,"cache",profiler)
+    return
   end
-  if v.position.x<s.field.x0+1 or v.position.x>=s.field.x1-1 or
-    v.position.y<s.field.y0+1 or v.position.y>=s.field.y1-1 then
-    return finish(s,"outside-route-region")
+  local covered=false
+  for _,p in ipairs(s.corridor) do
+    local f=p.field
+    if v.position.x>=f.x0+1 and v.position.x<f.x1-1 and
+      v.position.y>=f.y0+1 and v.position.y<f.y1-1 then covered=true; break end
   end
-  if (s.elapsed-1)%4==0 then
+  if not covered then return finish(s,"outside-route-region") end
+  local decision=(s.elapsed-1)%4==0
+  if decision then
     local action=M.observe(s)
     s.action,s.previous_action,s.decisions=action,action,s.decisions+1
-    profile(s,"decision",profiler)
   end
   if game.tick % 300 == 0 then grid.prune(s.grid,keep_regions(s,v)) end
   -- Re-evaluate brake/reverse mapping each tick across a speed sign change.
   vehicle_api.apply(v,s.action)
+  profile(s,decision and "decision" or "drive",profiler)
 end
 return M

@@ -107,7 +107,7 @@ pub struct PolicySpec {
     #[serde(flatten)]
     hashed: HashedSpec,
     pub vector_size: usize,
-    pub reward_terms: [&'static str; 9],
+    pub reward_terms: [&'static str; crate::reward::TERMS.len()],
     pub modes: [&'static str; 3],
     /// Scenario kinds; `info["scenario"]` indexes this list.
     pub scenarios: [&'static str; 6],

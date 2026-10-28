@@ -1,7 +1,6 @@
 local driver=require("driver")
 local test_runner=require("test-runner")
 local vehicle_api=require("vehicle")
-local grid=require("grid")
 local overlay=require("overlay")
 local function init() storage.autodrive=storage.autodrive or {} end
 script.on_init(init)
@@ -83,10 +82,10 @@ local function dirty(event)
   if not entity or not entity.valid then return end
   if storage.autodrive_test and storage.autodrive_test.state then
     local s=storage.autodrive_test.state
-    if s.vehicle.valid and s.vehicle.surface==entity.surface then grid.dirty(s.grid,entity.position) end
+    if s.vehicle.valid and s.vehicle.surface==entity.surface then driver.dirty(s,entity.position) end
   end
   for _,s in pairs(storage.autodrive) do
-    if s.vehicle.valid and s.vehicle.surface==entity.surface then grid.dirty(s.grid,entity.position) end
+    if s.vehicle.valid and s.vehicle.surface==entity.surface then driver.dirty(s,entity.position) end
   end
 end
 script.on_event({defines.events.on_entity_died,defines.events.on_player_mined_entity,
@@ -110,4 +109,4 @@ script.on_event(defines.events.on_tick,function()
   if storage.autodrive_test then test_runner.tick() end
 end)
 -- Explicit opt-in verification only; never creates test surfaces in normal play.
-remote.add_interface("fsim-autodrive-test",{start=function() test_runner.start() end})
+remote.add_interface("fsim-autodrive-test",{start=function(options) test_runner.start(options) end})

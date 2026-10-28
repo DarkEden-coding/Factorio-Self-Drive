@@ -1,0 +1,193 @@
+{
+  "base_checkpoint": "python/runs/students/field-efficient-v1/checkpoints/iter_000200.pt",
+  "base_sha256": "b43cc380875e4b32d4562107cb61a2d139f7d328d9e52bc318b2ff39aebcc724",
+  "selected_checkpoint": "python/runs/students/field-smooth-v1/checkpoints/latest.pt",
+  "selected_sha256": "8506194d295fe0506a72d9a8fa467deda7fa884f3c3cb5ca1f5515c7fa684229",
+  "export": "python/runs/students/field-smooth-v1/field-smooth.json",
+  "export_sha256": "ea843ee516f91c6dd2475affd36a4a50fd83a5783c4285f6b4f620d4d3ef0dd7",
+  "training_config": "python/configs/student_mlp64_smooth.toml",
+  "device": "NVIDIA GeForce RTX 5060",
+  "completed_steps": 5996544,
+  "selected_steps": 5996544,
+  "approx_training_seconds": 454.53404623702227,
+  "old_spec_hash": "49e75f8a02cb7e16",
+  "new_spec_hash": "d1c084cc679f1f71",
+  "selection_split": "train",
+  "selection_seed": 54321,
+  "selection_episodes_per_scenario": 200,
+  "selection_reason": "Final checkpoint has the best validation time, fewer contact ticks and much lower damage than the earlier tuned checkpoints, with similar success and shorter routes. Holdout was not used for checkpoint selection.",
+  "validation": {
+    "zero": {
+      "safety": {
+        "moving_heading_samples": 131957,
+        "moving_headings_outside_grid_fraction": 0.882408663428238,
+        "episodes": 1200,
+        "success_rate": 0.9958333333333333,
+        "collision_free_success_rate": 0.7208333333333333,
+        "tree_hit_rate": 0.2625,
+        "contact_ticks_per_episode": {
+          "tree": 1.7266666666666666,
+          "rock": 1.0125,
+          "cliff": 4.218333333333334,
+          "nest": 0.0,
+          "water": 0.0033333333333333335
+        },
+        "mean_damage": 0.13977373758951822,
+        "nest_zone_fraction": 0.0010415086521065114
+      },
+      "paired": {
+        "matched_episodes": 1200,
+        "common_successes": 1193,
+        "time_s": {
+          "reference_mean": 7.560547639005309,
+          "candidate_mean": 7.414836546521374,
+          "change_percent": -1.9272557947019986,
+          "mean_paired_delta": -0.1457110924839341,
+          "delta_95_percent_bootstrap": [
+            -0.18571248952221298,
+            -0.1121671556300643
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 106.63626132426485,
+          "candidate_mean": 105.32531615381554,
+          "change_percent": -1.2293615269039937,
+          "mean_paired_delta": -1.3109451704493018,
+          "delta_95_percent_bootstrap": [
+            -1.4990184443469297,
+            -1.1252220366549903
+          ]
+        }
+      }
+    },
+    "80": {
+      "safety": {
+        "moving_heading_samples": 131579,
+        "moving_headings_outside_grid_fraction": 0.8807408477036609,
+        "episodes": 1200,
+        "success_rate": 0.9925,
+        "collision_free_success_rate": 0.725,
+        "tree_hit_rate": 0.2575,
+        "contact_ticks_per_episode": {
+          "tree": 2.129166666666667,
+          "rock": 1.5016666666666667,
+          "cliff": 5.7,
+          "nest": 0.0,
+          "water": 0.0033333333333333335
+        },
+        "mean_damage": 0.028396759033203125,
+        "nest_zone_fraction": 0.0008855892489465178
+      },
+      "paired": {
+        "matched_episodes": 1200,
+        "common_successes": 1190,
+        "time_s": {
+          "reference_mean": 7.537731092436976,
+          "candidate_mean": 7.382464985994398,
+          "change_percent": -2.059852023619757,
+          "mean_paired_delta": -0.15526610644257705,
+          "delta_95_percent_bootstrap": [
+            -0.20043907563025207,
+            -0.1111589635854342
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 106.08232717058007,
+          "candidate_mean": 104.895840252338,
+          "change_percent": -1.118458606525663,
+          "mean_paired_delta": -1.1864869182420594,
+          "delta_95_percent_bootstrap": [
+            -1.3638943004515345,
+            -1.0038808563612576
+          ]
+        }
+      }
+    },
+    "120": {
+      "safety": {
+        "moving_heading_samples": 131418,
+        "moving_headings_outside_grid_fraction": 0.8826188193398165,
+        "episodes": 1200,
+        "success_rate": 0.995,
+        "collision_free_success_rate": 0.7216666666666667,
+        "tree_hit_rate": 0.2625,
+        "contact_ticks_per_episode": {
+          "tree": 1.9966666666666666,
+          "rock": 0.77,
+          "cliff": 4.2908333333333335,
+          "nest": 0.0,
+          "water": 0.91
+        },
+        "mean_damage": 0.07816426595052084,
+        "nest_zone_fraction": 0.0008928091814866199
+      },
+      "paired": {
+        "matched_episodes": 1200,
+        "common_successes": 1192,
+        "time_s": {
+          "reference_mean": 7.574049217002237,
+          "candidate_mean": 7.426971476510066,
+          "change_percent": -1.9418640713610769,
+          "mean_paired_delta": -0.14707774049217004,
+          "delta_95_percent_bootstrap": [
+            -0.19450258668903803,
+            -0.09853152964205818
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 106.90987460572528,
+          "candidate_mean": 105.64267363867849,
+          "change_percent": -1.1852983381751447,
+          "mean_paired_delta": -1.2672009670467717,
+          "delta_95_percent_bootstrap": [
+            -1.4558586658216355,
+            -1.0841605454958083
+          ]
+        }
+      }
+    },
+    "final": {
+      "safety": {
+        "moving_heading_samples": 131325,
+        "moving_headings_outside_grid_fraction": 0.880449267085475,
+        "episodes": 1200,
+        "success_rate": 0.995,
+        "collision_free_success_rate": 0.7266666666666667,
+        "tree_hit_rate": 0.2575,
+        "contact_ticks_per_episode": {
+          "tree": 1.6291666666666667,
+          "rock": 0.8108333333333333,
+          "cliff": 4.303333333333334,
+          "nest": 0.0,
+          "water": 0.0025
+        },
+        "mean_damage": 0.015020345052083333,
+        "nest_zone_fraction": 0.0008439461733361341
+      },
+      "paired": {
+        "matched_episodes": 1200,
+        "common_successes": 1192,
+        "time_s": {
+          "reference_mean": 7.567967002237136,
+          "candidate_mean": 7.3861577181208045,
+          "change_percent": -2.4023530237722746,
+          "mean_paired_delta": -0.18180928411633107,
+          "delta_95_percent_bootstrap": [
+            -0.22434598713646536,
+            -0.1415121644295302
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 106.92322140446316,
+          "candidate_mean": 105.61692183932588,
+          "change_percent": -1.2217173668906622,
+          "mean_paired_delta": -1.3062995651372706,
+          "delta_95_percent_bootstrap": [
+            -1.486536187668314,
+            -1.1268263383802049
+          ]
+        }
+      }
+    }
+  }
+}

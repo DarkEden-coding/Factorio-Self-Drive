@@ -57,6 +57,7 @@ class RewardConfig:
     destroyed: float = -10.0
     arrival: float = 2.0         # stop arrival only: once, on first entering the target radius
     target_speed: float = -1.0   # stop arrival only: per decision inside the radius, times |speed| (tiles/tick)
+    path_length: float = 0.0     # per tile actually traveled, including reverse travel
 
 
 @dataclass
@@ -109,8 +110,8 @@ class EnvConfig:
     observation: str = "full"
     # Append the coarse vehicle-frame map to the student observation (docs/rl.md, "Student map").
     student_map: bool = False
-    # Student route features from the episode field (`field`) or the stand-in for Factorio's
-    # pathfinder (`pathfinder`, docs/rl.md, "Pathfinder route"; needs student_map).
+    # Student guidance: raw field descent, cost-aware any-angle field_smooth, or
+    # pathfinder waypoints (needs student_map; docs/rl.md).
     route_source: str = "field"
     arrival: ArrivalConfig = field(default_factory=ArrivalConfig)
 
@@ -229,8 +230,8 @@ class Config:
                 raise ConfigError("model.arch = full needs env.observation full or both")
         else:
             raise ConfigError(f"model.arch must be full or student, got {self.model.arch!r}")
-        if self.env.route_source not in ("field", "pathfinder"):
-            raise ConfigError("env.route_source must be field or pathfinder")
+        if self.env.route_source not in ("field", "field_smooth", "pathfinder"):
+            raise ConfigError("env.route_source must be field, field_smooth or pathfinder")
         if self.env.route_source == "pathfinder" and not self.env.student_map:
             raise ConfigError("env.route_source = pathfinder needs env.student_map = true")
         if self.ppo.lr_schedule not in ("linear", "constant"):

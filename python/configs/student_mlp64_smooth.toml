@@ -1,0 +1,10 @@
+# Supplemental PPO for cost-aware arbitrary-angle field guidance.
+# Initialize from field-efficient-v1/checkpoints/iter_000200.pt.
+base = "student_mlp64_efficient.toml"
+
+[env]
+route_source = "field_smooth"
+
+[ppo]
+total_steps = 6_000_000
+learning_rate = 5e-5

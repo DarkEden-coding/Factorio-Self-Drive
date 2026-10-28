@@ -18,9 +18,9 @@ use serde::Serialize;
 use std::f64::consts::SQRT_2;
 
 const HARD: u8 = CLIFF | NEST | ROCK | WATER;
-const F_BLOCKED: u8 = 1;
-const F_TREE: u8 = 2;
-const F_ZONE: u8 = 4;
+pub(crate) const F_BLOCKED: u8 = 1;
+pub(crate) const F_TREE: u8 = 2;
+pub(crate) const F_ZONE: u8 = 4;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct FieldParams {
@@ -103,6 +103,7 @@ pub struct DistanceField {
     pub region: Region,
     /// Row-major path distance at each tile center; infinity = blocked or unreachable.
     pub values: Vec<f32>,
+    pub(crate) route_grid: Option<crate::route_smoothing::RouteGrid>,
 }
 
 /// Neighbor steps as (dx, dy, length).
@@ -277,7 +278,23 @@ impl DistanceField {
                 }
             }
         }
-        Self { region, values }
+        Self {
+            region,
+            values,
+            route_grid: Some(crate::route_smoothing::RouteGrid::new(
+                region, flags, params,
+            )),
+        }
+    }
+
+    /// Any-angle, cost-preserving shortcuts over the raw field route.
+    pub fn smooth_route(&self, x: f64, y: f64, target: [f64; 2]) -> Vec<[f64; 2]> {
+        let raw = self.route(x, y, target);
+        if let Some(grid) = &self.route_grid {
+            grid.smooth(&raw)
+        } else {
+            raw
+        }
     }
 
     /// Value at tile `(x, y)`; infinity outside the region.

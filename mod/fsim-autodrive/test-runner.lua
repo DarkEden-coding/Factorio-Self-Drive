@@ -8,30 +8,48 @@ local function write(name,value)
   helpers.write_file("fsim-autodrive/"..name..".json",helpers.table_to_json(value),false)
 end
 local cases={}
-for _,vehicle in ipairs({"car","tank"}) do
-  for _,scenario in ipairs({
-    {name="flat15",start={-48,-96},target={-33,-96},fuel="coal",speed=0},
-    {name="obstacles40",start={-48,-40},target={-8,-40},fuel="rocket-fuel",speed=0.12},
-    {name="nest100",start={-48,48},target={52,48},fuel="nuclear-fuel",speed=0},
-    {name="real60",start={-48,0},target={12,0},fuel="coal",speed=-0.08,real=true}
-  }) do
-    cases[#cases+1]={vehicle=vehicle,name=vehicle.."-"..scenario.name,scenario=scenario}
+local function make_cases(long,filter)
+  cases={}
+  for _,vehicle in ipairs({"car","tank"}) do
+    for _,scenario in ipairs(long and {
+      {name="straight480",start={-400,-192},target={80,-192},fuel="coal",speed=0},
+      {name="angle800",start={-400,-120},target={380,80},fuel="coal",speed=0},
+      {name="forest700",start={-400,160},target={300,160},fuel="coal",speed=0},
+      {name="real700",start={-400,0},target={300,0},fuel="coal",speed=0,real=true},
+      {name="diagonal980",start={-460,-180},target={460,180},fuel="coal",speed=0},
+      {name="return980",start={460,220},target={-460,-140},fuel="rocket-fuel",speed=0,orientation=0.75}
+    } or {
+      {name="flat15",start={-48,-96},target={-33,-96},fuel="coal",speed=0},
+      {name="obstacles40",start={-48,-40},target={-8,-40},fuel="rocket-fuel",speed=0.12},
+      {name="nest100",start={-48,48},target={52,48},fuel="nuclear-fuel",speed=0},
+      {name="real60",start={-48,0},target={12,0},fuel="coal",speed=-0.08,real=true},
+      {name="forest80",start={-48,-80},target={32,-80},fuel="coal",speed=0},
+      {name="angle63",start={-96,80},target={-36,100},fuel="coal",speed=0}
+    }) do
+      local name=vehicle.."-"..scenario.name
+      if not filter or name==filter then cases[#cases+1]={vehicle=vehicle,name=name,scenario=scenario} end
+    end
   end
 end
-function M.start()
+function M.start(options)
+  local long=options and options.suite=="long"
+  local seed=options and options.seed or 12345
+  make_cases(long,options and options.case)
+  assert(#cases>0,"Unknown test fixture")
   assert(not storage.autodrive_test,"Test already running")
   assert(#game.players==0,"Run tests only in a playerless disposable save")
   local force=game.create_force("fsim-autodrive-test")
-  local flat=game.create_surface("fsim-autodrive-flat",{width=256,height=256,seed=12345,
+  local width,height=long and 1024 or 256,long and 512 or 256
+  local flat=game.create_surface("fsim-autodrive-flat",{width=width,height=height,seed=seed,
     peaceful_mode=true,no_enemies_mode=true,default_enable_all_autoplace_controls=false})
-  local real=game.create_surface("fsim-autodrive-real",{width=256,height=256,seed=12345,
+  local real=game.create_surface("fsim-autodrive-real",{width=width,height=height,seed=seed,
     peaceful_mode=true,no_enemies_mode=true})
   storage.autodrive_test={phase="prepare",chunk=0,surface_index=1,surfaces={flat,real},force=force,
-    index=1,results={},exports={}}
+    index=1,results={},exports={},seed=seed,long=long,case=options and options.case,save_reload=options and options.save_reload,nx=width/32,ny=height/32}
 end
 local function prepare(job)
   local surface=job.surfaces[job.surface_index]
-  local cx,cy=-4+job.chunk%8,-4+math.floor(job.chunk/8)
+  local cx,cy=-job.nx/2+job.chunk%job.nx,-job.ny/2+math.floor(job.chunk/job.nx)
   local x0,y0=cx*32,cy*32
   surface.request_to_generate_chunks({x0+16,y0+16},0)
   surface.force_generate_chunk_requests()
@@ -45,7 +63,7 @@ local function prepare(job)
     surface.set_tiles(tiles,false)
   end
   job.chunk=job.chunk+1
-  if job.chunk==64 then job.chunk,job.surface_index=0,job.surface_index+1 end
+  if job.chunk==job.nx*job.ny then job.chunk,job.surface_index=0,job.surface_index+1 end
   if job.surface_index==3 then
     local flat=job.surfaces[1]
     for _,e in ipairs({{name="tree-02",position={-26,-40}},
@@ -55,6 +73,29 @@ local function prepare(job)
       local entity=flat.create_entity({name=e.name,position=e.position,cliff_orientation=e.cliff_orientation,
         force=e.name=="biter-spawner" and "enemy" or "neutral",snap_to_grid=false})
       assert(entity,"Failed to create test obstacle")
+    end
+    for y=-92,-68,4 do
+      for x=-20,8,4 do
+        assert(flat.create_entity({name="tree-02",position={x,y},force="neutral"}),"Failed to create forest fixture")
+      end
+    end
+    if job.long then
+      -- Repeated obstacles force useful off-axis shortcuts across section boundaries.
+      for _,x in ipairs({-240,-60,120}) do
+        for y=140,180,4 do
+          for dx=0,12,4 do
+            assert(flat.create_entity({name="tree-02",position={x+dx,y},force="neutral"}))
+          end
+        end
+      end
+    end
+    job.fixture_trees={}
+    for i,surface in ipairs(job.surfaces) do
+      local trees={}
+      for _,e in pairs(surface.find_entities_filtered({type="tree"})) do
+        trees[#trees+1]={name=e.name,position={x=e.position.x,y=e.position.y}}
+      end
+      job.fixture_trees[i]=trees
     end
     job.phase="spawn"
   end
@@ -75,37 +116,66 @@ local function chunk_export(surface,cx,cy)
   return {position={cx,cy},tiles=tiles,entities=entities,resources={}}
 end
 local function spawn(job)
+  -- Match scheduler phase across baseline/candidate even after different trip durations.
+  if game.tick%120~=0 then return end
   local case=cases[job.index]
   if not case then write("done",{results=job.results,finished_tick=game.tick});storage.autodrive_test=nil;return end
   local scenario=case.scenario
   local surface=job.surfaces[scenario.real and 2 or 1]
+  -- Restore trees destroyed by an earlier vehicle for paired terrain.
+  if job.long then
+    for _,e in pairs(surface.find_entities_filtered({type="tree"})) do e.destroy() end
+    for _,e in ipairs(job.fixture_trees[scenario.real and 2 or 1]) do surface.create_entity({name=e.name,position=e.position,force="neutral"}) end
+  end
   local start=surface.find_non_colliding_position(case.vehicle,scenario.start,12,0.25)
   local target=surface.find_non_colliding_position(case.vehicle,scenario.target,12,0.25)
   if not start or not target then
     job.results[#job.results+1]={name=case.name,status="fixture-unplaceable"}
     job.index=job.index+1;return
   end
-  job.vehicle=assert(surface.create_entity({name=case.vehicle,position=start,force=job.force,orientation=0.25}))
+  job.vehicle=assert(surface.create_entity({name=case.vehicle,position=start,force=job.force,orientation=scenario.orientation or 0.25}))
   job.driver=assert(surface.create_entity({name="character",position={-120,-120},force=job.force}))
   job.vehicle.set_driver(job.driver)
   job.vehicle.get_fuel_inventory().insert({name=scenario.fuel,count=50})
+  job.initial={start={x=start.x,y=start.y},target={x=target.x,y=target.y},
+    orientation=job.vehicle.orientation,speed=scenario.speed,fuel=scenario.fuel,vehicle=case.vehicle}
   job.state=driver.start(job.vehicle,{x=target.x,y=target.y})
   job.state.profile=true
   job.health=job.vehicle.health
-  job.contacts,job.damage,job.ticks=0,0,0
+  job.contacts,job.damage,job.ticks,job.path_length=0,0,0,0
+  job.last_position,job.last_speed=nil,nil
+  job.moving_ticks,job.off_grid_ticks=0,0
+  job.trace={}
   job.phase="planning"
 end
 local function snapshot(job)
   local case=cases[job.index]
-  job.export={schema_version=1,area={{-128,-128},{128,128}},seed=12345,chunks={}}
+  if job.long then
+    job.phase="drive"
+    job.vehicle.speed=case.scenario.speed
+    local _,sample=driver.observe(job.state)
+    job.initial_route=sample.route
+    job.last_position={x=job.vehicle.position.x,y=job.vehicle.position.y}
+    job.last_speed=job.vehicle.speed
+    return
+  end
+  job.export={schema_version=1,area={{-160,-160},{160,160}},seed=job.seed,chunks={}}
   job.chunk,job.phase=0,"export"
 end
 local function finish(job,result)
-  job.results[#job.results+1]={name=cases[job.index].name,status=result,ticks=job.state.elapsed,
-    seconds=job.state.elapsed/60,contacts_estimate=job.contacts,damage=job.damage,
+  if job.long then write("trace-"..cases[job.index].name,job.trace) end
+  job.results[#job.results+1]={name=cases[job.index].name,initial=job.initial,status=result,ticks=job.ticks,
+    seconds=job.ticks/60,planning_ticks=job.state.planning_ticks,
+    total_ticks=job.ticks+job.state.planning_ticks,path_length=job.path_length,
+    segment_ticks=job.state.elapsed,contacts_estimate=job.contacts,damage=job.damage,
+    moving_heading_off_grid_fraction=job.off_grid_ticks/math.max(1,job.moving_ticks),
+    orientation=job.vehicle.valid and job.vehicle.orientation or 0,
+    initial_route=job.initial_route,
     distance=job.vehicle.valid and u.distance(job.vehicle.position,job.state.target) or -1,
     speed=job.vehicle.valid and job.vehicle.speed or 0,decisions=job.state.decisions,
-    route_slices=job.state.slices}
+    route_slices=job.state.slices,segments=job.state.segments,
+    max_horizon=job.state.max_horizon,refinements=job.state.refinements,
+    frontier_wait_ticks=job.state.frontier_wait_ticks,max_cached_sections=job.state.max_cached_sections}
   if job.vehicle.valid then job.vehicle.destroy() end
   if job.driver.valid then job.driver.destroy() end
   job.phase,job.index="spawn",job.index+1
@@ -113,6 +183,7 @@ end
 function M.tick()
   local job=storage.autodrive_test
   if not job then return end
+  if #cases==0 then make_cases(job.long,job.case) end
   local ok,error=pcall(function()
     if job.phase=="prepare" then prepare(job)
     elseif job.phase=="spawn" then spawn(job)
@@ -128,25 +199,42 @@ function M.tick()
       -- Freeze the vehicle while exporting the map, preserving the requested
       -- initial speed until the first actual driving tick.
       local surface=job.vehicle.surface
-      job.export.chunks[#job.export.chunks+1]=chunk_export(surface,-4+job.chunk%8,-4+math.floor(job.chunk/8))
+      job.export.chunks[#job.export.chunks+1]=chunk_export(surface,-5+job.chunk%10,-5+math.floor(job.chunk/10))
       job.chunk=job.chunk+1
-      if job.chunk==64 then
+      if job.chunk==100 then
         write("map-"..cases[job.index].name,job.export)
         job.export=nil;job.phase="drive"
         local case=cases[job.index]
         job.vehicle.speed=case.scenario.speed
         local _,sample=driver.observe(job.state)
         sample.vehicle,sample.fuel=case.vehicle,case.scenario.fuel
+        job.initial_route=sample.route
         write("parity-"..case.name,sample)
+        job.last_position={x=job.vehicle.position.x,y=job.vehicle.position.y}
+        job.last_speed=job.vehicle.speed
         local result=driver.tick(job.state)
         if result then finish(job,result) end
       end
     else
       job.ticks=job.ticks+1
+      if job.save_reload and not job.saved_checkpoint and job.ticks==200 then
+        job.saved_checkpoint=true
+        game.server_save("autodrive-checkpoint")
+      end
       local v=job.vehicle
+      if job.long and job.ticks%60==0 then
+        job.trace[#job.trace+1]={tick=job.ticks,state=driver.snapshot(job.state),route=job.state.route,
+          segment=job.state.segments,segment_target=job.state.seg_target}
+      end
       if v.valid then
         -- Engine has no contact event. Count blocked powered ticks as a proxy,
         -- and label it explicitly rather than calling it exact collision data.
+        if math.abs(v.speed)>0.01 then
+          job.moving_ticks=job.moving_ticks+1
+          local angle=v.orientation*360%45
+          if math.min(angle,45-angle)>1 then job.off_grid_ticks=job.off_grid_ticks+1 end
+        end
+        if job.last_position then job.path_length=job.path_length+u.distance(v.position,job.last_position) end
         local throttle=math.floor(job.state.action/3)-1
         local powered=throttle~=0 and throttle*(job.last_speed or 0)>=0
         if job.last_position and u.distance(v.position,job.last_position)==0 and powered then

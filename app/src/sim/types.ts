@@ -216,7 +216,7 @@ export interface PolicySpec {
   vehicles: string[];
   fuels: string[];
   spec_hash: string;
-  student: { spec_hash: string; size: number; features: string[] };
+  student: { spec_hash: string; smooth_spec_hash: string; size: number; features: string[] };
 }
 
 export interface FieldInfo {
@@ -257,11 +257,13 @@ export interface SimApi {
   policyCoarse(): Uint8Array;
   policyVector(): Float32Array;
   policyStudent(): Float32Array;
+  policyStudentSmooth(): Float32Array;
   decide(action: number): DecisionResult;
   followPath(waypoints: Float32Array): DecisionResult;
   planWaypoints(local: Float32Array): Float32Array;
   predictPath(actions: Uint8Array): Float32Array;
   baselinePath(): Float32Array;
+  smoothPath(): Float32Array;
   distanceField(): FieldInfo;
   distanceFieldValues(): Float32Array;
 }

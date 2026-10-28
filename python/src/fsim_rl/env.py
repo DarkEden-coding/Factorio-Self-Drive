@@ -30,13 +30,16 @@ def import_fsim() -> ModuleType:
 def policy_spec_hash(spec: dict, config: Config) -> str:
     """The hash of the observation layout the config's model reads: the teacher's `spec_hash`
     for the full observation, `spec["student"]["spec_hash"]` for students (`["map"]["spec_hash"]`
-    with the student map, `["map"]["pathfinder_spec_hash"]` with pathfinder route features)."""
+    with the student map; `smooth_spec_hash` selects cost-aware any-angle guidance and
+    `["map"]["pathfinder_spec_hash"]` selects pathfinder features)."""
     if config.model.arch == "student":
         student = spec.get("student", {})
         if config.env.student_map:
             student = student.get("map", {})
             if config.env.route_source == "pathfinder":
                 return str(student.get("pathfinder_spec_hash", ""))
+        if config.env.route_source == "field_smooth":
+            return str(student.get("smooth_spec_hash", ""))
         return str(student.get("spec_hash", ""))
     return str(spec.get("spec_hash", ""))
 

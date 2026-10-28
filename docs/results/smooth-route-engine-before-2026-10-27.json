@@ -1,0 +1,750 @@
+{
+  "engine": "Factorio 2.1.23",
+  "save_reload_verified": false,
+  "results": [
+    {
+      "name": "car-flat15",
+      "status": "arrived",
+      "ticks": 105,
+      "seconds": 1.75,
+      "planning_ticks": 33,
+      "total_ticks": 138,
+      "path_length": 14.991203369246177,
+      "segment_ticks": 104,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.6213592233009708,
+      "orientation": 0.28897896269336343,
+      "distance": 0.08359740062122147,
+      "speed": 0,
+      "decisions": 26,
+      "route_slices": 33,
+      "initial_route_points": 17
+    },
+    {
+      "name": "car-obstacles40",
+      "status": "arrived",
+      "ticks": 169,
+      "seconds": 2.816666666666667,
+      "planning_ticks": 38,
+      "total_ticks": 207,
+      "path_length": 44.0543372053028,
+      "segment_ticks": 168,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.9464285714285714,
+      "orientation": 0.26790236379019916,
+      "distance": 0.2865175128264414,
+      "speed": 0,
+      "decisions": 42,
+      "route_slices": 36,
+      "initial_route_points": 42
+    },
+    {
+      "name": "car-nest100",
+      "status": "arrived",
+      "ticks": 293,
+      "seconds": 4.883333333333334,
+      "planning_ticks": 49,
+      "total_ticks": 342,
+      "path_length": 110.18184764899284,
+      "segment_ticks": 257,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.9553264604810996,
+      "orientation": 0.2333436554763466,
+      "distance": 0.7440047653209706,
+      "speed": 0,
+      "decisions": 74,
+      "route_slices": 48,
+      "initial_route_points": 43
+    },
+    {
+      "name": "car-real60",
+      "status": "arrived",
+      "ticks": 249,
+      "seconds": 4.15,
+      "planning_ticks": 44,
+      "total_ticks": 293,
+      "path_length": 59.69042681006091,
+      "segment_ticks": 248,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.32113821138211385,
+      "orientation": 0.2621839807834476,
+      "distance": 0.7237112231894104,
+      "speed": 0,
+      "decisions": 62,
+      "route_slices": 44,
+      "initial_route_points": 62
+    },
+    {
+      "name": "car-forest80",
+      "status": "arrived",
+      "ticks": 331,
+      "seconds": 5.516666666666667,
+      "planning_ticks": 78,
+      "total_ticks": 409,
+      "path_length": 88.96422384360993,
+      "segment_ticks": 301,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.8723404255319149,
+      "orientation": 0.15884410100989044,
+      "distance": 0.06743233008450027,
+      "speed": 0,
+      "decisions": 83,
+      "route_slices": 78,
+      "initial_route_points": 43
+    },
+    {
+      "name": "car-angle63",
+      "status": "arrived",
+      "ticks": 276,
+      "seconds": 4.6,
+      "planning_ticks": 51,
+      "total_ticks": 327,
+      "path_length": 65.52611593759981,
+      "segment_ticks": 275,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.9306569343065693,
+      "orientation": 0.28681954951025546,
+      "initial_route": [
+        {
+          "x": -96,
+          "y": 80
+        },
+        {
+          "x": -94.5,
+          "y": 81.5
+        },
+        {
+          "x": -93.5,
+          "y": 82.5
+        },
+        {
+          "x": -92.5,
+          "y": 83.5
+        },
+        {
+          "x": -91.5,
+          "y": 84.5
+        },
+        {
+          "x": -90.5,
+          "y": 85.5
+        },
+        {
+          "x": -89.5,
+          "y": 86.5
+        },
+        {
+          "x": -88.5,
+          "y": 87.5
+        },
+        {
+          "x": -87.5,
+          "y": 88.5
+        },
+        {
+          "x": -86.5,
+          "y": 89.5
+        },
+        {
+          "x": -85.5,
+          "y": 90.5
+        },
+        {
+          "x": -84.5,
+          "y": 91.5
+        },
+        {
+          "x": -83.5,
+          "y": 92.5
+        },
+        {
+          "x": -82.5,
+          "y": 93.5
+        },
+        {
+          "x": -81.5,
+          "y": 94.5
+        },
+        {
+          "x": -80.5,
+          "y": 95.5
+        },
+        {
+          "x": -79.5,
+          "y": 96.5
+        },
+        {
+          "x": -78.5,
+          "y": 97.5
+        },
+        {
+          "x": -77.5,
+          "y": 98.5
+        },
+        {
+          "x": -76.5,
+          "y": 99.5
+        },
+        {
+          "x": -75.5,
+          "y": 100.5
+        },
+        {
+          "x": -74.5,
+          "y": 100.5
+        },
+        {
+          "x": -73.5,
+          "y": 100.5
+        },
+        {
+          "x": -72.5,
+          "y": 100.5
+        },
+        {
+          "x": -71.5,
+          "y": 100.5
+        },
+        {
+          "x": -70.5,
+          "y": 100.5
+        },
+        {
+          "x": -69.5,
+          "y": 100.5
+        },
+        {
+          "x": -68.5,
+          "y": 100.5
+        },
+        {
+          "x": -67.5,
+          "y": 100.5
+        },
+        {
+          "x": -66.5,
+          "y": 100.5
+        },
+        {
+          "x": -65.5,
+          "y": 100.5
+        },
+        {
+          "x": -64.5,
+          "y": 100.5
+        },
+        {
+          "x": -63.5,
+          "y": 100.5
+        },
+        {
+          "x": -62.5,
+          "y": 100.5
+        },
+        {
+          "x": -61.5,
+          "y": 100.5
+        },
+        {
+          "x": -60.5,
+          "y": 100.5
+        },
+        {
+          "x": -59.5,
+          "y": 100.5
+        },
+        {
+          "x": -58.5,
+          "y": 100.5
+        },
+        {
+          "x": -57.5,
+          "y": 100.5
+        },
+        {
+          "x": -56.5,
+          "y": 100.5
+        },
+        {
+          "x": -55.5,
+          "y": 100.5
+        },
+        {
+          "x": -54.5,
+          "y": 100.5
+        },
+        {
+          "x": -53.5,
+          "y": 100.5
+        },
+        {
+          "x": -52.5,
+          "y": 100.5
+        },
+        {
+          "x": -51.5,
+          "y": 100.5
+        },
+        {
+          "x": -50.5,
+          "y": 100.5
+        },
+        {
+          "x": -49.5,
+          "y": 100.5
+        },
+        {
+          "x": -48.5,
+          "y": 100.5
+        },
+        {
+          "x": -47.5,
+          "y": 100.5
+        },
+        {
+          "x": -46.5,
+          "y": 100.5
+        },
+        {
+          "x": -45.5,
+          "y": 100.5
+        },
+        {
+          "x": -44.5,
+          "y": 100.5
+        },
+        {
+          "x": -43.5,
+          "y": 100.5
+        },
+        {
+          "x": -42.5,
+          "y": 100.5
+        },
+        {
+          "x": -41.5,
+          "y": 100.5
+        },
+        {
+          "x": -40.5,
+          "y": 100.5
+        },
+        {
+          "x": -39.5,
+          "y": 100.5
+        },
+        {
+          "x": -38.5,
+          "y": 100.5
+        },
+        {
+          "x": -37.5,
+          "y": 100.5
+        },
+        {
+          "x": -36.5,
+          "y": 100.5
+        },
+        {
+          "x": -35.5,
+          "y": 100.5
+        },
+        {
+          "x": -36,
+          "y": 100
+        }
+      ],
+      "distance": 0.26608416196760004,
+      "speed": 0,
+      "decisions": 69,
+      "route_slices": 50,
+      "initial_route_points": 62
+    },
+    {
+      "name": "tank-flat15",
+      "status": "arrived",
+      "ticks": 171,
+      "seconds": 2.85,
+      "planning_ticks": 34,
+      "total_ticks": 205,
+      "path_length": 14.31783696706953,
+      "segment_ticks": 170,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.9230769230769231,
+      "orientation": 0.22900455445051193,
+      "distance": 0.7276118094921907,
+      "speed": 0,
+      "decisions": 43,
+      "route_slices": 34,
+      "initial_route_points": 17
+    },
+    {
+      "name": "tank-obstacles40",
+      "status": "arrived",
+      "ticks": 331,
+      "seconds": 5.516666666666667,
+      "planning_ticks": 39,
+      "total_ticks": 370,
+      "path_length": 43.46974217651113,
+      "segment_ticks": 330,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.9815950920245399,
+      "orientation": 0.20800040080212057,
+      "distance": 0.49232698916250006,
+      "speed": 0,
+      "decisions": 83,
+      "route_slices": 37,
+      "initial_route_points": 42
+    },
+    {
+      "name": "tank-nest100",
+      "status": "arrived",
+      "ticks": 556,
+      "seconds": 9.266666666666667,
+      "planning_ticks": 49,
+      "total_ticks": 605,
+      "path_length": 111.00729678517051,
+      "segment_ticks": 520,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.969147005444646,
+      "orientation": 0.21631253720261157,
+      "distance": 0.5170730141412574,
+      "speed": 0,
+      "decisions": 139,
+      "route_slices": 48,
+      "initial_route_points": 43
+    },
+    {
+      "name": "tank-real60",
+      "status": "arrived",
+      "ticks": 444,
+      "seconds": 7.4,
+      "planning_ticks": 45,
+      "total_ticks": 489,
+      "path_length": 60.8767960792237,
+      "segment_ticks": 443,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.7330316742081447,
+      "orientation": 0.2255060626193881,
+      "distance": 0.9624051926724068,
+      "speed": 0.0039589438138071505,
+      "decisions": 111,
+      "route_slices": 45,
+      "initial_route_points": 62
+    },
+    {
+      "name": "tank-forest80",
+      "status": "arrived",
+      "ticks": 567,
+      "seconds": 9.45,
+      "planning_ticks": 25,
+      "total_ticks": 592,
+      "path_length": 87.19182204916781,
+      "segment_ticks": 411,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.960923623445826,
+      "orientation": 0.3094924404285848,
+      "distance": 0.9461353598405594,
+      "speed": 0,
+      "decisions": 142,
+      "route_slices": 25,
+      "initial_route_points": 64
+    },
+    {
+      "name": "tank-angle63",
+      "status": "arrived",
+      "ticks": 460,
+      "seconds": 7.666666666666667,
+      "planning_ticks": 51,
+      "total_ticks": 511,
+      "path_length": 64.6082083519811,
+      "segment_ticks": 459,
+      "contacts_estimate": 0,
+      "damage": 0,
+      "moving_heading_off_grid_fraction": 0.9102844638949673,
+      "orientation": 0.2395009829197079,
+      "initial_route": [
+        {
+          "x": -96,
+          "y": 80
+        },
+        {
+          "x": -94.5,
+          "y": 81.5
+        },
+        {
+          "x": -93.5,
+          "y": 82.5
+        },
+        {
+          "x": -92.5,
+          "y": 83.5
+        },
+        {
+          "x": -91.5,
+          "y": 84.5
+        },
+        {
+          "x": -90.5,
+          "y": 85.5
+        },
+        {
+          "x": -89.5,
+          "y": 86.5
+        },
+        {
+          "x": -88.5,
+          "y": 87.5
+        },
+        {
+          "x": -87.5,
+          "y": 88.5
+        },
+        {
+          "x": -86.5,
+          "y": 89.5
+        },
+        {
+          "x": -85.5,
+          "y": 90.5
+        },
+        {
+          "x": -84.5,
+          "y": 91.5
+        },
+        {
+          "x": -83.5,
+          "y": 92.5
+        },
+        {
+          "x": -82.5,
+          "y": 93.5
+        },
+        {
+          "x": -81.5,
+          "y": 94.5
+        },
+        {
+          "x": -80.5,
+          "y": 95.5
+        },
+        {
+          "x": -79.5,
+          "y": 96.5
+        },
+        {
+          "x": -78.5,
+          "y": 97.5
+        },
+        {
+          "x": -77.5,
+          "y": 98.5
+        },
+        {
+          "x": -76.5,
+          "y": 99.5
+        },
+        {
+          "x": -75.5,
+          "y": 100.5
+        },
+        {
+          "x": -74.5,
+          "y": 100.5
+        },
+        {
+          "x": -73.5,
+          "y": 100.5
+        },
+        {
+          "x": -72.5,
+          "y": 100.5
+        },
+        {
+          "x": -71.5,
+          "y": 100.5
+        },
+        {
+          "x": -70.5,
+          "y": 100.5
+        },
+        {
+          "x": -69.5,
+          "y": 100.5
+        },
+        {
+          "x": -68.5,
+          "y": 100.5
+        },
+        {
+          "x": -67.5,
+          "y": 100.5
+        },
+        {
+          "x": -66.5,
+          "y": 100.5
+        },
+        {
+          "x": -65.5,
+          "y": 100.5
+        },
+        {
+          "x": -64.5,
+          "y": 100.5
+        },
+        {
+          "x": -63.5,
+          "y": 100.5
+        },
+        {
+          "x": -62.5,
+          "y": 100.5
+        },
+        {
+          "x": -61.5,
+          "y": 100.5
+        },
+        {
+          "x": -60.5,
+          "y": 100.5
+        },
+        {
+          "x": -59.5,
+          "y": 100.5
+        },
+        {
+          "x": -58.5,
+          "y": 100.5
+        },
+        {
+          "x": -57.5,
+          "y": 100.5
+        },
+        {
+          "x": -56.5,
+          "y": 100.5
+        },
+        {
+          "x": -55.5,
+          "y": 100.5
+        },
+        {
+          "x": -54.5,
+          "y": 100.5
+        },
+        {
+          "x": -53.5,
+          "y": 100.5
+        },
+        {
+          "x": -52.5,
+          "y": 100.5
+        },
+        {
+          "x": -51.5,
+          "y": 100.5
+        },
+        {
+          "x": -50.5,
+          "y": 100.5
+        },
+        {
+          "x": -49.5,
+          "y": 100.5
+        },
+        {
+          "x": -48.5,
+          "y": 100.5
+        },
+        {
+          "x": -47.5,
+          "y": 100.5
+        },
+        {
+          "x": -46.5,
+          "y": 100.5
+        },
+        {
+          "x": -45.5,
+          "y": 100.5
+        },
+        {
+          "x": -44.5,
+          "y": 100.5
+        },
+        {
+          "x": -43.5,
+          "y": 100.5
+        },
+        {
+          "x": -42.5,
+          "y": 100.5
+        },
+        {
+          "x": -41.5,
+          "y": 100.5
+        },
+        {
+          "x": -40.5,
+          "y": 100.5
+        },
+        {
+          "x": -39.5,
+          "y": 100.5
+        },
+        {
+          "x": -38.5,
+          "y": 100.5
+        },
+        {
+          "x": -37.5,
+          "y": 100.5
+        },
+        {
+          "x": -36.5,
+          "y": 100.5
+        },
+        {
+          "x": -35.5,
+          "y": 100.5
+        },
+        {
+          "x": -36,
+          "y": 100
+        }
+      ],
+      "distance": 0.9525484936802432,
+      "speed": 0,
+      "decisions": 115,
+      "route_slices": 50,
+      "initial_route_points": 62
+    }
+  ],
+  "success_rate": 1.0,
+  "timing": {
+    "route": {
+      "samples": 536,
+      "mean_ms": 1.2400815578358209,
+      "max_ms": 4.198083,
+      "p95_ms": 2.706334
+    },
+    "decision": {
+      "samples": 989,
+      "mean_ms": 0.7905839049544995,
+      "max_ms": 5.558833,
+      "p95_ms": 0.9115
+    }
+  },
+  "contacts": "blocked moving powered tick estimate, not engine collision events"
+}

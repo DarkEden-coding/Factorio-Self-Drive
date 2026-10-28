@@ -6,8 +6,9 @@ import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = ROOT / 'python/runs/students/mlp64-stop/mlp64-stop.json'
+DEFAULT = ROOT / 'python/runs/students/field-smooth-v1/field-smooth.json'
 FIELD_HASH = '49e75f8a02cb7e16'
+SMOOTH_HASH = 'd1c084cc679f1f71'
 
 
 def lua(value):
@@ -28,10 +29,16 @@ def lua(value):
 
 def build(model_path, destination):
     model = json.loads(model_path.read_text())
-    if (model['format'] != 'fsim-student-v1' or model['spec_hash'] != FIELD_HASH
+    source = model.get('route_source', 'field')
+    if source not in ('field', 'field_smooth'):
+        raise ValueError('expected field or field_smooth route guidance')
+    if source == 'field_smooth' and not model.get('field'):
+        raise ValueError('smooth guidance needs exported field costs')
+    expected = SMOOTH_HASH if source == 'field_smooth' else FIELD_HASH
+    if (model['format'] != 'fsim-student-v1' or model['spec_hash'] != expected
             or model.get('map') or model['decision_ticks'] != 4
             or model['obs']['size'] != 135 or model['ray_conv']):
-        raise ValueError('expected the dense field-route student (mlp64-stop), interval 4')
+        raise ValueError('expected the dense field-route student, interval 4')
     size = model['obs']['size']
     if len(model['normalizer']['mean']) != size or len(model['normalizer']['std']) != size:
         raise ValueError('normalizer dimensions')

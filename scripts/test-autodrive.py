@@ -44,7 +44,7 @@ def timings(path):
 def run(args,temp):
     mods,write=temp/'mods',temp/'write'
     mods.mkdir();write.mkdir();(write/"saves").mkdir()
-    shutil.copytree(ROOT/'mod/fsim-autodrive',mods/'fsim-autodrive')
+    shutil.copytree(args.mod_source,mods/'fsim-autodrive')
     companion=mods/'fsim-autodrive-verify';companion.mkdir()
     (companion/'info.json').write_text(json.dumps(dict(name='fsim-autodrive-verify',version='0.1.0',
         title='Isolated autodrive verification',author='Fsim',factorio_version='2.1',
@@ -55,10 +55,10 @@ def run(args,temp):
   if not storage.started then
     storage.started=true
     game.speed=8
-    remote.call("fsim-autodrive-test","start")
+    remote.call("fsim-autodrive-test","start",{suite="SUITE",seed=SEED,save_reload=RELOAD,case=CASE})
   end
 end)
-''')
+'''.replace('SUITE',args.suite).replace('SEED',str(args.seed)).replace('RELOAD','true' if args.save_reload else 'false').replace('CASE',json.dumps(args.case) if args.case else 'nil'))
     enabled={'base','fsim-autodrive','fsim-autodrive-verify'}
     names=[*sorted(enabled),'space-age','quality','elevated-rails','recycler']
     (mods/'mod-list.json').write_text(json.dumps({'mods':[dict(name=n,enabled=n in enabled) for n in names]}))
@@ -89,8 +89,11 @@ end)
         if resumed['results']!=marker['results']:
             raise RuntimeError('save/reload changed the driving results')
         reload_verified=True
+    if args.save_reload and not reload_verified:
+        raise RuntimeError('no checkpoint was produced; save/reload was not verified')
     args.output.mkdir(parents=True,exist_ok=True)
-    for path in output.glob('parity-*.json'): shutil.copyfile(path,args.output/path.name)
+    for pattern in ('parity-*.json','trace-*.json'):
+        for path in output.glob(pattern): shutil.copyfile(path,args.output/path.name)
     for path in output.glob('map-*.json'):
         suffix=path.stem.removeprefix('map-')
         encoded,_=encode_map(json.loads(path.read_text()),'autodrive-'+suffix)
@@ -98,7 +101,7 @@ end)
     for name in ('create.log','drive.log'): shutil.copyfile(temp/name,args.output/name)
     if (output/'timing.txt').exists(): shutil.copyfile(output/'timing.txt',args.output/'timing.txt')
     results=marker['results']
-    report=dict(engine='Factorio 2.1.23',save_reload_verified=reload_verified,results=results,
+    report=dict(engine='Factorio 2.1.23',suite=args.suite,seed=args.seed,save_reload_verified=reload_verified,results=results,
         success_rate=sum(r['status']=='arrived' for r in results)/len(results),
         timing=timings(output/'timing.txt'),contacts='blocked moving powered tick estimate, not engine collision events')
     (args.output/'driving-report.json').write_text(json.dumps(report,indent=2)+'\n')
@@ -125,14 +128,20 @@ end)
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--factorio',type=Path,default=collector.DEFAULT_BINARY)
+    parser.add_argument('--mod-source',type=Path,default=ROOT/'mod/fsim-autodrive',
+        help='production mod directory to copy into the disposable test')
     parser.add_argument('--timeout',type=float,default=90)
     parser.add_argument('--output',type=Path,default=ROOT/'data/autodrive/engine')
     parser.add_argument('--keep-temp',action='store_true')
     parser.add_argument('--engine-only',action='store_true',
         help='run the production mod in Factorio; skip the legacy field-route simulator comparison')
+    parser.add_argument('--case',help='run only this exact fixture name')
+    parser.add_argument('--seed',type=int,default=12345,help='terrain seed for paired long trips')
+    parser.add_argument('--suite',choices=('short','long'),default='short',help='short parity fixtures or long end-to-end trips')
     parser.add_argument('--save-reload',action='store_true',help='also verify a checkpoint saved by a disposable private server')
     parser.add_argument('--allow-low-battery',action='store_true',help='explicitly authorized short-run battery override')
     args=parser.parse_args();args.factorio=args.factorio.expanduser().resolve()
+    args.mod_source=args.mod_source.expanduser().resolve()
     try:
         battery_guard(args.allow_low_battery)
         temp=Path(tempfile.mkdtemp(prefix='fsim-autodrive-'))

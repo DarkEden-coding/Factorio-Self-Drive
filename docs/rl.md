@@ -125,6 +125,7 @@ Per decision step, weights from `reward` config (defaults in brackets):
 |---|---|
 | `progress` [0.1] | per tile of path-distance decrease (negative when moving away) |
 | `time` [-0.005] | per decision step |
+| `path_length` [0.0] | per tile actually traveled during the decision, including reverse travel |
 | `damage` [-5.0] | times damage taken / max health |
 | `collision` [-0.2] | per decision step with a new collision event |
 | `nest_zone` [-0.15] | per decision step with the vehicle center inside a nest penalty radius |
@@ -135,7 +136,11 @@ Per decision step, weights from `reward` config (defaults in brackets):
 
 The env reports each term separately (info) and their sum (reward). `damage` uses health lost
 during the decision. `collision` counts collisions with entities, water and the map edge.
-`progress` and `nest_zone` use the state at the end of the decision.
+`progress` and `nest_zone` use the state at the end of the decision. `path_length` sums
+actual displacement at every physics tick, so circling and backing up cannot cancel travel.
+Its zero default preserves rewards for older configs and checkpoints. The supplemental
+`student_mlp64_efficient.toml` uses -0.02 per tile, time -0.02 per decision, and collision -0.75.
+Observation features and their spec hashes are unchanged.
 
 Why the stop terms: with `stop`, `progress` already measures to the target point (the field is 0
 there), so overshooting costs the progress it earned. `arrival` keeps a small reward for getting
@@ -284,6 +289,20 @@ fraction of its 4x4 sample points (2 tiles apart) that are of that kind. It is a
 replacing the route features with a wider view: `model.student_route = false` drops the route
 from the actor and `model.map_conv` runs stride-2 convs over the map (`configs/student_map.toml`).
 `export-student` doesn't support it yet.
+
+### Any-angle field route
+
+`route_source = "field_smooth"` gives the student cost-aware arbitrary-angle shortcuts over
+its episode field. Segment traversal checks the vehicle-inflated obstacle grid, including
+corner/border touches, and integrates tree/zone costs. A shortcut cannot exceed the cost of
+the raw span it replaces. Blocked spans retain closer waypoints; open routes can connect
+start and target directly. The field and sampling/progress rules remain unchanged.
+
+The vector still has 135 features, but route semantics use `student.smooth_spec_hash`
+(`d1c084cc679f1f71`), or the corresponding map hash when a map is appended. Dense grid students
+may initialize smooth training explicitly with `--init-from`; a resumed run must match its
+contract. Exported model metadata includes route source and field parameters. See
+[smooth-route-results.md](smooth-route-results.md) for the current model and measurements.
 
 ### Pathfinder route
 

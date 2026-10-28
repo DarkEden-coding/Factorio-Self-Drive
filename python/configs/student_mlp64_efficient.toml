@@ -1,0 +1,20 @@
+# Supplemental PPO from mlp64-stop; retain the actor/input and stop-in-target task.
+# Train on the train split; compare checkpoints on validation seeds before holdout.
+# OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 uv run fsim-rl train \
+#   --config configs/student_mlp64_efficient.toml \
+#   --init-from runs/students/mlp64-stop/checkpoints/latest.pt --run-name students/field-efficient-v1
+base = "student_mlp64_stop.toml"
+device = "cuda"
+checkpoint_interval = 20
+
+[env.reward]
+# Charge actual travel and decisions, while keeping collision/damage/zone costs.
+path_length = -0.02
+time = -0.02
+collision = -0.75
+
+[ppo]
+num_envs = 256
+total_steps = 8_000_000
+learning_rate = 5e-5
+ent_coef = 0.003

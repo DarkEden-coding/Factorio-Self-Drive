@@ -16,6 +16,7 @@ pub mod raster;
 pub mod reward;
 pub mod rl_config;
 pub mod rl_episode;
+pub mod route_smoothing;
 pub mod sampler;
 pub mod student_obs;
 pub mod target;
