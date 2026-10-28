@@ -15,7 +15,7 @@ def package(output):
     # Ship runtime Lua and player documentation only. Never include repository
     # data, training artifacts, copied game assets, or local hidden files.
     files = sorted(source.glob("*.lua"))
-    files += [source / filename for filename in ("info.json", "README.md", "changelog.txt")]
+    files += [source / filename for filename in ("info.json", "README.md", "changelog.txt", "thumbnail.png")]
     files += sorted(source.glob("locale/*/*.cfg"))
     output.mkdir(parents=True, exist_ok=True)
     archive = output / f"{name}.zip"

@@ -1,30 +1,37 @@
 # Factorio Autodrive
 
-Pick a destination and let your car or tank do the driving!
+Autodrive for base cars and tanks in Factorio 2.1.23 or newer in the 2.1 series.
+Route planning and driving run locally in the mod. No external program is needed.
 
-Factorio Autodrive uses a trained reinforcement learning model to steer and
-control the throttle along dynamic paths. The route planner extends and refines
-the path as you travel, while the model follows it toward your destination.
-Everything runs right inside Factorio, with no external setup needed.
+## Driving
 
-## Take it for a spin
-
-1. Hop into the driver's seat of a car or tank and add some fuel.
+1. Sit in the driver's seat of a car or tank and supply fuel.
 2. Click **Set autodrive target** or press **Ctrl+Alt+T**.
-3. Pick a destination in the world or on the map. Give it a moment to plan, then off you go!
+3. Click or select a destination in the world or on the map.
+4. Wait for the route to prepare. The vehicle brakes while planning, then drives.
 
-Use the movement keys to take over anytime. Press **Ctrl+Alt+D** to resume, or
-pick a new destination to start another trip.
+Movement keys return manual control. **Ctrl+Alt+D** resumes toward the last target.
+Selecting another target starts a new trip. Leaving the vehicle cancels autodrive.
+Use `/autodrive <x> <y>` for exact coordinates or `/autodrive stop` to stop driving.
 
-## Want to see the path?
+Targets must be on your surface, in generated terrain, and within 4096 tiles.
+Blocked targets snap to drivable ground within 8 tiles.
 
-Diagnostic lines are off by default. Turn on **Show autodrive diagnostic lines**
-in **Settings > Mod settings > Per player** to see the route and the points the
-model is following.
+## Settings
 
-## The basics
+Diagnostic lines are hidden by default. Enable **Show autodrive diagnostic lines**
+under **Settings > Mod settings > Per player** to display the target ring, verified
+route, coarse path and lookahead points in the world and on the map.
+Existing saves retain a player's previously selected setting.
 
-- Supports base cars and tanks on Factorio 2.1.23 or newer in the 2.1 series.
-- Destinations must be on the same surface, in generated terrain, and within 4096 tiles.
-- Trained for driving on Nauvis. Modded vehicles and busy factory layouts can trip it up,
-  so keep an eye on the ride and take the wheel when needed.
+**Write autodrive Lua timings** enables local profiling output. It is disabled by
+default. `/autodrive-dump` writes a diagnostic snapshot during a drive.
+
+## Limitations
+
+The controller was trained for base cars and tanks on Nauvis terrain. Modified
+vehicles, player structures, moving units, equipment and quality or research
+bonuses are outside its trained driving domain. Watch the vehicle and take over
+if needed. A stalled or timed-out trip brakes until manual input or a new target.
+
+Updating the mod clears active trips. Set a target again after loading the update.
