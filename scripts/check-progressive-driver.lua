@@ -4,7 +4,7 @@ if not bit32 then
   bit32={band=assert(load('return function(a,b) return a & b end'))(),
     bor=assert(load('return function(a,b) return a | b end'))()}
 end
-package.path='mod/fsim-autodrive/?.lua;'..package.path
+package.path='mod/factorio-autodrive/?.lua;'..package.path
 game={tick=0}
 helpers={create_profiler=function() return {stop=function() end} end}
 local stats={half_width=0.7,half_length=1,tank_driving=false,weight=700,max_health=450,

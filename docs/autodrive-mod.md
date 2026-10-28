@@ -39,7 +39,7 @@ manual control. Leaving the vehicle or disconnecting cancels driving.
 
 The overlay draws the final stop ring in green, the verified rolling corridor in blue, the coarse
 Factorio path in grey, and the four student lookaheads in amber. Profiling writes local timings
-to `script-output/fsim-autodrive/timing.txt`; `/autodrive-dump` writes a diagnostic snapshot.
+to `script-output/factorio-autodrive/timing.txt`; `/autodrive-dump` writes a diagnostic snapshot.
 
 ## Routing and model
 
@@ -204,10 +204,10 @@ Build the standalone mod portal upload:
 python3 scripts/package-autodrive.py
 ```
 
-Copy `dist/fsim-autodrive_0.7.1.zip` into Factorio's `mods` directory or upload
+Copy `dist/factorio-autodrive_0.7.1.zip` into Factorio's `mods` directory or upload
 it to the mod portal. Remove duplicate unpacked copies of the same mod from
 your local `mods` directory before installing the ZIP. Restart Factorio after
-changing mod files. See the [player guide](../mod/fsim-autodrive/README.md).
+changing mod files. See the [player guide](../mod/factorio-autodrive/README.md).
 
 The release contains runtime Lua, generated weights and geometry, locale, player
 documentation and changelog. Engine test fixtures stay under

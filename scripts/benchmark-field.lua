@@ -1,7 +1,7 @@
 -- Compare two field implementations on identical masks. Run from the repo root:
--- lua scripts/benchmark-field.lua BEFORE.lua mod/fsim-autodrive/field.lua
+-- lua scripts/benchmark-field.lua BEFORE.lua mod/factorio-autodrive/field.lua
 if not bit32 then bit32={band=assert(load('return function(a,b) return a & b end'))()} end
-package.path='mod/fsim-autodrive/?.lua;'..package.path
+package.path='mod/factorio-autodrive/?.lua;'..package.path
 local before, after = dofile(arg[1]), dofile(arg[2])
 local function mask(x,y)
   if (x-60)^2+(y-20)^2<400 then return 17 end

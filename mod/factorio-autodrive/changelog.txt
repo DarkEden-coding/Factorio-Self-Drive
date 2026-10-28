@@ -2,6 +2,7 @@
 Version: 0.7.1
 Date: 2026-10-28
   Changes:
+    - Rename the mod to Factorio Autodrive.
     - Hide diagnostic lines by default. Enable them in per-player mod settings.
     - Remove the isolated engine verification runner from the gameplay mod.
     - Include installation and control documentation in the release package.

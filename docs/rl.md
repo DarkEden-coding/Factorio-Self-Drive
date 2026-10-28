@@ -270,7 +270,7 @@ Route: the polyline from the vehicle center through the tile centers of the epis
 steepest descent to the target point (the A* baseline path, `baseline_path()` in wasm). The point
 at arc length `s` along it, or its end when it is shorter than `s`, goes to the vehicle frame and
 is divided by `s`, so a straight route ahead gives (0, 1) and the target closer than `s` gives a
-shorter vector. In game, `mod/fsim-autodrive` computes the same bounded, hull-dilated,
+shorter vector. In game, `mod/factorio-autodrive` computes the same bounded, hull-dilated,
 zone-aware Dijkstra field and descent polyline in Lua. Plain `request_path`
 waypoints do not preserve the student's zone avoidance; see `docs/student-results.md`
 and `docs/autodrive-mod.md`.

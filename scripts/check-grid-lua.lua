@@ -3,7 +3,7 @@ if not bit32 then
   bit32={band=assert(load('return function(a,b) return a & b end'))(),
     bor=assert(load('return function(a,b) return a | b end'))()}
 end
-package.path='mod/fsim-autodrive/?.lua;'..package.path
+package.path='mod/factorio-autodrive/?.lua;'..package.path
 local grid,raster=require('grid'),require('raster')
 local entities,reference,queries={},{},{}
 local function add(kind,x,y,box,cliff)

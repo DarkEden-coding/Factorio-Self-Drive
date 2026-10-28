@@ -13,7 +13,7 @@ SPEC.loader.exec_module(PACKAGER)
 
 class PackageAutodriveTests(unittest.TestCase):
     def test_release_is_standalone_and_repeatable(self):
-        source = ROOT / "mod/fsim-autodrive"
+        source = ROOT / "mod/factorio-autodrive"
         info = json.loads((source / "info.json").read_text())
         prefix = f'{info["name"]}_{info["version"]}/'
         with tempfile.TemporaryDirectory() as directory:

@@ -31,7 +31,7 @@ RL agents that drive the car and tank in Factorio 2.1.23 (Nauvis), trained in a 
 
 ## Real game
 
-- `mod/fsim-autodrive` runs the trained small student entirely in Lua. A cached obstacle raster and zone-aware distance field supply the simulator observation. See `docs/autodrive-mod.md` for controls and measured results.
+- `mod/factorio-autodrive` runs the trained small student entirely in Lua. A cached obstacle raster and zone-aware distance field supply the simulator observation. See `docs/autodrive-mod.md` for controls and measured results.
 - Target set by selection-tool click or console command.
 - Pressing a movement key gives the player control. A hotkey hands it back.
 - Target and path drawn in game with the rendering API.

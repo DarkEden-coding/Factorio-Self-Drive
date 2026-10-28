@@ -1,13 +1,13 @@
 data:extend({
   {
     type="bool-setting",
-    name="fsim-autodrive-overlay",
+    name="factorio-autodrive-overlay",
     setting_type="runtime-per-user",
     default_value=false,
   },
   {
     type="bool-setting",
-    name="fsim-autodrive-profile",
+    name="factorio-autodrive-profile",
     setting_type="runtime-global",
     default_value=false,
   },

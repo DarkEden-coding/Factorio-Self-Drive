@@ -108,7 +108,7 @@ To reproduce the checkpoint comparison with identical test instrumentation:
 ```sh
 mkdir -p data/autodrive/progressive-baseline-source
 git archive 7f5a4db mod/fsim-autodrive | tar -x -C data/autodrive/progressive-baseline-source
-cp mod/fsim-autodrive/test-runner.lua data/autodrive/progressive-baseline-source/mod/fsim-autodrive/
+cp scripts/fixtures/autodrive/test-runner.lua data/autodrive/progressive-baseline-source/mod/fsim-autodrive/
 ```
 
 The archived test interface did not accept options. In its archived `control.lua` only, change

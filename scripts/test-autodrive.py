@@ -44,28 +44,29 @@ def timings(path):
 def run(args,temp):
     mods,write=temp/'mods',temp/'write'
     mods.mkdir();write.mkdir();(write/"saves").mkdir()
-    staged = mods/'fsim-autodrive'
+    mod_name = json.loads((args.mod_source/'info.json').read_text())['name']
+    staged = mods/mod_name
     shutil.copytree(args.mod_source,staged)
     # Install verification hooks only in the disposable copy of the mod.
     fixtures = ROOT/'scripts/fixtures/autodrive'
     shutil.copyfile(fixtures/'test-runner.lua',staged/'test-runner.lua')
     with (staged/'control.lua').open('a') as control:
         control.write('\n'+(fixtures/'control.lua').read_text())
-    companion=mods/'fsim-autodrive-verify';companion.mkdir()
-    (companion/'info.json').write_text(json.dumps(dict(name='fsim-autodrive-verify',version='0.1.0',
+    companion=mods/'factorio-autodrive-verify';companion.mkdir()
+    (companion/'info.json').write_text(json.dumps(dict(name='factorio-autodrive-verify',version='0.1.0',
         title='Isolated autodrive verification',author='Fsim',factorio_version='2.1',
-        dependencies=['base >= 2.1.23','fsim-autodrive'])))
+        dependencies=['base >= 2.1.23',mod_name])))
     # Prevent biter AI in fixtures while retaining unmodified collision geometry.
     (companion/'data.lua').write_text('for _, nest in pairs(data.raw["unit-spawner"]) do nest.result_units={} end\n')
     (companion/'control.lua').write_text('''script.on_event(defines.events.on_tick,function()
   if not storage.started then
     storage.started=true
     game.speed=8
-    remote.call("fsim-autodrive-test","start",{suite="SUITE",seed=SEED,save_reload=RELOAD,case=CASE})
+    remote.call("factorio-autodrive-test","start",{suite="SUITE",seed=SEED,save_reload=RELOAD,case=CASE})
   end
 end)
 '''.replace('SUITE',args.suite).replace('SEED',str(args.seed)).replace('RELOAD','true' if args.save_reload else 'false').replace('CASE',json.dumps(args.case) if args.case else 'nil'))
-    enabled={'base','fsim-autodrive','fsim-autodrive-verify'}
+    enabled={'base',mod_name,'factorio-autodrive-verify'}
     names=[*sorted(enabled),'space-age','quality','elevated-rails','recycler']
     (mods/'mod-list.json').write_text(json.dumps({'mods':[dict(name=n,enabled=n in enabled) for n in names]}))
     config=temp/'config.ini'
@@ -76,7 +77,7 @@ end)
     battery_guard(args.allow_low_battery)
     collector.run_engine(base+['--create',save,'--map-gen-seed','12345'],temp/'create.log',args.timeout)
     battery_guard(args.allow_low_battery)
-    output=write/'script-output/fsim-autodrive'
+    output=write/'script-output/factorio-autodrive'
     server_settings=temp/'server-settings.json'
     server_config=json.loads((args.factorio.parent.parent/'data/server-settings.example.json').read_text())
     server_config.update(name='Isolated autodrive verification',description='Disposable local test',
@@ -134,7 +135,7 @@ end)
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--factorio',type=Path,default=collector.DEFAULT_BINARY)
-    parser.add_argument('--mod-source',type=Path,default=ROOT/'mod/fsim-autodrive',
+    parser.add_argument('--mod-source',type=Path,default=ROOT/'mod/factorio-autodrive',
         help='production mod directory to copy into the disposable test')
     parser.add_argument('--timeout',type=float,default=90)
     parser.add_argument('--output',type=Path,default=ROOT/'data/autodrive/engine')
@@ -150,7 +151,7 @@ def main():
     args.mod_source=args.mod_source.expanduser().resolve()
     try:
         battery_guard(args.allow_low_battery)
-        temp=Path(tempfile.mkdtemp(prefix='fsim-autodrive-'))
+        temp=Path(tempfile.mkdtemp(prefix='factorio-autodrive-'))
         print('Isolated directory:',temp,flush=True)
         try: run(args,temp)
         finally:

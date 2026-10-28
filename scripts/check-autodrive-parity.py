@@ -103,7 +103,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output',type=Path,default=ROOT/'data/autodrive/offline-parity.json')
     parser.add_argument('--engine-output',type=Path)
-    parser.add_argument('--mod-source',type=Path,default=ROOT/'mod/fsim-autodrive')
+    parser.add_argument('--mod-source',type=Path,default=ROOT/'mod/factorio-autodrive')
     parser.add_argument('--model',type=Path,default=build_weights.DEFAULT,help='the exported student the mod ships')
     args=parser.parse_args()
     data=json.loads((ROOT/'data/prototypes.json').read_text())

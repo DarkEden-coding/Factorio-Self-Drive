@@ -210,7 +210,7 @@ local function profile(s,kind,profiler)
   profiler.stop()
   -- Never put profiler objects or wall-clock measurements in storage or use
   -- them for simulation decisions. Local output only, safe in multiplayer.
-  if s.profile then helpers.write_file("fsim-autodrive/timing.txt",{"",kind," ",profiler,"\n"},true) end
+  if s.profile then helpers.write_file("factorio-autodrive/timing.txt",{"",kind," ",profiler,"\n"},true) end
 end
 local function route_at(s)
   local route,cursor=corridor.trim(s.guidance,s.vehicle.position,s.guidance_cursor)

@@ -4,7 +4,7 @@ if not bit32 then
   bit32={band=assert(load('return function(a,b) return a & b end'))(),
     bor=assert(load('return function(a,b) return a | b end'))()}
 end
-package.path=(arg[2] or 'mod/fsim-autodrive')..'/?.lua;'..package.path
+package.path=(arg[2] or 'mod/factorio-autodrive')..'/?.lua;'..package.path
 local input=dofile(arg[1])
 local raster=require('raster')
 local observation=require('observation')

@@ -162,4 +162,4 @@ python3 scripts/test-autodrive.py --engine-only --output data/autodrive/efficien
 
 For the CPU field benchmark, extract `mod/fsim-autodrive/field.lua` from commit `1d6ff06` to a
 local file and pass it as the first argument to `lua scripts/benchmark-field.lua`, followed by
-the current `mod/fsim-autodrive/field.lua`.
+the current `mod/factorio-autodrive/field.lua`.

@@ -15,7 +15,7 @@ It receives 32 rays, four route lookahead points at 4/8/16/32 tiles, vehicle/tar
 16x16 coarse map. It does not output a planned path or compare candidate future trajectories.
 The project's separate `path_planner` architecture is not what the mod runs.
 
-`mod/fsim-autodrive/path.lua` and `crates/fsim-core/src/pathfinder.rs` construct the guidance as
+`mod/factorio-autodrive/path.lua` and `crates/fsim-core/src/pathfinder.rs` construct the guidance as
 vehicle position, nearest projection on the remaining waypoints, then later waypoints. This
 makes the short lookaheads lead back toward the old route. There is no visibility or collision
 check on the segment from the vehicle to that projection. Reprojection can also jump forward

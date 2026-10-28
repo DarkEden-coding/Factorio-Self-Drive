@@ -27,20 +27,20 @@ local function target(player,position,surface)
   end
   local ok,state=pcall(driver.start,vehicle,position)
   if not ok then player.print("Autodrive: "..tostring(state)); return end
-  state.profile=settings.global["fsim-autodrive-profile"].value
+  state.profile=settings.global["factorio-autodrive-profile"].value
   storage.autodrive[player.index]=state
   player.print("Autodrive: finding a path. Movement keys hand control back.")
 end
 local function tool(event)
   local player=game.get_player(event.player_index)
-  if player and player.clear_cursor() then player.cursor_stack.set_stack({name="fsim-autodrive-target"}) end
+  if player and player.clear_cursor() then player.cursor_stack.set_stack({name="factorio-autodrive-target"}) end
 end
-script.on_event("fsim-autodrive-tool",tool)
+script.on_event("factorio-autodrive-tool",tool)
 script.on_event(defines.events.on_lua_shortcut,function(event)
-  if event.prototype_name=="fsim-autodrive-target" then tool(event) end
+  if event.prototype_name=="factorio-autodrive-target" then tool(event) end
 end)
 local function select(event)
-  if event.item=="fsim-autodrive-target" then
+  if event.item=="factorio-autodrive-target" then
     local player=game.get_player(event.player_index)
     target(player,event.cursor_position,event.surface)
   end
@@ -57,9 +57,9 @@ local function pause(event)
   end
 end
 for _,control in ipairs({"move-up","move-down","move-left","move-right"}) do
-  script.on_event("fsim-autodrive-override-"..control,pause)
+  script.on_event("factorio-autodrive-override-"..control,pause)
 end
-script.on_event("fsim-autodrive-resume",function(event)
+script.on_event("factorio-autodrive-resume",function(event)
   local player=game.get_player(event.player_index)
   local s=storage.autodrive[event.player_index]
   if s then target(player,s.target) else tool(event) end
@@ -74,7 +74,7 @@ commands.add_command("autodrive","<x> <y> or stop",function(event)
 end)
 commands.add_command("autodrive-dump","Write a parity snapshot of the current route and state",function(event)
   local s=event.player_index and storage.autodrive[event.player_index]
-  if s and s.status=="driving" then driver.dump(s,"fsim-autodrive/parity-"..event.player_index..".json") end
+  if s and s.status=="driving" then driver.dump(s,"factorio-autodrive/parity-"..event.player_index..".json") end
 end)
 local function dirty(event)
   local entity=event.entity
@@ -97,7 +97,7 @@ script.on_event(defines.events.on_tick,function()
     else
       local result=driver.tick(s)
       if result then player.print("Autodrive: "..result..".") end
-      if game.tick%12==0 and settings.get_player_settings(player)["fsim-autodrive-overlay"].value then overlay.draw(s,player) end
+      if game.tick%12==0 and settings.get_player_settings(player)["factorio-autodrive-overlay"].value then overlay.draw(s,player) end
     end
   end
 end)

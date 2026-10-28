@@ -67,6 +67,6 @@ def build(model_path, destination):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--model', type=Path, default=DEFAULT)
-    parser.add_argument('--output', type=Path, default=ROOT / 'mod/fsim-autodrive')
+    parser.add_argument('--output', type=Path, default=ROOT / 'mod/factorio-autodrive')
     args = parser.parse_args()
     build(args.model, args.output)

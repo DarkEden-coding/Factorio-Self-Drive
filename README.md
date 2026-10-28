@@ -5,7 +5,7 @@ Autodrive mod, simulator and RL training tools for the Factorio car and tank. Se
 ## Autodrive mod
 
 The standalone mod supports Factorio 2.1.23 or newer in the 2.1 series.
-See [controls and settings](mod/fsim-autodrive/README.md) and
+See [controls and settings](mod/factorio-autodrive/README.md) and
 [planner documentation](docs/autodrive-mod.md). Diagnostic lines are hidden by
 default and can be enabled in per-player mod settings.
 
@@ -15,7 +15,7 @@ Build the mod portal upload with:
 python3 scripts/package-autodrive.py
 ```
 
-The ZIP is written to `dist/fsim-autodrive_0.7.1.zip`. It contains the standalone
+The ZIP is written to `dist/factorio-autodrive_0.7.1.zip`. It contains the standalone
 mod only, including Lua weights, locale, player documentation and changelog.
 Upload it through the Factorio mod portal, or copy it into your Factorio `mods`
 directory. The simulator, training tools, test fixtures and copied game assets

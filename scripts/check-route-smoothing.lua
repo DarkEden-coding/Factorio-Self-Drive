@@ -1,5 +1,5 @@
 if not bit32 then bit32={band=assert(load('return function(a,b) return a & b end'))()} end
-package.path='mod/fsim-autodrive/?.lua;'..package.path
+package.path='mod/factorio-autodrive/?.lua;'..package.path
 local smooth=require('route-smoothing')
 local p={{x=0.5,y=0.5}}
 for i=1,10 do p[#p+1]={x=i+0.5,y=i+0.5} end

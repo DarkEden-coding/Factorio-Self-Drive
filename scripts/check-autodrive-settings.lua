@@ -3,11 +3,11 @@ local defaults={}
 data={extend=function(_,entries)
   for _,entry in ipairs(entries) do defaults[entry.name]=entry.default_value end
 end}
-dofile('mod/fsim-autodrive/settings.lua')
-assert(defaults['fsim-autodrive-overlay']==false,'diagnostics must default off')
-local enabled=defaults['fsim-autodrive-overlay']
+dofile('mod/factorio-autodrive/settings.lua')
+assert(defaults['factorio-autodrive-overlay']==false,'diagnostics must default off')
+local enabled=defaults['factorio-autodrive-overlay']
 local draws=0
-package.path='mod/fsim-autodrive/?.lua;'..package.path
+package.path='mod/factorio-autodrive/?.lua;'..package.path
 package.loaded.driver={tick=function() end}
 package.loaded.vehicle={}
 rendering={draw_line=function() draws=draws+1 end,draw_circle=function() draws=draws+1 end}
@@ -17,14 +17,14 @@ player.physical_vehicle=vehicle
 local state={vehicle=vehicle,target={x=2,y=2},route={{x=0,y=0},{x=2,y=2}}}
 storage={autodrive={[1]=state}}
 game={tick=12,get_player=function() return player end}
-settings={get_player_settings=function() return {['fsim-autodrive-overlay']={value=enabled}} end}
+settings={get_player_settings=function() return {['factorio-autodrive-overlay']={value=enabled}} end}
 local handlers={}
 defines={events=setmetatable({},{__index=function(_,name) return name end})}
 script={on_init=function() end,on_configuration_changed=function() end,
   on_event=function(event,handler) handlers[event]=handler end}
 commands={add_command=function() end}
 remote={add_interface=function() error('production must not register a test interface') end}
-dofile('mod/fsim-autodrive/control.lua')
+dofile('mod/factorio-autodrive/control.lua')
 handlers.on_tick()
 assert(draws==0,'default setting drew diagnostics')
 enabled=true

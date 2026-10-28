@@ -1,0 +1,11 @@
+{
+  "name": "factorio-autodrive",
+  "version": "0.7.1",
+  "title": "Factorio Autodrive",
+  "author": "Fsim",
+  "factorio_version": "2.1",
+  "dependencies": [
+    "base >= 2.1.23"
+  ],
+  "description": "Let a trained reinforcement learning model drive your car or tank along dynamic paths. Pick a destination in the world or on the map, and take over anytime with the movement keys."
+}

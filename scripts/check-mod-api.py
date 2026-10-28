@@ -102,7 +102,7 @@ class Audit:
 
     def file(self, path):
         ts = tokens(path.read_text())
-        autodrive = path.parent.name == 'fsim-autodrive'
+        autodrive = path.parent.name == 'factorio-autodrive'
         # Event callbacks in autodrive deliberately share helpers. Validate the
         # union of documented event fields; individual callback wiring is also
         # exercised by its isolated engine harness.
@@ -273,7 +273,7 @@ def main():
         paths = sorted(args.mod.glob('*.lua'))
         if args.mod.name == 'fsim-export':
             paths += sorted((args.mod.parent / 'fsim-autorun').glob('*.lua'))
-            paths += sorted((args.mod.parent / 'fsim-autodrive').glob('*.lua'))
+            paths += sorted((args.mod.parent / 'factorio-autodrive').glob('*.lua'))
         sources = [audit.file(path) for path in paths]
         # All prototype type strings in filters, the kind map and data:extend.
         types = {p['typename'] for p in prototype['prototypes'] if 'typename' in p}

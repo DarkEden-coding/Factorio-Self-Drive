@@ -17,4 +17,4 @@ script.on_event({defines.events.on_entity_died,defines.events.on_player_mined_en
     driver.dirty(s,entity.position)
   end
 end)
-remote.add_interface("fsim-autodrive-test",{start=function(options) test_runner.start(options) end})
+remote.add_interface("factorio-autodrive-test",{start=function(options) test_runner.start(options) end})

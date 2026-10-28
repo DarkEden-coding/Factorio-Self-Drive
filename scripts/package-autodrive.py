@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def package(output):
-    source = ROOT / "mod/fsim-autodrive"
+    source = ROOT / "mod/factorio-autodrive"
     info = json.loads((source / "info.json").read_text())
     name = f'{info["name"]}_{info["version"]}'
     # Ship runtime Lua and player documentation only. Never include repository

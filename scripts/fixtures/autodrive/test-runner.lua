@@ -5,7 +5,7 @@ local grid=require("grid")
 local u=require("math-util")
 local M={}
 local function write(name,value)
-  helpers.write_file("fsim-autodrive/"..name..".json",helpers.table_to_json(value),false)
+  helpers.write_file("factorio-autodrive/"..name..".json",helpers.table_to_json(value),false)
 end
 local cases={}
 local function make_cases(long,filter)
@@ -38,11 +38,11 @@ function M.start(options)
   assert(#cases>0,"Unknown test fixture")
   assert(not storage.autodrive_test,"Test already running")
   assert(#game.players==0,"Run tests only in a playerless disposable save")
-  local force=game.create_force("fsim-autodrive-test")
+  local force=game.create_force("factorio-autodrive-test")
   local width,height=long and 1024 or 256,long and 512 or 256
-  local flat=game.create_surface("fsim-autodrive-flat",{width=width,height=height,seed=seed,
+  local flat=game.create_surface("factorio-autodrive-flat",{width=width,height=height,seed=seed,
     peaceful_mode=true,no_enemies_mode=true,default_enable_all_autoplace_controls=false})
-  local real=game.create_surface("fsim-autodrive-real",{width=width,height=height,seed=seed,
+  local real=game.create_surface("factorio-autodrive-real",{width=width,height=height,seed=seed,
     peaceful_mode=true,no_enemies_mode=true})
   storage.autodrive_test={phase="prepare",chunk=0,surface_index=1,surfaces={flat,real},force=force,
     index=1,results={},exports={},seed=seed,long=long,case=options and options.case,save_reload=options and options.save_reload,nx=width/32,ny=height/32}
