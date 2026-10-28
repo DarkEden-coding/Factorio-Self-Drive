@@ -1,5 +1,17 @@
 # In-game autodrive
 
+Version 0.7.1 hides diagnostic lines by default and removes engine verification
+fixtures from the gameplay mod. Enable **Show autodrive diagnostic lines** in
+**Settings > Mod settings > Per player** to display them. Existing saves retain
+previously saved preferences.
+
+Release checks on Factorio 2.1.23 passed on 2026-10-28: Lua syntax and API-name
+audit, overlay default and runtime toggle checks, planner regression scripts,
+and 14 Python script tests including ZIP contents and reproducibility. The
+isolated `tank-obstacles40` engine fixture arrived with zero damage and produced
+identical results after save/reload. Interactive settings UI and multiplayer
+were not exercised by these checks.
+
 Version 0.7.0 extends and refines a cached any-angle corridor while driving. It retains the
 `field-smooth-v1` controller, 135 inputs and spec hash `d1c084cc679f1f71`. The destination and
 trip clock stay fixed across field handoffs. On the paired long-trip suite, the planner
@@ -184,13 +196,20 @@ from its JSON APIs. API auditing is a name/record check, not a type checker.
 - Save/load has not been verified end to end. An extra private-server checkpoint attempt failed because its disposable saves directory was missing. The runner now creates that directory and offers `--save-reload`, but that extra test was not rerun after the request to finish. Production state uses serializable storage tables and entity handles; profiler objects are never stored.
 - The model can still become pinned against rocks or cliffs, as documented in `student-results.md`. Timeout or stall ends the attempt and holds brake until manual input or a new target.
 
-## Installation
+## Installation and release packaging
 
-Installed and enabled as `~/Library/Application Support/factorio/mods/fsim-autodrive_0.7.0`,
-a symlink to this repository (earlier version links removed). Factorio was not running when enabling the mod.
-All existing mod-list entries were preserved. Backup:
+Build the standalone mod portal upload:
 
-`~/Library/Application Support/factorio/mods/mod-list.json.autodrive-backup-20261027-142319`
+```sh
+python3 scripts/package-autodrive.py
+```
 
-No user saves were touched. All started Factorio processes were terminated and reaped.
-The repository now tracks the mod source and generated Lua weights.
+Copy `dist/fsim-autodrive_0.7.1.zip` into Factorio's `mods` directory or upload
+it to the mod portal. Remove duplicate unpacked copies of the same mod from
+your local `mods` directory before installing the ZIP. Restart Factorio after
+changing mod files. See the [player guide](../mod/fsim-autodrive/README.md).
+
+The release contains runtime Lua, generated weights and geometry, locale, player
+documentation and changelog. Engine test fixtures stay under
+`scripts/fixtures/autodrive/` and are injected only into the disposable mod copy
+created by `scripts/test-autodrive.py`.

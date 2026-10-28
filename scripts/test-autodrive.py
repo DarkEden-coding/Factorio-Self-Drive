@@ -44,7 +44,13 @@ def timings(path):
 def run(args,temp):
     mods,write=temp/'mods',temp/'write'
     mods.mkdir();write.mkdir();(write/"saves").mkdir()
-    shutil.copytree(args.mod_source,mods/'fsim-autodrive')
+    staged = mods/'fsim-autodrive'
+    shutil.copytree(args.mod_source,staged)
+    # Install verification hooks only in the disposable copy of the mod.
+    fixtures = ROOT/'scripts/fixtures/autodrive'
+    shutil.copyfile(fixtures/'test-runner.lua',staged/'test-runner.lua')
+    with (staged/'control.lua').open('a') as control:
+        control.write('\n'+(fixtures/'control.lua').read_text())
     companion=mods/'fsim-autodrive-verify';companion.mkdir()
     (companion/'info.json').write_text(json.dumps(dict(name='fsim-autodrive-verify',version='0.1.0',
         title='Isolated autodrive verification',author='Fsim',factorio_version='2.1',

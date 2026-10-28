@@ -1,5 +1,4 @@
 local driver=require("driver")
-local test_runner=require("test-runner")
 local vehicle_api=require("vehicle")
 local overlay=require("overlay")
 local function init() storage.autodrive=storage.autodrive or {} end
@@ -80,10 +79,6 @@ end)
 local function dirty(event)
   local entity=event.entity
   if not entity or not entity.valid then return end
-  if storage.autodrive_test and storage.autodrive_test.state then
-    local s=storage.autodrive_test.state
-    if s.vehicle.valid and s.vehicle.surface==entity.surface then driver.dirty(s,entity.position) end
-  end
   for _,s in pairs(storage.autodrive) do
     if s.vehicle.valid and s.vehicle.surface==entity.surface then driver.dirty(s,entity.position) end
   end
@@ -92,7 +87,6 @@ script.on_event({defines.events.on_entity_died,defines.events.on_player_mined_en
   defines.events.on_robot_mined_entity,defines.events.script_raised_destroy},dirty)
 script.on_event(defines.events.on_script_path_request_finished,function(event)
   for _,s in pairs(storage.autodrive) do driver.on_path(s,event) end
-  if storage.autodrive_test and storage.autodrive_test.state then driver.on_path(storage.autodrive_test.state,event) end
 end)
 script.on_event(defines.events.on_tick,function()
   for index,s in pairs(storage.autodrive) do
@@ -106,7 +100,4 @@ script.on_event(defines.events.on_tick,function()
       if game.tick%12==0 and settings.get_player_settings(player)["fsim-autodrive-overlay"].value then overlay.draw(s,player) end
     end
   end
-  if storage.autodrive_test then test_runner.tick() end
 end)
--- Explicit opt-in verification only; never creates test surfaces in normal play.
-remote.add_interface("fsim-autodrive-test",{start=function(options) test_runner.start(options) end})

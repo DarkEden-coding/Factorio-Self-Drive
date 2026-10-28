@@ -1,11 +1,11 @@
 {
   "name": "fsim-autodrive",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "title": "Fsim autodrive",
   "author": "Fsim",
   "factorio_version": "2.1",
   "dependencies": [
     "base >= 2.1.23"
   ],
-  "description": "Car and tank autodrive with cached progressive any-angle route planning. Extends verified guidance while driving, refines distant sections, and keeps nearby guidance stable."
+  "description": "Autodrive for cars and tanks. Select a destination in the world or on the map, and the vehicle plans a route and drives there. Movement keys return manual control. Optional diagnostic lines are available in mod settings."
 }
