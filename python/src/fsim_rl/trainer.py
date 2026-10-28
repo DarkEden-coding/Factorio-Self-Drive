@@ -21,6 +21,7 @@ from .evaluate import scenario_names
 from .logger import RunLogger
 from .models import build_model
 from .models.reactive import NUM_ACTIONS
+from .models.student import widen_steer_head
 from .models.direct_plan import plan_consistency_targets
 from .ppo import ppo_update
 from .rollout import RolloutBuffer
@@ -119,8 +120,14 @@ class Trainer:
             raise SystemExit(
                 f"checkpoint spec_hash {state['spec_hash']} != env spec_hash {self.env.spec_hash}"
             )
+        model_state = state["model"]
+        steer_levels = self.config.env.steer_levels
+        if allow_route_change and steer_levels != state["config"]["env"].get("steer_levels", 1):
+            if state["config"]["env"].get("steer_levels", 1) != 1:
+                raise SystemExit("only a classic (steer_levels = 1) checkpoint can be widened")
+            model_state = widen_steer_head(model_state, steer_levels)
         try:
-            self.model.load_state_dict(state["model"])
+            self.model.load_state_dict(model_state)
         except RuntimeError as exc:
             raise SystemExit(f"checkpoint weights do not fit config.model: {exc}") from exc
         return state
@@ -212,7 +219,8 @@ class Trainer:
             extra["teacher_log_probs"] = self.teacher_log_probs
         batch = self.buffer.flatten(extra)
         self.model.train()
-        stats = ppo_update(self.model, self.optimizer, batch, self.config.ppo, self.generator)
+        stats = ppo_update(self.model, self.optimizer, batch, self.config.ppo, self.generator,
+                          self.config.env.steer_levels)
         # Normalizer stats change only between iterations so each update sees fixed inputs.
         self.model.update_normalizer(batch["obs"])
         return stats

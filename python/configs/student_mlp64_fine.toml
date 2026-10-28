@@ -1,0 +1,21 @@
+# Fine-tune of the steady student with partial-strength steering: each decision steers 0-4 of its
+# 4 ticks per side (27 actions), so turns can be finer than the 4-tick bang-bang step.
+# OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 uv run fsim-rl train \
+#   --config configs/student_mlp64_fine.toml --set device=auto \
+#   --init-from runs/students/field-steady-v1/checkpoints/latest.pt --run-name students/field-fine-v1
+# The classic 9-action head is widened by `widen_steer_head`; the observation is unchanged.
+base = "student_mlp64_steady.toml"
+
+[env]
+steer_levels = 4
+
+[env.reward]
+heading_error = -0.2   # per radian between the heading and the route 8 tiles ahead
+
+[ppo]
+total_steps = 6_000_000
+learning_rate = 5e-5
+ent_coef = 0.01
+# Cross-entropy toward turning onto the 8-tile route lookahead on open ground. 0.2-0.5 makes partial
+# turns appear but cost about 10% time on short trips (docs/rl.md, "Partial steering"); 0 leaves PPO alone.
+steer_prior_coef = 0.0

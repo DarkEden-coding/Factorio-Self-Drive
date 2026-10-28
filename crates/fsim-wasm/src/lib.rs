@@ -82,6 +82,7 @@ impl EpisodeRequest {
         EpisodeRules {
             mode: self.mode.unwrap_or(d.mode),
             decision_ticks: self.decision_ticks.unwrap_or(d.decision_ticks),
+            steer_levels: d.steer_levels,
             gamma: self.gamma.unwrap_or(d.gamma),
             reward: self.reward.unwrap_or(d.reward),
             time_limit: self.time_limit.unwrap_or(d.time_limit),
@@ -113,6 +114,7 @@ impl RulesRequest {
         EpisodeRules {
             mode: self.mode.unwrap_or(base.mode),
             decision_ticks: self.decision_ticks.unwrap_or(base.decision_ticks),
+            steer_levels: base.steer_levels,
             gamma: self.gamma.unwrap_or(base.gamma),
             reward: self.reward.unwrap_or(base.reward),
             time_limit: self.time_limit.unwrap_or(base.time_limit),

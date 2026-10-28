@@ -12,10 +12,10 @@ use crate::{
     reward::{RewardTerms, TERMS},
     rl_config::{
         validate_scenarios, validate_target, ArrivalRules, EpisodeRules, FieldConfig, Mode,
-        RewardWeights, RlConfig, RouteSource, Scenario, TimeLimit, SCENARIOS,
+        RewardWeights, RlConfig, RouteSource, Scenario, TimeLimit, HEADING_LOOKAHEAD, SCENARIOS,
     },
-    rl_episode::{Ctx, Episode, EpisodeSetup, Point, Pose, Status},
-    sampler,
+    rl_episode::{action_count, widen_action, Ctx, Episode, EpisodeSetup, Point, Pose, Status},
+    sampler, student_obs,
     vehicle::Vehicles,
     world::World,
 };
@@ -124,6 +124,8 @@ pub struct EpisodeRecord {
     pub radius: f64,
     pub mode: Mode,
     pub decision_ticks: u32,
+    #[serde(default = "one")]
+    pub steer_levels: u32,
     pub gamma: f64,
     pub reward: RewardWeights,
     pub time_limit: TimeLimit,
@@ -152,6 +154,7 @@ impl EpisodeRecord {
         EpisodeRules {
             mode: self.mode,
             decision_ticks: self.decision_ticks,
+            steer_levels: self.steer_levels,
             gamma: self.gamma,
             reward: self.reward,
             time_limit: self.time_limit,
@@ -184,6 +187,7 @@ impl EpisodeRecord {
             radius: s.radius,
             mode: r.mode,
             decision_ticks: r.decision_ticks,
+            steer_levels: r.steer_levels,
             gamma: r.gamma,
             reward: r.reward,
             time_limit: r.time_limit,
@@ -482,6 +486,26 @@ impl Env {
         }
     }
 
+    /// Angle in radians between the heading and the route point `HEADING_LOOKAHEAD` tiles ahead;
+    /// zero when not driving forward in reactive mode.
+    fn heading_error(&self, rules: &EpisodeRules) -> f64 {
+        let v = &self.vehicles;
+        if rules.mode != Mode::Reactive || v.speed[0] < 0.02 {
+            return 0.0;
+        }
+        let (x, y) = (v.x[0], v.y[0]);
+        let target = [self.episode.setup.target.x, self.episode.setup.target.y];
+        let route = if self.route_source == RouteSource::FieldSmooth {
+            self.episode.field.smooth_route(x, y, target)
+        } else {
+            self.episode.field.route(x, y, target)
+        };
+        let ahead = student_obs::point_along(&route, HEADING_LOOKAHEAD);
+        let (sin, cos) = (v.orientation[0] * std::f64::consts::TAU).sin_cos();
+        let (px, py) = (ahead[0] - x, ahead[1] - y);
+        (sin * py + cos * px).atan2(sin * px - cos * py).abs()
+    }
+
     fn write_obs(&mut self, data: &Prototypes, out: ObsMut<'_>) {
         let route = match (&mut self.path, out.student.is_empty()) {
             (_, false)
@@ -510,7 +534,7 @@ impl Env {
     }
 
     fn decide(&mut self, data: &Prototypes, action: i64) -> Result<RewardTerms, String> {
-        let action = u8::try_from(action).map_err(|_| "action index must be 0..9")?;
+        let action = u8::try_from(action).map_err(|_| "action index must be 0..255")?;
         let ctx = Ctx {
             data,
             raster: &self.map.raster,
@@ -563,7 +587,7 @@ impl Env {
                 overlay.waypoints = Some(plan.waypoints().to_vec());
                 loop {
                     let a = plan.action(data, &self.vehicles, rules.decision_ticks);
-                    let terms = self.decide(data, a as i64)?;
+                    let terms = self.decide(data, widen_action(a, rules.steer_levels) as i64)?;
                     sum.add_scaled(&terms, scale);
                     scale *= rules.gamma;
                     executed += 1;
@@ -572,6 +596,9 @@ impl Env {
                     }
                 }
             }
+        }
+        if rules.reward.heading_error != 0.0 && !self.episode.status.done() {
+            sum.heading_error = rules.reward.heading_error * self.heading_error(rules);
         }
         if shared.recording {
             self.overlays.push(overlay);
@@ -637,11 +664,10 @@ impl Env {
 
     fn baseline(&self, data: &Prototypes, rules: &EpisodeRules) -> OwnedActions {
         match rules.mode {
-            Mode::Reactive => {
-                OwnedActions::Discrete(vec![
-                    baseline::action(data, &self.episode, &self.vehicles) as i64
-                ])
-            }
+            Mode::Reactive => OwnedActions::Discrete(vec![widen_action(
+                baseline::action(data, &self.episode, &self.vehicles),
+                rules.steer_levels,
+            ) as i64]),
             Mode::DirectPlan => OwnedActions::Discrete(
                 baseline::plan(
                     data,
@@ -651,7 +677,7 @@ impl Env {
                     rules.direct_plan.horizon,
                 )
                 .into_iter()
-                .map(i64::from)
+                .map(|a| i64::from(widen_action(a, rules.steer_levels)))
                 .collect(),
             ),
             Mode::PathPlanner => OwnedActions::Waypoints(
@@ -845,8 +871,9 @@ impl VecEnv {
             }
         };
         if let Actions::Reactive(a) | Actions::DirectPlan(a) = actions {
-            if a.iter().any(|a| !(0..9).contains(a)) {
-                return Err("action index must be 0..9".into());
+            let count = action_count(self.rules.steer_levels) as i64;
+            if a.iter().any(|a| !(0..count).contains(a)) {
+                return Err(format!("action index must be 0..{count}"));
             }
         }
         let outs = obs.split(n, &self.config)?;
@@ -969,6 +996,10 @@ fn splitmix(seed: u64) -> u64 {
     z = (z ^ (z >> 30)).wrapping_mul(0xbf58476d1ce4e5b9);
     z = (z ^ (z >> 27)).wrapping_mul(0x94d049bb133111eb);
     z ^ (z >> 31)
+}
+
+fn one() -> u32 {
+    1
 }
 
 fn is_zero(x: &f64) -> bool {

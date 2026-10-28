@@ -418,7 +418,7 @@ pub fn write_student(src: ObsSource<'_>, out: &mut [f32]) -> usize {
 }
 
 /// The point at arc length `s` along a polyline, or its end if shorter.
-fn point_along(points: &[[f64; 2]], s: f64) -> [f64; 2] {
+pub fn point_along(points: &[[f64; 2]], s: f64) -> [f64; 2] {
     let mut left = s;
     for w in points.windows(2) {
         let [a, b] = [w[0], w[1]];

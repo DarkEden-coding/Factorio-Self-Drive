@@ -8,7 +8,7 @@ import torch
 from fsim_rl.config import CONFIG_DIR, load_config
 from fsim_rl.distill import distill_loss
 from fsim_rl.models import build_model
-from fsim_rl.models.student import inference_cost
+from fsim_rl.models.student import inference_cost, widen_steer_head
 from fsim_rl.obs import ObsShapes
 from fsim_rl import student_ref
 from fsim_rl.student_export import export_student
@@ -31,6 +31,21 @@ def test_actor_cost_counts_only_the_shipped_layers():
     conv, _ = student("student_conv")
     # 3x32 -k5-> 8x32 -k3 s2-> 8x16, flattened with the 39 non-ray features.
     assert inference_cost(conv)["macs"] == 32 * 8 * 3 * 5 + 16 * 8 * 8 * 3 + (128 + 39) * 64 + 64 * 64 + 64 * 9
+
+
+def test_widened_steer_head_keeps_classic_actions_and_demotes_partial_strengths():
+    classic, config = student("student_mlp32")
+    wide = build_model(load_config(CONFIG_DIR / "student_mlp32.toml", {"device": "cpu", "env": {"steer_levels": 4}}),
+                       ObsShapes(student=SIZE))
+    wide.load_state_dict(widen_steer_head(classic.state_dict(), 4))
+    obs = {"student": torch.randn(8, SIZE)}
+    classic.update_normalizer(obs)
+    wide.norm.load_state_dict(classic.norm.state_dict())
+    with torch.no_grad():
+        old = classic.policy_logits(classic.normalized(obs)).view(8, 3, 3)
+        new = wide.policy_logits(wide.normalized(obs)).view(8, 3, 9)
+    for strength, source, offset in [(-4, 0, 0), (0, 1, 0), (4, 2, 0), (-2, 0, 1), (3, 2, 1)]:
+        assert torch.allclose(new[:, :, strength + 4], old[:, :, source] - offset, atol=1e-5)
 
 
 def test_distill_loss_is_zero_at_the_teacher_and_training_reduces_it():

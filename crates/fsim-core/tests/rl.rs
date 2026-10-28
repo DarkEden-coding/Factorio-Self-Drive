@@ -196,6 +196,73 @@ fn path_length_reward_charges_actual_forward_and_reverse_travel() {
 }
 
 #[test]
+fn steer_change_reward_charges_steps_between_consecutive_decisions() {
+    let mut c = config(Mode::Reactive, "car");
+    c.reward.steer_change = -0.1;
+    let term = fsim_core::reward::TERMS
+        .iter()
+        .position(|t| *t == "steer_change")
+        .unwrap();
+    let mut e = env(c, 1, 17);
+    let mut b = Buffers::new(1);
+    b.reset(&mut e);
+    // The first decision has no predecessor; then left->left, left->right, right->straight.
+    let steps = [(-1, 0.0), (-1, 0.0), (1, -0.2), (0, -0.1)];
+    for (steer, expected) in steps {
+        let info = b.step(&mut e, Actions::Reactive(&[encode_action(1, steer) as i64]));
+        assert!((info[0].terms[term] - expected).abs() < 1e-6);
+    }
+}
+
+#[test]
+fn partial_steering_turns_in_fine_steps_and_full_strength_matches_classic_steering() {
+    // Heading change of the last decision, after four identical straight accelerations.
+    let turn = |levels: u32, steer: i32| {
+        let mut c = config(Mode::Reactive, "car");
+        c.steer_levels = levels;
+        let mut e = env(c, 1, 17);
+        let mut b = Buffers::new(1);
+        b.reset(&mut e);
+        let straight = fsim_core::rl_episode::widen_action(encode_action(1, 0), levels);
+        let mut last = 0.0;
+        for _ in 0..8 {
+            last = b.step(&mut e, Actions::Reactive(&[straight as i64]))[0].orientation as f64;
+        }
+        let action = (2 * levels as i32 + 1) * 2 + steer + levels as i32;
+        let after = b.step(&mut e, Actions::Reactive(&[action as i64]))[0].orientation as f64;
+        (after - last + 0.5).rem_euclid(1.0) - 0.5
+    };
+    let classic = turn(1, 1);
+    let (full, half, quarter) = (turn(4, 4), turn(4, 2), turn(4, 1));
+    assert!(classic > 0.0 && (full - classic).abs() < 1e-6);
+    assert!(0.0 < quarter && quarter < half && half < full);
+    assert!((half / full - 0.5).abs() < 0.1 && (quarter / full - 0.25).abs() < 0.1);
+    assert!(turn(4, -2) < 0.0);
+}
+
+#[test]
+fn heading_error_reward_is_a_bounded_cost_only_while_driving_forward() {
+    let mut c = config(Mode::Reactive, "car");
+    c.reward.heading_error = -1.0;
+    let term = fsim_core::reward::TERMS
+        .iter()
+        .position(|t| *t == "heading_error")
+        .unwrap();
+    let mut e = env(c, 1, 17);
+    let mut b = Buffers::new(1);
+    b.reset(&mut e);
+    let mut costs = Vec::new();
+    for _ in 0..24 {
+        let info = b.step(&mut e, Actions::Reactive(&[encode_action(1, 0) as i64]));
+        costs.push((info[0].speed, info[0].terms[term]));
+    }
+    assert!(costs
+        .iter()
+        .all(|(_, c)| (-std::f32::consts::PI..=0.0).contains(c)));
+    assert!(costs.iter().any(|(speed, c)| *speed > 0.02 && *c < 0.0));
+}
+
+#[test]
 fn reward_terms_sum_to_reward_and_macro_steps_discount() {
     let mut c = config(Mode::DirectPlan, "car");
     c.gamma = 0.9;

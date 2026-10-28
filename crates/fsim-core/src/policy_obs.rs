@@ -5,7 +5,7 @@ use crate::{
     physics,
     prototypes::Prototypes,
     raster::{MapRaster, RasterPatches, OFF_MAP},
-    rl_episode::{Episode, ACTIONS},
+    rl_episode::{classic_action, Episode, ACTIONS},
     vehicle::Vehicles,
     world::World,
 };
@@ -380,7 +380,7 @@ pub fn write_vector(src: ObsSource<'_>, out: &mut [f32]) {
     let b = p.collision_box;
     let mut prev = [0.0; ACTIONS];
     if let Some(a) = episode.prev_action() {
-        prev[a as usize] = 1.0;
+        prev[classic_action(a, episode.rules.steer_levels) as usize] = 1.0;
     }
     let kmh = |speed: f64| speed * 216.0 / 100.0;
     let distance = |d: f64| (d / DISTANCE_SCALE).clamp(0.0, 8.0);

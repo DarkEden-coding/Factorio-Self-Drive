@@ -119,6 +119,11 @@ pub struct RewardWeights {
     pub target_speed: f64,
     /// Per tile actually traveled; zero preserves existing training rewards.
     pub path_length: f64,
+    /// Per steering step changed from the previous decision (left to right is 2); zero disables.
+    pub steer_change: f64,
+    /// Per radian between the heading and the point `HEADING_LOOKAHEAD` tiles along the route,
+    /// charged after each forward decision (reactive mode); zero disables.
+    pub heading_error: f64,
 }
 
 impl Default for RewardWeights {
@@ -134,6 +139,8 @@ impl Default for RewardWeights {
             arrival: 2.0,
             target_speed: -1.0,
             path_length: 0.0,
+            steer_change: 0.0,
+            heading_error: 0.0,
         }
     }
 }
@@ -234,6 +241,10 @@ impl Default for ArrivalRules {
 pub struct EpisodeRules {
     pub mode: Mode,
     pub decision_ticks: u32,
+    /// Steering strengths per side: strength `k` steers the first `k * decision_ticks /
+    /// steer_levels` ticks of a decision and holds straight for the rest. 1 is the classic
+    /// left/straight/right (9 actions); it must divide `decision_ticks`.
+    pub steer_levels: u32,
     pub gamma: f64,
     pub reward: RewardWeights,
     pub time_limit: TimeLimit,
@@ -248,6 +259,7 @@ impl Default for EpisodeRules {
         Self {
             mode: Mode::Reactive,
             decision_ticks: 4,
+            steer_levels: 1,
             gamma: 0.99,
             reward: RewardWeights::default(),
             time_limit: TimeLimit::default(),
@@ -264,6 +276,8 @@ impl EpisodeRules {
         let d = &self.direct_plan;
         let p = &self.path_planner;
         if self.decision_ticks == 0
+            || !(1..=self.decision_ticks).contains(&self.steer_levels)
+            || !self.decision_ticks.is_multiple_of(self.steer_levels)
             || !(0.0..=1.0).contains(&self.gamma)
             || d.horizon == 0
             || d.execute == 0
@@ -305,6 +319,9 @@ impl EpisodeRules {
     }
 }
 
+/// Route distance of the point whose bearing the `heading_error` reward measures.
+pub const HEADING_LOOKAHEAD: f64 = 8.0;
+
 /// The VecEnv `config_json` from docs/rl.md.
 #[derive(Clone, Debug, Deserialize, Serialize, PartialEq)]
 #[serde(default, deny_unknown_fields)]
@@ -313,6 +330,7 @@ pub struct RlConfig {
     pub split: Split,
     pub mode: Mode,
     pub decision_ticks: u32,
+    pub steer_levels: u32,
     pub gamma: f64,
     pub vehicle_mix: Vec<VehicleChoice>,
     pub target: TargetConfig,
@@ -338,6 +356,7 @@ impl Default for RlConfig {
             split: Split::Train,
             mode: rules.mode,
             decision_ticks: rules.decision_ticks,
+            steer_levels: rules.steer_levels,
             gamma: rules.gamma,
             vehicle_mix: vec![VehicleChoice {
                 vehicle: "car".into(),
@@ -388,6 +407,7 @@ impl RlConfig {
         EpisodeRules {
             mode: self.mode,
             decision_ticks: self.decision_ticks,
+            steer_levels: self.steer_levels,
             gamma: self.gamma,
             reward: self.reward,
             time_limit: self.time_limit,

@@ -126,6 +126,8 @@ Per decision step, weights from `reward` config (defaults in brackets):
 | `progress` [0.1] | per tile of path-distance decrease (negative when moving away) |
 | `time` [-0.005] | per decision step |
 | `path_length` [0.0] | per tile actually traveled during the decision, including reverse travel |
+| `steer_change` [0.0] | per steering step changed from the previous decision (left to right is 2) |
+| `heading_error` [0.0] | reactive mode: per radian between the heading and the route point 8 tiles ahead, after each decision driven forward |
 | `damage` [-5.0] | times damage taken / max health |
 | `collision` [-0.2] | per decision step with a new collision event |
 | `nest_zone` [-0.15] | per decision step with the vehicle center inside a nest penalty radius |
@@ -345,6 +347,18 @@ ray tile, worst-case ray tiles unless `--ray-tiles` is given).
 
 `decision_ticks` (default 4) ticks per decision. The 9 discrete actions are
 `index = (throttle + 1) * 3 + (steer + 1)`, throttle and steer in {-1, 0, 1}.
+
+### Partial steering (`steer_levels`)
+
+`steer_levels = L` (default 1; must divide `decision_ticks`) gives each side L steering strengths.
+There are `3 * (2L + 1)` actions, `index = (throttle + 1) * (2L + 1) + steer + L` with steer in
+-L..L. Strength k steers the first `k * decision_ticks / L` ticks of the decision and holds
+straight for the rest, so L = 4 turns in 1-tick steps instead of the 4-tick step (about 15 degrees
+for the car at 104 km/h). `steer_change` is scaled by 1/L; the previous-action features and the
+exported `spec_hash` keep the classic 9-way layout (throttle and the sign of the steering).
+`widen_steer_head` warm-starts an L-level student from a classic checkpoint. The game still
+snaps the heading to the 45-degree axes when not steering, which undoes about half of the
+1-tick turns made near an axis. The viewer and the mod only support `steer_levels = 1`.
 
 | Mode | Action per env step | What the env executes |
 |---|---|---|

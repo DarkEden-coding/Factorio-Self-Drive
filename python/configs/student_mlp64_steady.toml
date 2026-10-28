@@ -1,0 +1,13 @@
+# Short PPO fine-tune of the smooth-route student that charges for steering changes, to cut
+# left/right chatter while keeping the task, observation and actor unchanged.
+# OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 uv run fsim-rl train \
+#   --config configs/student_mlp64_steady.toml --set device=auto \
+#   --init-from runs/students/field-smooth-v1/checkpoints/latest.pt --run-name students/field-steady-v1
+base = "student_mlp64_smooth.toml"
+
+[env.reward]
+steer_change = -0.02   # per steering step changed (left to right costs two)
+
+[ppo]
+total_steps = 3_000_000
+learning_rate = 3e-5

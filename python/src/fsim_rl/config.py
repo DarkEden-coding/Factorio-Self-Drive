@@ -58,6 +58,8 @@ class RewardConfig:
     arrival: float = 2.0         # stop arrival only: once, on first entering the target radius
     target_speed: float = -1.0   # stop arrival only: per decision inside the radius, times |speed| (tiles/tick)
     path_length: float = 0.0     # per tile actually traveled, including reverse travel
+    steer_change: float = 0.0    # per steering step changed from the previous decision (left to right = 2)
+    heading_error: float = 0.0   # per radian between heading and the route 8 tiles ahead, after forward decisions
 
 
 @dataclass
@@ -95,6 +97,7 @@ class EnvConfig:
     map_pool: str = "data/game/maps"
     split: str = "train"
     decision_ticks: int = 4
+    steer_levels: int = 1        # steering strengths per side; 1 = left/straight/right (9 actions)
     gamma: float = 0.99
     vehicle_mix: list[VehicleMix] = field(default_factory=lambda: [VehicleMix()])
     target: TargetConfig = field(default_factory=TargetConfig)
@@ -160,6 +163,8 @@ class PPOConfig:
     norm_adv: bool = True
     # KL(teacher || policy) penalty for student fine-tuning; 0 disables it.
     teacher_kl_coef: float = 0.0
+    # Student fine-tuning toward a proportional steering rule on open ground (steer_levels > 1); 0 disables.
+    steer_prior_coef: float = 0.0
     teacher_checkpoint: str = ""
 
 

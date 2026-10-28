@@ -14,6 +14,7 @@ use crate::{
 };
 use serde::{Deserialize, Serialize};
 
+/// Classic action count (`steer_levels = 1`), also the width of the previous-action features.
 pub const ACTIONS: usize = 9;
 
 /// Collision kinds counted separately; the map edge counts as water.
@@ -29,6 +30,34 @@ pub fn decode_action(action: u8) -> (i8, i8) {
 
 pub fn encode_action(throttle: i8, steer: i8) -> u8 {
     ((throttle + 1) * 3 + steer + 1) as u8
+}
+
+/// Number of actions when each side has `levels` steering strengths: 3 throttles times
+/// `2 * levels + 1` signed steer tick counts.
+pub fn action_count(levels: u32) -> usize {
+    3 * (2 * levels as usize + 1)
+}
+
+/// `index = (throttle + 1) * (2 * levels + 1) + steer + levels`; `steer` in `-levels..=levels`
+/// is the strength (sign = side). `levels = 1` matches `decode_action`.
+pub fn decode_steered(action: u8, levels: u32) -> (i8, i32) {
+    let width = 2 * levels as i32 + 1;
+    let action = action as i32;
+    ((action / width - 1) as i8, action % width - levels as i32)
+}
+
+/// A classic 9-action index (full steering) as the same maneuver at `levels` strengths.
+pub fn widen_action(action: u8, levels: u32) -> u8 {
+    let (throttle, steer) = decode_action(action);
+    ((throttle as i32 + 1) * (2 * levels as i32 + 1) + steer as i32 * levels as i32 + levels as i32)
+        as u8
+}
+
+/// The classic 9-action index of an action at `levels` strengths: the same throttle with the
+/// sign of the steering.
+pub fn classic_action(action: u8, levels: u32) -> u8 {
+    let (throttle, steer) = decode_steered(action, levels);
+    encode_action(throttle, steer.signum() as i8)
 }
 
 #[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq)]
@@ -387,13 +416,14 @@ impl Episode {
 
     /// Runs one decision (`decision_ticks` ticks, fewer if the episode ends).
     pub fn decide(&mut self, ctx: Ctx<'_>, action: u8) -> Result<Decision, String> {
-        if action as usize >= ACTIONS {
-            return Err("action index must be 0..9".into());
+        let levels = self.rules.steer_levels;
+        if action as usize >= action_count(levels) {
+            return Err(format!("action index must be 0..{}", action_count(levels)));
         }
         if self.status.done() {
             return Err("episode is finished".into());
         }
-        let (throttle, steer) = decode_action(action);
+        let (throttle, steer_ticks) = decode_steered(action, levels);
         let v = &mut *ctx.vehicles;
         let max_health = ctx.data.vehicles[v.prototype[0]].max_health;
         let health_before = v.health[0];
@@ -409,6 +439,11 @@ impl Episode {
         };
         while ticks < self.rules.decision_ticks {
             let (x0, y0, o0) = (v.x[0], v.y[0], v.orientation[0]);
+            let steer = if ticks < steer_ticks.unsigned_abs() * self.rules.decision_ticks / levels {
+                steer_ticks.signum() as i8
+            } else {
+                0
+            };
             physics::step_vehicle(ctx.world, v, 0, ctx.data, throttle, steer);
             let (dx, dy) = (v.x[0] - x0, v.y[0] - y0);
             self.path_length += dx.hypot(dy);
@@ -460,6 +495,10 @@ impl Episode {
         self.damage += damage;
         terms.progress = weights.progress * (distance_before - self.path_distance);
         terms.path_length = weights.path_length * (self.path_length - length_before);
+        if let Some(previous) = self.prev_action() {
+            let changed = (steer_ticks - decode_steered(previous, levels).1).abs();
+            terms.steer_change = weights.steer_change * f64::from(changed) / f64::from(levels);
+        }
         terms.damage = weights.damage * damage / max_health;
         if collided {
             terms.collision = weights.collision;

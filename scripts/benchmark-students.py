@@ -32,7 +32,13 @@ def safety(records):
     poses = [o['pose'] for r in records for o in r.get('overlays', [])
              if o.get('pose') is not None and abs(o['pose'].get('speed', 0)) > 0.01]
     off_grid = sum(min((p['orientation']*360)%45,45-(p['orientation']*360)%45)>1 for p in poses)
+    steers = [[a % (2 * r.get('steer_levels', 1) + 1) - r.get('steer_levels', 1) for a in r['actions']]
+              for r in records]
+    decisions = max(sum(map(len, steers)), 1)
+    flips = sum(pair[0] * pair[1] < 0 for run in steers for pair in zip(run, run[1:]))
     return {
+        'steer_flips_per_100_decisions': 100 * flips / decisions,
+        'straight_steer_fraction': sum(s == 0 for run in steers for s in run) / decisions,
         'moving_heading_samples': len(poses),
         'moving_headings_outside_grid_fraction': off_grid/len(poses) if poses else None,
         'episodes': n,

@@ -5,7 +5,7 @@ from ..obs import ObsShapes
 from .base import ActorCritic, ActResult
 from .direct_plan import DirectPlanPolicy
 from .path_planner import PathPlannerPolicy
-from .reactive import ReactivePolicy
+from .reactive import ReactivePolicy, action_count
 from .student import StudentPolicy
 
 FULL_KEYS = ("local", "coarse", "vector")
@@ -17,7 +17,7 @@ def build_model(config: Config, shapes: ObsShapes) -> ActorCritic:
     """`shapes` may list more parts than the model reads (an env returning both observations)."""
     kind = config.model.kind
     if config.model.arch == "student":
-        return StudentPolicy(shapes.only(("student",)), config.model)
+        return StudentPolicy(shapes.only(("student",)), config.model, action_count(config.env.steer_levels))
     shapes = shapes.only(FULL_KEYS)
     if kind == "reactive":
         return ReactivePolicy(shapes, config.model)

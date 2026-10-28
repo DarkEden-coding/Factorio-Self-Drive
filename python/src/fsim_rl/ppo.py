@@ -20,7 +20,7 @@ def take(batch: dict, index: torch.Tensor) -> dict:
     return out
 
 
-def ppo_loss(model: ActorCritic, mb: dict, cfg: PPOConfig) -> tuple[torch.Tensor, dict]:
+def ppo_loss(model: ActorCritic, mb: dict, cfg: PPOConfig, steer_levels: int = 1) -> tuple[torch.Tensor, dict]:
     log_prob, entropy, value, dist = model.evaluate_actions(mb["obs"], mb["actions"])
     log_ratio = log_prob - mb["log_probs"]
     ratio = log_ratio.exp()
@@ -48,6 +48,11 @@ def ppo_loss(model: ActorCritic, mb: dict, cfg: PPOConfig) -> tuple[torch.Tensor
         teacher_kl = categorical_kl(mb["teacher_log_probs"], dist.dist.logits).mean()
         loss = loss + cfg.teacher_kl_coef * teacher_kl
 
+    steer_prior = torch.zeros((), device=adv.device)
+    if cfg.steer_prior_coef > 0:
+        steer_prior = model.steer_prior_loss(dist, mb["obs"], steer_levels)
+        loss = loss + cfg.steer_prior_coef * steer_prior
+
     with torch.no_grad():
         approx_kl = ((ratio - 1.0) - log_ratio).mean()
         clip_frac = ((ratio - 1.0).abs() > cfg.clip_coef).float().mean()
@@ -58,6 +63,7 @@ def ppo_loss(model: ActorCritic, mb: dict, cfg: PPOConfig) -> tuple[torch.Tensor
         "loss/entropy": entropy_mean.detach(),
         "loss/aux": aux_loss.detach(),
         "loss/teacher_kl": teacher_kl.detach(),
+        "loss/steer_prior": steer_prior.detach(),
         "loss/approx_kl": approx_kl,
         "loss/clip_frac": clip_frac,
     }
@@ -70,6 +76,7 @@ def ppo_update(
     batch: dict,
     cfg: PPOConfig,
     generator: torch.Generator | None = None,
+    steer_levels: int = 1,
 ) -> dict[str, float]:
     """Run the PPO epochs over a flattened batch. Stops early when approx KL exceeds 1.5 * target_kl."""
     size = batch["log_probs"].shape[0]
@@ -81,7 +88,7 @@ def ppo_update(
         order = torch.randperm(size, generator=generator).to(batch["log_probs"].device)
         for start in range(0, size - minibatch + 1, minibatch):
             mb = take(batch, order[start : start + minibatch])
-            loss, stats = ppo_loss(model, mb, cfg)
+            loss, stats = ppo_loss(model, mb, cfg, steer_levels)
             optimizer.zero_grad(set_to_none=True)
             loss.backward()
             grad_norm = nn.utils.clip_grad_norm_(model.parameters(), cfg.max_grad_norm)

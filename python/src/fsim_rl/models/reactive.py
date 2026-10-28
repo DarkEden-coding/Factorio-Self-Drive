@@ -12,6 +12,11 @@ from .distributions import CategoricalDist
 NUM_ACTIONS = 9
 
 
+def action_count(steer_levels: int) -> int:
+    """3 throttles times the signed steering strengths; 9 for `steer_levels = 1`."""
+    return 3 * (2 * steer_levels + 1)
+
+
 class ReactivePolicy(EncoderActorCritic):
     kind = "reactive"
 

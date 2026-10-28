@@ -71,10 +71,50 @@ class MapConv(nn.Module):
         return self.net(cells)
 
 
+def widen_steer_head(model_state: dict, steer_levels: int, partial_prior: float = 1.0) -> dict:
+    """A classic 9-action student's weights as a `steer_levels` student with the same behavior.
+
+    Full-strength actions inherit the matching classic row. Partial strengths copy the row of
+    their side with their logit lowered by `partial_prior`, so a policy fresh from the warm
+    start still drives like the classic one and PPO can explore the finer turns.
+    """
+    weight, bias = model_state["logits.weight"], model_state["logits.bias"]
+    rows = [
+        (throttle * 3 + 1 + (strength > 0) - (strength < 0),
+         0.0 if abs(strength) in (0, steer_levels) else partial_prior)
+        for throttle in range(3)
+        for strength in range(-steer_levels, steer_levels + 1)
+    ]
+    source = torch.tensor([row for row, _ in rows])
+    penalty = torch.tensor([prior for _, prior in rows], dtype=bias.dtype)
+    return {**model_state, "logits.weight": weight[source].clone(), "logits.bias": bias[source] - penalty}
+
+
+# Raw observation indices (student_obs.rs): the 8-tile route lookahead, route length and shared features.
+LOOKAHEAD_RIGHT, LOOKAHEAD_FORWARD, ROUTE_LENGTH = RAYS + 2, RAYS + 3, RAYS + 8
+SPEED, TANK, ROTATION_SPEED = RAYS + ROUTE + 4, RAYS + ROUTE + 6, RAYS + ROUTE + 9
+
+
+def proportional_steer(obs: torch.Tensor, steer_levels: int) -> tuple[torch.Tensor, torch.Tensor]:
+    """Steering strength (`-steer_levels..steer_levels`) that would turn the heading onto the route's
+    8-tile lookahead point in one decision (whole ticks, so under one tick's turn is left alone), and where that is a fair target: driving forward on open
+    ground with at least ~13 tiles of route left, needing at most a full decision's turn. Larger
+    corrections are left to PPO. Takes raw (unnormalized) student observations."""
+    alpha = torch.atan2(obs[:, LOOKAHEAD_RIGHT], obs[:, LOOKAHEAD_FORWARD])
+    speed = obs[:, SPEED] * 100 / 216  # tiles/tick
+    car_factor = speed.abs().clamp_min(1e-6).sqrt()
+    per_tick = 2 * torch.pi * 0.015 * obs[:, ROTATION_SPEED] * torch.where(obs[:, TANK] > 0.5, 1.0, car_factor)
+    needed = alpha / per_tick.clamp_min(1e-6)
+    ticks = needed.trunc().clamp(-steer_levels, steer_levels)
+    fair = (speed > 0.02) & (needed.abs() <= steer_levels) & (obs[:, :RAYS].min(1).values > 0.4) \
+        & (obs[:, ROUTE_LENGTH] > 0.2)
+    return ticks.long(), fair
+
+
 class StudentPolicy(ActorCritic):
     kind = "reactive"
 
-    def __init__(self, shapes: ObsShapes, cfg: ModelConfig):
+    def __init__(self, shapes: ObsShapes, cfg: ModelConfig, actions: int = NUM_ACTIONS):
         super().__init__()
         if shapes.student is None:
             raise ValueError("a student model needs the student observation")
@@ -92,9 +132,18 @@ class StudentPolicy(ActorCritic):
             + (0 if not self.has_map else MAP_LEN if self.map is None else self.map.out_features)
         )
         self.actor = mlp([actor_in, *cfg.student_hidden])
-        self.logits = init_head(nn.Linear(cfg.student_hidden[-1], NUM_ACTIONS), 0.01)
+        self.logits = init_head(nn.Linear(cfg.student_hidden[-1], actions), 0.01)
         self.critic = mlp([size, *cfg.critic_hidden])
         self.value_head = init_head(nn.Linear(cfg.critic_hidden[-1], 1), 1.0)
+
+    def steer_prior_loss(self, dist: CategoricalDist, obs: Obs, steer_levels: int) -> torch.Tensor:
+        """Cross-entropy of the policy's steering (throttle marginalized out) toward
+        `proportional_steer` on the states where that target applies."""
+        label, fair = proportional_steer(obs["student"], steer_levels)
+        if not fair.any():
+            return dist.dist.logits.sum() * 0.0
+        steer = dist.dist.logits.log_softmax(-1).view(-1, 3, 2 * steer_levels + 1).logsumexp(1)
+        return -steer.gather(1, (label + steer_levels).unsqueeze(1)).squeeze(1)[fair].mean()
 
     def normalized(self, obs: Obs) -> torch.Tensor:
         x = obs["student"].float()

@@ -37,7 +37,7 @@ def test_env_json_matches_contract_keys():
     assert data["mode"] == "direct_plan" and data["split"] == "holdout"
     assert data["map_pool"].endswith("data/game/maps")
     assert set(data) == {
-        "map_pool", "split", "mode", "decision_ticks", "gamma", "vehicle_mix", "target",
+        "map_pool", "split", "mode", "decision_ticks", "steer_levels", "gamma", "vehicle_mix", "target",
         "time_limit", "reward", "distance_field", "direct_plan", "path_planner", "scenarios",
         "observation", "student_map", "route_source", "arrival",
     }
