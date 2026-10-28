@@ -1,11 +1,11 @@
 {
   "name": "fsim-autodrive",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "title": "Fsim autodrive",
   "author": "Fsim",
   "factorio_version": "2.1",
   "dependencies": [
     "base >= 2.1.23"
   ],
-  "description": "Car and tank autodrive with the field-efficient student, fine-tuned for shorter, faster trips. Local fields avoid obstacles and nest zones; coarse Factorio paths guide long trips."
+  "description": "Car and tank autodrive with cost-aware any-angle field routes and a model fine-tuned for smooth guidance. Clear segments connect directly rather than following grid-angle steps; obstacles and nest-zone costs are retained."
 }

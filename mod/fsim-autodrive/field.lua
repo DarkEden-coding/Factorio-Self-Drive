@@ -1,6 +1,7 @@
 -- Bounded, resumable 8-connected Dijkstra. All cursors/queues are plain tables
 -- so saving during preparation or a route slice is safe.
 local u = require("math-util")
+local smoothing = require("route-smoothing")
 local band = bit32.band
 local M = {}
 local SQRT2 = math.sqrt(2)
@@ -8,7 +9,6 @@ local steps = {{1,0,1},{-1,0,1},{0,1,1},{0,-1,1},
   {1,1,SQRT2},{-1,1,SQRT2},{1,-1,SQRT2},{-1,-1,SQRT2}}
 -- A bucket pop and its neighbor relaxations cost more than one cell in the other phases.
 local POP_COST = 2
-local ZONE_REACH = 2
 local function index(f, x, y)
   if x < f.x0 or y < f.y0 or x >= f.x1 or y >= f.y1 then return nil end
   return (y - f.y0) * f.w + x - f.x0 + 1
@@ -19,33 +19,35 @@ function M.tile(f, x, y)
 end
 -- Unit-width circular buckets. Every edge costs at least 1, so nodes in the
 -- current distance bucket cannot relax one another. The ring exceeds the largest
--- edge cost: sqrt(2) * (1 + tree cost 4 + zone cost 3). No heap sifting is needed.
-local BUCKETS = 14
+-- edge cost for the configured tree/zone costs. No heap sifting is needed.
 local function push(f, node, distance)
-  local slot = math.floor(distance) % BUCKETS + 1
+  local slot = math.floor(distance) % f.bucket_count + 1
   local ids, distances = f.bucket_nodes[slot], f.bucket_distances[slot]
   if not ids then ids, distances = {}, {}; f.bucket_nodes[slot], f.bucket_distances[slot] = ids, distances end
   ids[#ids + 1], distances[#distances + 1] = node, distance
   f.pending = f.pending + 1
 end
 local function pop(f)
-  local slot = f.current % BUCKETS + 1
+  local slot = f.current % f.bucket_count + 1
   while not f.bucket_nodes[slot] or #f.bucket_nodes[slot] == 0 do
     f.current = f.current + 1
-    slot = f.current % BUCKETS + 1
+    slot = f.current % f.bucket_count + 1
   end
   local ids, distances = f.bucket_nodes[slot], f.bucket_distances[slot]
   f.pending = f.pending - 1
   return table.remove(ids), table.remove(distances)
 end
 -- `margin` defaults to the simulator's 48 tiles.
-function M.new(position, target, half_width, tank, bounds, margin)
-  margin = margin or 48
+function M.new(position, target, half_width, tank, bounds, margin, options)
+  options = options or {}
+  margin = margin or options.margin or 48
   local f = {x0 = math.floor(math.min(position.x, target.x)) - margin,
     y0 = math.floor(math.min(position.y, target.y)) - margin,
     x1 = math.floor(math.max(position.x, target.x)) + margin + 1,
     y1 = math.floor(math.max(position.y, target.y)) + margin + 1,
     dilation = math.ceil(half_width), tank = tank, target = target,
+    smooth = options.smooth or false, tree_cost = options.tank_tree_cost or 4,
+    zone_cost = options.nest_zone_cost or 3, zone_margin = options.nest_zone_margin or 2,
     bucket_nodes = {}, bucket_distances = {}, pending = 0, current = 0, cursor = 1, phase = "base"}
   if bounds then
     f.x0,f.y0=math.max(f.x0,bounds.x0),math.max(f.y0,bounds.y0)
@@ -53,7 +55,8 @@ function M.new(position, target, half_width, tank, bounds, margin)
   end
   f.w, f.h = f.x1 - f.x0, f.y1 - f.y0
   -- The base masks cover the field plus a border wide enough for both dilations.
-  f.r = math.max(f.dilation, ZONE_REACH)
+  f.bucket_count = math.ceil(SQRT2 * (1 + f.tree_cost + f.zone_cost)) + 2
+  f.r = math.max(f.dilation, f.zone_margin)
   f.bw, f.bh = f.w + 2 * f.r, f.h + 2 * f.r
   f.hard, f.tree, f.zone = {}, {}, {}
   return f
@@ -81,7 +84,7 @@ local function row_cell(f, i)
       hard = hard or f.hard[j]
       tree = tree or f.tree[j]
     end
-    if k >= -ZONE_REACH and k <= ZONE_REACH then zone = zone or f.zone[j] end
+    if k >= -f.zone_margin and k <= f.zone_margin then zone = zone or f.zone[j] end
   end
   f.rh[i], f.rt[i], f.rz[i] = hard, tree, zone
 end
@@ -94,10 +97,10 @@ local function col_cell(f, i)
       hard = hard or f.rh[j]
       tree = tree or f.rt[j]
     end
-    if k >= -ZONE_REACH and k <= ZONE_REACH then zone = zone or f.rz[j] end
+    if k >= -f.zone_margin and k <= f.zone_margin then zone = zone or f.rz[j] end
   end
   f.flags[i] = hard
-  f.extra[i] = (tree and f.tank and 4 or 0) + (zone and 3 or 0)
+  f.extra[i] = (tree and f.tank and f.tree_cost or 0) + (zone and f.zone_cost or 0)
 end
 local function start_search(f)
   local t = f.target
@@ -184,6 +187,7 @@ function M.slice(f, mask, budget)
       f.cursor = last + 1
       if f.cursor > n then
         f.phase = "ready"
+        if f.smooth then f.route_flags,f.route_extra=f.flags,f.extra end
         f.bucket_nodes, f.bucket_distances, f.distances, f.done, f.flags, f.extra = nil, nil, nil, nil, nil, nil
         return true
       end
@@ -210,7 +214,7 @@ function M.sample(f, x, y)
   end
   return best
 end
-function M.route(f, position)
+local function grid_route(f, position)
   local cx, cy = math.floor(position.x), math.floor(position.y)
   local route = {{x=position.x,y=position.y}}
   if M.tile(f, cx, cy) == math.huge then
@@ -240,5 +244,14 @@ function M.route(f, position)
   end
   route[#route+1] = f.target
   return route
+end
+function M.route(f,position)
+  local route=grid_route(f,position)
+  if not f.smooth then return route end
+  return smoothing.route(route,function(x,y)
+    local i=index(f,x,y)
+    if not i or f.route_flags[i] then return math.huge end
+    return 1+f.route_extra[i]
+  end)
 end
 return M

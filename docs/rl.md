@@ -290,6 +290,20 @@ replacing the route features with a wider view: `model.student_route = false` dr
 from the actor and `model.map_conv` runs stride-2 convs over the map (`configs/student_map.toml`).
 `export-student` doesn't support it yet.
 
+### Any-angle field route
+
+`route_source = "field_smooth"` gives the student cost-aware arbitrary-angle shortcuts over
+its episode field. Segment traversal checks the vehicle-inflated obstacle grid, including
+corner/border touches, and integrates tree/zone costs. A shortcut cannot exceed the cost of
+the raw span it replaces. Blocked spans retain closer waypoints; open routes can connect
+start and target directly. The field and sampling/progress rules remain unchanged.
+
+The vector still has 135 features, but route semantics use `student.smooth_spec_hash`
+(`d1c084cc679f1f71`), or the corresponding map hash when a map is appended. Dense grid students
+may initialize smooth training explicitly with `--init-from`; a resumed run must match its
+contract. Exported model metadata includes route source and field parameters. See
+[smooth-route-results.md](smooth-route-results.md) for the current model and measurements.
+
 ### Pathfinder route
 
 `route_source = "pathfinder"` (needs `student_map`) takes the student's route features from a

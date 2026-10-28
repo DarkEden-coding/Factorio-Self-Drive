@@ -29,7 +29,12 @@ def trip_key(record):
 def safety(records):
     results = [r['result'] for r in records]
     n = len(results)
+    poses = [o['pose'] for r in records for o in r.get('overlays', [])
+             if o.get('pose') is not None and abs(o['pose'].get('speed', 0)) > 0.01]
+    off_grid = sum(min((p['orientation']*360)%45,45-(p['orientation']*360)%45)>1 for p in poses)
     return {
+        'moving_heading_samples': len(poses),
+        'moving_headings_outside_grid_fraction': off_grid/len(poses) if poses else None,
         'episodes': n,
         'success_rate': sum(r['status'] == 'success' for r in results) / n,
         'collision_free_success_rate': sum(r['status'] == 'success' and r['collisions'] == 0 for r in results) / n,

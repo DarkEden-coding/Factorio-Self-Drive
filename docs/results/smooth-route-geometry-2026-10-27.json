@@ -1,0 +1,6014 @@
+{
+  "summary": {
+    "cases": 400,
+    "grid_length": 22926.771295152,
+    "smooth_length": 21949.297972746255,
+    "grid_vertices": 20279,
+    "smooth_vertices": 1367,
+    "grid_free_angle_fraction": 0.023563321067533165,
+    "smooth_free_angle_fraction": 0.8075825760066039,
+    "length_change_percent": -4.263458250715124
+  },
+  "rows": [
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 1,
+      "grid": {
+        "vertices": 38,
+        "length": 37.37485323543506,
+        "free_angle_length": 1.5464261106888724
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 35.821726943516005,
+        "free_angle_length": 35.821726943516005
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 2,
+      "grid": {
+        "vertices": 26,
+        "length": 26.725621778384852,
+        "free_angle_length": 1.6545539665193758
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 24.85369789041713,
+        "free_angle_length": 24.85369789041713
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 3,
+      "grid": {
+        "vertices": 63,
+        "length": 69.29254424656422,
+        "free_angle_length": 1.4224865614754063
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 66.90824813666423,
+        "free_angle_length": 36.90824813666423
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 4,
+      "grid": {
+        "vertices": 57,
+        "length": 75.37275028433625,
+        "free_angle_length": 1.4904992904277496
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 73.6231092330035,
+        "free_angle_length": 73.6231092330035
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 5,
+      "grid": {
+        "vertices": 31,
+        "length": 35.19767831090455,
+        "free_angle_length": 1.3986884376812174
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 32.52311799852073,
+        "free_angle_length": 32.52311799852073
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 6,
+      "grid": {
+        "vertices": 29,
+        "length": 32.724625755080126,
+        "free_angle_length": 1.3398494442298825
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 30.093186671291612,
+        "free_angle_length": 30.093186671291612
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 7,
+      "grid": {
+        "vertices": 48,
+        "length": 52.79488919592878,
+        "free_angle_length": 1.1674721979592544
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 48.88294875345602,
+        "free_angle_length": 48.88294875345602
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 8,
+      "grid": {
+        "vertices": 30,
+        "length": 32.153039615157844,
+        "free_angle_length": 1.0109039914268874
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 29.587503517192573,
+        "free_angle_length": 29.587503517192573
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 9,
+      "grid": {
+        "vertices": 56,
+        "length": 74.79992938598019,
+        "free_angle_length": 1.503464829698595
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 74.24743229661621,
+        "free_angle_length": 6.324555320336759
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 10,
+      "grid": {
+        "vertices": 18,
+        "length": 22.071378484584,
+        "free_angle_length": 1.2723886113606615
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 21.789158090167696,
+        "free_angle_length": 21.789158090167696
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 11,
+      "grid": {
+        "vertices": 48,
+        "length": 60.90494485682365,
+        "free_angle_length": 1.4074701737653492
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 59.11072480290155,
+        "free_angle_length": 59.11072480290155
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 12,
+      "grid": {
+        "vertices": 65,
+        "length": 79.9649326250478,
+        "free_angle_length": 1.3963901301240325
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 74.9198315227384,
+        "free_angle_length": 74.9198315227384
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 13,
+      "grid": {
+        "vertices": 65,
+        "length": 68.34192912984761,
+        "free_angle_length": 1.3713663813704655
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 64.00187513465487,
+        "free_angle_length": 64.00187513465487
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 14,
+      "grid": {
+        "vertices": 43,
+        "length": 53.376095993404455,
+        "free_angle_length": 1.7781162469578058
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 52.813697998370266,
+        "free_angle_length": 14.753251438352311
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 15,
+      "grid": {
+        "vertices": 48,
+        "length": 48.211605543723735,
+        "free_angle_length": 1.5547512942313513
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 46.79000055878339,
+        "free_angle_length": 23.790000558783394
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 16,
+      "grid": {
+        "vertices": 34,
+        "length": 34.19313822618134,
+        "free_angle_length": 1.5362839766889618
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 32.63722251443942,
+        "free_angle_length": 32.63722251443942
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 17,
+      "grid": {
+        "vertices": 65,
+        "length": 75.58671436343897,
+        "free_angle_length": 1.160307492246129
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 75.27138679188357,
+        "free_angle_length": 44.271386791883565
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 18,
+      "grid": {
+        "vertices": 30,
+        "length": 36.3065011232292,
+        "free_angle_length": 1.4364434381403823
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 34.26950987760077,
+        "free_angle_length": 34.26950987760077
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 19,
+      "grid": {
+        "vertices": 43,
+        "length": 47.70937877606093,
+        "free_angle_length": 1.4961753404645002
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 43.768436579907835,
+        "free_angle_length": 43.768436579907835
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 20,
+      "grid": {
+        "vertices": 61,
+        "length": 60.90822922594394,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.33045010937187,
+        "free_angle_length": 59.33045010937187
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 21,
+      "grid": {
+        "vertices": 69,
+        "length": 84.1030227054842,
+        "free_angle_length": 1.5344802105604236
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 78.70392464494132,
+        "free_angle_length": 78.70392464494132
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 22,
+      "grid": {
+        "vertices": 26,
+        "length": 30.302348133775464,
+        "free_angle_length": 1.5033582605521254
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 28.162237989186337,
+        "free_angle_length": 28.162237989186337
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 23,
+      "grid": {
+        "vertices": 56,
+        "length": 63.89081461916591,
+        "free_angle_length": 1.7781162469578058
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 62.822336919688745,
+        "free_angle_length": 35.822336919688745
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 24,
+      "grid": {
+        "vertices": 32,
+        "length": 36.22113705234966,
+        "free_angle_length": 1.0079336167532313
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 33.566636041995345,
+        "free_angle_length": 33.566636041995345
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 25,
+      "grid": {
+        "vertices": 79,
+        "length": 77.78073530445516,
+        "free_angle_length": 0.9523081797089767
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 76.57829337265973,
+        "free_angle_length": 76.57829337265973
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 26,
+      "grid": {
+        "vertices": 81,
+        "length": 94.23134183471274,
+        "free_angle_length": 1.3196535892813404
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 93.33172920214949,
+        "free_angle_length": 54.33172920214948
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 27,
+      "grid": {
+        "vertices": 30,
+        "length": 33.74627115582419,
+        "free_angle_length": 1.3614948449739446
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 33.743921044536485,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 28,
+      "grid": {
+        "vertices": 28,
+        "length": 30.945266896851006,
+        "free_angle_length": 1.388917710746955
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 28.68224677230197,
+        "free_angle_length": 28.68224677230197
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 29,
+      "grid": {
+        "vertices": 78,
+        "length": 82.43993106299257,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 81.43560799301464,
+        "free_angle_length": 24.435607993014646
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 30,
+      "grid": {
+        "vertices": 60,
+        "length": 65.45365973009422,
+        "free_angle_length": 0.9978156073785001
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 63.92462204555444,
+        "free_angle_length": 22.561028345356952
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 31,
+      "grid": {
+        "vertices": 60,
+        "length": 77.12034458188386,
+        "free_angle_length": 1.0665207127215406
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 74.28411441170087,
+        "free_angle_length": 74.28411441170087
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 32,
+      "grid": {
+        "vertices": 40,
+        "length": 48.43257204629126,
+        "free_angle_length": 1.077232986963881
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 45.63120977914352,
+        "free_angle_length": 45.63120977914352
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 33,
+      "grid": {
+        "vertices": 49,
+        "length": 48.174402095039284,
+        "free_angle_length": 0.931761407920001
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 46.82832067052255,
+        "free_angle_length": 46.82832067052255
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 34,
+      "grid": {
+        "vertices": 55,
+        "length": 62.84956264706222,
+        "free_angle_length": 1.322650712481025
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 57.90023233897449,
+        "free_angle_length": 57.90023233897449
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 35,
+      "grid": {
+        "vertices": 71,
+        "length": 69.57317641515601,
+        "free_angle_length": 1.5731764151560135
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 69.03762477108553,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 36,
+      "grid": {
+        "vertices": 54,
+        "length": 62.212901203364694,
+        "free_angle_length": 1.6859892687835012
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 57.469003034805226,
+        "free_angle_length": 57.469003034805226
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 37,
+      "grid": {
+        "vertices": 60,
+        "length": 63.94446782966298,
+        "free_angle_length": 1.973905081185833
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.867087588002235,
+        "free_angle_length": 59.867087588002235
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 38,
+      "grid": {
+        "vertices": 29,
+        "length": 31.407732481468127,
+        "free_angle_length": 0.8513832953640799
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 30.879977726933134,
+        "free_angle_length": 17.879977726933134
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 39,
+      "grid": {
+        "vertices": 60,
+        "length": 60.87125718754778,
+        "free_angle_length": 1.3859758133092097
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 58.231949919739755,
+        "free_angle_length": 58.231949919739755
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 40,
+      "grid": {
+        "vertices": 29,
+        "length": 32.925820403188695,
+        "free_angle_length": 1.541044092338454
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 30.579810609199846,
+        "free_angle_length": 30.579810609199846
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 41,
+      "grid": {
+        "vertices": 17,
+        "length": 21.49806942930381,
+        "free_angle_length": 1.6990795560804752
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 21.49009937943263,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 42,
+      "grid": {
+        "vertices": 54,
+        "length": 60.860659718097104,
+        "free_angle_length": 1.5763884706351927
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 56.04734884997105,
+        "free_angle_length": 56.04734884997105
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 43,
+      "grid": {
+        "vertices": 23,
+        "length": 23.917352649098156,
+        "free_angle_length": 1.8462848372326826
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 22.09466887509734,
+        "free_angle_length": 22.09466887509734
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 44,
+      "grid": {
+        "vertices": 64,
+        "length": 64.65188133117339,
+        "free_angle_length": 1.9950270816810043
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 62.67977002635412,
+        "free_angle_length": 62.67977002635412
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 45,
+      "grid": {
+        "vertices": 37,
+        "length": 37.12323942457715,
+        "free_angle_length": 1.8805987374578672
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 35.65017656493903,
+        "free_angle_length": 35.65017656493903
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 46,
+      "grid": {
+        "vertices": 26,
+        "length": 26.770016060035847,
+        "free_angle_length": 1.2847346857972757
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 25.0359537607995,
+        "free_angle_length": 25.0359537607995
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 47,
+      "grid": {
+        "vertices": 52,
+        "length": 67.6598980237926,
+        "free_angle_length": 1.6771419664957556
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 65.77378636732135,
+        "free_angle_length": 30.23243291566195
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 48,
+      "grid": {
+        "vertices": 73,
+        "length": 89.53104255413298,
+        "free_angle_length": 1.7198593720899467
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 83.76593193989883,
+        "free_angle_length": 83.76593193989883
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 49,
+      "grid": {
+        "vertices": 28,
+        "length": 28.367519173395287,
+        "free_angle_length": 1.2964513615298106
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 26.329513594687093,
+        "free_angle_length": 26.329513594687093
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 50,
+      "grid": {
+        "vertices": 59,
+        "length": 64.75375124432789,
+        "free_angle_length": 0.8836935592390752
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.859272270940956,
+        "free_angle_length": 59.859272270940956
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 51,
+      "grid": {
+        "vertices": 37,
+        "length": 37.82442697064342,
+        "free_angle_length": 0.924932034031758
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 35.52293536248909,
+        "free_angle_length": 35.52293536248909
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 52,
+      "grid": {
+        "vertices": 45,
+        "length": 60.427987248079674,
+        "free_angle_length": 1.859444753155915
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.85259004245379,
+        "free_angle_length": 59.85259004245379
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 53,
+      "grid": {
+        "vertices": 36,
+        "length": 41.032815861329674,
+        "free_angle_length": 1.8196124257332418
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 37.863323967658765,
+        "free_angle_length": 37.863323967658765
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 54,
+      "grid": {
+        "vertices": 36,
+        "length": 42.81807512061162,
+        "free_angle_length": 1.5338038731497134
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 41.70580312870662,
+        "free_angle_length": 38.70580312870662
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 55,
+      "grid": {
+        "vertices": 31,
+        "length": 33.79743679860933,
+        "free_angle_length": 1.2410876125052825
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 31.205988783595913,
+        "free_angle_length": 31.205988783595913
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 56,
+      "grid": {
+        "vertices": 51,
+        "length": 67.24988215553546,
+        "free_angle_length": 1.4386989734924136
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 65.8735733601596,
+        "free_angle_length": 65.8735733601596
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 57,
+      "grid": {
+        "vertices": 65,
+        "length": 65.66223336830166,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 63.63830643103378,
+        "free_angle_length": 63.63830643103378
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 58,
+      "grid": {
+        "vertices": 19,
+        "length": 17.941940633194424,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 17.443369325415645,
+        "free_angle_length": 17.443369325415645
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 59,
+      "grid": {
+        "vertices": 17,
+        "length": 17.932904105569364,
+        "free_angle_length": 1.4476227313307928
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 16.57469793306248,
+        "free_angle_length": 16.57469793306248
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 60,
+      "grid": {
+        "vertices": 43,
+        "length": 50.72224996535429,
+        "free_angle_length": 1.1953380307730948
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 47.23882892290845,
+        "free_angle_length": 47.23882892290845
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 61,
+      "grid": {
+        "vertices": 35,
+        "length": 36.464205287266154,
+        "free_angle_length": 1.564710350654495
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 35.374817136749535,
+        "free_angle_length": 19.374817136749535
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 62,
+      "grid": {
+        "vertices": 28,
+        "length": 33.481702351155604,
+        "free_angle_length": 1.4400717908129832
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 31.58055761481572,
+        "free_angle_length": 31.58055761481572
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 63,
+      "grid": {
+        "vertices": 18,
+        "length": 17.480320730001388,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 16.65045191062768,
+        "free_angle_length": 16.65045191062768
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 64,
+      "grid": {
+        "vertices": 54,
+        "length": 59.302373999516504,
+        "free_angle_length": 1.67495700154698
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 54.96739811885797,
+        "free_angle_length": 54.96739811885797
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 65,
+      "grid": {
+        "vertices": 45,
+        "length": 44.145134712660195,
+        "free_angle_length": 1.316707587914003
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 43.28754836984962,
+        "free_angle_length": 43.28754836984962
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 66,
+      "grid": {
+        "vertices": 49,
+        "length": 59.80847378111694,
+        "free_angle_length": 1.7962804722971994
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 57.30139930119445,
+        "free_angle_length": 55.30139930119445
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 67,
+      "grid": {
+        "vertices": 36,
+        "length": 47.59113694303083,
+        "free_angle_length": 1.3363029470918073
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 47.250377835170866,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 68,
+      "grid": {
+        "vertices": 28,
+        "length": 34.20071779122654,
+        "free_angle_length": 0.9164465437646241
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 33.089697994274246,
+        "free_angle_length": 33.089697994274246
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 69,
+      "grid": {
+        "vertices": 41,
+        "length": 41.27527259902428,
+        "free_angle_length": 1.618418349531901
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 39.423508569812775,
+        "free_angle_length": 39.423508569812775
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 70,
+      "grid": {
+        "vertices": 37,
+        "length": 42.894288530558136,
+        "free_angle_length": 1.4384444078424181
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 39.73331937717919,
+        "free_angle_length": 38.73331937717919
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 71,
+      "grid": {
+        "vertices": 37,
+        "length": 44.40207451776321,
+        "free_angle_length": 1.289376145555114
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 41.776825104891905,
+        "free_angle_length": 41.776825104891905
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 72,
+      "grid": {
+        "vertices": 39,
+        "length": 38.053689536496094,
+        "free_angle_length": 1.639475974123001
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 37.11584996965213,
+        "free_angle_length": 37.11584996965213
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 73,
+      "grid": {
+        "vertices": 23,
+        "length": 21.208269490276408,
+        "free_angle_length": 1.2082694902764086
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 21.02953078794515,
+        "free_angle_length": 21.02953078794515
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 74,
+      "grid": {
+        "vertices": 55,
+        "length": 73.68923681397081,
+        "free_angle_length": 1.8069858200623075
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 72.56946808234099,
+        "free_angle_length": 72.56946808234099
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 75,
+      "grid": {
+        "vertices": 54,
+        "length": 53.467870523648116,
+        "free_angle_length": 1.6394433989019337
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 52.42979198087861,
+        "free_angle_length": 52.42979198087861
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 76,
+      "grid": {
+        "vertices": 55,
+        "length": 71.18441757757722,
+        "free_angle_length": 1.3732343955341801
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 68.84892762567242,
+        "free_angle_length": 68.84892762567242
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 77,
+      "grid": {
+        "vertices": 55,
+        "length": 63.70687356814338,
+        "free_angle_length": 0.937320946442906
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.06553940798848,
+        "free_angle_length": 59.06553940798848
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 78,
+      "grid": {
+        "vertices": 26,
+        "length": 29.175182323749514,
+        "free_angle_length": 1.6188331376454654
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 26.947640123534732,
+        "free_angle_length": 26.947640123534732
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 79,
+      "grid": {
+        "vertices": 42,
+        "length": 50.37783976620798,
+        "free_angle_length": 1.850927831626783
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 49.11678589449741,
+        "free_angle_length": 20.39607805437114
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 80,
+      "grid": {
+        "vertices": 39,
+        "length": 38.64298011076299,
+        "free_angle_length": 1.8145529860168041
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 37.600849093325834,
+        "free_angle_length": 37.600849093325834
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 81,
+      "grid": {
+        "vertices": 39,
+        "length": 45.14244629644948,
+        "free_angle_length": 1.2723886113606615
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 41.88845199190727,
+        "free_angle_length": 41.88845199190727
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 82,
+      "grid": {
+        "vertices": 42,
+        "length": 49.46808269054391,
+        "free_angle_length": 1.355384318335809
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 45.995426448184936,
+        "free_angle_length": 45.995426448184936
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 83,
+      "grid": {
+        "vertices": 64,
+        "length": 79.19765632728432,
+        "free_angle_length": 1.214900269987469
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 74.53590398369109,
+        "free_angle_length": 74.53590398369109
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 84,
+      "grid": {
+        "vertices": 67,
+        "length": 72.68881551246075,
+        "free_angle_length": 0.8187578273719357
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 67.51601700248528,
+        "free_angle_length": 67.51601700248528
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 85,
+      "grid": {
+        "vertices": 46,
+        "length": 57.78931420649945,
+        "free_angle_length": 1.5344802105604236
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 55.13480585815643,
+        "free_angle_length": 55.13480585815643
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 86,
+      "grid": {
+        "vertices": 79,
+        "length": 81.93631243624702,
+        "free_angle_length": 1.7941768125160666
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 78.12940192676872,
+        "free_angle_length": 78.12940192676872
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 87,
+      "grid": {
+        "vertices": 51,
+        "length": 50.098109437119284,
+        "free_angle_length": 0.8554687499999999
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 48.69906584609428,
+        "free_angle_length": 48.69906584609428
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 88,
+      "grid": {
+        "vertices": 30,
+        "length": 29.687806227945444,
+        "free_angle_length": 1.8593791031992541
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 28.533496379683548,
+        "free_angle_length": 28.533496379683548
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 89,
+      "grid": {
+        "vertices": 47,
+        "length": 49.91070864754006,
+        "free_angle_length": 1.354359461436014
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 46.544903475577016,
+        "free_angle_length": 46.544903475577016
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 90,
+      "grid": {
+        "vertices": 43,
+        "length": 44.52732376698879,
+        "free_angle_length": 2.0420423927502247
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 42.07338751674019,
+        "free_angle_length": 42.07338751674019
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 91,
+      "grid": {
+        "vertices": 54,
+        "length": 55.46383955090406,
+        "free_angle_length": 1.5643446142923958
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 52.76475195689131,
+        "free_angle_length": 52.76475195689131
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 92,
+      "grid": {
+        "vertices": 33,
+        "length": 32.64894493954499,
+        "free_angle_length": 1.4063042524257066
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 31.47073845893023,
+        "free_angle_length": 31.47073845893023
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 93,
+      "grid": {
+        "vertices": 31,
+        "length": 37.987333531284236,
+        "free_angle_length": 1.7030622838223284
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 36.10869592137852,
+        "free_angle_length": 36.10869592137852
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 94,
+      "grid": {
+        "vertices": 59,
+        "length": 62.02843026575901,
+        "free_angle_length": 1.4720810796549644
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 61.47747338531646,
+        "free_angle_length": 18.47747338531646
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 95,
+      "grid": {
+        "vertices": 31,
+        "length": 40.84149878994766,
+        "free_angle_length": 1.6577326058740973
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 40.55366370493026,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 96,
+      "grid": {
+        "vertices": 23,
+        "length": 26.477501552788073,
+        "free_angle_length": 1.9211523666840236
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 24.717375243257845,
+        "free_angle_length": 24.717375243257845
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 97,
+      "grid": {
+        "vertices": 66,
+        "length": 72.62103657029172,
+        "free_angle_length": 1.3367653228298197
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 67.08848684035377,
+        "free_angle_length": 67.08848684035377
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 98,
+      "grid": {
+        "vertices": 28,
+        "length": 29.581285119265072,
+        "free_angle_length": 1.2675766202803087
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 27.46982208694263,
+        "free_angle_length": 27.46982208694263
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 99,
+      "grid": {
+        "vertices": 68,
+        "length": 68.99394875656901,
+        "free_angle_length": 1.5086673823304502
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 66.71943860018297,
+        "free_angle_length": 66.71943860018297
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "car",
+      "seed": 100,
+      "grid": {
+        "vertices": 53,
+        "length": 57.69401638709623,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 53.56943975335454,
+        "free_angle_length": 53.56943975335454
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 1,
+      "grid": {
+        "vertices": 58,
+        "length": 61.07883609510496,
+        "free_angle_length": 1.93670047137401
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 57.481321933440434,
+        "free_angle_length": 57.481321933440434
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 2,
+      "grid": {
+        "vertices": 46,
+        "length": 53.76725233872748,
+        "free_angle_length": 1.6545539665193758
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 49.919811185822056,
+        "free_angle_length": 49.919811185822056
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 3,
+      "grid": {
+        "vertices": 29,
+        "length": 35.85634643992235,
+        "free_angle_length": 1.9862887548335273
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 34.179672767853965,
+        "free_angle_length": 34.179672767853965
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 4,
+      "grid": {
+        "vertices": 59,
+        "length": 57.325785355906454,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 56.66081671344639,
+        "free_angle_length": 56.66081671344639
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 5,
+      "grid": {
+        "vertices": 47,
+        "length": 55.33981393463547,
+        "free_angle_length": 1.3986884376812174
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 52.55204492058462,
+        "free_angle_length": 45.55204492058462
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 6,
+      "grid": {
+        "vertices": 18,
+        "length": 18.328738376219803,
+        "free_angle_length": 1.671884126727425
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 17.162091481902873,
+        "free_angle_length": 17.162091481902873
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 7,
+      "grid": {
+        "vertices": 64,
+        "length": 78.3662277073203,
+        "free_angle_length": 1.6261123371427366
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 73.37433256141419,
+        "free_angle_length": 73.37433256141419
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 8,
+      "grid": {
+        "vertices": 28,
+        "length": 27.314841225823955,
+        "free_angle_length": 1.4864141010777623
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 26.566221304127595,
+        "free_angle_length": 26.566221304127595
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 9,
+      "grid": {
+        "vertices": 47,
+        "length": 55.44459032665288,
+        "free_angle_length": 1.503464829698595
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 51.41052087359299,
+        "free_angle_length": 51.41052087359299
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 10,
+      "grid": {
+        "vertices": 40,
+        "length": 49.04194123306113,
+        "free_angle_length": 1.2723886113606615
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 46.48926526928901,
+        "free_angle_length": 46.48926526928901
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 11,
+      "grid": {
+        "vertices": 49,
+        "length": 63.561799106316016,
+        "free_angle_length": 1.4074701737653492
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 61.71112306181427,
+        "free_angle_length": 61.71112306181427
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 12,
+      "grid": {
+        "vertices": 68,
+        "length": 80.47965125080924,
+        "free_angle_length": 1.3963901301240325
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 74.41383376359202,
+        "free_angle_length": 74.41383376359202
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 13,
+      "grid": {
+        "vertices": 45,
+        "length": 49.6418872528821,
+        "free_angle_length": 1.8428973796587602
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 45.97236964473284,
+        "free_angle_length": 45.97236964473284
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 14,
+      "grid": {
+        "vertices": 38,
+        "length": 50.62613097511082,
+        "free_angle_length": 1.5428698544256132
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 50.30156692278776,
+        "free_angle_length": 50.30156692278776
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 15,
+      "grid": {
+        "vertices": 54,
+        "length": 54.36485061568115,
+        "free_angle_length": 1.7079963661887758
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 52.543417877176324,
+        "free_angle_length": 52.543417877176324
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 16,
+      "grid": {
+        "vertices": 29,
+        "length": 28.36471110143515,
+        "free_angle_length": 1.5362839766889618
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 27.422917759732115,
+        "free_angle_length": 27.422917759732115
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 17,
+      "grid": {
+        "vertices": 65,
+        "length": 75.58671436343897,
+        "free_angle_length": 1.160307492246129
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 75.27138679188357,
+        "free_angle_length": 44.271386791883565
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 18,
+      "grid": {
+        "vertices": 41,
+        "length": 42.38945304480205,
+        "free_angle_length": 1.9041716705634928
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 41.07127367445264,
+        "free_angle_length": 22.24284654970645
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 19,
+      "grid": {
+        "vertices": 31,
+        "length": 36.95201946318022,
+        "free_angle_length": 1.4961753404645002
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 34.53649939773014,
+        "free_angle_length": 34.53649939773014
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 20,
+      "grid": {
+        "vertices": 62,
+        "length": 82.39785512607334,
+        "free_angle_length": 1.4445363202993764
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 80.74361892856093,
+        "free_angle_length": 80.74361892856093
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 21,
+      "grid": {
+        "vertices": 75,
+        "length": 86.02447199377167,
+        "free_angle_length": 1.1838515602057391
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 82.8971229983288,
+        "free_angle_length": 51.654482311209506
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 22,
+      "grid": {
+        "vertices": 27,
+        "length": 25.95351894454075,
+        "free_angle_length": 1.5393053821676554
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 25.461565860323088,
+        "free_angle_length": 25.461565860323088
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 23,
+      "grid": {
+        "vertices": 24,
+        "length": 28.162892557808046,
+        "free_angle_length": 1.7781162469578058
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 26.448608373366174,
+        "free_angle_length": 26.448608373366174
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 24,
+      "grid": {
+        "vertices": 37,
+        "length": 47.43434048794607,
+        "free_angle_length": 1.0079336167532313
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 47.42662239247491,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 25,
+      "grid": {
+        "vertices": 62,
+        "length": 59.95230817970898,
+        "free_angle_length": 0.9523081797089767
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.53262511740215,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 26,
+      "grid": {
+        "vertices": 20,
+        "length": 19.069956777881806,
+        "free_angle_length": 1.6557432155087108
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 18.536895252325916,
+        "free_angle_length": 18.536895252325916
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 27,
+      "grid": {
+        "vertices": 50,
+        "length": 62.444755965659155,
+        "free_angle_length": 1.3614948449739446
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.33803253995612,
+        "free_angle_length": 59.33803253995612
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 28,
+      "grid": {
+        "vertices": 44,
+        "length": 54.568375525415256,
+        "free_angle_length": 1.1419686542224188
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 52.93476046347334,
+        "free_angle_length": 21.509680303731603
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 29,
+      "grid": {
+        "vertices": 33,
+        "length": 37.61817247023073,
+        "free_angle_length": 1.4049690346343047
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 34.92879632893583,
+        "free_angle_length": 34.92879632893583
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 30,
+      "grid": {
+        "vertices": 46,
+        "length": 52.69630041721351,
+        "free_angle_length": 0.9978156073785001
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 52.67692554651343,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 31,
+      "grid": {
+        "vertices": 61,
+        "length": 76.0492767700184,
+        "free_angle_length": 1.0665207127215406
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 72.04857279246178,
+        "free_angle_length": 72.04857279246178
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 32,
+      "grid": {
+        "vertices": 79,
+        "length": 81.17114894152772,
+        "free_angle_length": 1.0290133177967742
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 78.69400381050002,
+        "free_angle_length": 43.865576685753844
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 33,
+      "grid": {
+        "vertices": 54,
+        "length": 67.44549211858111,
+        "free_angle_length": 1.5338038731497134
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 65.78207612361223,
+        "free_angle_length": 21.1394908281121
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 34,
+      "grid": {
+        "vertices": 55,
+        "length": 57.05057277383888,
+        "free_angle_length": 1.322650712481025
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 53.58753964222678,
+        "free_angle_length": 53.58753964222678
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 35,
+      "grid": {
+        "vertices": 39,
+        "length": 50.10548565690125,
+        "free_angle_length": 1.2648652233353264
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 49.281584762690656,
+        "free_angle_length": 47.281584762690656
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 36,
+      "grid": {
+        "vertices": 34,
+        "length": 39.2003193945225,
+        "free_angle_length": 1.158688834179878
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 36.500625814011094,
+        "free_angle_length": 36.500625814011094
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 37,
+      "grid": {
+        "vertices": 57,
+        "length": 60.116040704916784,
+        "free_angle_length": 1.973905081185833
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 56.508760836436075,
+        "free_angle_length": 56.508760836436075
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 38,
+      "grid": {
+        "vertices": 59,
+        "length": 65.77586553399729,
+        "free_angle_length": 1.4915942865353835
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 60.95366972968588,
+        "free_angle_length": 60.95366972968588
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 39,
+      "grid": {
+        "vertices": 23,
+        "length": 23.871257187547783,
+        "free_angle_length": 1.3859758133092097
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 21.98363718666859,
+        "free_angle_length": 21.98363718666859
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 40,
+      "grid": {
+        "vertices": 45,
+        "length": 53.48216958929274,
+        "free_angle_length": 1.541044092338454
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 52.63099442577839,
+        "free_angle_length": 11.40175425099138
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 41,
+      "grid": {
+        "vertices": 19,
+        "length": 21.001203781124,
+        "free_angle_length": 1.2732817197661424
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 19.489283820548426,
+        "free_angle_length": 19.489283820548426
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 42,
+      "grid": {
+        "vertices": 56,
+        "length": 63.2748732804702,
+        "free_angle_length": 1.5763884706351927
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 58.27769460188307,
+        "free_angle_length": 58.27769460188307
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 43,
+      "grid": {
+        "vertices": 35,
+        "length": 37.80735586082457,
+        "free_angle_length": 1.2510066747205277
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 36.14269058952472,
+        "free_angle_length": 36.14269058952472
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 44,
+      "grid": {
+        "vertices": 27,
+        "length": 27.54865302316147,
+        "free_angle_length": 1.4775852112959933
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 25.363984220871938,
+        "free_angle_length": 25.363984220871938
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 45,
+      "grid": {
+        "vertices": 33,
+        "length": 38.0938021730543,
+        "free_angle_length": 1.8805987374578672
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 35.29979764972213,
+        "free_angle_length": 35.29979764972213
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 46,
+      "grid": {
+        "vertices": 29,
+        "length": 29.060344422773984,
+        "free_angle_length": 0.9892766109085087
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 27.397004502552658,
+        "free_angle_length": 27.397004502552658
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 47,
+      "grid": {
+        "vertices": 54,
+        "length": 59.71877252683838,
+        "free_angle_length": 1.6771419664957556
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 54.96945451954004,
+        "free_angle_length": 54.96945451954004
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 48,
+      "grid": {
+        "vertices": 74,
+        "length": 91.35946967887917,
+        "free_angle_length": 1.7198593720899467
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 85.68121390514821,
+        "free_angle_length": 85.68121390514821
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 49,
+      "grid": {
+        "vertices": 51,
+        "length": 61.23529038673838,
+        "free_angle_length": 1.6373106402917255
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 57.015289932901446,
+        "free_angle_length": 57.015289932901446
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 50,
+      "grid": {
+        "vertices": 18,
+        "length": 17.21462310895644,
+        "free_angle_length": 1.3861959842102505
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 15.86342024301949,
+        "free_angle_length": 15.86342024301949
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 51,
+      "grid": {
+        "vertices": 60,
+        "length": 72.42240671709006,
+        "free_angle_length": 0.924932034031758
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 67.77037884848791,
+        "free_angle_length": 67.77037884848791
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 52,
+      "grid": {
+        "vertices": 49,
+        "length": 49.74943302541081,
+        "free_angle_length": 1.6783652135453304
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 47.81111635686871,
+        "free_angle_length": 47.81111635686871
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 53,
+      "grid": {
+        "vertices": 42,
+        "length": 44.9617480494642,
+        "free_angle_length": 1.8196124257332418
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 41.94227866222677,
+        "free_angle_length": 41.94227866222677
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 54,
+      "grid": {
+        "vertices": 36,
+        "length": 37.79753453611666,
+        "free_angle_length": 1.89803959950499
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 35.36198158787611,
+        "free_angle_length": 35.36198158787611
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 55,
+      "grid": {
+        "vertices": 73,
+        "length": 76.55948485541442,
+        "free_angle_length": 1.588922106937298
+      },
+      "smooth": {
+        "vertices": 12,
+        "length": 74.09020665011724,
+        "free_angle_length": 43.43335240062485
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 56,
+      "grid": {
+        "vertices": 47,
+        "length": 46.267126098238606,
+        "free_angle_length": 1.4386989734924136
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 45.171110565673814,
+        "free_angle_length": 45.171110565673814
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 57,
+      "grid": {
+        "vertices": 38,
+        "length": 39.49066049304784,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 37.15663191692913,
+        "free_angle_length": 37.15663191692913
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 58,
+      "grid": {
+        "vertices": 85,
+        "length": 83.90036073639442,
+        "free_angle_length": 1.4861471740213223
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 82.64294931161915,
+        "free_angle_length": 82.64294931161915
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 59,
+      "grid": {
+        "vertices": 24,
+        "length": 24.104476980823172,
+        "free_angle_length": 1.4476227313307928
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 22.57439753508974,
+        "free_angle_length": 22.57439753508974
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 60,
+      "grid": {
+        "vertices": 45,
+        "length": 44.08742792212978,
+        "free_angle_length": 1.259000797383584
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 42.81892202061856,
+        "free_angle_length": 42.81892202061856
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 61,
+      "grid": {
+        "vertices": 80,
+        "length": 80.22156460014688,
+        "free_angle_length": 1.564710350654495
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 78.34481001305349,
+        "free_angle_length": 78.34481001305349
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 62,
+      "grid": {
+        "vertices": 41,
+        "length": 49.09846372007461,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 46.073433850351286,
+        "free_angle_length": 46.073433850351286
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 63,
+      "grid": {
+        "vertices": 23,
+        "length": 21.537058498602118,
+        "free_angle_length": 1.537058498602119
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 21.473531354393597,
+        "free_angle_length": 21.473531354393597
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 64,
+      "grid": {
+        "vertices": 68,
+        "length": 80.87560056882899,
+        "free_angle_length": 1.3781258857706904
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 75.19521996747554,
+        "free_angle_length": 75.19521996747554
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 65,
+      "grid": {
+        "vertices": 21,
+        "length": 21.00613137765676,
+        "free_angle_length": 0.9350635657912848
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 19.57595703591705,
+        "free_angle_length": 19.57595703591705
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 66,
+      "grid": {
+        "vertices": 19,
+        "length": 22.766843220774344,
+        "free_angle_length": 1.7962804722971994
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 21.793958418221234,
+        "free_angle_length": 21.793958418221234
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 67,
+      "grid": {
+        "vertices": 56,
+        "length": 68.86109844912846,
+        "free_angle_length": 1.777837328443255
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 64.72831262721442,
+        "free_angle_length": 64.72831262721442
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 68,
+      "grid": {
+        "vertices": 29,
+        "length": 35.61493135359963,
+        "free_angle_length": 0.9164465437646241
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 34.442842746699945,
+        "free_angle_length": 34.442842746699945
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 69,
+      "grid": {
+        "vertices": 73,
+        "length": 97.2996592166637,
+        "free_angle_length": 1.618418349531901
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 97.29717162192424,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 70,
+      "grid": {
+        "vertices": 41,
+        "length": 44.24558831962632,
+        "free_angle_length": 0.8608120087760887
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 40.894667253988665,
+        "free_angle_length": 40.894667253988665
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 71,
+      "grid": {
+        "vertices": 34,
+        "length": 40.573647393017026,
+        "free_angle_length": 1.289376145555114
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 38.171467463862676,
+        "free_angle_length": 38.171467463862676
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 72,
+      "grid": {
+        "vertices": 16,
+        "length": 16.29633022361538,
+        "free_angle_length": 1.639475974123001
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 15.000012715652165,
+        "free_angle_length": 15.000012715652165
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 73,
+      "grid": {
+        "vertices": 29,
+        "length": 35.95401379082985,
+        "free_angle_length": 1.6697425433679327
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 34.4069021442084,
+        "free_angle_length": 34.4069021442084
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 74,
+      "grid": {
+        "vertices": 84,
+        "length": 92.74811131701658,
+        "free_angle_length": 1.8069858200623075
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 89.19623690459667,
+        "free_angle_length": 46.95359621747738
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 75,
+      "grid": {
+        "vertices": 60,
+        "length": 61.124724773140485,
+        "free_angle_length": 1.6394433989019337
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 59.92329049871804,
+        "free_angle_length": 46.680649811598755
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 76,
+      "grid": {
+        "vertices": 46,
+        "length": 58.45649551621939,
+        "free_angle_length": 1.3732343955341801
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 56.156058980354715,
+        "free_angle_length": 56.156058980354715
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 77,
+      "grid": {
+        "vertices": 38,
+        "length": 36.75602038775469,
+        "free_angle_length": 1.3418068253815916
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 36.262977960402544,
+        "free_angle_length": 36.262977960402544
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 78,
+      "grid": {
+        "vertices": 35,
+        "length": 42.329249122295835,
+        "free_angle_length": 1.216550750087748
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 41.287022061551184,
+        "free_angle_length": 15.4573138021633
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 79,
+      "grid": {
+        "vertices": 27,
+        "length": 26.265141393999876,
+        "free_angle_length": 1.850927831626783
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 25.39246928398045,
+        "free_angle_length": 25.39246928398045
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 80,
+      "grid": {
+        "vertices": 44,
+        "length": 42.59164829052685,
+        "free_angle_length": 1.177434728153752
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 41.57424205609842,
+        "free_angle_length": 41.57424205609842
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 81,
+      "grid": {
+        "vertices": 24,
+        "length": 30.556659858822574,
+        "free_angle_length": 1.2723886113606615
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 30.270167414111214,
+        "free_angle_length": 30.270167414111214
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 82,
+      "grid": {
+        "vertices": 43,
+        "length": 51.296509815290094,
+        "free_angle_length": 1.355384318335809
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 47.88096768707155,
+        "free_angle_length": 47.88096768707155
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 83,
+      "grid": {
+        "vertices": 37,
+        "length": 37.51197883016978,
+        "free_angle_length": 1.026697455931213
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 35.49548010192306,
+        "free_angle_length": 35.49548010192306
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 84,
+      "grid": {
+        "vertices": 68,
+        "length": 73.66460276240213,
+        "free_angle_length": 0.7945450773133093
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 68.51041903846765,
+        "free_angle_length": 68.51041903846765
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 85,
+      "grid": {
+        "vertices": 49,
+        "length": 60.78931420649945,
+        "free_angle_length": 1.5344802105604236
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 57.56975338245424,
+        "free_angle_length": 57.56975338245424
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 86,
+      "grid": {
+        "vertices": 16,
+        "length": 18.5341918131753,
+        "free_angle_length": 1.392056189444346
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 17.77969369630901,
+        "free_angle_length": 17.77969369630901
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 87,
+      "grid": {
+        "vertices": 56,
+        "length": 59.85232589509827,
+        "free_angle_length": 1.4675495842480288
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 56.893321230521344,
+        "free_angle_length": 32.893321230521344
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 88,
+      "grid": {
+        "vertices": 65,
+        "length": 64.68780622794544,
+        "free_angle_length": 1.8593791031992541
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 63.37343028154161,
+        "free_angle_length": 63.37343028154161
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 89,
+      "grid": {
+        "vertices": 50,
+        "length": 53.33641030614281,
+        "free_angle_length": 1.3658475576656606
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 49.716445111761374,
+        "free_angle_length": 49.716445111761374
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 90,
+      "grid": {
+        "vertices": 52,
+        "length": 59.19261905205994,
+        "free_angle_length": 1.4941342422249289
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 54.8025398556836,
+        "free_angle_length": 54.8025398556836
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 91,
+      "grid": {
+        "vertices": 34,
+        "length": 32.266263824116294,
+        "free_angle_length": 1.2662638241162956
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 31.945050267173876,
+        "free_angle_length": 31.945050267173876
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 92,
+      "grid": {
+        "vertices": 29,
+        "length": 29.063158501918085,
+        "free_angle_length": 1.4063042524257066
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 27.650602464510435,
+        "free_angle_length": 27.650602464510435
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 93,
+      "grid": {
+        "vertices": 16,
+        "length": 16.479570942392876,
+        "free_angle_length": 1.822716692900497
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 15.32467727694708,
+        "free_angle_length": 15.32467727694708
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 94,
+      "grid": {
+        "vertices": 52,
+        "length": 53.78578957863973,
+        "free_angle_length": 1.4720810796549644
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 53.028197170821194,
+        "free_angle_length": 15.028197170821194
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 95,
+      "grid": {
+        "vertices": 29,
+        "length": 38.01307166520147,
+        "free_angle_length": 1.6577326058740973
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 37.727099211211275,
+        "free_angle_length": 37.727099211211275
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 96,
+      "grid": {
+        "vertices": 20,
+        "length": 24.97882126453021,
+        "free_angle_length": 0.9371907041875868
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 24.959408575044716,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 97,
+      "grid": {
+        "vertices": 55,
+        "length": 62.863677257411,
+        "free_angle_length": 1.3367653228298197
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 57.94149315497764,
+        "free_angle_length": 57.94149315497764
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 98,
+      "grid": {
+        "vertices": 67,
+        "length": 67.75285799451888,
+        "free_angle_length": 1.2675766202803087
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 65.39911505890795,
+        "free_angle_length": 65.39911505890795
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 99,
+      "grid": {
+        "vertices": 63,
+        "length": 63.99394875656902,
+        "free_angle_length": 1.5086673823304502
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 61.75427501334094,
+        "free_angle_length": 61.75427501334094
+      }
+    },
+    {
+      "map": "crates/fsim-core/tests/fixtures/nauvis-origin.fsmap",
+      "vehicle": "tank",
+      "seed": 100,
+      "grid": {
+        "vertices": 73,
+        "length": 92.17820170902087,
+        "free_angle_length": 1.467523590366182
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 89.77816216180554,
+        "free_angle_length": 30.891825582245392
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 1,
+      "grid": {
+        "vertices": 66,
+        "length": 76.89509973078613,
+        "free_angle_length": 1.468692859593289
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 76.52326494335091,
+        "free_angle_length": 44.52326494335092
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 2,
+      "grid": {
+        "vertices": 70,
+        "length": 71.04567057348503,
+        "free_angle_length": 1.5603891992464571
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 68.53004799445627,
+        "free_angle_length": 42.53004799445627
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 3,
+      "grid": {
+        "vertices": 63,
+        "length": 77.33252442615613,
+        "free_angle_length": 1.592409055978551
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 75.44468708037304,
+        "free_angle_length": 27.437889121403543
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 4,
+      "grid": {
+        "vertices": 34,
+        "length": 35.08406806688964,
+        "free_angle_length": 1.184573130277976
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 32.92731238654282,
+        "free_angle_length": 32.92731238654282
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 5,
+      "grid": {
+        "vertices": 79,
+        "length": 88.73131744797391,
+        "free_angle_length": 1.1333377015272743
+      },
+      "smooth": {
+        "vertices": 12,
+        "length": 85.66325199679936,
+        "free_angle_length": 61.66325199679936
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 6,
+      "grid": {
+        "vertices": 84,
+        "length": 92.6130096236817,
+        "free_angle_length": 1.671884126727425
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 89.31583794712871,
+        "free_angle_length": 48.31583794712871
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 7,
+      "grid": {
+        "vertices": 62,
+        "length": 75.49337400576374,
+        "free_angle_length": 1.1674721979592544
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 74.16443470311214,
+        "free_angle_length": 17
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 8,
+      "grid": {
+        "vertices": 93,
+        "length": 98.83525874109279,
+        "free_angle_length": 1.7936281807501937
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 94.97764081331434,
+        "free_angle_length": 84.97764081331434
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 9,
+      "grid": {
+        "vertices": 49,
+        "length": 60.344085263264525,
+        "free_angle_length": 1.503464829698595
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 59.68493986870884,
+        "free_angle_length": 12.217662798305797
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 10,
+      "grid": {
+        "vertices": 54,
+        "length": 59.432640969597436,
+        "free_angle_length": 0.976796846881748
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 54.68508033563319,
+        "free_angle_length": 49.68508033563319
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 11,
+      "grid": {
+        "vertices": 49,
+        "length": 62.91232991849549,
+        "free_angle_length": 1.5864281106910028
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 61.03824668711126,
+        "free_angle_length": 26.92582403567252
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 12,
+      "grid": {
+        "vertices": 68,
+        "length": 85.86442756165941,
+        "free_angle_length": 1.3963901301240325
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 83.20021052276566,
+        "free_angle_length": 83.20021052276566
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 13,
+      "grid": {
+        "vertices": 73,
+        "length": 82.55513256544403,
+        "free_angle_length": 1.3713663813704655
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 76.39104386806056,
+        "free_angle_length": 76.39104386806056
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 14,
+      "grid": {
+        "vertices": 69,
+        "length": 77.3453775498725,
+        "free_angle_length": 1.4042520529182072
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 74.66660111886752,
+        "free_angle_length": 50.635955604688654
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 15,
+      "grid": {
+        "vertices": 89,
+        "length": 93.35436915555738,
+        "free_angle_length": 1.555379282334075
+      },
+      "smooth": {
+        "vertices": 10,
+        "length": 89.31326274326273,
+        "free_angle_length": 68.31326274326273
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 16,
+      "grid": {
+        "vertices": 67,
+        "length": 81.92354618244181,
+        "free_angle_length": 0.940790125144983
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 80.25508821823082,
+        "free_angle_length": 37.728176283649645
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 17,
+      "grid": {
+        "vertices": 87,
+        "length": 86.05274269229459,
+        "free_angle_length": 0.8101020051753128
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 84.80069282320105,
+        "free_angle_length": 68.80069282320105
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 18,
+      "grid": {
+        "vertices": 73,
+        "length": 71.9041716705635,
+        "free_angle_length": 1.9041716705634928
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 71.31434108754688,
+        "free_angle_length": 71.31434108754688
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 19,
+      "grid": {
+        "vertices": 52,
+        "length": 63.29026554436568,
+        "free_angle_length": 1.4496451107997521
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.19465956441734,
+        "free_angle_length": 59.19465956441734
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 20,
+      "grid": {
+        "vertices": 34,
+        "length": 35.741927733088566,
+        "free_angle_length": 1.428219234103806
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 33.35803591611269,
+        "free_angle_length": 33.35803591611269
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 21,
+      "grid": {
+        "vertices": 49,
+        "length": 57.88981926988778,
+        "free_angle_length": 1.5344802105604236
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 53.74610397058192,
+        "free_angle_length": 53.74610397058192
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 22,
+      "grid": {
+        "vertices": 52,
+        "length": 63.343613157879844,
+        "free_angle_length": 1.0887791619408236
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 60.094675781692715,
+        "free_angle_length": 59.09467578169272
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 23,
+      "grid": {
+        "vertices": 51,
+        "length": 61.37609599340442,
+        "free_angle_length": 1.7781162469578058
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 58.75472910970946,
+        "free_angle_length": 57.75472910970946
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 24,
+      "grid": {
+        "vertices": 39,
+        "length": 43.01101614980517,
+        "free_angle_length": 0.7978127142087453
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 39.71406322232658,
+        "free_angle_length": 39.71406322232658
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 25,
+      "grid": {
+        "vertices": 41,
+        "length": 55.44989755002946,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 55.44987808915849,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 26,
+      "grid": {
+        "vertices": 32,
+        "length": 37.207213838275464,
+        "free_angle_length": 1.5797968403059381
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 34.694026078802686,
+        "free_angle_length": 34.694026078802686
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 27,
+      "grid": {
+        "vertices": 89,
+        "length": 88.28302672097587,
+        "free_angle_length": 1.454599596229685
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 87.51183359578457,
+        "free_angle_length": 32.0624390837628
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 28,
+      "grid": {
+        "vertices": 63,
+        "length": 65.28410427795338,
+        "free_angle_length": 1.1419686542224188
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 61.789519478688504,
+        "free_angle_length": 61.789519478688504
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 29,
+      "grid": {
+        "vertices": 77,
+        "length": 87.28575551239801,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 10,
+        "length": 82.65758926011868,
+        "free_angle_length": 71.65758926011868
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 30,
+      "grid": {
+        "vertices": 70,
+        "length": 73.11584825744572,
+        "free_angle_length": 1.5594990713417
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 69.472791432705,
+        "free_angle_length": 56.472791432704994
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 31,
+      "grid": {
+        "vertices": 69,
+        "length": 74.69329332069442,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 69.48493563728456,
+        "free_angle_length": 69.48493563728456
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 32,
+      "grid": {
+        "vertices": 45,
+        "length": 48.27143783893609,
+        "free_angle_length": 1.3008750904589428
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 44.87383453640859,
+        "free_angle_length": 44.87383453640859
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 33,
+      "grid": {
+        "vertices": 56,
+        "length": 59.090153059253765,
+        "free_angle_length": 1.5338038731497134
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 55.09438825162948,
+        "free_angle_length": 55.09438825162948
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 34,
+      "grid": {
+        "vertices": 74,
+        "length": 95.22644719647178,
+        "free_angle_length": 1.030487703578535
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 91.42153926951366,
+        "free_angle_length": 91.42153926951366
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 35,
+      "grid": {
+        "vertices": 15,
+        "length": 16.85766601957707,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 16.120243760909226,
+        "free_angle_length": 16.120243760909226
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 36,
+      "grid": {
+        "vertices": 29,
+        "length": 33.505753169437696,
+        "free_angle_length": 1.292549733841265
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 31.307303418123595,
+        "free_angle_length": 31.307303418123595
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 37,
+      "grid": {
+        "vertices": 73,
+        "length": 88.9563608471962,
+        "free_angle_length": 1.145177665153152
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 87.31714919272639,
+        "free_angle_length": 19.697715603592208
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 38,
+      "grid": {
+        "vertices": 70,
+        "length": 89.27443157208975,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 84.95590681945326,
+        "free_angle_length": 84.95590681945326
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 39,
+      "grid": {
+        "vertices": 59,
+        "length": 62.21437631346902,
+        "free_angle_length": 1.6580271273649672
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 59.62831984875387,
+        "free_angle_length": 31.62831984875387
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 40,
+      "grid": {
+        "vertices": 83,
+        "length": 90.30317402143335,
+        "free_angle_length": 1.6046892115984057
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 85.6879698251384,
+        "free_angle_length": 80.6879698251384
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 41,
+      "grid": {
+        "vertices": 82,
+        "length": 90.60869625597115,
+        "free_angle_length": 1.6675707590168776
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 83.84308918889099,
+        "free_angle_length": 83.84308918889099
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 42,
+      "grid": {
+        "vertices": 44,
+        "length": 59.03632172224212,
+        "free_angle_length": 1.053565664945267
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.02972503841053,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 43,
+      "grid": {
+        "vertices": 30,
+        "length": 30.095466513639014,
+        "free_angle_length": 1.0243987017735392
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 28.157942133618274,
+        "free_angle_length": 28.157942133618274
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 44,
+      "grid": {
+        "vertices": 39,
+        "length": 38.402020556691845,
+        "free_angle_length": 1.5735934319456535
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 37.161067615033105,
+        "free_angle_length": 37.161067615033105
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 45,
+      "grid": {
+        "vertices": 55,
+        "length": 59.61267712642743,
+        "free_angle_length": 1.3994736908309942
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 56.75475344401831,
+        "free_angle_length": 36.75475344401832
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 46,
+      "grid": {
+        "vertices": 90,
+        "length": 92.93435530658277,
+        "free_angle_length": 1.7922196828518435
+      },
+      "smooth": {
+        "vertices": 10,
+        "length": 89.83871119550103,
+        "free_angle_length": 58.838711195501034
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 47,
+      "grid": {
+        "vertices": 81,
+        "length": 91.34694241474988,
+        "free_angle_length": 1.3347491059301184
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 84.12843785056145,
+        "free_angle_length": 84.12843785056145
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 48,
+      "grid": {
+        "vertices": 61,
+        "length": 74.68263640225011,
+        "free_angle_length": 1.3567345944456584
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 73.00035611865943,
+        "free_angle_length": 60.64465399311318
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 49,
+      "grid": {
+        "vertices": 80,
+        "length": 93.96321244809619,
+        "free_angle_length": 1.6373106402917255
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 89.63322182926491,
+        "free_angle_length": 76.63322182926491
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 50,
+      "grid": {
+        "vertices": 32,
+        "length": 40.585141709356286,
+        "free_angle_length": 1.6440162124020021
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 39.143661387338824,
+        "free_angle_length": 39.143661387338824
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 51,
+      "grid": {
+        "vertices": 71,
+        "length": 86.7361152160748,
+        "free_angle_length": 0.924932034031758
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 81.34083883122658,
+        "free_angle_length": 81.34083883122658
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 52,
+      "grid": {
+        "vertices": 72,
+        "length": 87.2424656611869,
+        "free_angle_length": 1.2597096038900444
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 81.51984608539281,
+        "free_angle_length": 81.51984608539281
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 53,
+      "grid": {
+        "vertices": 58,
+        "length": 74.95819391040584,
+        "free_angle_length": 1.318583603616609
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 72.36936230353095,
+        "free_angle_length": 72.36936230353095
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 54,
+      "grid": {
+        "vertices": 86,
+        "length": 91.5254565974745,
+        "free_angle_length": 1.89803959950499
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 86.08340463946166,
+        "free_angle_length": 86.08340463946166
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 55,
+      "grid": {
+        "vertices": 93,
+        "length": 93.87211595504836,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 91.4742622239396,
+        "free_angle_length": 91.4742622239396
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 56,
+      "grid": {
+        "vertices": 66,
+        "length": 71.91225125993884,
+        "free_angle_length": 1.8706206995962094
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 71.11979376383101,
+        "free_angle_length": 48.041648597857254
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 57,
+      "grid": {
+        "vertices": 51,
+        "length": 60.654198232879715,
+        "free_angle_length": 1.4704320488061493
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 59.43286764427778,
+        "free_angle_length": 59.43286764427778
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 58,
+      "grid": {
+        "vertices": 51,
+        "length": 58.35014505558253,
+        "free_angle_length": 1.6516602457475364
+      },
+      "smooth": {
+        "vertices": 14,
+        "length": 56.9358992329236,
+        "free_angle_length": 17.916862925621295
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 59,
+      "grid": {
+        "vertices": 21,
+        "length": 21.452411929841016,
+        "free_angle_length": 1.3813441179755408
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 19.882710430730153,
+        "free_angle_length": 19.882710430730153
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 60,
+      "grid": {
+        "vertices": 46,
+        "length": 54.35151978088088,
+        "free_angle_length": 1.410394283926595
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 50.438670923569475,
+        "free_angle_length": 50.438670923569475
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 61,
+      "grid": {
+        "vertices": 79,
+        "length": 87.47558581949288,
+        "free_angle_length": 1.5344603225386158
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 82.84807721079645,
+        "free_angle_length": 58.848077210796454
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 62,
+      "grid": {
+        "vertices": 84,
+        "length": 88.84833104224765,
+        "free_angle_length": 1.2209140442781485
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 84.92891587578748,
+        "free_angle_length": 80.92891587578748
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 63,
+      "grid": {
+        "vertices": 89,
+        "length": 99.15512388748706,
+        "free_angle_length": 1.5571441410404376
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 91.86787222895704,
+        "free_angle_length": 91.86787222895704
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 64,
+      "grid": {
+        "vertices": 45,
+        "length": 53.65682980990075,
+        "free_angle_length": 1.301490750573405
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 51.090176562133685,
+        "free_angle_length": 51.090176562133685
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 65,
+      "grid": {
+        "vertices": 74,
+        "length": 89.74624674783432,
+        "free_angle_length": 0.9350635657912848
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 86.20659993312275,
+        "free_angle_length": 81.20659993312275
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 66,
+      "grid": {
+        "vertices": 20,
+        "length": 20.754962855734277,
+        "free_angle_length": 1.2696814814957038
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 19.107293203498322,
+        "free_angle_length": 19.107293203498322
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 67,
+      "grid": {
+        "vertices": 26,
+        "length": 28.795221777556282,
+        "free_angle_length": 1.2388725914522294
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 28.22428034656622,
+        "free_angle_length": 19.22428034656622
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 68,
+      "grid": {
+        "vertices": 73,
+        "length": 91.79695981995059,
+        "free_angle_length": 1.086281701295899
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 87.00938531523235,
+        "free_angle_length": 87.00938531523235
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 69,
+      "grid": {
+        "vertices": 76,
+        "length": 92.52343335948503,
+        "free_angle_length": 0.8838230526958224
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 88.93920333269745,
+        "free_angle_length": 69.74417798674278
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 70,
+      "grid": {
+        "vertices": 28,
+        "length": 28.509512219707894,
+        "free_angle_length": 1.4384444078424181
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 26.316114308811873,
+        "free_angle_length": 26.316114308811873
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 71,
+      "grid": {
+        "vertices": 45,
+        "length": 53.59177881211472,
+        "free_angle_length": 0.8222261904142467
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 51.80066509985681,
+        "free_angle_length": 51.80066509985681
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 72,
+      "grid": {
+        "vertices": 55,
+        "length": 73.81149928986125,
+        "free_angle_length": 1.100821171206551
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 73.19703243473042,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 73,
+      "grid": {
+        "vertices": 43,
+        "length": 42.75444018431676,
+        "free_angle_length": 1.511799497197483
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 41.402327533844364,
+        "free_angle_length": 41.402327533844364
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 74,
+      "grid": {
+        "vertices": 53,
+        "length": 70.7744430181128,
+        "free_angle_length": 1.306405586577394
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 69.90361403373556,
+        "free_angle_length": 69.90361403373556
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 75,
+      "grid": {
+        "vertices": 76,
+        "length": 88.3518616904492,
+        "free_angle_length": 1.6828141321370915
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 81.75637773839617,
+        "free_angle_length": 81.75637773839617
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 76,
+      "grid": {
+        "vertices": 79,
+        "length": 86.9737137030269,
+        "free_angle_length": 1.03258820607264
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 82.07883621583906,
+        "free_angle_length": 79.07883621583906
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 77,
+      "grid": {
+        "vertices": 56,
+        "length": 61.696304412387356,
+        "free_angle_length": 1.6546738520447541
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 58.55046925480603,
+        "free_angle_length": 41.55046925480603
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 78,
+      "grid": {
+        "vertices": 22,
+        "length": 23.95173191992204,
+        "free_angle_length": 1.638023420937278
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 22.198402154829502,
+        "free_angle_length": 22.198402154829502
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 79,
+      "grid": {
+        "vertices": 35,
+        "length": 38.82149058010393,
+        "free_angle_length": 1.850927831626783
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 38.19734324366436,
+        "free_angle_length": 9.447170528427769
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 80,
+      "grid": {
+        "vertices": 89,
+        "length": 89.88562079788228,
+        "free_angle_length": 1.8145529860168041
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 87.29527179371779,
+        "free_angle_length": 87.29527179371779
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 81,
+      "grid": {
+        "vertices": 78,
+        "length": 86.65147260113667,
+        "free_angle_length": 1.2961335418093016
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 83.87781285281812,
+        "free_angle_length": 45.87781285281812
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 82,
+      "grid": {
+        "vertices": 39,
+        "length": 45.70881587385241,
+        "free_angle_length": 1.4245446263905266
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 44.121579405067095,
+        "free_angle_length": 35.121579405067095
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 83,
+      "grid": {
+        "vertices": 77,
+        "length": 81.21066726052001,
+        "free_angle_length": 0.9974638249236161
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 78.19728590715546,
+        "free_angle_length": 65.19728590715545
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 84,
+      "grid": {
+        "vertices": 64,
+        "length": 78.25527718728861,
+        "free_angle_length": 1.5151618171110472
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 75.2462923801888,
+        "free_angle_length": 40.30516688323452
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 85,
+      "grid": {
+        "vertices": 66,
+        "length": 79.56384729243669,
+        "free_angle_length": 1.652159047005331
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 76.08344002177397,
+        "free_angle_length": 70.08344002177397
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 86,
+      "grid": {
+        "vertices": 63,
+        "length": 64.70576468842911,
+        "free_angle_length": 1.392056189444346
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 61.37538448298773,
+        "free_angle_length": 61.37538448298773
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 87,
+      "grid": {
+        "vertices": 72,
+        "length": 91.2663369703605,
+        "free_angle_length": 1.5556588517058054
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 86.76291193224723,
+        "free_angle_length": 86.76291193224723
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 88,
+      "grid": {
+        "vertices": 51,
+        "length": 64.35685378625753,
+        "free_angle_length": 1.8593791031992541
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 61.98469614223475,
+        "free_angle_length": 61.98469614223475
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 89,
+      "grid": {
+        "vertices": 30,
+        "length": 39.474240300722,
+        "free_angle_length": 1.7046876790215304
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 39.11531059039424,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 90,
+      "grid": {
+        "vertices": 43,
+        "length": 43.2266504037447,
+        "free_angle_length": 1.9840097166254156
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 41.70832928871239,
+        "free_angle_length": 41.70832928871239
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 91,
+      "grid": {
+        "vertices": 78,
+        "length": 81.92229635803915,
+        "free_angle_length": 1.5375200471889179
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 78.4578082591381,
+        "free_angle_length": 73.4578082591381
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 92,
+      "grid": {
+        "vertices": 39,
+        "length": 48.73494587942341,
+        "free_angle_length": 1.551179695349841
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 47.111875616701155,
+        "free_angle_length": 20.12461179749811
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 93,
+      "grid": {
+        "vertices": 78,
+        "length": 88.06481923906779,
+        "free_angle_length": 1.8810530549942297
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 85.68163546477516,
+        "free_angle_length": 47.681635464775155
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 94,
+      "grid": {
+        "vertices": 23,
+        "length": 26.41467757457958,
+        "free_angle_length": 1.8583283884755308
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 24.576098844190348,
+        "free_angle_length": 24.576098844190348
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 95,
+      "grid": {
+        "vertices": 34,
+        "length": 44.49952523476415,
+        "free_angle_length": 1.9015454883174965
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 43.671163972856746,
+        "free_angle_length": 43.671163972856746
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 96,
+      "grid": {
+        "vertices": 60,
+        "length": 70.77781113775352,
+        "free_angle_length": 0.9371907041875868
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 65.71068369311048,
+        "free_angle_length": 65.71068369311048
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 97,
+      "grid": {
+        "vertices": 54,
+        "length": 68.0768806930074,
+        "free_angle_length": 1.3367653228298197
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 64.82818207792286,
+        "free_angle_length": 64.82818207792286
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 98,
+      "grid": {
+        "vertices": 41,
+        "length": 42.201370401023475,
+        "free_angle_length": 1.7160890267849052
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 39.840988147231634,
+        "free_angle_length": 39.840988147231634
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 99,
+      "grid": {
+        "vertices": 31,
+        "length": 32.00874391409689,
+        "free_angle_length": 1.5234625398583195
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 29.844267675892993,
+        "free_angle_length": 29.844267675892993
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "car",
+      "seed": 100,
+      "grid": {
+        "vertices": 72,
+        "length": 91.19579820303812,
+        "free_angle_length": 1.4851200843834356
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 86.6727553454085,
+        "free_angle_length": 86.6727553454085
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 1,
+      "grid": {
+        "vertices": 28,
+        "length": 33.76318909525213,
+        "free_angle_length": 0.8931314101633154
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 32.27943224742065,
+        "free_angle_length": 32.27943224742065
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 2,
+      "grid": {
+        "vertices": 39,
+        "length": 39.21724344873884,
+        "free_angle_length": 1.5603891992464571
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 37.26673871501402,
+        "free_angle_length": 37.26673871501402
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 3,
+      "grid": {
+        "vertices": 63,
+        "length": 66.80726287232565,
+        "free_angle_length": 1.4224865614754063
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 64.11805201001904,
+        "free_angle_length": 34.11805201001904
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 4,
+      "grid": {
+        "vertices": 35,
+        "length": 39.534670863779084,
+        "free_angle_length": 1.7356809905557422
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 36.929930508442155,
+        "free_angle_length": 33.929930508442155
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 5,
+      "grid": {
+        "vertices": 37,
+        "length": 43.68295968514313,
+        "free_angle_length": 1.3986884376812174
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 40.70630423344402,
+        "free_angle_length": 40.70630423344402
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 6,
+      "grid": {
+        "vertices": 57,
+        "length": 59.53503952674452,
+        "free_angle_length": 0.5644767782673836
+      },
+      "smooth": {
+        "vertices": 10,
+        "length": 57.03635607329801,
+        "free_angle_length": 46.79371538617872
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 7,
+      "grid": {
+        "vertices": 74,
+        "length": 86.25073331864446,
+        "free_angle_length": 1.1674721979592544
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 79.87096345877522,
+        "free_angle_length": 79.87096345877522
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 8,
+      "grid": {
+        "vertices": 87,
+        "length": 89.52155024210805,
+        "free_angle_length": 1.7936281807501937
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 86.03272047435932,
+        "free_angle_length": 86.03272047435932
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 9,
+      "grid": {
+        "vertices": 70,
+        "length": 87.49627937492257,
+        "free_angle_length": 1.0282419433871703
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 84.44330901330817,
+        "free_angle_length": 52.95991874138839
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 10,
+      "grid": {
+        "vertices": 53,
+        "length": 64.23163084282075,
+        "free_angle_length": 0.976796846881748
+      },
+      "smooth": {
+        "vertices": 11,
+        "length": 62.00528981116286,
+        "free_angle_length": 34.13523212607406
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 11,
+      "grid": {
+        "vertices": 44,
+        "length": 56.66968923137621,
+        "free_angle_length": 1.5864281106910028
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 55.10864724605143,
+        "free_angle_length": 25.238858928247925
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 12,
+      "grid": {
+        "vertices": 37,
+        "length": 48.11899856100046,
+        "free_angle_length": 0.8641645650614312
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 47.547803896662856,
+        "free_angle_length": 47.547803896662856
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 13,
+      "grid": {
+        "vertices": 47,
+        "length": 49.0992884427283,
+        "free_angle_length": 1.3713663813704655
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 47.40584361709645,
+        "free_angle_length": 29.920562242857883
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 14,
+      "grid": {
+        "vertices": 56,
+        "length": 68.85649044018734,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 68.00670369838781,
+        "free_angle_length": 11.221324381327898
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 15,
+      "grid": {
+        "vertices": 90,
+        "length": 94.62647259322846,
+        "free_angle_length": 1.4132691576320706
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 91.12411795351667,
+        "free_angle_length": 76.12411795351667
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 16,
+      "grid": {
+        "vertices": 29,
+        "length": 31.082925748875937,
+        "free_angle_length": 0.940790125144983
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 29.88059915365481,
+        "free_angle_length": 19.88059915365481
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 17,
+      "grid": {
+        "vertices": 82,
+        "length": 93.26858323377785,
+        "free_angle_length": 1.4279628002119182
+      },
+      "smooth": {
+        "vertices": 11,
+        "length": 90.16848622376394,
+        "free_angle_length": 55.34005909901775
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 18,
+      "grid": {
+        "vertices": 74,
+        "length": 78.23543331136372,
+        "free_angle_length": 1.4364434381403823
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 73.76202822083307,
+        "free_angle_length": 73.76202822083307
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 19,
+      "grid": {
+        "vertices": 57,
+        "length": 62.90548923351547,
+        "free_angle_length": 1.4496451107997521
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 57.90920886134834,
+        "free_angle_length": 57.90920886134834
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 20,
+      "grid": {
+        "vertices": 81,
+        "length": 92.09199541001749,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 85.09833905653308,
+        "free_angle_length": 85.09833905653308
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 21,
+      "grid": {
+        "vertices": 71,
+        "length": 79.95340418190615,
+        "free_angle_length": 1.1838515602057391
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 77.24487361162348,
+        "free_angle_length": 59.83066004925038
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 22,
+      "grid": {
+        "vertices": 52,
+        "length": 61.01872837533827,
+        "free_angle_length": 1.2491757536377988
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 60.245522409973375,
+        "free_angle_length": 25.079872407968907
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 23,
+      "grid": {
+        "vertices": 38,
+        "length": 45.58276343346506,
+        "free_angle_length": 1.0558514988838688
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 42.92887443071033,
+        "free_angle_length": 42.92887443071033
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 24,
+      "grid": {
+        "vertices": 54,
+        "length": 70.43080961508579,
+        "free_angle_length": 2.033839995415845
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 68.79920277706871,
+        "free_angle_length": 29.410882339705484
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 25,
+      "grid": {
+        "vertices": 29,
+        "length": 36.231394087109635,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 35.1743636062195,
+        "free_angle_length": 35.1743636062195
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 26,
+      "grid": {
+        "vertices": 42,
+        "length": 45.63498213194384,
+        "free_angle_length": 0.835992258720513
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 42.276677990944975,
+        "free_angle_length": 42.276677990944975
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 27,
+      "grid": {
+        "vertices": 48,
+        "length": 49.319909397940265,
+        "free_angle_length": 1.8346280237016883
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 46.992505226741756,
+        "free_angle_length": 46.992505226741756
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 28,
+      "grid": {
+        "vertices": 62,
+        "length": 61.73460831653574,
+        "free_angle_length": 1.491967629416457
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.993093601740746,
+        "free_angle_length": 59.993093601740746
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 29,
+      "grid": {
+        "vertices": 72,
+        "length": 81.87154195002492,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 77.61396689486509,
+        "free_angle_length": 55.88604483350723
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 30,
+      "grid": {
+        "vertices": 31,
+        "length": 29.82624273212469,
+        "free_angle_length": 0.9978156073785001
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 29.29267687384599,
+        "free_angle_length": 7.29267687384599
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 31,
+      "grid": {
+        "vertices": 43,
+        "length": 44.136944134590365,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 41.62359268512965,
+        "free_angle_length": 41.62359268512965
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 32,
+      "grid": {
+        "vertices": 79,
+        "length": 92.86348139955786,
+        "free_angle_length": 1.5375795917534034
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 88.8045683255115,
+        "free_angle_length": 65.95732539167638
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 33,
+      "grid": {
+        "vertices": 79,
+        "length": 98.88508021369395,
+        "free_angle_length": 0.931761407920001
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 95.51301848676755,
+        "free_angle_length": 46.25818449082851
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 34,
+      "grid": {
+        "vertices": 73,
+        "length": 92.9838065093525,
+        "free_angle_length": 1.030487703578535
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 89.6373055774682,
+        "free_angle_length": 39.824615503479755
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 35,
+      "grid": {
+        "vertices": 95,
+        "length": 97.68609314432327,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 93.54082368897086,
+        "free_angle_length": 93.54082368897086
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 36,
+      "grid": {
+        "vertices": 51,
+        "length": 52.07097832336002,
+        "free_angle_length": 1.5856969491214659
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 50.281026412221834,
+        "free_angle_length": 41.281026412221834
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 37,
+      "grid": {
+        "vertices": 70,
+        "length": 81.81422522346527,
+        "free_angle_length": 1.145177665153152
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 81.7910379347924,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 38,
+      "grid": {
+        "vertices": 71,
+        "length": 92.34549938395521,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 88.79456545034512,
+        "free_angle_length": 88.79456545034512
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 39,
+      "grid": {
+        "vertices": 49,
+        "length": 48.2144029380554,
+        "free_angle_length": 1.3859758133092097
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 46.89798427390113,
+        "free_angle_length": 46.89798427390113
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 40,
+      "grid": {
+        "vertices": 82,
+        "length": 83.91839771058316,
+        "free_angle_length": 1.6046892115984057
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 81.1603944166477,
+        "free_angle_length": 47.160394416647705
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 41,
+      "grid": {
+        "vertices": 57,
+        "length": 62.82247789695745,
+        "free_angle_length": 1.7808473366148274
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 58.28331540618059,
+        "free_angle_length": 58.28331540618059
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 42,
+      "grid": {
+        "vertices": 44,
+        "length": 46.19570128867622,
+        "free_angle_length": 1.053565664945267
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 43.16040938302545,
+        "free_angle_length": 43.16040938302545
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 43,
+      "grid": {
+        "vertices": 59,
+        "length": 65.94949148455551,
+        "free_angle_length": 1.2510066747205277
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 61.5050708831619,
+        "free_angle_length": 61.5050708831619
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 44,
+      "grid": {
+        "vertices": 44,
+        "length": 42.041907524237395,
+        "free_angle_length": 1.041907524237396
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 42.02389137489605,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 45,
+      "grid": {
+        "vertices": 47,
+        "length": 57.89279204627761,
+        "free_angle_length": 1.8805987374578672
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 54.55671442738582,
+        "free_angle_length": 54.55671442738582
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 46,
+      "grid": {
+        "vertices": 53,
+        "length": 66.37598580044582,
+        "free_angle_length": 1.0500839926413328
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 64.06079719345063,
+        "free_angle_length": 41.63418716665333
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 47,
+      "grid": {
+        "vertices": 70,
+        "length": 81.77719090111447,
+        "free_angle_length": 1.9365704675485607
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 77.16229589649947,
+        "free_angle_length": 67.16229589649947
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 48,
+      "grid": {
+        "vertices": 61,
+        "length": 79.18789680362536,
+        "free_angle_length": 1.7198593720899467
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 78.25073354820697,
+        "free_angle_length": 14.317821063276352
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 49,
+      "grid": {
+        "vertices": 54,
+        "length": 59.02277137651838,
+        "free_angle_length": 1.8095679409219485
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 54.83035916472563,
+        "free_angle_length": 54.83035916472563
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 50,
+      "grid": {
+        "vertices": 23,
+        "length": 22.628836671329537,
+        "free_angle_length": 1.3861959842102505
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 21.574173838333664,
+        "free_angle_length": 21.574173838333664
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 51,
+      "grid": {
+        "vertices": 46,
+        "length": 56.351338905224594,
+        "free_angle_length": 0.924932034031758
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 54.39083859307148,
+        "free_angle_length": 23.769728648009426
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 52,
+      "grid": {
+        "vertices": 74,
+        "length": 90.89931991067927,
+        "free_angle_length": 1.2597096038900444
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 85.31477190842236,
+        "free_angle_length": 85.31477190842236
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 53,
+      "grid": {
+        "vertices": 59,
+        "length": 71.86263501053877,
+        "free_angle_length": 1.365160327480462
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 70.34592953519314,
+        "free_angle_length": 18.386102720132918
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 54,
+      "grid": {
+        "vertices": 69,
+        "length": 75.76809728459381,
+        "free_angle_length": 1.89803959950499
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 72.92455061514517,
+        "free_angle_length": 39.92455061514517
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 55,
+      "grid": {
+        "vertices": 22,
+        "length": 22.558523496604522,
+        "free_angle_length": 1.4874556847390448
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 20.719707392095636,
+        "free_angle_length": 20.719707392095636
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 56,
+      "grid": {
+        "vertices": 20,
+        "length": 24.669610572819547,
+        "free_angle_length": 1.8706206995962094
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 23.89313780778401,
+        "free_angle_length": 23.89313780778401
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 57,
+      "grid": {
+        "vertices": 21,
+        "length": 21.662233368301653,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 21.662233368301653,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 58,
+      "grid": {
+        "vertices": 53,
+        "length": 62.835426429821084,
+        "free_angle_length": 1.6516602457475364
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 61.37052719192786,
+        "free_angle_length": 31.694776325320962
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 59,
+      "grid": {
+        "vertices": 21,
+        "length": 22.695052616960304,
+        "free_angle_length": 1.3813441179755408
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 20.98329660878542,
+        "free_angle_length": 20.98329660878542
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 60,
+      "grid": {
+        "vertices": 41,
+        "length": 49.35151978088088,
+        "free_angle_length": 1.410394283926595
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 46.177698481367955,
+        "free_angle_length": 46.177698481367955
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 61,
+      "grid": {
+        "vertices": 68,
+        "length": 70.26238238389647,
+        "free_angle_length": 1.5344603225386158
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 66.93130718117975,
+        "free_angle_length": 66.93130718117975
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 62,
+      "grid": {
+        "vertices": 16,
+        "length": 16.623402019651714,
+        "free_angle_length": 0
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 16.267024803185897,
+        "free_angle_length": 4.47213595499958
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 63,
+      "grid": {
+        "vertices": 32,
+        "length": 34.69927976477139,
+        "free_angle_length": 1.5571441410404376
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 33.41375645288306,
+        "free_angle_length": 17.171115765763773
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 64,
+      "grid": {
+        "vertices": 43,
+        "length": 48.34312131091601,
+        "free_angle_length": 1.301490750573405
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 44.95107827257185,
+        "free_angle_length": 43.95107827257185
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 65,
+      "grid": {
+        "vertices": 38,
+        "length": 46.62727313938369,
+        "free_angle_length": 1.6861476424294262
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 45.80926155635153,
+        "free_angle_length": 30.738193744486058
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 66,
+      "grid": {
+        "vertices": 62,
+        "length": 63.16917641810737,
+        "free_angle_length": 1.2696814814957038
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 60.310806171568075,
+        "free_angle_length": 60.310806171568075
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 67,
+      "grid": {
+        "vertices": 26,
+        "length": 28.79522177755628,
+        "free_angle_length": 1.2388725914522294
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 28.765723748107373,
+        "free_angle_length": 0
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 68,
+      "grid": {
+        "vertices": 75,
+        "length": 89.13093170632978,
+        "free_angle_length": 1.8050298985253161
+      },
+      "smooth": {
+        "vertices": 11,
+        "length": 84.96799339567312,
+        "free_angle_length": 68.24007133431526
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 69,
+      "grid": {
+        "vertices": 85,
+        "length": 87.30407820478926,
+        "free_angle_length": 1.576156143431406
+      },
+      "smooth": {
+        "vertices": 11,
+        "length": 85.76585426781863,
+        "free_angle_length": 47.109000018326256
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 70,
+      "grid": {
+        "vertices": 47,
+        "length": 59.22897870047641,
+        "free_angle_length": 1.9741447045374168
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 58.23575715291229,
+        "free_angle_length": 50.23575715291229
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 71,
+      "grid": {
+        "vertices": 86,
+        "length": 97.8859055649025,
+        "free_angle_length": 1.2168580065903847
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 95.27320632212272,
+        "free_angle_length": 63.27320632212271
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 72,
+      "grid": {
+        "vertices": 71,
+        "length": 85.47467071693839,
+        "free_angle_length": 1.7345553467608241
+      },
+      "smooth": {
+        "vertices": 12,
+        "length": 82.01904042904093,
+        "free_angle_length": 71.60482686666784
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 73,
+      "grid": {
+        "vertices": 72,
+        "length": 90.11345917678082,
+        "free_angle_length": 1.645421745245444
+      },
+      "smooth": {
+        "vertices": 13,
+        "length": 88.53399262026055,
+        "free_angle_length": 23.20809081245603
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 74,
+      "grid": {
+        "vertices": 45,
+        "length": 59.87494808150116,
+        "free_angle_length": 1.306405586577394
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 59.299251845734474,
+        "free_angle_length": 32.42919416064567
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 75,
+      "grid": {
+        "vertices": 59,
+        "length": 67.6146288292845,
+        "free_angle_length": 1.6735033323302086
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 62.374779465769016,
+        "free_angle_length": 62.374779465769016
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 76,
+      "grid": {
+        "vertices": 26,
+        "length": 27.28475724329609,
+        "free_angle_length": 1.7994758690575186
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 25.37014709069146,
+        "free_angle_length": 25.37014709069146
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 77,
+      "grid": {
+        "vertices": 67,
+        "length": 80.98057565984922,
+        "free_angle_length": 1.6546738520447541
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 77.75246271068235,
+        "free_angle_length": 63.024540649324486
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 78,
+      "grid": {
+        "vertices": 19,
+        "length": 20.555681013792984,
+        "free_angle_length": 1.2419725148082235
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 18.99124787178397,
+        "free_angle_length": 18.99124787178397
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 79,
+      "grid": {
+        "vertices": 51,
+        "length": 55.2473713277755,
+        "free_angle_length": 1.448381454552158
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 51.0118337627446,
+        "free_angle_length": 51.0118337627446
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 80,
+      "grid": {
+        "vertices": 92,
+        "length": 93.90535678951159,
+        "free_angle_length": 1.177434728153752
+      },
+      "smooth": {
+        "vertices": 12,
+        "length": 91.14274906978223,
+        "free_angle_length": 54.31432194503604
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 81,
+      "grid": {
+        "vertices": 24,
+        "length": 22.2961335418093,
+        "free_angle_length": 1.2961335418093016
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 21.79450101879378,
+        "free_angle_length": 21.79450101879378
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 82,
+      "grid": {
+        "vertices": 58,
+        "length": 70.09359218470262,
+        "free_angle_length": 1.4245446263905266
+      },
+      "smooth": {
+        "vertices": 6,
+        "length": 66.32882180861819,
+        "free_angle_length": 63.32882180861818
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 83,
+      "grid": {
+        "vertices": 83,
+        "length": 89.76451561857104,
+        "free_angle_length": 0.6518172463630046
+      },
+      "smooth": {
+        "vertices": 13,
+        "length": 86.65888358387188,
+        "free_angle_length": 50.516747960140954
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 84,
+      "grid": {
+        "vertices": 57,
+        "length": 64.63813776203361,
+        "free_angle_length": 1.5254393898255185
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 59.83452778565258,
+        "free_angle_length": 59.83452778565258
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 85,
+      "grid": {
+        "vertices": 58,
+        "length": 68.25013879345198,
+        "free_angle_length": 1.652159047005331
+      },
+      "smooth": {
+        "vertices": 9,
+        "length": 66.29904865288086,
+        "free_angle_length": 38.32848590440371
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 86,
+      "grid": {
+        "vertices": 40,
+        "length": 45.421593810485575,
+        "free_angle_length": 1.7941768125160666
+      },
+      "smooth": {
+        "vertices": 4,
+        "length": 40.65895200530384,
+        "free_angle_length": 38.65895200530384
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 87,
+      "grid": {
+        "vertices": 72,
+        "length": 93.33740478222596,
+        "free_angle_length": 1.5556588517058054
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 89.78288784319032,
+        "free_angle_length": 89.78288784319032
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 88,
+      "grid": {
+        "vertices": 37,
+        "length": 42.563690233750364,
+        "free_angle_length": 1.5220596734077354
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 39.263386769984756,
+        "free_angle_length": 39.263386769984756
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 89,
+      "grid": {
+        "vertices": 63,
+        "length": 63.970827028979,
+        "free_angle_length": 1.89975921711353
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 61.51930355655052,
+        "free_angle_length": 61.51930355655052
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 90,
+      "grid": {
+        "vertices": 65,
+        "length": 66.16996170666579,
+        "free_angle_length": 0.8562532076810354
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 63.49091234062136,
+        "free_angle_length": 49.49091234062136
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 91,
+      "grid": {
+        "vertices": 32,
+        "length": 33.43701498380059,
+        "free_angle_length": 1.5375200471889179
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 32.97026357741935,
+        "free_angle_length": 32.97026357741935
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 92,
+      "grid": {
+        "vertices": 83,
+        "length": 98.5339357526467,
+        "free_angle_length": 1.551179695349841
+      },
+      "smooth": {
+        "vertices": 3,
+        "length": 98.11181954479062,
+        "free_angle_length": 40.01249804748512
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 93,
+      "grid": {
+        "vertices": 81,
+        "length": 96.0353819875449,
+        "free_angle_length": 1.8810530549942297
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 91.73666417793072,
+        "free_angle_length": 74.73666417793072
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 94,
+      "grid": {
+        "vertices": 17,
+        "length": 18.92430137100862,
+        "free_angle_length": 1.610592872023859
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 17.735036210828948,
+        "free_angle_length": 17.735036210828948
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 95,
+      "grid": {
+        "vertices": 33,
+        "length": 41.64481579201418,
+        "free_angle_length": 1.2894767326868
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 40.289754438866225,
+        "free_angle_length": 40.289754438866225
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 96,
+      "grid": {
+        "vertices": 39,
+        "length": 46.38117652729711,
+        "free_angle_length": 1.6826917174621216
+      },
+      "smooth": {
+        "vertices": 8,
+        "length": 44.6898515179914,
+        "free_angle_length": 27.547715894260453
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 97,
+      "grid": {
+        "vertices": 61,
+        "length": 77.99477277237635,
+        "free_angle_length": 1.769376027960228
+      },
+      "smooth": {
+        "vertices": 7,
+        "length": 75.61285565785427,
+        "free_angle_length": 55.70496163045056
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 98,
+      "grid": {
+        "vertices": 70,
+        "length": 86.94148577120102,
+        "free_angle_length": 1.7160890267849052
+      },
+      "smooth": {
+        "vertices": 5,
+        "length": 83.68523651940822,
+        "free_angle_length": 54.34247657835283
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 99,
+      "grid": {
+        "vertices": 16,
+        "length": 17.00874391409689,
+        "free_angle_length": 1.5234625398583195
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 15.704069953688807,
+        "free_angle_length": 15.704069953688807
+      }
+    },
+    {
+      "map": "data/game/maps/nauvis-seed-12345.fsmap",
+      "vehicle": "tank",
+      "seed": 100,
+      "grid": {
+        "vertices": 35,
+        "length": 44.25467270608391,
+        "free_angle_length": 1.4851200843834356
+      },
+      "smooth": {
+        "vertices": 2,
+        "length": 42.67631757386102,
+        "free_angle_length": 42.67631757386102
+      }
+    }
+  ]
+}

@@ -327,6 +327,7 @@ impl Episode {
                     y1: 0,
                 },
                 values: Vec::new(),
+                route_grid: None,
             },
             optimal_distance: 0.0,
             optimal_length: 0.0,

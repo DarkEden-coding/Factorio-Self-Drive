@@ -49,11 +49,13 @@ export interface RawSim {
   policy_coarse(): Uint8Array;
   policy_vector(): Float32Array;
   policy_student(): Float32Array;
+  policy_student_smooth(): Float32Array;
   decide(action: number): string;
   follow_path(waypoints: Float32Array): string;
   plan_waypoints(local: Float32Array): Float32Array;
   predict_path(actions: Uint8Array): Float32Array;
   baseline_path(): Float32Array;
+  smooth_path(): Float32Array;
   distance_field(): string;
   distance_field_values(): Float32Array;
 }
@@ -91,11 +93,13 @@ export function wrapWasmSim(raw: RawSim): SimApi {
     policyCoarse: () => raw.policy_coarse(),
     policyVector: () => raw.policy_vector(),
     policyStudent: () => raw.policy_student(),
+    policyStudentSmooth: () => raw.policy_student_smooth(),
     decide: (action) => JSON.parse(raw.decide(action)) as DecisionResult,
     followPath: (waypoints) => JSON.parse(raw.follow_path(waypoints)) as DecisionResult,
     planWaypoints: (local) => raw.plan_waypoints(local),
     predictPath: (actions) => raw.predict_path(actions),
     baselinePath: () => raw.baseline_path(),
+    smoothPath: () => raw.smooth_path(),
     distanceField: () => JSON.parse(raw.distance_field()) as FieldInfo,
     distanceFieldValues: () => raw.distance_field_values(),
   };

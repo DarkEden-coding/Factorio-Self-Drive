@@ -4,7 +4,7 @@ if not bit32 then
   bit32={band=assert(load('return function(a,b) return a & b end'))(),
     bor=assert(load('return function(a,b) return a | b end'))()}
 end
-package.path='mod/fsim-autodrive/?.lua;'..package.path
+package.path=(arg[2] or 'mod/fsim-autodrive')..'/?.lua;'..package.path
 local input=dofile(arg[1])
 local raster=require('raster')
 local observation=require('observation')
@@ -22,7 +22,10 @@ for _,case in ipairs(input) do
   end
   -- Build the actual field and route rather than injecting Rust's route.
   local state, stats = case.state, case.stats
-  local f = field.new({x=state.x,y=state.y},state.target,stats.half_width,stats.tank_driving,case.bounds)
+  local options={}
+  for k,v in pairs(network.model.field or {}) do options[k]=v end
+  options.smooth=network.model.route_source=='field_smooth'
+  local f = field.new({x=state.x,y=state.y},state.target,stats.half_width,stats.tank_driving,case.bounds,nil,options)
   while not field.slice(f,function(x,y) return raster.mask(grid,x,y) end,4000) do end
   local route = field.route(f,{x=state.x,y=state.y})
   local obs=observation.build(grid,route,state,stats)

@@ -14,7 +14,8 @@ for _,vehicle in ipairs({"car","tank"}) do
     {name="obstacles40",start={-48,-40},target={-8,-40},fuel="rocket-fuel",speed=0.12},
     {name="nest100",start={-48,48},target={52,48},fuel="nuclear-fuel",speed=0},
     {name="real60",start={-48,0},target={12,0},fuel="coal",speed=-0.08,real=true},
-    {name="forest80",start={-48,-80},target={32,-80},fuel="coal",speed=0}
+    {name="forest80",start={-48,-80},target={32,-80},fuel="coal",speed=0},
+    {name="angle63",start={-96,80},target={-36,100},fuel="coal",speed=0}
   }) do
     cases[#cases+1]={vehicle=vehicle,name=vehicle.."-"..scenario.name,scenario=scenario}
   end
@@ -100,6 +101,7 @@ local function spawn(job)
   job.health=job.vehicle.health
   job.contacts,job.damage,job.ticks,job.path_length=0,0,0,0
   job.last_position,job.last_speed=nil,nil
+  job.moving_ticks,job.off_grid_ticks=0,0
   job.phase="planning"
 end
 local function snapshot(job)
@@ -112,6 +114,9 @@ local function finish(job,result)
     seconds=job.ticks/60,planning_ticks=job.state.planning_ticks,
     total_ticks=job.ticks+job.state.planning_ticks,path_length=job.path_length,
     segment_ticks=job.state.elapsed,contacts_estimate=job.contacts,damage=job.damage,
+    moving_heading_off_grid_fraction=job.off_grid_ticks/math.max(1,job.moving_ticks),
+    orientation=job.vehicle.valid and job.vehicle.orientation or 0,
+    initial_route=job.initial_route,
     distance=job.vehicle.valid and u.distance(job.vehicle.position,job.state.target) or -1,
     speed=job.vehicle.valid and job.vehicle.speed or 0,decisions=job.state.decisions,
     route_slices=job.state.slices}
@@ -146,6 +151,7 @@ function M.tick()
         job.vehicle.speed=case.scenario.speed
         local _,sample=driver.observe(job.state)
         sample.vehicle,sample.fuel=case.vehicle,case.scenario.fuel
+        job.initial_route=sample.route
         write("parity-"..case.name,sample)
         job.last_position={x=job.vehicle.position.x,y=job.vehicle.position.y}
         job.last_speed=job.vehicle.speed
@@ -158,6 +164,11 @@ function M.tick()
       if v.valid then
         -- Engine has no contact event. Count blocked powered ticks as a proxy,
         -- and label it explicitly rather than calling it exact collision data.
+        if math.abs(v.speed)>0.01 then
+          job.moving_ticks=job.moving_ticks+1
+          local angle=v.orientation*360%45
+          if math.min(angle,45-angle)>1 then job.off_grid_ticks=job.off_grid_ticks+1 end
+        end
         if job.last_position then job.path_length=job.path_length+u.distance(v.position,job.last_position) end
         local throttle=math.floor(job.state.action/3)-1
         local powered=throttle~=0 and throttle*(job.last_speed or 0)>=0

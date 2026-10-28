@@ -43,7 +43,7 @@ export class LiveSession implements Driver {
   ) {
     this.session = new EpisodeSession(sim);
     const spec = sim.spec();
-    this.client = new PolicyClient({ full: spec.spec_hash, student: spec.student.spec_hash }, {
+    this.client = new PolicyClient({ full: spec.spec_hash, student: spec.student.spec_hash, studentSmooth: spec.student.smooth_spec_hash }, {
       onState: (state, message) => {
         events.onConnection(state, message);
         if (state !== "ready") return;
@@ -161,6 +161,7 @@ export class LiveSession implements Driver {
     if (hello.mode === "direct_plan") rules.direct_plan = hello.mode_config as EpisodeRules["direct_plan"];
     if (hello.mode === "path_planner") rules.path_planner = hello.mode_config as EpisodeRules["path_planner"];
     if (hello.arrival) rules.arrival = hello.arrival;
+    if (hello.field) rules.distance_field = hello.field;
     return rules;
   }
 
@@ -170,7 +171,8 @@ export class LiveSession implements Driver {
     const hello = this.client.hello;
     if (this.driverKind !== "policy" || !hello || !info || !this.session.running) return;
     const arrival = hello.arrival?.mode ?? "enter";
-    if (info.mode !== hello.mode || info.decision_ticks !== hello.decision_ticks || info.arrival.mode !== arrival) {
+    if (info.mode !== hello.mode || info.decision_ticks !== hello.decision_ticks || info.arrival.mode !== arrival ||
+      (hello.field && JSON.stringify(info.distance_field) !== JSON.stringify(hello.field))) {
       this.session.retarget(info.target.x, info.target.y, this.policyRules());
     }
   }

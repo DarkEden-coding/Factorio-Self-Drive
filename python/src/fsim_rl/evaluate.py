@@ -56,7 +56,10 @@ def vehicle_to_world(points: list, pose: dict) -> list:
 
 def _pose_from_info(info: dict, row: int) -> dict | None:
     if all(key in info for key in ("x", "y", "orientation")):
-        return {key: float(info[key][row]) for key in ("x", "y", "orientation")}
+        pose = {key: float(info[key][row]) for key in ("x", "y", "orientation")}
+        if "speed" in info:
+            pose["speed"] = float(info["speed"][row])
+        return pose
     return None
 
 
@@ -65,9 +68,11 @@ def _finish_overlays(record: dict, calls: list[dict]) -> dict:
     overlays = []
     for i, call in enumerate(calls):
         overlay = dict(call)
-        pose = overlay.pop("pose", None)
+        pose = overlay.get("pose")
         if i == 0 and isinstance(record.get("start"), dict):
-            pose = record["start"]
+            pose = {**record["start"], "speed": record.get("start_speed", 0.0)}
+        if pose is not None:
+            overlay["pose"] = pose
         if "waypoints" in overlay:
             if pose is not None:
                 overlay["waypoints"] = vehicle_to_world(overlay["waypoints"], pose)

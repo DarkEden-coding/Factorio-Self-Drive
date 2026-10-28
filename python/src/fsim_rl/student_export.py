@@ -4,6 +4,7 @@ cost estimate for running it in Lua. `student_ref.py` evaluates the exported fil
 from __future__ import annotations
 
 import math
+import dataclasses
 
 import torch
 from torch import nn
@@ -80,6 +81,8 @@ def export_student(model: StudentPolicy, config: Config, state: dict) -> dict:
         "obs": {**spec["student"], "ray_count": RAY_COUNT, "ray_channels_count": RAY_CHANNELS},
         "actions": spec["actions"],
         "decision_ticks": config.env.decision_ticks,
+        "route_source": config.env.route_source,
+        "field": dataclasses.asdict(config.env.distance_field),
         "normalizer": {
             "mean": _rounded(norm.mean.detach().cpu()),
             "std": _rounded(torch.sqrt(norm.var + 1e-8).detach().cpu()),

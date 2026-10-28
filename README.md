@@ -39,7 +39,7 @@ The driver picked in the panel then drives there:
   the server's `hello`; "Reconnect" tries again. The viewer refuses to drive if the server's `spec_hash`
   differs from the wasm build. Without a server the car brakes and waits, and the panel shows how to start it:
   ```sh
-  cd python && uv run fsim-rl serve --checkpoint runs/students/mlp64-rl/checkpoints/latest.pt  # small student
+  cd python && uv run fsim-rl serve --checkpoint runs/students/field-smooth-v1/checkpoints/latest.pt  # current smooth-route student
   cd python && uv run fsim-rl serve --checkpoint runs/ft-strong/best/model.pt                  # full model
   ```
   Student checkpoints announce `observation: "student"` in `hello`, and the viewer then sends the compact

@@ -448,30 +448,37 @@ impl Sim {
 
     pub fn policy_local(&self) -> Result<Vec<u8>, JsValue> {
         let mut out = vec![0; LOCAL_LEN];
-        self.write_policy_obs(Some(&mut out), None, None, None)?;
+        self.write_policy_obs(Some(&mut out), None, None, None, false)?;
         Ok(out)
     }
     pub fn policy_coarse(&self) -> Result<Vec<u8>, JsValue> {
         let mut out = vec![0; COARSE_LEN];
-        self.write_policy_obs(None, Some(&mut out), None, None)?;
+        self.write_policy_obs(None, Some(&mut out), None, None, false)?;
         Ok(out)
     }
     pub fn policy_vector(&self) -> Result<Vec<f32>, JsValue> {
         let mut out = vec![0.0; VECTOR_LEN];
-        self.write_policy_obs(None, None, Some(&mut out), None)?;
+        self.write_policy_obs(None, None, Some(&mut out), None, false)?;
         Ok(out)
     }
     /// The compact student observation (docs/rl.md, "Student observation").
     pub fn policy_student(&self) -> Result<Vec<f32>, JsValue> {
         let mut out = vec![0.0; STUDENT_LEN];
-        self.write_policy_obs(None, None, None, Some(&mut out))?;
+        self.write_policy_obs(None, None, None, Some(&mut out), false)?;
+        Ok(out)
+    }
+
+    /// Student observation with cost-aware any-angle field guidance.
+    pub fn policy_student_smooth(&self) -> Result<Vec<f32>, JsValue> {
+        let mut out = vec![0.0; STUDENT_LEN];
+        self.write_policy_obs(None, None, None, Some(&mut out), true)?;
         Ok(out)
     }
 
     /// The student observation with the coarse map appended (docs/rl.md, "Student map").
     pub fn policy_student_map(&self) -> Result<Vec<f32>, JsValue> {
         let mut out = vec![0.0; STUDENT_LEN + student_obs::MAP_LEN];
-        self.write_policy_obs(None, None, None, Some(&mut out))?;
+        self.write_policy_obs(None, None, None, Some(&mut out), false)?;
         Ok(out)
     }
 
@@ -576,6 +583,17 @@ impl Sim {
         Ok(flatten(&baseline::full_path(e, &self.inner.vehicles)))
     }
 
+    /// Cost-preserving any-angle field path (world x,y pairs).
+    pub fn smooth_path(&self) -> Result<Vec<f32>, JsValue> {
+        let e = self.active_episode()?;
+        let v = &self.inner.vehicles;
+        Ok(flatten(&e.field.smooth_route(
+            v.x[0],
+            v.y[0],
+            [e.setup.target.x, e.setup.target.y],
+        )))
+    }
+
     /// `{x_min, y_min, width, height}` of the episode's distance field.
     pub fn distance_field(&self) -> Result<String, JsValue> {
         let r = self.active_episode()?.field.region;
@@ -675,6 +693,7 @@ impl Sim {
         coarse: Option<&mut [u8]>,
         vector: Option<&mut [f32]>,
         student: Option<&mut [f32]>,
+        smooth: bool,
     ) -> Result<(), JsValue> {
         let episode = self.active_episode()?;
         let raster = self.raster.as_ref().expect("raster built with episode");
@@ -691,6 +710,13 @@ impl Sim {
         if let Some(out) = coarse {
             policy_obs::write_coarse(raster, &self.patches, tile, target, &mut scratch, out);
         }
+        let route = (smooth && student.is_some()).then(|| {
+            episode.field.smooth_route(
+                v.x[0],
+                v.y[0],
+                [episode.setup.target.x, episode.setup.target.y],
+            )
+        });
         let source = ObsSource {
             data: &self.inner.data,
             world: &self.inner.world,
@@ -698,7 +724,7 @@ impl Sim {
             patches: &self.patches,
             vehicles: v,
             episode,
-            route: None,
+            route: route.as_deref(),
         };
         if let Some(out) = vector {
             policy_obs::write_vector(source, out);

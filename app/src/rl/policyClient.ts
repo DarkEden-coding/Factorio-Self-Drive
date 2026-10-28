@@ -28,7 +28,7 @@ export class PolicyClient {
   private pending: ((reply: ActionMessage) => void) | null = null;
 
   constructor(
-    private specHashes: { full: string; student: string },
+    private specHashes: { full: string; student: string; studentSmooth: string },
     private events: ClientEvents,
   ) {}
 
@@ -73,7 +73,7 @@ export class PolicyClient {
     this.pending = onReply;
     const message =
       this.hello?.observation === "student"
-        ? { type: "act", student: Array.from(sim.policyStudent()) }
+        ? { type: "act", student: Array.from(this.hello.route_source === "field_smooth" ? sim.policyStudentSmooth() : sim.policyStudent()) }
         : {
             type: "act",
             local: toBase64(sim.policyLocal()),
@@ -95,7 +95,8 @@ export class PolicyClient {
     }
     if (message.type === "hello") {
       const observation = message.observation ?? "full";
-      const expected = this.specHashes[observation];
+      const expected = observation === "student" && message.route_source === "field_smooth"
+        ? this.specHashes.studentSmooth : this.specHashes[observation];
       if (message.spec_hash !== expected) {
         this.state = "refused";
         ws.close();
@@ -186,6 +187,9 @@ export class PolicyDriver implements Driver {
     const action = reply.action;
     if (s.info.mode === "reactive" && typeof action === "number") {
       this.queue = [action];
+      if (this.client.hello?.route_source === "field_smooth") {
+        s.plan = { kind: "waypoints", points: this.sim.smoothPath(), startDecision: decision };
+      }
     } else if (s.info.mode === "direct_plan" && Array.isArray(action)) {
       const plan = action as number[];
       this.queue = plan.slice(0, s.info.direct_plan.execute);

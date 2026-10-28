@@ -97,12 +97,25 @@ class Trainer:
         ppo = self.config.ppo
         return max(ppo.total_steps // (ppo.num_envs * ppo.rollout_steps), 1)
 
-    def _compatible_state(self, path: Path) -> dict:
-        """Load a checkpoint and refuse it if its model kind or spec_hash differs."""
+    def _compatible_state(self, path: Path, *, allow_route_change: bool = False) -> dict:
+        """Require the same contract, with an explicit dense field-to-smooth warm start."""
         state = load_checkpoint(path)
         if state["config"]["model"]["kind"] != self.config.model.kind:
             raise SystemExit(f"checkpoint model kind {state['config']['model']['kind']!r} != config")
-        if state["spec_hash"] != self.env.spec_hash:
+        source_student = state.get("spec", {}).get("student", {})
+        current_student = self.env.spec.get("student", {})
+        route_transfer = (
+            allow_route_change and self.config.model.arch == "student"
+            and not self.config.env.student_map
+            and self.config.env.route_source == "field_smooth"
+            and state["config"]["env"].get("route_source", "field") == "field"
+            and state["spec_hash"] == source_student.get("spec_hash") == current_student.get("spec_hash")
+            and source_student.get("features") == current_student.get("features")
+            and source_student.get("ray_angles_deg") == current_student.get("ray_angles_deg")
+            and source_student.get("route_lookaheads") == current_student.get("route_lookaheads")
+            and self.env.spec_hash == current_student.get("smooth_spec_hash")
+        )
+        if state["spec_hash"] != self.env.spec_hash and not route_transfer:
             raise SystemExit(
                 f"checkpoint spec_hash {state['spec_hash']} != env spec_hash {self.env.spec_hash}"
             )
@@ -115,13 +128,14 @@ class Trainer:
     def _init_from(self, path: Path, run_dir: Path) -> None:
         """Start a new run from a checkpoint's weights and vector normalizer, with a fresh
         optimizer, curriculum and step count."""
-        state = self._compatible_state(path)
+        state = self._compatible_state(path, allow_route_change=True)
         run_dir.mkdir(parents=True, exist_ok=True)
         source = {
             "checkpoint": str(Path(path).resolve()),
             "global_step": state["global_step"],
             "iteration": state["iteration"],
             "spec_hash": state["spec_hash"],
+            "destination_spec_hash": self.env.spec_hash,
         }
         (run_dir / "init_from.json").write_text(json.dumps(source, indent=2))
         print(f"initialized from {path} (iteration {state['iteration']}, step {state['global_step']})")

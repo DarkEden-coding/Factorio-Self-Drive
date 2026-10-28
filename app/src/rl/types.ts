@@ -1,5 +1,5 @@
 // Policy server messages (docs/rl.md).
-import type { ArrivalRules, DirectPlanConfig, PathPlannerConfig, PolicyMode } from "../sim/types";
+import type { EpisodeRules, ArrivalRules, DirectPlanConfig, PathPlannerConfig, PolicyMode } from "../sim/types";
 
 export interface HelloMessage {
   type: "hello";
@@ -8,6 +8,8 @@ export interface HelloMessage {
   spec_hash: string;
   // Which observation the model reads; servers before student support omit it ("full").
   observation?: "full" | "student";
+  route_source?: "field" | "field_smooth" | "pathfinder";
+  field?: EpisodeRules["distance_field"];
   model: Record<string, unknown>;
   mode_config: Partial<DirectPlanConfig & PathPlannerConfig>;
   // The model's arrival rule; servers before stop arrival omit it ("enter").

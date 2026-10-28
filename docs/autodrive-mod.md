@@ -1,15 +1,16 @@
 # In-game autodrive
 
-Version 0.5.0 runs the `field-efficient` student, a supplemental PPO fine-tune of
-`mlp64-stop` for shorter, faster trips. It keeps the segmented field planner restored in 0.4.0,
-with faster queue processing and terrain caching. The pathfinder-route map model from 0.3.0
-is not used. Model export: `python/runs/students/field-efficient-v1/field-efficient.json`,
-format `fsim-student-v1`, spec hash `49e75f8a02cb7e16`, 13,312 multiply-adds per decision.
-The mod runs entirely in Factorio Lua and requires Factorio 2.1.23 or newer in the 2.1 series.
+Version 0.6.0 runs the `field-smooth` student with cost-aware arbitrary-angle field routes.
+Clear route spans connect directly rather than following 45-degree grid steps. The model was
+fine-tuned with the same smoothing used in the mod. Model export:
+`python/runs/students/field-smooth-v1/field-smooth.json`, format `fsim-student-v1`,
+spec hash `d1c084cc679f1f71`, 13,312 multiply-adds per decision. It runs entirely in Factorio Lua
+and requires Factorio 2.1.23 or newer in the 2.1 series.
 
-On 2,400 paired holdout tasks, arrival time improves 1.78%, path length improves 0.28%, and
-success increases from 98.50% to 99.46%. See [the training and planner results](efficient-driving-results.md)
-for the comparison, collision metrics, limitations and reproduction commands.
+On 2,400 holdout tasks against 0.5.0, arrival time improves 2.34%, driven path length improves
+1.35%, and success rises from 99.46% to 99.71%. The explicit engine angle test uses one 18.4-degree
+segment instead of 62 grid waypoints. See [smooth-route-results.md](smooth-route-results.md)
+for geometry, training, engine checks and limitations.
 
 ## Controls
 
@@ -34,7 +35,9 @@ to `script-output/fsim-autodrive/timing.txt`; `/autodrive-dump` writes a diagnos
 The restored driver computes bounded, resumable distance fields in Lua. Water, rocks, cliffs,
 and nests block travel. Trees block the car and cost extra for the tank. Nest zones add cost,
 so the local route can choose a detour rather than follow Factorio's waypoints directly.
-The 135 model inputs contain rays, field-route lookaheads and length, vehicle state, and target
+After extraction, cost-aware string pulling replaces clear spans with arbitrary-angle segments.
+Shortcuts must clear the vehicle-inflated grid and retain the original span's terrain-cost budget.
+The 135 model inputs contain rays, smoothed-route lookaheads and length, vehicle state, and target
 state. The model has no coarse-map convolution. It chooses throttle and steering every four
 ticks; brake/reverse mapping is updated each tick as speed crosses zero.
 
@@ -44,7 +47,7 @@ an intermediate target. Factorio's pathfinder only helps select distant sub-targ
 reads the local field route. Failed plans try wider margins and alternative sub-targets;
 timeouts, stalls and bounded detour counts stop unsuccessful attempts.
 
-Version 0.5.0 clears incompatible saved drive state and brakes controlled vehicles during
+Version 0.6.0 clears incompatible saved drive state and brakes controlled vehicles during
 configuration changes. Set a target again after loading the update. Restart Factorio to load
 changed mod files.
 
@@ -56,6 +59,9 @@ python3 scripts/build-autodrive-weights.py
 
 ## Verification for the current model
 
+Version 0.6.0 passes twelve engine fixtures, including open arbitrary-angle targets.
+Its current results and parity checks are in [smooth-route-results.md](smooth-route-results.md).
+
 The restored field planner builds its own route in the parity test. On 16 fixed real-map
 states, all 135 observations, network logits and chosen actions match the simulator/reference
 exactly. This checks the local field calculation as well as inference.
@@ -63,7 +69,7 @@ exactly. This checks the local field calculation as well as inference.
 Version 0.4.0 completed eight isolated Factorio smoke trips with zero measured
 damage and zero blocked-powered-tick contact estimates. Mean decision time was 0.80 ms,
 p95 0.99 ms in this run. Short smoke fixtures do not establish general tree avoidance.
-Version 0.5.0 passes ten engine fixtures, including forest detours. Its complete before/after
+Version 0.5.0 passed ten engine fixtures, including forest detours. Its complete before/after
 results and current model parity are in [efficient-driving-results.md](efficient-driving-results.md).
 The plain-Lua driver harness also completed 600-tile and diagonal long trips using multiple segments.
 Raw results are in `data/autodrive/field-restored-engine/` and
@@ -179,7 +185,7 @@ from its JSON APIs. API auditing is a name/record check, not a type checker.
 
 ## Installation
 
-Installed and enabled as `~/Library/Application Support/factorio/mods/fsim-autodrive_0.5.0`,
+Installed and enabled as `~/Library/Application Support/factorio/mods/fsim-autodrive_0.6.0`,
 a symlink to this repository (earlier version links removed). Factorio was not running when enabling the mod.
 All existing mod-list entries were preserved. Backup:
 

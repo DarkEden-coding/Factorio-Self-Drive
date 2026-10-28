@@ -103,6 +103,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output',type=Path,default=ROOT/'data/autodrive/offline-parity.json')
     parser.add_argument('--engine-output',type=Path)
+    parser.add_argument('--mod-source',type=Path,default=ROOT/'mod/fsim-autodrive')
     parser.add_argument('--model',type=Path,default=build_weights.DEFAULT,help='the exported student the mod ships')
     args=parser.parse_args()
     data=json.loads((ROOT/'data/prototypes.json').read_text())
@@ -113,7 +114,7 @@ def main():
         for vehicle in ('car','tank'):
             for seed in (15,27):
                 cases.append(dict(map=str(path),vehicle=vehicle,fuel='coal' if seed==15 else 'nuclear-fuel',seed=seed))
-    raw=subprocess.run(['node','scripts/autodrive-sim.mjs'],input=json.dumps(cases),cwd=ROOT,
+    raw=subprocess.run(['node','scripts/autodrive-sim.mjs',str(args.model)],input=json.dumps(cases),cwd=ROOT,
         capture_output=True,text=True,check=True)
     results=json.loads(raw.stdout)
     fixtures=[fixture(Path(c['map']),r,data) for c,r in zip(cases,results)]
@@ -124,7 +125,7 @@ def main():
         request.update(start_speed=0.12 if c['seed']==15 else -0.08,
             arrival=dict(mode='stop',stop_radius=1,stop_speed=0.01))
         moving.append({**c,'request':request})
-    raw=subprocess.run(['node','scripts/autodrive-sim.mjs'],input=json.dumps(moving),cwd=ROOT,
+    raw=subprocess.run(['node','scripts/autodrive-sim.mjs',str(args.model)],input=json.dumps(moving),cwd=ROOT,
         capture_output=True,text=True,check=True)
     more=json.loads(raw.stdout)
     fixtures.extend(fixture(Path(c['map']),r,data) for c,r in zip(moving,more))
@@ -132,7 +133,7 @@ def main():
     with tempfile.TemporaryDirectory(prefix='fsim-lua-parity-') as temp:
         source=Path(temp)/'fixtures.lua'
         source.write_text('return '+build_weights.lua(fixtures)+'\n')
-        raw=subprocess.run(['lua','scripts/check-autodrive-lua.lua',str(source)],cwd=ROOT,
+        raw=subprocess.run(['lua','scripts/check-autodrive-lua.lua',str(source),str(args.mod_source)],cwd=ROOT,
             capture_output=True,text=True,check=True)
     lines=raw.stdout.splitlines()
     model=student_ref.load(str(args.model))
@@ -158,7 +159,7 @@ def main():
         max_abs_by_feature_group=maxima,logits_max_abs=logit_max,action_agreement=agreement,
         field_max_abs=field_max,engine_verified=False)
     if args.engine_output:
-        report['engine']=check_engine(args.engine_output,model)
+        report['engine']=check_engine(args.engine_output,model,args.model)
         report['engine_verified']=True
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(report,indent=2)+'\n')
@@ -166,7 +167,7 @@ def main():
     assert max(maxima.values())<1e-5 and logit_max<1e-8 and agreement==len(results) and field_max==0
 
 
-def check_engine(directory,model):
+def check_engine(directory,model,model_path):
     # Engine snapshots each have a matching .fsmap encoded by test-autodrive.py.
     cases=[];snapshots=[]
     for path in sorted(directory.glob('parity-*.json')):
@@ -177,7 +178,7 @@ def check_engine(directory,model):
             arrival=dict(mode='stop',stop_radius=1,stop_speed=0.01))))
         snapshots.append(s)
     if not cases: raise ValueError('no engine parity snapshots')
-    raw=subprocess.run(['node','scripts/autodrive-sim.mjs'],input=json.dumps(cases),cwd=ROOT,
+    raw=subprocess.run(['node','scripts/autodrive-sim.mjs',str(model_path)],input=json.dumps(cases),cwd=ROOT,
         capture_output=True,text=True,check=True)
     maxima={g:0.0 for g in GROUPS};agreement=0;logit_max=0
     for s,r in zip(snapshots,json.loads(raw.stdout)):

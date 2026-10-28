@@ -155,6 +155,7 @@ pub struct MapSpec {
     pub spec_hash: String,
     /// The same with route features from the pathfinder stand-in.
     pub pathfinder_spec_hash: String,
+    pub smooth_spec_hash: String,
 }
 
 #[derive(Serialize)]
@@ -164,6 +165,7 @@ pub struct StudentSpec {
     pub size: usize,
     /// FNV-1a 64 of the JSON of the layout; independent of the teacher's `spec_hash`.
     pub spec_hash: String,
+    pub smooth_spec_hash: String,
     pub map: MapSpec,
 }
 
@@ -192,10 +194,12 @@ pub fn spec() -> StudentSpec {
     StudentSpec {
         hashed,
         size: STUDENT_LEN,
+        smooth_spec_hash: hash(format!("{spec_hash}:{}", crate::route_smoothing::VERSION)),
         spec_hash,
         map: MapSpec {
             hashed: map,
             size: STUDENT_LEN + MAP_LEN,
+            smooth_spec_hash: hash(format!("{map_hash}:{}", crate::route_smoothing::VERSION)),
             spec_hash: map_hash,
             pathfinder_spec_hash: pathfinder,
         },

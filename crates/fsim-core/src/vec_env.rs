@@ -355,6 +355,7 @@ struct Env {
     scratch: ObsScratch,
     /// The student's pathfinder route (`RouteSource::Pathfinder`).
     path: Option<PathRoute>,
+    route_source: RouteSource,
     overlays: Vec<Overlay>,
     /// Finished records with the VecEnv step that finished them.
     finished: Vec<(u64, EpisodeRecord)>,
@@ -377,6 +378,7 @@ impl Env {
             patches: RasterPatches::default(),
             scratch: ObsScratch::default(),
             path: None,
+            route_source: shared.config.route_source,
             overlays: Vec::new(),
             finished: Vec::new(),
         };
@@ -482,6 +484,16 @@ impl Env {
 
     fn write_obs(&mut self, data: &Prototypes, out: ObsMut<'_>) {
         let route = match (&mut self.path, out.student.is_empty()) {
+            (_, false)
+                if self.episode.rules.mode == Mode::Reactive
+                    && self.route_source == RouteSource::FieldSmooth =>
+            {
+                Some(self.episode.field.smooth_route(
+                    self.vehicles.x[0],
+                    self.vehicles.y[0],
+                    [self.episode.setup.target.x, self.episode.setup.target.y],
+                ))
+            }
             (Some(path), false) => Some(path.route([self.vehicles.x[0], self.vehicles.y[0]])),
             _ => None,
         };

@@ -30,6 +30,8 @@ pub enum RouteSource {
     /// Descent on the episode's distance field, recomputed every decision.
     #[default]
     Field,
+    /// Cost-aware any-angle shortcuts over the episode field.
+    FieldSmooth,
     /// Waypoints from a stand-in for Factorio's pathfinder (`pathfinder.rs`).
     Pathfinder,
 }

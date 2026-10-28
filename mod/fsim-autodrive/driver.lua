@@ -13,6 +13,9 @@ local network = require("network")
 local vehicle_api = require("vehicle")
 local u = require("math-util")
 local M = {}
+local field_options = {}
+for k,v in pairs(network.model.field or {}) do field_options[k]=v end
+field_options.smooth = network.model.route_source == "field_smooth"
 
 local FIRST_SEGMENT = 48     -- tiles to the first sub-target
 local SEGMENT = 160          -- tiles to each later sub-target
@@ -82,7 +85,7 @@ end
 
 local function new_plan(s,from,target,final,margin)
   local stats = s.stats
-  local f = field.new(from,target,stats.half_width,stats.tank_driving,nil,margin)
+  local f = field.new(from,target,stats.half_width,stats.tank_driving,nil,margin,field_options)
   grid.ensure(s.grid,f.x0-3,f.y0-3,f.x1+3,f.y1+3,false)
   return {from=from,target=target,aim=target,final=final,margin=margin,field=f,phase="grid",attempt=0}
 end

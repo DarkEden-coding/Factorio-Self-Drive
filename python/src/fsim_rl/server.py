@@ -47,6 +47,8 @@ class PolicyServer:
             "decision_ticks": self.config.env.decision_ticks,
             "spec_hash": self.spec_hash,
             "observation": self.observation,
+            "route_source": self.config.env.route_source,
+            "field": dataclasses.asdict(self.config.env.distance_field),
             "model": {"kind": kind, "deterministic": self.deterministic, "arch": self.config.model.arch},
             "mode_config": mode_config,
             "arrival": dataclasses.asdict(self.config.env.arrival),

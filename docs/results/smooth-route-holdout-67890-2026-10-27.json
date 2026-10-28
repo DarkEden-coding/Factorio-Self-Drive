@@ -1,0 +1,1834 @@
+{
+  "split": "holdout",
+  "seed": 67890,
+  "episodes_per_scenario": 400,
+  "reference": "grid",
+  "policies": {
+    "grid": {
+      "checkpoint": "runs/students/field-efficient-v1/checkpoints/iter_000200.pt",
+      "step": 6553600
+    },
+    "smooth": {
+      "checkpoint": "runs/students/field-smooth-v1/checkpoints/latest.pt",
+      "step": 5996544
+    }
+  },
+  "rows": {
+    "standard": {
+      "grid": {
+        "safety": {
+          "moving_heading_samples": 26067,
+          "moving_headings_outside_grid_fraction": 0.883339087735451,
+          "episodes": 400,
+          "success_rate": 1.0,
+          "collision_free_success_rate": 0.93,
+          "tree_hit_rate": 0.06,
+          "contact_ticks_per_episode": {
+            "tree": 0.1875,
+            "rock": 0.3825,
+            "cliff": 0.0,
+            "nest": 0.0,
+            "water": 0.0025
+          },
+          "mean_damage": 0.00708099365234375,
+          "nest_zone_fraction": 0.0
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 1.0,
+          "spl": 0.9745323575189494,
+          "mean_time_s": 4.4325833333333335,
+          "mean_damage": 0.00708099365234375,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0,
+          "stalled_rate": 0.0,
+          "mean_return": 13.28209411700218,
+          "collisions_per_episode": {
+            "tree": 0.1875,
+            "rock": 0.3825,
+            "cliff": 0.0,
+            "nest": 0.0,
+            "water": 0.0025
+          },
+          "tree_hit_rate": 0.06,
+          "nest_zone_fraction": 0.0,
+          "reversed_rate": 0.3175,
+          "mean_end_speed_kmh": 0.2138616248429753,
+          "mean_end_target_distance": 0.6574790262430906,
+          "per_vehicle": {
+            "car": {
+              "episodes": 212,
+              "success_rate": 1.0,
+              "spl": 0.9663634487090377,
+              "mean_time_s": 3.295440251572327,
+              "mean_damage": 0.01336036538178066,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 13.539144056542442,
+              "collisions_per_episode": {
+                "tree": 0.24056603773584906,
+                "rock": 0.7169811320754716,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0047169811320754715
+              },
+              "tree_hit_rate": 0.04716981132075472,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.3160377358490566,
+              "mean_end_speed_kmh": 0.04328856666414243,
+              "mean_end_target_distance": 0.5946550200218862
+            },
+            "tank": {
+              "episodes": 188,
+              "success_rate": 1.0,
+              "spl": 0.983744105751403,
+              "mean_time_s": 5.714893617021277,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 12.992229291563161,
+              "collisions_per_episode": {
+                "tree": 0.1276595744680851,
+                "rock": 0.005319148936170213,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.07446808510638298,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.3191489361702128,
+              "mean_end_speed_kmh": 0.40620996704463785,
+              "mean_end_target_distance": 0.7283231183648744
+            }
+          },
+          "per_scenario": {
+            "standard": {
+              "episodes": 400,
+              "success_rate": 1.0,
+              "spl": 0.9745323575189494,
+              "mean_time_s": 4.4325833333333335,
+              "mean_damage": 0.00708099365234375,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 13.28209411700218,
+              "collisions_per_episode": {
+                "tree": 0.1875,
+                "rock": 0.3825,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0025
+              },
+              "tree_hit_rate": 0.06,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.3175,
+              "mean_end_speed_kmh": 0.2138616248429753,
+              "mean_end_target_distance": 0.6574790262430906
+            }
+          },
+          "split": "holdout",
+          "scenario": "standard",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/grid-standard.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 400,
+          "time_s": {
+            "reference_mean": 4.4325833333333335,
+            "candidate_mean": 4.4325833333333335,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 43.480098808230814,
+            "candidate_mean": 43.480098808230814,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "smooth": {
+        "safety": {
+          "moving_heading_samples": 25393,
+          "moving_headings_outside_grid_fraction": 0.9115110463513567,
+          "episodes": 400,
+          "success_rate": 1.0,
+          "collision_free_success_rate": 0.915,
+          "tree_hit_rate": 0.07,
+          "contact_ticks_per_episode": {
+            "tree": 0.4225,
+            "rock": 0.0125,
+            "cliff": 0.0,
+            "nest": 0.0,
+            "water": 0.0025
+          },
+          "mean_damage": 0.007647552490234375,
+          "nest_zone_fraction": 0.0
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 1.0,
+          "spl": 0.977456447338465,
+          "mean_time_s": 4.311208333333333,
+          "mean_damage": 0.007647552490234375,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0,
+          "stalled_rate": 0.0,
+          "mean_return": 13.34229608444542,
+          "collisions_per_episode": {
+            "tree": 0.4225,
+            "rock": 0.0125,
+            "cliff": 0.0,
+            "nest": 0.0,
+            "water": 0.0025
+          },
+          "tree_hit_rate": 0.07,
+          "nest_zone_fraction": 0.0,
+          "reversed_rate": 0.2975,
+          "mean_end_speed_kmh": 0.22459678717539647,
+          "mean_end_target_distance": 0.6565788330556824,
+          "per_vehicle": {
+            "car": {
+              "episodes": 212,
+              "success_rate": 1.0,
+              "spl": 0.968728247308861,
+              "mean_time_s": 3.2249213836477986,
+              "mean_damage": 0.014429344321196934,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 13.606907525188584,
+              "collisions_per_episode": {
+                "tree": 0.6320754716981132,
+                "rock": 0.018867924528301886,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0047169811320754715
+              },
+              "tree_hit_rate": 0.06132075471698113,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.28773584905660377,
+              "mean_end_speed_kmh": 0.018342367953286982,
+              "mean_end_target_distance": 0.5781542992764065
+            },
+            "tank": {
+              "episodes": 188,
+              "success_rate": 1.0,
+              "spl": 0.9872988856697206,
+              "mean_time_s": 5.536170212765957,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 13.043904459777597,
+              "collisions_per_episode": {
+                "tree": 0.18617021276595744,
+                "rock": 0.005319148936170213,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.0797872340425532,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.30851063829787234,
+              "mean_end_speed_kmh": 0.4571815577875625,
+              "mean_end_target_distance": 0.7450150094450788
+            }
+          },
+          "per_scenario": {
+            "standard": {
+              "episodes": 400,
+              "success_rate": 1.0,
+              "spl": 0.977456447338465,
+              "mean_time_s": 4.311208333333333,
+              "mean_damage": 0.007647552490234375,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 13.34229608444542,
+              "collisions_per_episode": {
+                "tree": 0.4225,
+                "rock": 0.0125,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0025
+              },
+              "tree_hit_rate": 0.07,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.2975,
+              "mean_end_speed_kmh": 0.22459678717539647,
+              "mean_end_target_distance": 0.6565788330556824
+            }
+          },
+          "split": "holdout",
+          "scenario": "standard",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/smooth-standard.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 400,
+          "time_s": {
+            "reference_mean": 4.4325833333333335,
+            "candidate_mean": 4.311208333333333,
+            "change_percent": -2.7382451918557704,
+            "mean_paired_delta": -0.12137499999999997,
+            "delta_95_percent_bootstrap": [
+              -0.150084375,
+              -0.09328645833333335
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 43.480098808230814,
+            "candidate_mean": 43.125120207661475,
+            "change_percent": -0.8164162692798294,
+            "mean_paired_delta": -0.354978600569341,
+            "delta_95_percent_bootstrap": [
+              -0.4406528917505786,
+              -0.2710268477073488
+            ]
+          }
+        }
+      }
+    },
+    "long": {
+      "grid": {
+        "safety": {
+          "moving_heading_samples": 130253,
+          "moving_headings_outside_grid_fraction": 0.6972584124741849,
+          "episodes": 400,
+          "success_rate": 1.0,
+          "collision_free_success_rate": 0.6725,
+          "tree_hit_rate": 0.295,
+          "contact_ticks_per_episode": {
+            "tree": 1.7825,
+            "rock": 0.4725,
+            "cliff": 2.105,
+            "nest": 0.0025,
+            "water": 0.0075
+          },
+          "mean_damage": 2.2121780014038084,
+          "nest_zone_fraction": 0.0004121657593295437
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 1.0,
+          "spl": 0.9975247780464622,
+          "mean_time_s": 21.835875,
+          "mean_damage": 2.2121780014038084,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0,
+          "stalled_rate": 0.0,
+          "mean_return": 37.17451794926194,
+          "collisions_per_episode": {
+            "tree": 1.7825,
+            "rock": 0.4725,
+            "cliff": 2.105,
+            "nest": 0.0025,
+            "water": 0.0075
+          },
+          "tree_hit_rate": 0.295,
+          "nest_zone_fraction": 0.0005519506625369875,
+          "reversed_rate": 0.135,
+          "mean_end_speed_kmh": 0.2208849771937821,
+          "mean_end_target_distance": 0.63040806427598,
+          "per_vehicle": {
+            "car": {
+              "episodes": 212,
+              "success_rate": 1.0,
+              "spl": 0.9968088764507155,
+              "mean_time_s": 15.862264150943398,
+              "mean_damage": 4.173920757365677,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 39.31990335215051,
+              "collisions_per_episode": {
+                "tree": 1.5896226415094339,
+                "rock": 0.8773584905660378,
+                "cliff": 0.0047169811320754715,
+                "nest": 0.0047169811320754715,
+                "water": 0.014150943396226415
+              },
+              "tree_hit_rate": 0.12264150943396226,
+              "nest_zone_fraction": 0.0007689392146209598,
+              "reversed_rate": 0.14622641509433962,
+              "mean_end_speed_kmh": 0.03546671284678972,
+              "mean_end_target_distance": 0.5551075823605061
+            },
+            "tank": {
+              "episodes": 188,
+              "success_rate": 1.0,
+              "spl": 0.998332071335283,
+              "mean_time_s": 28.57207446808511,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 34.75525355877057,
+              "collisions_per_episode": {
+                "tree": 2.0,
+                "rock": 0.015957446808510637,
+                "cliff": 4.473404255319149,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.48936170212765956,
+              "nest_zone_fraction": 0.0003072614442295293,
+              "reversed_rate": 0.12234042553191489,
+              "mean_end_speed_kmh": 0.42997365826592243,
+              "mean_end_target_distance": 0.7153213736700251
+            }
+          },
+          "per_scenario": {
+            "long": {
+              "episodes": 400,
+              "success_rate": 1.0,
+              "spl": 0.9975247780464622,
+              "mean_time_s": 21.835875,
+              "mean_damage": 2.2121780014038084,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 37.17451794926194,
+              "collisions_per_episode": {
+                "tree": 1.7825,
+                "rock": 0.4725,
+                "cliff": 2.105,
+                "nest": 0.0025,
+                "water": 0.0075
+              },
+              "tree_hit_rate": 0.295,
+              "nest_zone_fraction": 0.0005519506625369875,
+              "reversed_rate": 0.135,
+              "mean_end_speed_kmh": 0.2208849771937821,
+              "mean_end_target_distance": 0.63040806427598
+            }
+          },
+          "split": "holdout",
+          "scenario": "long",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/grid-long.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 400,
+          "time_s": {
+            "reference_mean": 21.835875,
+            "candidate_mean": 21.835875,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 408.46358862613613,
+            "candidate_mean": 408.46358862613613,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "smooth": {
+        "safety": {
+          "moving_heading_samples": 127497,
+          "moving_headings_outside_grid_fraction": 0.8209291199008604,
+          "episodes": 400,
+          "success_rate": 0.995,
+          "collision_free_success_rate": 0.7125,
+          "tree_hit_rate": 0.2625,
+          "contact_ticks_per_episode": {
+            "tree": 1.25,
+            "rock": 0.505,
+            "cliff": 5.96,
+            "nest": 0.0,
+            "water": 0.01
+          },
+          "mean_damage": 1.3392332458496095,
+          "nest_zone_fraction": 0.00047821776404035693
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 0.995,
+          "spl": 0.9938275857575867,
+          "mean_time_s": 21.404438860971524,
+          "mean_damage": 1.3392332458496095,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0,
+          "stalled_rate": 0.005,
+          "mean_return": 36.722479561413394,
+          "collisions_per_episode": {
+            "tree": 1.25,
+            "rock": 0.505,
+            "cliff": 5.96,
+            "nest": 0.0,
+            "water": 0.01
+          },
+          "tree_hit_rate": 0.2625,
+          "nest_zone_fraction": 0.0006362650657927205,
+          "reversed_rate": 0.1525,
+          "mean_end_speed_kmh": 0.19289082654984668,
+          "mean_end_target_distance": 1.7734934028889984,
+          "per_vehicle": {
+            "car": {
+              "episodes": 212,
+              "success_rate": 1.0,
+              "spl": 0.9982619211446324,
+              "mean_time_s": 15.618553459119497,
+              "mean_damage": 2.5268551808483197,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 39.77465292992034,
+              "collisions_per_episode": {
+                "tree": 0.7783018867924528,
+                "rock": 0.8773584905660378,
+                "cliff": 0.0047169811320754715,
+                "nest": 0.0,
+                "water": 0.018867924528301886
+              },
+              "tree_hit_rate": 0.10849056603773585,
+              "nest_zone_fraction": 0.0007776894904497712,
+              "reversed_rate": 0.16981132075471697,
+              "mean_end_speed_kmh": 0.027369848470080574,
+              "mean_end_target_distance": 0.5596223984721977
+            },
+            "tank": {
+              "episodes": 188,
+              "success_rate": 0.9893617021276596,
+              "spl": 0.9888271650019822,
+              "mean_time_s": 27.99910394265233,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.010638297872340425,
+              "mean_return": 33.28066703948003,
+              "collisions_per_episode": {
+                "tree": 1.7819148936170213,
+                "rock": 0.0851063829787234,
+                "cliff": 12.675531914893616,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.43617021276595747,
+              "nest_zone_fraction": 0.00047678645926455687,
+              "reversed_rate": 0.13297872340425532,
+              "mean_end_speed_kmh": 0.379542142256817,
+              "mean_end_target_distance": 3.1423266631887947
+            }
+          },
+          "per_scenario": {
+            "long": {
+              "episodes": 400,
+              "success_rate": 0.995,
+              "spl": 0.9938275857575867,
+              "mean_time_s": 21.404438860971524,
+              "mean_damage": 1.3392332458496095,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.005,
+              "mean_return": 36.722479561413394,
+              "collisions_per_episode": {
+                "tree": 1.25,
+                "rock": 0.505,
+                "cliff": 5.96,
+                "nest": 0.0,
+                "water": 0.01
+              },
+              "tree_hit_rate": 0.2625,
+              "nest_zone_fraction": 0.0006362650657927205,
+              "reversed_rate": 0.1525,
+              "mean_end_speed_kmh": 0.19289082654984668,
+              "mean_end_target_distance": 1.7734934028889984
+            }
+          },
+          "split": "holdout",
+          "scenario": "long",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/smooth-long.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 398,
+          "time_s": {
+            "reference_mean": 21.823827470686766,
+            "candidate_mean": 21.404438860971524,
+            "change_percent": -1.9217005370783524,
+            "mean_paired_delta": -0.41938860971524294,
+            "delta_95_percent_bootstrap": [
+              -0.5200251256281406,
+              -0.3452083333333335
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 408.88504921823204,
+            "candidate_mean": 402.2822723011642,
+            "change_percent": -1.6148247361188695,
+            "mean_paired_delta": -6.602776917067777,
+            "delta_95_percent_bootstrap": [
+              -7.146098221158639,
+              -6.062634795330438
+            ]
+          }
+        }
+      }
+    },
+    "forest": {
+      "grid": {
+        "safety": {
+          "moving_heading_samples": 19749,
+          "moving_headings_outside_grid_fraction": 0.9434401741860348,
+          "episodes": 400,
+          "success_rate": 0.995,
+          "collision_free_success_rate": 0.3275,
+          "tree_hit_rate": 0.6675,
+          "contact_ticks_per_episode": {
+            "tree": 7.78,
+            "rock": 2.305,
+            "cliff": 0.015,
+            "nest": 0.0,
+            "water": 0.0
+          },
+          "mean_damage": 0.0656396484375,
+          "nest_zone_fraction": 0.0
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 0.995,
+          "spl": 0.9507170586617807,
+          "mean_time_s": 3.4677135678391964,
+          "mean_damage": 0.0656396484375,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.005,
+          "stalled_rate": 0.0,
+          "mean_return": 9.801153643333311,
+          "collisions_per_episode": {
+            "tree": 7.78,
+            "rock": 2.305,
+            "cliff": 0.015,
+            "nest": 0.0,
+            "water": 0.0
+          },
+          "tree_hit_rate": 0.6675,
+          "nest_zone_fraction": 0.0,
+          "reversed_rate": 0.51,
+          "mean_end_speed_kmh": 0.2732316610822454,
+          "mean_end_target_distance": 0.7034372951090336,
+          "per_vehicle": {
+            "car": {
+              "episodes": 199,
+              "success_rate": 0.9899497487437185,
+              "spl": 0.9149605221376744,
+              "mean_time_s": 2.633248730964467,
+              "mean_damage": 0.13193899183417085,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.010050251256281407,
+              "stalled_rate": 0.0,
+              "mean_return": 8.11186372814017,
+              "collisions_per_episode": {
+                "tree": 12.979899497487438,
+                "rock": 4.633165829145729,
+                "cliff": 0.03015075376884422,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.44221105527638194,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.6080402010050251,
+              "mean_end_speed_kmh": 0.05426899010512098,
+              "mean_end_target_distance": 0.7109254181534801
+            },
+            "tank": {
+              "episodes": 201,
+              "success_rate": 1.0,
+              "spl": 0.9861178087528113,
+              "mean_time_s": 4.285572139303483,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 11.47363470364891,
+              "collisions_per_episode": {
+                "tree": 2.6318407960199006,
+                "rock": 0.0,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.8905472636815921,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.4129353233830846,
+              "mean_end_speed_kmh": 0.49001559901482133,
+              "mean_end_target_distance": 0.6960236807515965
+            }
+          },
+          "per_scenario": {
+            "forest": {
+              "episodes": 400,
+              "success_rate": 0.995,
+              "spl": 0.9507170586617807,
+              "mean_time_s": 3.4677135678391964,
+              "mean_damage": 0.0656396484375,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.005,
+              "stalled_rate": 0.0,
+              "mean_return": 9.801153643333311,
+              "collisions_per_episode": {
+                "tree": 7.78,
+                "rock": 2.305,
+                "cliff": 0.015,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.6675,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.51,
+              "mean_end_speed_kmh": 0.2732316610822454,
+              "mean_end_target_distance": 0.7034372951090336
+            }
+          },
+          "split": "holdout",
+          "scenario": "forest",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/grid-forest.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 398,
+          "time_s": {
+            "reference_mean": 3.4677135678391955,
+            "candidate_mean": 3.4677135678391955,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 23.93454650905568,
+            "candidate_mean": 23.93454650905568,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "smooth": {
+        "safety": {
+          "moving_heading_samples": 19199,
+          "moving_headings_outside_grid_fraction": 0.9444241887598313,
+          "episodes": 400,
+          "success_rate": 0.9975,
+          "collision_free_success_rate": 0.3175,
+          "tree_hit_rate": 0.6775,
+          "contact_ticks_per_episode": {
+            "tree": 7.005,
+            "rock": 2.315,
+            "cliff": 0.0075,
+            "nest": 0.0,
+            "water": 0.0
+          },
+          "mean_damage": 0.06119659423828125,
+          "nest_zone_fraction": 0.0
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 0.9975,
+          "spl": 0.9545545097318835,
+          "mean_time_s": 3.3833751044277363,
+          "mean_damage": 0.06119659423828125,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0025,
+          "stalled_rate": 0.0,
+          "mean_return": 10.059888656136431,
+          "collisions_per_episode": {
+            "tree": 7.005,
+            "rock": 2.315,
+            "cliff": 0.0075,
+            "nest": 0.0,
+            "water": 0.0
+          },
+          "tree_hit_rate": 0.6775,
+          "nest_zone_fraction": 0.0,
+          "reversed_rate": 0.505,
+          "mean_end_speed_kmh": 0.26070167127298194,
+          "mean_end_target_distance": 0.7010720683820546,
+          "per_vehicle": {
+            "car": {
+              "episodes": 199,
+              "success_rate": 0.9949748743718593,
+              "spl": 0.921668012446076,
+              "mean_time_s": 2.5897306397306394,
+              "mean_damage": 0.12300822962468592,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.005025125628140704,
+              "stalled_rate": 0.0,
+              "mean_return": 8.5357980496038,
+              "collisions_per_episode": {
+                "tree": 11.603015075376884,
+                "rock": 4.653266331658291,
+                "cliff": 0.01507537688442211,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.44221105527638194,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.6080402010050251,
+              "mean_end_speed_kmh": 0.04760163277387619,
+              "mean_end_target_distance": 0.6748831085299127
+            },
+            "tank": {
+              "episodes": 201,
+              "success_rate": 1.0,
+              "spl": 0.9871137781889764,
+              "mean_time_s": 4.165174129353234,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 11.568814182007047,
+              "collisions_per_episode": {
+                "tree": 2.4527363184079602,
+                "rock": 0.0,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.9104477611940298,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.40298507462686567,
+              "mean_end_speed_kmh": 0.4716813113790617,
+              "mean_end_target_distance": 0.7270004415690009
+            }
+          },
+          "per_scenario": {
+            "forest": {
+              "episodes": 400,
+              "success_rate": 0.9975,
+              "spl": 0.9545545097318835,
+              "mean_time_s": 3.3833751044277363,
+              "mean_damage": 0.06119659423828125,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0025,
+              "stalled_rate": 0.0,
+              "mean_return": 10.059888656136431,
+              "collisions_per_episode": {
+                "tree": 7.005,
+                "rock": 2.315,
+                "cliff": 0.0075,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.6775,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.505,
+              "mean_end_speed_kmh": 0.26070167127298194,
+              "mean_end_target_distance": 0.7010720683820546
+            }
+          },
+          "split": "holdout",
+          "scenario": "forest",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/smooth-forest.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 398,
+          "time_s": {
+            "reference_mean": 3.4677135678391955,
+            "candidate_mean": 3.385887772194305,
+            "change_percent": -2.3596468982839958,
+            "mean_paired_delta": -0.08182579564489113,
+            "delta_95_percent_bootstrap": [
+              -0.13531511725293136,
+              -0.026794388609715288
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 23.93454650905568,
+            "candidate_mean": 23.91328265742587,
+            "change_percent": -0.08884167336015159,
+            "mean_paired_delta": -0.021263851629808726,
+            "delta_95_percent_bootstrap": [
+              -0.4115037222408089,
+              0.37252207075974764
+            ]
+          }
+        }
+      }
+    },
+    "reverse": {
+      "grid": {
+        "safety": {
+          "moving_heading_samples": 24268,
+          "moving_headings_outside_grid_fraction": 0.9211307071040052,
+          "episodes": 400,
+          "success_rate": 0.9875,
+          "collision_free_success_rate": 0.78,
+          "tree_hit_rate": 0.1775,
+          "contact_ticks_per_episode": {
+            "tree": 1.0275,
+            "rock": 9.7775,
+            "cliff": 0.9475,
+            "nest": 0.0,
+            "water": 0.0125
+          },
+          "mean_damage": 0.09244476318359375,
+          "nest_zone_fraction": 0.0
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 0.9875,
+          "spl": 0.8958466767031236,
+          "mean_time_s": 4.183080168776371,
+          "mean_damage": 0.09244476318359375,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0125,
+          "stalled_rate": 0.0,
+          "mean_return": 9.772487846610884,
+          "collisions_per_episode": {
+            "tree": 1.0275,
+            "rock": 9.7775,
+            "cliff": 0.9475,
+            "nest": 0.0,
+            "water": 0.0125
+          },
+          "tree_hit_rate": 0.1775,
+          "nest_zone_fraction": 0.0,
+          "reversed_rate": 0.98,
+          "mean_end_speed_kmh": 0.23958705951226875,
+          "mean_end_target_distance": 0.8234053823910653,
+          "per_vehicle": {
+            "car": {
+              "episodes": 212,
+              "success_rate": 0.9764150943396226,
+              "spl": 0.8535999396178077,
+              "mean_time_s": 3.1691626409017712,
+              "mean_damage": 0.17442408147847877,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.02358490566037736,
+              "stalled_rate": 0.0,
+              "mean_return": 8.50102247888148,
+              "collisions_per_episode": {
+                "tree": 1.5896226415094339,
+                "rock": 16.90566037735849,
+                "cliff": 0.07075471698113207,
+                "nest": 0.0,
+                "water": 0.02358490566037736
+              },
+              "tree_hit_rate": 0.14622641509433962,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.9905660377358491,
+              "mean_end_speed_kmh": 0.0594183494038177,
+              "mean_end_target_distance": 0.9569012930546448
+            },
+            "tank": {
+              "episodes": 188,
+              "success_rate": 1.0,
+              "spl": 0.9434866142674161,
+              "mean_time_s": 5.2994680851063825,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 11.20626794213553,
+              "collisions_per_episode": {
+                "tree": 0.39361702127659576,
+                "rock": 1.7393617021276595,
+                "cliff": 1.9361702127659575,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.2127659574468085,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.9680851063829787,
+              "mean_end_speed_kmh": 0.44275603048562845,
+              "mean_end_target_distance": 0.6728674405789439
+            }
+          },
+          "per_scenario": {
+            "reverse": {
+              "episodes": 400,
+              "success_rate": 0.9875,
+              "spl": 0.8958466767031236,
+              "mean_time_s": 4.183080168776371,
+              "mean_damage": 0.09244476318359375,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0125,
+              "stalled_rate": 0.0,
+              "mean_return": 9.772487846610884,
+              "collisions_per_episode": {
+                "tree": 1.0275,
+                "rock": 9.7775,
+                "cliff": 0.9475,
+                "nest": 0.0,
+                "water": 0.0125
+              },
+              "tree_hit_rate": 0.1775,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.98,
+              "mean_end_speed_kmh": 0.23958705951226875,
+              "mean_end_target_distance": 0.8234053823910653
+            }
+          },
+          "split": "holdout",
+          "scenario": "reverse",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/grid-reverse.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 395,
+          "time_s": {
+            "reference_mean": 4.183080168776371,
+            "candidate_mean": 4.183080168776371,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 32.52780257996228,
+            "candidate_mean": 32.52780257996228,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "smooth": {
+        "safety": {
+          "moving_heading_samples": 23377,
+          "moving_headings_outside_grid_fraction": 0.9332677417974933,
+          "episodes": 400,
+          "success_rate": 0.9925,
+          "collision_free_success_rate": 0.7975,
+          "tree_hit_rate": 0.16,
+          "contact_ticks_per_episode": {
+            "tree": 1.08,
+            "rock": 6.6925,
+            "cliff": 1.965,
+            "nest": 0.0,
+            "water": 0.0125
+          },
+          "mean_damage": 0.0729290771484375,
+          "nest_zone_fraction": 0.0
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 0.9925,
+          "spl": 0.9068622269835456,
+          "mean_time_s": 4.058606213266163,
+          "mean_damage": 0.0729290771484375,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0075,
+          "stalled_rate": 0.0,
+          "mean_return": 10.31402047373256,
+          "collisions_per_episode": {
+            "tree": 1.08,
+            "rock": 6.6925,
+            "cliff": 1.965,
+            "nest": 0.0,
+            "water": 0.0125
+          },
+          "tree_hit_rate": 0.16,
+          "nest_zone_fraction": 0.0,
+          "reversed_rate": 0.9675,
+          "mean_end_speed_kmh": 0.22563930292613804,
+          "mean_end_target_distance": 0.7835784492548555,
+          "per_vehicle": {
+            "car": {
+              "episodes": 212,
+              "success_rate": 0.9905660377358491,
+              "spl": 0.871687980158869,
+              "mean_time_s": 3.145793650793651,
+              "mean_damage": 0.13760203235554244,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.009433962264150943,
+              "stalled_rate": 0.0,
+              "mean_return": 9.968692913530104,
+              "collisions_per_episode": {
+                "tree": 1.7122641509433962,
+                "rock": 10.915094339622641,
+                "cliff": 0.009433962264150943,
+                "nest": 0.0,
+                "water": 0.02358490566037736
+              },
+              "tree_hit_rate": 0.11320754716981132,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.9811320754716981,
+              "mean_end_speed_kmh": 0.018634296356225915,
+              "mean_end_target_distance": 0.7999206779981559
+            },
+            "tank": {
+              "episodes": 188,
+              "success_rate": 0.9946808510638298,
+              "spl": 0.9465268031900957,
+              "mean_time_s": 5.083689839572193,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.005319148936170213,
+              "stalled_rate": 0.0,
+              "mean_return": 10.70343240332256,
+              "collisions_per_episode": {
+                "tree": 0.3670212765957447,
+                "rock": 1.9308510638297873,
+                "cliff": 4.170212765957447,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.2127659574468085,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.9521276595744681,
+              "mean_end_speed_kmh": 0.4590704805475283,
+              "mean_end_target_distance": 0.7651499785443253
+            }
+          },
+          "per_scenario": {
+            "reverse": {
+              "episodes": 400,
+              "success_rate": 0.9925,
+              "spl": 0.9068622269835456,
+              "mean_time_s": 4.058606213266163,
+              "mean_damage": 0.0729290771484375,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0075,
+              "stalled_rate": 0.0,
+              "mean_return": 10.31402047373256,
+              "collisions_per_episode": {
+                "tree": 1.08,
+                "rock": 6.6925,
+                "cliff": 1.965,
+                "nest": 0.0,
+                "water": 0.0125
+              },
+              "tree_hit_rate": 0.16,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.9675,
+              "mean_end_speed_kmh": 0.22563930292613804,
+              "mean_end_target_distance": 0.7835784492548555
+            }
+          },
+          "split": "holdout",
+          "scenario": "reverse",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/smooth-reverse.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 394,
+          "time_s": {
+            "reference_mean": 4.178468697123519,
+            "candidate_mean": 4.038028764805414,
+            "change_percent": -3.361038277366657,
+            "mean_paired_delta": -0.1404399323181049,
+            "delta_95_percent_bootstrap": [
+              -0.1986051184433164,
+              -0.09800761421319797
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 32.52844136759465,
+            "candidate_mean": 32.245286797381496,
+            "change_percent": -0.8704830551618081,
+            "mean_paired_delta": -0.28315457021315954,
+            "delta_95_percent_bootstrap": [
+              -0.39827439346726146,
+              -0.175996122971964
+            ]
+          }
+        }
+      }
+    },
+    "nest": {
+      "grid": {
+        "safety": {
+          "moving_heading_samples": 52923,
+          "moving_headings_outside_grid_fraction": 0.8534096706535911,
+          "episodes": 400,
+          "success_rate": 0.9875,
+          "collision_free_success_rate": 0.7475,
+          "tree_hit_rate": 0.21,
+          "contact_ticks_per_episode": {
+            "tree": 0.99,
+            "rock": 1.0075,
+            "cliff": 8.8125,
+            "nest": 0.0,
+            "water": 1.935
+          },
+          "mean_damage": 0.852424087524414,
+          "nest_zone_fraction": 0.0008790605040862578
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 0.9875,
+          "spl": 0.9798449581032496,
+          "mean_time_s": 8.887046413502109,
+          "mean_damage": 0.852424087524414,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0,
+          "stalled_rate": 0.0125,
+          "mean_return": 15.814602792607982,
+          "collisions_per_episode": {
+            "tree": 0.99,
+            "rock": 1.0075,
+            "cliff": 8.8125,
+            "nest": 0.0,
+            "water": 1.935
+          },
+          "tree_hit_rate": 0.21,
+          "nest_zone_fraction": 0.001054219592598848,
+          "reversed_rate": 0.2925,
+          "mean_end_speed_kmh": 0.23204848579654935,
+          "mean_end_target_distance": 1.1818678206764162,
+          "per_vehicle": {
+            "car": {
+              "episodes": 212,
+              "success_rate": 0.9905660377358491,
+              "spl": 0.9805707390870897,
+              "mean_time_s": 6.55047619047619,
+              "mean_damage": 1.6083473349517245,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.009433962264150943,
+              "mean_return": 18.374651914141037,
+              "collisions_per_episode": {
+                "tree": 0.9433962264150944,
+                "rock": 1.4622641509433962,
+                "cliff": 0.0047169811320754715,
+                "nest": 0.0,
+                "water": 0.0047169811320754715
+              },
+              "tree_hit_rate": 0.0660377358490566,
+              "nest_zone_fraction": 0.001109609312736871,
+              "reversed_rate": 0.2830188679245283,
+              "mean_end_speed_kmh": 0.09739214167842325,
+              "mean_end_target_distance": 0.640109069258818
+            },
+            "tank": {
+              "episodes": 188,
+              "success_rate": 0.9840425531914894,
+              "spl": 0.9790265242278554,
+              "mean_time_s": 11.53936936936937,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.015957446808510637,
+              "mean_return": 12.92773888960262,
+              "collisions_per_episode": {
+                "tree": 1.0425531914893618,
+                "rock": 0.4946808510638298,
+                "cliff": 18.74468085106383,
+                "nest": 0.0,
+                "water": 4.111702127659575
+              },
+              "tree_hit_rate": 0.3723404255319149,
+              "nest_zone_fraction": 0.0009917588443580985,
+              "reversed_rate": 0.30319148936170215,
+              "mean_end_speed_kmh": 0.38389500150422345,
+              "mean_end_target_distance": 1.7927872637643458
+            }
+          },
+          "per_scenario": {
+            "nest": {
+              "episodes": 400,
+              "success_rate": 0.9875,
+              "spl": 0.9798449581032496,
+              "mean_time_s": 8.887046413502109,
+              "mean_damage": 0.852424087524414,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0125,
+              "mean_return": 15.814602792607982,
+              "collisions_per_episode": {
+                "tree": 0.99,
+                "rock": 1.0075,
+                "cliff": 8.8125,
+                "nest": 0.0,
+                "water": 1.935
+              },
+              "tree_hit_rate": 0.21,
+              "nest_zone_fraction": 0.001054219592598848,
+              "reversed_rate": 0.2925,
+              "mean_end_speed_kmh": 0.23204848579654935,
+              "mean_end_target_distance": 1.1818678206764162
+            }
+          },
+          "split": "holdout",
+          "scenario": "nest",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/grid-nest.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 395,
+          "time_s": {
+            "reference_mean": 8.887046413502109,
+            "candidate_mean": 8.887046413502109,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 122.7622936122984,
+            "candidate_mean": 122.7622936122984,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "smooth": {
+        "safety": {
+          "moving_heading_samples": 51355,
+          "moving_headings_outside_grid_fraction": 0.9017232986077305,
+          "episodes": 400,
+          "success_rate": 0.9975,
+          "collision_free_success_rate": 0.77,
+          "tree_hit_rate": 0.2,
+          "contact_ticks_per_episode": {
+            "tree": 0.5275,
+            "rock": 1.995,
+            "cliff": 2.9725,
+            "nest": 0.0,
+            "water": 1.4875
+          },
+          "mean_damage": 0.7194355010986329,
+          "nest_zone_fraction": 0.0009768603232692893
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 0.9975,
+          "spl": 0.9921039278931493,
+          "mean_time_s": 8.699791144527987,
+          "mean_damage": 0.7194355010986329,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0,
+          "stalled_rate": 0.0025,
+          "mean_return": 17.318490749206575,
+          "collisions_per_episode": {
+            "tree": 0.5275,
+            "rock": 1.995,
+            "cliff": 2.9725,
+            "nest": 0.0,
+            "water": 1.4875
+          },
+          "tree_hit_rate": 0.2,
+          "nest_zone_fraction": 0.0012259466584241647,
+          "reversed_rate": 0.265,
+          "mean_end_speed_kmh": 0.1796823330782354,
+          "mean_end_target_distance": 0.7960887643974275,
+          "per_vehicle": {
+            "car": {
+              "episodes": 212,
+              "success_rate": 1.0,
+              "spl": 0.9934397671031798,
+              "mean_time_s": 6.414544025157233,
+              "mean_damage": 1.3574254737710052,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 18.616767062722186,
+              "collisions_per_episode": {
+                "tree": 0.10849056603773585,
+                "rock": 3.518867924528302,
+                "cliff": 0.0047169811320754715,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.06132075471698113,
+              "nest_zone_fraction": 0.001166683021444463,
+              "reversed_rate": 0.25,
+              "mean_end_speed_kmh": 0.02690633143878208,
+              "mean_end_target_distance": 0.6117313944752205
+            },
+            "tank": {
+              "episodes": 188,
+              "success_rate": 0.9946808510638298,
+              "spl": 0.9905975560180084,
+              "mean_time_s": 11.290552584670232,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.005319148936170213,
+              "mean_return": 15.854477033965564,
+              "collisions_per_episode": {
+                "tree": 1.0,
+                "rock": 0.2765957446808511,
+                "cliff": 6.319148936170213,
+                "nest": 0.0,
+                "water": 3.1648936170212765
+              },
+              "tree_hit_rate": 0.35638297872340424,
+              "nest_zone_fraction": 0.0012927758660821263,
+              "reversed_rate": 0.28191489361702127,
+              "mean_end_speed_kmh": 0.3519616540759168,
+              "mean_end_target_distance": 1.0039811177139586
+            }
+          },
+          "per_scenario": {
+            "nest": {
+              "episodes": 400,
+              "success_rate": 0.9975,
+              "spl": 0.9921039278931493,
+              "mean_time_s": 8.699791144527987,
+              "mean_damage": 0.7194355010986329,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0025,
+              "mean_return": 17.318490749206575,
+              "collisions_per_episode": {
+                "tree": 0.5275,
+                "rock": 1.995,
+                "cliff": 2.9725,
+                "nest": 0.0,
+                "water": 1.4875
+              },
+              "tree_hit_rate": 0.2,
+              "nest_zone_fraction": 0.0012259466584241647,
+              "reversed_rate": 0.265,
+              "mean_end_speed_kmh": 0.1796823330782354,
+              "mean_end_target_distance": 0.7960887643974275
+            }
+          },
+          "split": "holdout",
+          "scenario": "nest",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/smooth-nest.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 395,
+          "time_s": {
+            "reference_mean": 8.887046413502109,
+            "candidate_mean": 8.695822784810128,
+            "change_percent": -2.1517118263437274,
+            "mean_paired_delta": -0.19122362869198312,
+            "delta_95_percent_bootstrap": [
+              -0.2949187763713079,
+              -0.06879641350210984
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 122.7622936122984,
+            "candidate_mean": 121.38595234282323,
+            "change_percent": -1.1211433323507713,
+            "mean_paired_delta": -1.3763412694751544,
+            "delta_95_percent_bootstrap": [
+              -1.7180916075948174,
+              -1.0916666655431544
+            ]
+          }
+        }
+      }
+    },
+    "arrival": {
+      "grid": {
+        "safety": {
+          "moving_heading_samples": 19155,
+          "moving_headings_outside_grid_fraction": 0.916731923779692,
+          "episodes": 400,
+          "success_rate": 0.9975,
+          "collision_free_success_rate": 0.925,
+          "tree_hit_rate": 0.07,
+          "contact_ticks_per_episode": {
+            "tree": 0.1925,
+            "rock": 0.8225,
+            "cliff": 0.0,
+            "nest": 0.0,
+            "water": 0.0
+          },
+          "mean_damage": 0.00548583984375,
+          "nest_zone_fraction": 0.0
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 0.9975,
+          "spl": 0.9540996468271282,
+          "mean_time_s": 3.2392230576441103,
+          "mean_damage": 0.00548583984375,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0025,
+          "stalled_rate": 0.0,
+          "mean_return": 12.060790237648753,
+          "collisions_per_episode": {
+            "tree": 0.1925,
+            "rock": 0.8225,
+            "cliff": 0.0,
+            "nest": 0.0,
+            "water": 0.0
+          },
+          "tree_hit_rate": 0.07,
+          "nest_zone_fraction": 0.0,
+          "reversed_rate": 0.37,
+          "mean_end_speed_kmh": 0.21031783578917385,
+          "mean_end_target_distance": 0.6303592542745173,
+          "per_vehicle": {
+            "car": {
+              "episodes": 212,
+              "success_rate": 0.9952830188679245,
+              "spl": 0.9362917972701651,
+              "mean_time_s": 2.4210110584518167,
+              "mean_damage": 0.010350641214622642,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0047169811320754715,
+              "stalled_rate": 0.0,
+              "mean_return": 12.064480793422556,
+              "collisions_per_episode": {
+                "tree": 0.2358490566037736,
+                "rock": 1.429245283018868,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.02358490566037736,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.37264150943396224,
+              "mean_end_speed_kmh": 0.028500416649962373,
+              "mean_end_target_distance": 0.5554182962778041
+            },
+            "tank": {
+              "episodes": 188,
+              "success_rate": 1.0,
+              "spl": 0.9741808388807249,
+              "mean_time_s": 4.157535460992908,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 12.056628547095317,
+              "collisions_per_episode": {
+                "tree": 0.14361702127659576,
+                "rock": 0.13829787234042554,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.12234042553191489,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.3670212765957447,
+              "mean_end_speed_kmh": 0.4153459892865825,
+              "mean_end_target_distance": 0.7148671430793214
+            }
+          },
+          "per_scenario": {
+            "arrival": {
+              "episodes": 400,
+              "success_rate": 0.9975,
+              "spl": 0.9540996468271282,
+              "mean_time_s": 3.2392230576441103,
+              "mean_damage": 0.00548583984375,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0025,
+              "stalled_rate": 0.0,
+              "mean_return": 12.060790237648753,
+              "collisions_per_episode": {
+                "tree": 0.1925,
+                "rock": 0.8225,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.07,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.37,
+              "mean_end_speed_kmh": 0.21031783578917385,
+              "mean_end_target_distance": 0.6303592542745173
+            }
+          },
+          "split": "holdout",
+          "scenario": "arrival",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/grid-arrival.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 399,
+          "time_s": {
+            "reference_mean": 3.23922305764411,
+            "candidate_mean": 3.23922305764411,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 26.151928714851767,
+            "candidate_mean": 26.151928714851767,
+            "change_percent": 0.0,
+            "mean_paired_delta": 0.0,
+            "delta_95_percent_bootstrap": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "smooth": {
+        "safety": {
+          "moving_heading_samples": 18299,
+          "moving_headings_outside_grid_fraction": 0.9320727908628886,
+          "episodes": 400,
+          "success_rate": 1.0,
+          "collision_free_success_rate": 0.935,
+          "tree_hit_rate": 0.06,
+          "contact_ticks_per_episode": {
+            "tree": 0.07,
+            "rock": 0.66,
+            "cliff": 0.0,
+            "nest": 0.0,
+            "water": 0.0
+          },
+          "mean_damage": 0.0047940826416015625,
+          "nest_zone_fraction": 0.0
+        },
+        "metrics": {
+          "episodes": 400,
+          "success_rate": 1.0,
+          "spl": 0.960459008276898,
+          "mean_time_s": 3.1168333333333336,
+          "mean_damage": 0.0047940826416015625,
+          "destroyed_rate": 0.0,
+          "timeout_rate": 0.0,
+          "stalled_rate": 0.0,
+          "mean_return": 12.239749804480944,
+          "collisions_per_episode": {
+            "tree": 0.07,
+            "rock": 0.66,
+            "cliff": 0.0,
+            "nest": 0.0,
+            "water": 0.0
+          },
+          "tree_hit_rate": 0.06,
+          "nest_zone_fraction": 0.0,
+          "reversed_rate": 0.3775,
+          "mean_end_speed_kmh": 0.2156992270576302,
+          "mean_end_target_distance": 0.6474402532819659,
+          "per_vehicle": {
+            "car": {
+              "episodes": 212,
+              "success_rate": 1.0,
+              "spl": 0.9450407581378707,
+              "mean_time_s": 2.340487421383648,
+              "mean_damage": 0.009045438946418042,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 12.309295743961437,
+              "collisions_per_episode": {
+                "tree": 0.02830188679245283,
+                "rock": 1.240566037735849,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.018867924528301886,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.36792452830188677,
+              "mean_end_speed_kmh": 0.0,
+              "mean_end_target_distance": 0.5644737103215929
+            },
+            "tank": {
+              "episodes": 188,
+              "success_rate": 1.0,
+              "spl": 0.9778455456677163,
+              "mean_time_s": 3.992287234042553,
+              "mean_damage": 0.0,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 12.16132565996039,
+              "collisions_per_episode": {
+                "tree": 0.11702127659574468,
+                "rock": 0.005319148936170213,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.10638297872340426,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.3882978723404255,
+              "mean_end_speed_kmh": 0.45893452565453235,
+              "mean_end_target_distance": 0.7409982698117482
+            }
+          },
+          "per_scenario": {
+            "arrival": {
+              "episodes": 400,
+              "success_rate": 1.0,
+              "spl": 0.960459008276898,
+              "mean_time_s": 3.1168333333333336,
+              "mean_damage": 0.0047940826416015625,
+              "destroyed_rate": 0.0,
+              "timeout_rate": 0.0,
+              "stalled_rate": 0.0,
+              "mean_return": 12.239749804480944,
+              "collisions_per_episode": {
+                "tree": 0.07,
+                "rock": 0.66,
+                "cliff": 0.0,
+                "nest": 0.0,
+                "water": 0.0
+              },
+              "tree_hit_rate": 0.06,
+              "nest_zone_fraction": 0.0,
+              "reversed_rate": 0.3775,
+              "mean_end_speed_kmh": 0.2156992270576302,
+              "mean_end_target_distance": 0.6474402532819659
+            }
+          },
+          "split": "holdout",
+          "scenario": "arrival",
+          "policy": "reactive",
+          "replays": "../data/autodrive/smooth-holdout-67890-replays/smooth-arrival.json"
+        },
+        "paired": {
+          "matched_episodes": 400,
+          "common_successes": 399,
+          "time_s": {
+            "reference_mean": 3.23922305764411,
+            "candidate_mean": 3.1184210526315788,
+            "change_percent": -3.729351232155975,
+            "mean_paired_delta": -0.12080200501253131,
+            "delta_95_percent_bootstrap": [
+              -0.14586675020885545,
+              -0.09657372598162073
+            ]
+          },
+          "path_tiles": {
+            "reference_mean": 26.151928714851767,
+            "candidate_mean": 25.910803072327823,
+            "change_percent": -0.922018582847417,
+            "mean_paired_delta": -0.24112564252394775,
+            "delta_95_percent_bootstrap": [
+              -0.32479990171626993,
+              -0.16250817276876126
+            ]
+          }
+        }
+      }
+    }
+  },
+  "aggregate": {
+    "grid": {
+      "safety": {
+        "moving_heading_samples": 272415,
+        "moving_headings_outside_grid_fraction": 0.7986234238202742,
+        "episodes": 2400,
+        "success_rate": 0.9945833333333334,
+        "collision_free_success_rate": 0.7304166666666667,
+        "tree_hit_rate": 0.24666666666666667,
+        "contact_ticks_per_episode": {
+          "tree": 1.9933333333333334,
+          "rock": 2.46125,
+          "cliff": 1.98,
+          "nest": 0.0004166666666666667,
+          "water": 0.32625
+        },
+        "mean_damage": 0.5392088890075684,
+        "nest_zone_fraction": 0.000365716908222087
+      },
+      "paired": {
+        "matched_episodes": 2400,
+        "common_successes": 2387,
+        "time_s": {
+          "reference_mean": 7.684408602150538,
+          "candidate_mean": 7.684408602150538,
+          "change_percent": 0.0,
+          "mean_paired_delta": 0.0,
+          "delta_95_percent_bootstrap": [
+            0.0,
+            0.0
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 109.79372938312517,
+          "candidate_mean": 109.79372938312517,
+          "change_percent": 0.0,
+          "mean_paired_delta": 0.0,
+          "delta_95_percent_bootstrap": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "smooth": {
+      "safety": {
+        "moving_heading_samples": 265120,
+        "moving_headings_outside_grid_fraction": 0.8717750452625226,
+        "episodes": 2400,
+        "success_rate": 0.9970833333333333,
+        "collision_free_success_rate": 0.74125,
+        "tree_hit_rate": 0.23833333333333334,
+        "contact_ticks_per_episode": {
+          "tree": 1.7258333333333333,
+          "rock": 2.03,
+          "cliff": 1.8175,
+          "nest": 0.0,
+          "water": 0.2520833333333333
+        },
+        "mean_damage": 0.36753934224446616,
+        "nest_zone_fraction": 0.00041604475202441287
+      },
+      "paired": {
+        "matched_episodes": 2400,
+        "common_successes": 2384,
+        "time_s": {
+          "reference_mean": 7.671231823266219,
+          "candidate_mean": 7.4920791387024614,
+          "change_percent": -2.3353835301965775,
+          "mean_paired_delta": -0.1791526845637584,
+          "delta_95_percent_bootstrap": [
+            -0.2075784745525727,
+            -0.15064649748322148
+          ]
+        },
+        "path_tiles": {
+          "reference_mean": 109.64604448643827,
+          "candidate_mean": 108.16542934397053,
+          "change_percent": -1.3503589202899846,
+          "mean_paired_delta": -1.4806151424677438,
+          "delta_95_percent_bootstrap": [
+            -1.6408003350696412,
+            -1.3318974140797697
+          ]
+        }
+      }
+    }
+  }
+}

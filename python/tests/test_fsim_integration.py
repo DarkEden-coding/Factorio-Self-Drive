@@ -103,3 +103,33 @@ def test_student_trains_and_distills_on_the_real_env(tmp_path):
                                                   "teacher_checkpoint": str(teacher)}})
     trainer = Trainer(regularized, tmp_path / "rl-kl", init_from=best)
     assert trainer.train(iterations=1).exists()
+
+
+def test_smooth_route_contract_and_explicit_warm_start(tmp_path):
+    from fsim_rl.config import CONFIG_DIR, load_config, with_overrides
+    from fsim_rl.checkpoint import load_checkpoint
+
+    grid = load_config(CONFIG_DIR / 'student_mlp64_efficient.toml', {
+        'device': 'cpu', 'ppo': {'num_envs': 2, 'rollout_steps': 4},
+    })
+    smooth = with_overrides(grid, {'env': {'route_source': 'field_smooth'}})
+    old = FsimEnv(grid, 4, 4, torch.device('cpu'))
+    new = FsimEnv(smooth, 4, 4, torch.device('cpu'))
+    a, b = old.reset()['student'], new.reset()['student']
+    assert old.spec_hash != new.spec_hash
+    assert new.spec_hash == fsim.spec()['student']['smooth_spec_hash']
+    assert torch.equal(a[:, :96], b[:, :96])
+    assert torch.equal(a[:, 105:], b[:, 105:])
+    assert not torch.equal(a[:, 96:105], b[:, 96:105])
+
+    source = Trainer(grid, tmp_path / 'grid')
+    checkpoint = source.save()
+    source.logger.close()
+    tuned = Trainer(smooth, tmp_path / 'smooth', init_from=checkpoint)
+    state = load_checkpoint(checkpoint)
+    for key, value in state['model'].items():
+        assert torch.equal(tuned.model.state_dict()[key].cpu(), value)
+    assert tuned.global_step == 0 and not tuned.optimizer.state_dict()['state']
+    tuned.logger.close()
+    with pytest.raises(SystemExit, match='spec_hash'):
+        Trainer(smooth, tmp_path / 'bad-resume', resume=checkpoint)
