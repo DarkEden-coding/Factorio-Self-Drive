@@ -4,7 +4,13 @@ local weights = require("weights")
 local spec, map_spec = weights.obs, weights.map
 local band = bit32.band
 local M = {}
-local function cast(grid,x,y,dx,dy,max_t)
+-- Cached terrain, plus trains near the vehicle (overlay[y][x], see trains.lua).
+local function read(lookup,grid,overlay,x,y)
+  local mask = lookup(grid,x,y)
+  local row = overlay and overlay[y]
+  return row and row[x] and bit32.bor(mask,row[x]) or mask
+end
+local function cast(grid,overlay,x,y,dx,dy,max_t)
   local ix,iy = math.floor(x),math.floor(y)
   local sx,sy = dx > 0 and 1 or -1,dy > 0 and 1 or -1
   local delta_x = math.abs(dx)>1e-12 and 1/math.abs(dx) or math.huge
@@ -14,7 +20,7 @@ local function cast(grid,x,y,dx,dy,max_t)
   local ny = delta_y<math.huge and (dy>0 and iy+1-y or y-iy)*delta_y or math.huge
   local t,tree,zone = 0,max_t,max_t
   while t < max_t do
-    local mask = raster.mask(grid,ix,iy)
+    local mask = read(raster.mask,grid,overlay,ix,iy)
     if raster.hard(mask) then return t,math.min(tree,t),math.min(zone,t) end
     if bit32.band(mask,4)~=0 and tree==max_t then tree=t end
     if bit32.band(mask,32)~=0 and zone==max_t then zone=t end
@@ -27,7 +33,7 @@ end
 -- cell_tiles tiles, row 1 ahead, column 1 left; per channel (hard, tree, zone) the
 -- fraction of the cell's samples x samples points of that kind, channel-major.
 -- Blocks not cached yet read as open ground rather than as the off-map wall.
-local function write_map(grid,x,y,h,out)
+local function write_map(grid,overlay,x,y,h,out)
   local cells, tiles, samples = map_spec.cells, map_spec.cell_tiles, map_spec.samples
   local s, c = math.sin(h), math.cos(h)
   local half, step, weight = cells/2, tiles/samples, 1/(samples*samples)
@@ -41,7 +47,7 @@ local function write_map(grid,x,y,h,out)
         local forward = (half-row)*tiles - (sy+0.5)*step
         for sx = 0, samples-1 do
           local right = (col-half)*tiles + (sx+0.5)*step
-          local mask = raster.known_mask(grid,math.floor(x+right*c+forward*s),math.floor(y+right*s-forward*c))
+          local mask = read(raster.known_mask,grid,overlay,math.floor(x+right*c+forward*s),math.floor(y+right*s-forward*c))
           if raster.hard(mask) then hard = hard + 1 end
           if band(mask,4) ~= 0 then tree = tree + 1 end
           if band(mask,32) ~= 0 then zone = zone + 1 end
@@ -52,7 +58,8 @@ local function write_map(grid,x,y,h,out)
   end
 end
 -- state is a plain snapshot. stats are in simulator units (W, tiles/tick).
-function M.build(grid,route,state,stats)
+-- overlay is optional.
+function M.build(grid,route,state,stats,overlay)
   local out,look = {},{}
   local x,y,h = state.x,state.y,state.orientation*2*math.pi
   local s,c = math.sin(h),math.cos(h)
@@ -61,7 +68,7 @@ function M.build(grid,route,state,stats)
     local a = deg*math.pi/180
     local sa,ca = math.abs(math.sin(a)),math.abs(math.cos(a))
     local extent = math.min(sa>1e-9 and hw/sa or math.huge,ca>1e-9 and hl/ca or math.huge)
-    local hard,tree,zone = cast(grid,x,y,math.sin(h+a),-math.cos(h+a),extent+32)
+    local hard,tree,zone = cast(grid,overlay,x,y,math.sin(h+a),-math.cos(h+a),extent+32)
     out[i],out[i+32],out[i+64] = u.clamp(hard-extent,0,32)/32,
       u.clamp(tree-extent,0,32)/32,u.clamp(zone-extent,0,32)/32
   end
@@ -89,7 +96,7 @@ function M.build(grid,route,state,stats)
   out[#out+1] = raster.in_zone(grid,x,y)
   assert(#out == spec.size,"Student observation layout mismatch")
   if map_spec then
-    write_map(grid,x,y,h,out)
+    write_map(grid,overlay,x,y,h,out)
     assert(#out == map_spec.size,"Student map layout mismatch")
   end
   for i,v in ipairs(out) do out[i] = u.f32(v) end

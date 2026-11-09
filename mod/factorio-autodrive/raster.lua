@@ -24,6 +24,21 @@ local function intersects(b,x,y)
   if math.abs(-dx*b.s+dy*b.c) >= b.hy+0.5*(ac+as)-1e-9 then return false end
   return true
 end
+-- Bits an entity of this kind sets; trains and buildings share the rock
+-- channel, since the trained observation has no channel of their own. Rails
+-- (128) are drivable; only the route planner reads them, as an extra cost.
+M.bits = {cliff=3,tree=5,rock=9,building=9,train=9,nest=65,rail=128}
+-- Calls fn(x,y) for every tile in [x0,x1] x [y0,y1] the entity's box overlaps.
+function M.stamp(e,x0,y0,x1,y1,fn)
+  local b = shape(e)
+  local ex = math.abs(b.c)*b.hx+math.abs(b.s)*b.hy
+  local ey = math.abs(b.s)*b.hx+math.abs(b.c)*b.hy
+  for y = math.max(y0, math.floor(b.y-ey)), math.min(y1, math.ceil(b.y+ey)-1) do
+    for x = math.max(x0, math.floor(b.x-ex)), math.min(x1, math.ceil(b.x+ex)-1) do
+      if intersects(b,x,y) then fn(x,y) end
+    end
+  end
+end
 -- `territory` marks a whole block as zone (demolisher territory). `friction` holds
 -- vehicle_friction_modifier tenths per tile (10 when omitted).
 function M.build(x0,y0,tiles,entities,territory,friction)
@@ -33,18 +48,11 @@ function M.build(x0,y0,tiles,entities,territory,friction)
   end
   for _, e in ipairs(entities) do
     if e.kind == "cliff" or (e.health or 1) > 0 then
-      local b = shape(e)
-      local bits = 1 + ({cliff=2,tree=4,rock=8,nest=64})[e.kind]
-      local ex = math.abs(b.c)*b.hx+math.abs(b.s)*b.hy
-      local ey = math.abs(b.s)*b.hx+math.abs(b.c)*b.hy
-      for y = math.max(y0, math.floor(b.y-ey)), math.min(y0+15, math.ceil(b.y+ey)-1) do
-        for x = math.max(x0, math.floor(b.x-ex)), math.min(x0+15, math.ceil(b.x+ex)-1) do
-          if tiles[(y-y0)*16+x-x0+1] ~= "offmap" and intersects(b,x,y) then
-            local i = (y-y0)*16+x-x0+1
-            block.mask[i] = bor(block.mask[i],bits)
-          end
-        end
-      end
+      local bits = M.bits[e.kind]
+      M.stamp(e,x0,y0,x0+15,y0+15,function(x,y)
+        local i = (y-y0)*16+x-x0+1
+        if tiles[i] ~= "offmap" then block.mask[i] = bor(block.mask[i],bits) end
+      end)
       if e.kind == "nest" then
         block.nests[#block.nests+1] = {x=e.x,y=e.y}
         for y = y0,y0+15 do

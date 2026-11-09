@@ -6,12 +6,31 @@ local raster = require("raster")
 local observation = require("observation")
 local network = require("network")
 local vehicle_api = require("vehicle")
+local trains = require("trains")
 local u = require("math-util")
 local escape = require("escape")
 local M = {}
+-- Cars on Vulcanus coast instead of accelerating above this speed (km/h): its open plains
+-- let fast fuel reach 180+ km/h, where the model's 32-tile view is too short to dodge rocks
+-- (docs/vulcanus-long-test.md). scripts/autodrive-sim.mjs applies the same limit.
+local VULCANUS_CAR_LIMIT = 130
+local function speed_limit(vehicle)
+  local planet = vehicle.surface.planet
+  if vehicle.name == "car" and planet and planet.name == "vulcanus" then return VULCANUS_CAR_LIMIT end
+end
+-- Forward throttle above the limit becomes coasting with the same steering.
+local function governed(s,v,action)
+  if s.speed_limit and v.speed*216 > s.speed_limit and math.floor(action/3) == 2 then return 3 + action%3 end
+  return action
+end
 local field_options = {}
 for k,v in pairs(network.model.field or {}) do field_options[k]=v end
 field_options.smooth = network.model.route_source == "field_smooth"
+-- With "Avoid train tracks": each tile near a rail costs this many extra tiles
+-- of travel, so a crossing (about six such tiles) is worth a detour of ~50.
+local RAIL_COST = 8
+local rail_field_options = {rail_cost=RAIL_COST}
+for k,v in pairs(field_options) do rail_field_options[k]=v end
 
 local FIRST_SEGMENT = 48     -- tiles to the first sub-target
 local SEGMENT = 160          -- tiles to each later sub-target
@@ -23,6 +42,7 @@ local MAX_MARGIN = 128       -- a route clipped by its window replans with a dou
 local HANDOFF = 50           -- overlap includes 20 extra tiles beyond the old handoff span
 local FIELD_BUDGET = 4000    -- field work units per tick (~1-2 ms)
 local GRID_BLOCKS = 4        -- 16x16 cache blocks built per tick (forest blocks are costly)
+local RECOUNT_TICKS = 60     -- how often blocks around a driving vehicle are recounted
 local HORIZON = 768          -- soft horizon; one section may extend past it
 local MAX_SECTIONS = 6
 local MAX_TARGET = 4096
@@ -85,7 +105,7 @@ end
 local function new_plan(s,from,target,final,margin)
   local stats = s.stats
   local options = {terrain_friction_modifier=stats.terrain_friction_modifier}
-  for k,v in pairs(field_options) do options[k]=v end
+  for k,v in pairs(s.avoid_rails and rail_field_options or field_options) do options[k]=v end
   local f = field.new(from,target,stats.half_width,stats.tank_driving,nil,margin,options)
   grid.ensure(s.grid,f.x0-3,f.y0-3,f.x1+3,f.y1+3,false)
   return {from=from,target=target,aim=target,final=final,margin=margin,field=f,phase="grid",attempt=0}
@@ -201,14 +221,17 @@ function M.on_path(s,event)
   end
 end
 
-function M.start(vehicle,target)
+-- options.avoid_rails: plan routes around train tracks where possible.
+function M.start(vehicle,target,options)
+  local avoid_rails = options and options.avoid_rails or false
   assert(vehicle.valid and (vehicle.name=="car" or vehicle.name=="tank"),"Enter a base car or tank first")
   assert(u.distance(vehicle.position,target)<=MAX_TARGET,"Target must be within "..MAX_TARGET.." tiles")
   assert(generated(vehicle.surface,target),"Target must be in an explored (generated) chunk")
-  local s = {vehicle=vehicle,target={x=target.x,y=target.y},grid=grid.new(),status="planning",
+  local s = {vehicle=vehicle,target={x=target.x,y=target.y},grid=grid.new({rails=avoid_rails}),avoid_rails=avoid_rails,status="planning",
     elapsed=0,stall=0,best_tick=0,decisions=0,slices=0,planning_ticks=0,action=4,route={},segments=0,
     stats=vehicle_api.stats(vehicle),single=u.distance(vehicle.position,target)<=SINGLE_WITHIN,
-    corridor={},refinements=0,max_horizon=0,frontier_wait_ticks=0}
+    corridor={},refinements=0,max_horizon=0,frontier_wait_ticks=0,yield_ticks=0,
+    speed_limit=speed_limit(vehicle)}
   local from = {x=vehicle.position.x,y=vehicle.position.y}
   -- Check the clicked target before anything else; and bound the number of
   -- segments so no failure mode can circle forever.
@@ -268,7 +291,7 @@ function M.observe(s)
   else s.route=route_at(s) end
   local state = M.snapshot(s)
   s.stats = vehicle_api.stats(s.vehicle)
-  local obs,look = observation.build(s.grid,s.route,state,s.stats)
+  local obs,look = observation.build(s.grid,s.route,state,s.stats,trains.overlay(s.vehicle.surface,s.vehicle.position))
   local action,logits = network.forward(obs)
   s.look = look
   return action,{state=state,stats=s.stats,observation=obs,logits=logits,action=action,route=s.route,
@@ -372,6 +395,19 @@ function M.dirty(s,position)
     if p and affected(p.field) then s[key]=new_plan(s,p.from,p.target,p.final,p.margin) end
   end
 end
+-- Parked-train changes are batched: applying each at once would restart route
+-- planning over and over in a busy rail network. Changes near the vehicle are
+-- also caught by the recount in M.tick within a second.
+local TRAIN_DIRTY_TICKS = 300
+function M.train_dirty(s,position)
+  s.train_dirty = s.train_dirty or {}
+  s.train_dirty[math.floor(position.x/16)..":"..math.floor(position.y/16)] = {x=position.x,y=position.y}
+end
+local function flush_train_dirty(s)
+  if not s.train_dirty or game.tick < (s.train_dirty_at or 0) then return end
+  for _, position in pairs(s.train_dirty) do M.dirty(s,position) end
+  s.train_dirty, s.train_dirty_at = nil, game.tick + TRAIN_DIRTY_TICKS
+end
 local function keep_regions(s,v)
   local keep={{x0=v.position.x-48,y0=v.position.y-48,x1=v.position.x+49,y1=v.position.y+49}}
   local function add(f)
@@ -389,9 +425,14 @@ function M.tick(s)
   if s.status ~= "planning" and s.status ~= "driving" then vehicle_api.brake(v); return end
   local profiler = helpers.create_profiler()
   if s.status=="driving" then
-    grid.ensure(s.grid,math.floor(v.position.x)-36,math.floor(v.position.y)-36,
-      math.floor(v.position.x)+37,math.floor(v.position.y)+37,true)
+    local x, y = math.floor(v.position.x), math.floor(v.position.y)
+    grid.ensure(s.grid,x-36,y-36,x+37,y+37,true)
+    -- Buildings another mod placed or removed without an event.
+    if game.tick % RECOUNT_TICKS == 0 then
+      for _, centre in ipairs(grid.changed(s.grid,v.surface,x-36,y-36,x+37,y+37)) do M.dirty(s,centre) end
+    end
   end
+  flush_train_dirty(s)
   grid.slice(s.grid,v.surface,GRID_BLOCKS)
   if s.status=="planning" then
     s.planning_ticks=s.planning_ticks+1
@@ -466,7 +507,8 @@ function M.tick(s)
     end
   end
   if not s.single and #s.corridor>1 and game.tick%120==0 then publish(s) end
-  s.elapsed=s.elapsed+(s.started and 1 or 0)
+  -- Waiting for a train does not count against the trip's clock or stall limit.
+  s.elapsed=s.elapsed+((s.started and not s.yielding) and 1 or 0)
   s.started=true
   local distance=field.sample(s.field,v.position.x,v.position.y)
   if distance<math.huge and distance<s.best_distance-1 then s.best_distance,s.best_tick=distance,s.elapsed end
@@ -478,9 +520,7 @@ function M.tick(s)
   if s.stall>=1200 then return finish(s,"stalled") end
   local frontier=not s.corridor[#s.corridor].final
   local remaining=frontier and u.length(route_at(s)) or math.huge
-  -- Braking removes a fixed amount of kinetic energy per tick. Integrating
-  -- v(t) gives m*v^3/(3*power), not the constant-force v^2/(2*a).
-  local braking=s.stats.weight*(math.abs(v.speed)*60)^3/(3*math.max(s.stats.braking_power,1))
+  local braking=trains.stopping_distance(s.stats,v.speed)
   if frontier and remaining<math.max(12,braking+8) then
     if s.extension and s.extension.phase=="exhausted" and math.abs(v.speed)<=0.01 then return finish(s,"unreachable") end
     s.frontier_wait_ticks=s.frontier_wait_ticks+1
@@ -501,12 +541,26 @@ function M.tick(s)
       v.position.y>=f.y0+1 and v.position.y<f.y1-1 then covered=true; break end
   end
   if not covered then return finish(s,"outside-route-region") end
-  local decision=(s.elapsed-1)%4==0
+  -- The trip clock stops while holding for a train, so recheck on the game clock.
+  local decision=s.yielding and game.tick%4==0 or (not s.yielding and (s.elapsed-1)%4==0)
   if decision then
     local action=M.observe(s)
-    s.escape=s.escape or escape.new()
-    action,s.escaping=escape.decide(s.escape,v.position,action)
-    s.action,s.previous_action,s.decisions=action,action,s.decisions+1
+    s.yielding=trains.hazard(v,s.stats,s.route)
+    if s.yielding then
+      -- Like planning: the model resumes without a previous action.
+      s.previous_action,s.escape=nil,nil
+    else
+      s.escape=s.escape or escape.new()
+      action,s.escaping=escape.decide(s.escape,v.position,action)
+      action=governed(s,v,action)
+      s.action,s.previous_action,s.decisions=action,action,s.decisions+1
+    end
+  end
+  if s.yielding then
+    s.yield_ticks=s.yield_ticks+1
+    vehicle_api.brake(v)
+    profile(s,"train",profiler)
+    return
   end
   if game.tick % 300 == 0 then grid.prune(s.grid,keep_regions(s,v)) end
   -- Re-evaluate brake/reverse mapping each tick across a speed sign change.

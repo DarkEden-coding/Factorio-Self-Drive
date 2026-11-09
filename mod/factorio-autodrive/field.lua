@@ -56,6 +56,8 @@ function M.new(position, target, half_width, tank, bounds, margin, options)
     smooth = options.smooth or false, tree_cost = options.tank_tree_cost or 4,
     zone_cost = options.nest_zone_cost or 3, zone_margin = options.nest_zone_margin or 2,
     friction_cost = options.friction_cost or 0, tfm = options.terrain_friction_modifier or 1,
+    -- Off unless the driver asked to avoid rails (not part of the trained model's options).
+    rail_cost = options.rail_cost or 0, rail_margin = options.rail_cost and math.ceil(half_width) + 1 or 0,
     bucket_nodes = {}, bucket_distances = {}, pending = 0, current = 0, cursor = 1, phase = "base"}
   if bounds then
     f.x0,f.y0=math.max(f.x0,bounds.x0),math.max(f.y0,bounds.y0)
@@ -63,16 +65,17 @@ function M.new(position, target, half_width, tank, bounds, margin, options)
   end
   f.w, f.h = f.x1 - f.x0, f.y1 - f.y0
   -- The base masks cover the field plus a border wide enough for both dilations.
-  f.bucket_count = math.ceil(SQRT2 * (1 + f.tree_cost + f.zone_cost + M.friction_extra(f, 255))) + 2
-  f.r = math.max(f.dilation, f.zone_margin)
+  f.bucket_count = math.ceil(SQRT2 * (1 + f.tree_cost + f.zone_cost + f.rail_cost + M.friction_extra(f, 255))) + 2
+  f.r = math.max(f.dilation, f.zone_margin, f.rail_margin)
   f.bw, f.bh = f.w + 2 * f.r, f.h + 2 * f.r
-  f.hard, f.tree, f.zone = {}, {}, {}
+  f.hard, f.tree, f.zone, f.rail = {}, {}, {}, {}
   return f
 end
 -- Phase cells: base mask per bordered cell, then a row pass and a column pass
 -- of the separable box dilation. A cell is hard if any cell within `dilation`
 -- (Chebyshev) is a hard obstacle (or a tree, for the car); trees within
--- `dilation` cost the tank extra; nest zones within 2 cost extra.
+-- `dilation` cost the tank extra; nest zones within 2 cost extra; so do rails
+-- within rail_margin, when rail_cost is set.
 local function base_cell(f, mask, i)
   local x = f.x0 - f.r + (i - 1) % f.bw
   local y = f.y0 - f.r + math.floor((i - 1) / f.bw)
@@ -80,12 +83,13 @@ local function base_cell(f, mask, i)
   f.hard[i] = band(m, 90) ~= 0 or (not f.tank and band(m, 4) ~= 0)
   f.tree[i] = band(m, 4) ~= 0
   f.zone[i] = band(m, 32) ~= 0
+  f.rail[i] = band(m, 128) ~= 0
 end
 local function row_cell(f, i)
   -- i walks the bordered rows over the field's columns only.
   local row, col = math.floor((i - 1) / f.w), (i - 1) % f.w
   local b = row * f.bw + col + f.r + 1
-  local d, hard, tree, zone = f.dilation, false, false, false
+  local d, hard, tree, zone, rail = f.dilation, false, false, false, false
   for k = -f.r, f.r do
     local j = b + k
     if k >= -d and k <= d then
@@ -93,12 +97,13 @@ local function row_cell(f, i)
       tree = tree or f.tree[j]
     end
     if k >= -f.zone_margin and k <= f.zone_margin then zone = zone or f.zone[j] end
+    if k >= -f.rail_margin and k <= f.rail_margin then rail = rail or f.rail[j] end
   end
-  f.rh[i], f.rt[i], f.rz[i] = hard, tree, zone
+  f.rh[i], f.rt[i], f.rz[i], f.rr[i] = hard, tree, zone, rail
 end
 local function col_cell(f, i, friction)
   local x, y = (i - 1) % f.w, math.floor((i - 1) / f.w)
-  local d, hard, tree, zone = f.dilation, false, false, false
+  local d, hard, tree, zone, rail = f.dilation, false, false, false, false
   for k = -f.r, f.r do
     local j = (y + f.r + k) * f.w + x + 1
     if k >= -d and k <= d then
@@ -106,10 +111,12 @@ local function col_cell(f, i, friction)
       tree = tree or f.rt[j]
     end
     if k >= -f.zone_margin and k <= f.zone_margin then zone = zone or f.rz[j] end
+    if k >= -f.rail_margin and k <= f.rail_margin then rail = rail or f.rr[j] end
   end
   f.flags[i] = hard
   local slow = (friction and f.friction_cost > 0) and M.friction_extra(f, friction(f.x0 + x, f.y0 + y)) or 0
   f.extra[i] = (tree and f.tank and f.tree_cost or 0) + (zone and f.zone_cost or 0) + slow
+    + (rail and f.rail_cost or 0)
 end
 local function start_search(f)
   local t = f.target
@@ -160,7 +167,7 @@ function M.slice(f, mask, budget, friction)
       for i = f.cursor, last do base_cell(f, mask, i) end
       budget = budget - (last - f.cursor + 1)
       f.cursor = last + 1
-      if f.cursor > n then f.phase, f.cursor, f.rh, f.rt, f.rz = "rows", 1, {}, {}, {} end
+      if f.cursor > n then f.phase, f.cursor, f.rh, f.rt, f.rz, f.rr = "rows", 1, {}, {}, {}, {} end
     elseif phase == "rows" then
       local n = f.w * f.bh
       local last = math.min(n, f.cursor + budget - 1)
@@ -169,7 +176,7 @@ function M.slice(f, mask, budget, friction)
       f.cursor = last + 1
       if f.cursor > n then
         f.phase, f.cursor, f.flags, f.extra = "cols", 1, {}, {}
-        f.hard, f.tree, f.zone = nil, nil, nil
+        f.hard, f.tree, f.zone, f.rail = nil, nil, nil, nil
       end
     elseif phase == "cols" then
       local n = f.w * f.h
@@ -178,7 +185,7 @@ function M.slice(f, mask, budget, friction)
       budget = budget - (last - f.cursor + 1)
       f.cursor = last + 1
       if f.cursor > n then
-        f.rh, f.rt, f.rz = nil, nil, nil
+        f.rh, f.rt, f.rz, f.rr = nil, nil, nil, nil
         start_search(f)
       end
     elseif phase == "search" then

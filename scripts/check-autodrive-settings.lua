@@ -19,7 +19,10 @@ storage={autodrive={[1]=state}}
 game={tick=12,get_player=function() return player end}
 settings={get_player_settings=function() return {['factorio-autodrive-overlay']={value=enabled}} end}
 local handlers={}
-defines={events=setmetatable({},{__index=function(_,name) return name end})}
+defines=setmetatable({events=setmetatable({},{__index=function(_,name) return name end})},
+  {__index=function(t,group)
+    local sub=setmetatable({},{__index=function(_,name) return group.."."..name end})
+    rawset(t,group,sub); return sub end})
 script={on_init=function() end,on_configuration_changed=function() end,
   on_event=function(event,handler) handlers[event]=handler end}
 commands={add_command=function() end}

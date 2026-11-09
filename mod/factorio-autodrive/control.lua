@@ -1,7 +1,12 @@
 local driver=require("driver")
 local vehicle_api=require("vehicle")
 local overlay=require("overlay")
-local function init() storage.autodrive=storage.autodrive or {} end
+local trains=require("trains")
+-- train_parked: last parked status per train id (trains.parked_changed).
+local function init()
+  storage.autodrive=storage.autodrive or {}
+  storage.train_parked=storage.train_parked or {}
+end
 script.on_init(init)
 -- In-flight drives from an older version lack fields the driver now needs; drop them.
 script.on_configuration_changed(function()
@@ -9,6 +14,7 @@ script.on_configuration_changed(function()
     if s.vehicle and s.vehicle.valid then vehicle_api.brake(s.vehicle) end
   end
   storage.autodrive={}
+  storage.train_parked=storage.train_parked or {}
 end)
 -- physical_vehicle, not vehicle: in map/remote view player.vehicle is nil even
 -- though the player still sits in the car.
@@ -25,7 +31,8 @@ local function target(player,position,surface)
   if position.x~=position.x or position.y~=position.y or math.abs(position.x)>1e7 or math.abs(position.y)>1e7 then
     player.print("Autodrive: invalid coordinates."); return
   end
-  local ok,state=pcall(driver.start,vehicle,position)
+  local avoid_rails=settings.get_player_settings(player)["factorio-autodrive-avoid-rails"].value
+  local ok,state=pcall(driver.start,vehicle,position,{avoid_rails=avoid_rails})
   if not ok then player.print("Autodrive: "..tostring(state)); return end
   state.profile=settings.global["factorio-autodrive-profile"].value
   storage.autodrive[player.index]=state
@@ -56,8 +63,14 @@ local function pause(event)
     player.print("Autodrive: manual control. Ctrl+Alt+D resumes.")
   end
 end
+-- Movement keys pan the map in map or remote view; only take over in the normal world view.
+local function override(event)
+  local player=game.get_player(event.player_index)
+  if not player or player.render_mode~=defines.render_mode.game or player.controller_type==defines.controllers.remote then return end
+  pause(event)
+end
 for _,control in ipairs({"move-up","move-down","move-left","move-right"}) do
-  script.on_event("factorio-autodrive-override-"..control,pause)
+  script.on_event("factorio-autodrive-override-"..control,override)
 end
 script.on_event("factorio-autodrive-resume",function(event)
   local player=game.get_player(event.player_index)
@@ -76,15 +89,52 @@ commands.add_command("autodrive-dump","Write a parity snapshot of the current ro
   local s=event.player_index and storage.autodrive[event.player_index]
   if s and s.status=="driving" then driver.dump(s,"factorio-autodrive/parity-"..event.player_index..".json") end
 end)
-local function dirty(event)
-  local entity=event.entity
-  if not entity or not entity.valid then return end
+local function dirty_at(surface,position)
   for _,s in pairs(storage.autodrive) do
-    if s.vehicle.valid and s.vehicle.surface==entity.surface then driver.dirty(s,entity.position) end
+    if s.vehicle.valid and s.vehicle.surface==surface then driver.dirty(s,position) end
   end
 end
+local function dirty(event)
+  local entity=event.entity or event.destination
+  if not entity or not entity.valid or entity.type=="entity-ghost" or entity.type=="tile-ghost" then return end
+  dirty_at(entity.surface,entity.position)
+end
+-- Built, removed, turned (a non-square footprint changes) or cloned.
 script.on_event({defines.events.on_entity_died,defines.events.on_player_mined_entity,
-  defines.events.on_robot_mined_entity,defines.events.script_raised_destroy},dirty)
+  defines.events.on_robot_mined_entity,defines.events.script_raised_destroy,
+  defines.events.on_built_entity,defines.events.on_robot_built_entity,
+  defines.events.script_raised_built,defines.events.script_raised_revive,
+  defines.events.on_player_rotated_entity,defines.events.on_player_flipped_entity,
+  defines.events.on_entity_cloned},dirty)
+-- Landfill turns water into ground; mining it back turns it into water.
+local function tiles_dirty(event)
+  local surface=game.get_surface(event.surface_index)
+  if not surface or not event.tiles then return end
+  local done={}
+  for _,tile in ipairs(event.tiles) do
+    local key=math.floor(tile.position.x/16)..":"..math.floor(tile.position.y/16)
+    if not done[key] then done[key]=true; dirty_at(surface,tile.position) end
+  end
+end
+script.on_event({defines.events.on_player_built_tile,defines.events.on_robot_built_tile,
+  defines.events.on_player_mined_tile,defines.events.on_robot_mined_tile,
+  defines.events.script_raised_set_tiles},tiles_dirty)
+-- A train that parks becomes an obstacle; one that leaves frees its tiles.
+-- The driver applies these in batches (driver.train_dirty).
+script.on_event(defines.events.on_train_changed_state,function(event)
+  local train=event.train
+  if not trains.parked_changed(train,storage.train_parked) then return end
+  for _,s in pairs(storage.autodrive) do
+    if s.vehicle.valid and s.vehicle.surface==train.front_stock.surface then
+      for _,carriage in ipairs(train.carriages) do driver.train_dirty(s,carriage.position) end
+    end
+  end
+end)
+-- Coupling or splitting replaces trains; forget the old ids.
+script.on_event(defines.events.on_train_created,function(event)
+  if event.old_train_id_1 then storage.train_parked[event.old_train_id_1]=nil end
+  if event.old_train_id_2 then storage.train_parked[event.old_train_id_2]=nil end
+end)
 script.on_event(defines.events.on_script_path_request_finished,function(event)
   for _,s in pairs(storage.autodrive) do driver.on_path(s,event) end
 end)

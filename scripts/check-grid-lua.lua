@@ -3,6 +3,10 @@ if not bit32 then
   bit32={band=assert(load('return function(a,b) return a & b end'))(),
     bor=assert(load('return function(a,b) return a | b end'))()}
 end
+-- Any defines.<group>.<name> reads as "<group>.<name>" (trains.lua indexes several at load).
+defines=defines or setmetatable({},{__index=function(t,group)
+  local sub=setmetatable({},{__index=function(_,name) return group.."."..name end})
+  rawset(t,group,sub); return sub end})
 package.path='mod/factorio-autodrive/?.lua;'..package.path
 -- Engine stubs: the car's default collision mask and tile/obstacle prototypes.
 prototypes={entity={car={collision_mask={layers={player=true,train=true,car=true,is_object=true}}}}}
@@ -26,7 +30,10 @@ add('cliff',17,10,{{-2,-2},{2,2}},'west-to-north')
 add('nest',-12,8,{{-2.4,-2},{2.4,2}})
 local surface={get_tile=function() return GRASS end,
   get_territory_for_chunk=function() return nil end,
+  count_entities_filtered=function() return 0 end,
   find_entities_filtered=function(q)
+    -- The inverted building query and the parked-train query find nothing here.
+    if q.invert or q.type[1]=='locomotive' then return {} end
     queries[#queries+1]=q
     local result,types={},{}
     for _,t in ipairs(q.type) do types[t]=true end
@@ -50,8 +57,10 @@ local LAVA=tile('lava',1,{lava_tile=true,player=true,water_tile=true,item=true})
 local OIL=tile('oil-ocean-deep',10,{water_tile=true,resource=true,rail_support=true})
 local planet={get_tile=function(x) return x<4 and LAVA or OIL end,
   get_territory_for_chunk=function(c) return c[1]==2 and {} or nil end,
+  count_entities_filtered=function() return 0 end,
   find_entities_filtered=function(q)
     local found={}
+    if q.invert then return found end
     for _,t in ipairs(q.type) do
       if t=='plant' and q.area[1][1]<=36 and q.area[2][1]>36 then
         found[#found+1]={type='plant',name='yumako-tree',position={x=36.5,y=8.5},orientation=0,health=50,
@@ -71,7 +80,7 @@ assert(raster.in_zone(pg,70,5)==1 and bit32.band(grid.mask(pg,70,5),32)~=0,'terr
 assert(raster.in_zone(pg,36,5)==0,'outside territory is not zone')
 -- Ungenerated chunks return invalid tiles: they block like the map edge instead of erroring.
 local edge={get_tile=function() return {valid=false} end,get_territory_for_chunk=function() return nil end,
-  find_entities_filtered=function() return {} end}
+  find_entities_filtered=function() return {} end,count_entities_filtered=function() return 0 end}
 local eg=grid.new()
 grid.ensure(eg,0,0,16,16,true)
 assert(grid.slice(eg,edge,1))

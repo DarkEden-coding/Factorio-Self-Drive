@@ -7,6 +7,12 @@ data:extend({
   },
   {
     type="bool-setting",
+    name="factorio-autodrive-avoid-rails",
+    setting_type="runtime-per-user",
+    default_value=false,
+  },
+  {
+    type="bool-setting",
     name="factorio-autodrive-profile",
     setting_type="runtime-global",
     default_value=false,

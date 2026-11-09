@@ -109,7 +109,10 @@ class Audit:
         if autodrive:
             events = ['CustomCommandData', 'CustomInputEvent', 'on_lua_shortcut',
                       'on_player_selected_area', 'on_entity_died', 'on_player_mined_entity',
-                      'on_script_path_request_finished']
+                      'on_script_path_request_finished', 'on_entity_cloned', 'on_built_entity',
+                      'on_player_built_tile', 'on_player_mined_tile', 'on_robot_built_tile', 'on_robot_mined_tile',
+                      'script_raised_set_tiles', 'on_player_rotated_entity', 'on_player_flipped_entity',
+                      'on_train_changed_state', 'on_train_created']
             self.definitions['runtime']['AutodriveEvent'] = {'parameters': list({
                 k: v for event in events for k, v in self.members('runtime', event).items()}.values())}
         # Explicit handle aliases; ordinary scenario/job/output tables are excluded.

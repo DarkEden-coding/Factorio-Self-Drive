@@ -4,6 +4,10 @@ if not bit32 then
   bit32={band=assert(load('return function(a,b) return a & b end'))(),
     bor=assert(load('return function(a,b) return a | b end'))()}
 end
+-- Any defines.<group>.<name> reads as "<group>.<name>" (trains.lua indexes several at load).
+defines=defines or setmetatable({},{__index=function(t,group)
+  local sub=setmetatable({},{__index=function(_,name) return group.."."..name end})
+  rawset(t,group,sub); return sub end})
 package.path='mod/factorio-autodrive/?.lua;'..package.path
 game={tick=0}
 prototypes={entity={car={collision_mask={layers={player=true,train=true,car=true,is_object=true}}}}}
@@ -36,7 +40,7 @@ v.surface={is_chunk_generated=function() return true end,request_path=function()
   get_tile=function() return {valid=true,name='grass-1',prototype={name='grass-1',vehicle_friction_modifier=1.6,
     collision_mask={layers={ground_tile=true}}}} end,
   get_territory_for_chunk=function() return nil end,
-  find_entities_filtered=function() return {} end}
+  find_entities_filtered=function() return {} end,count_entities_filtered=function() return 0 end}
 local s=driver.start(v,{x=1000.5,y=0.5})
 local function tick()
   game.tick=game.tick+1
