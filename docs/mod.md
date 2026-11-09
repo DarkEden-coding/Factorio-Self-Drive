@@ -72,7 +72,7 @@ The trace table adds planet scenarios when Space Age is active: acceleration on 
 crossing oil ocean, driving into lava and deep lakes, and impacts with planet trees, plants,
 rocks, ruins and cliffs, for both vehicles. Their surfaces copy the planet's gravity and
 pressure. Factorio 2.1.24 crashes deleting a surface after `set_property`, so those test
-surfaces stay until the collection save is thrown away. Of 88 recorded planet traces, 77
+surfaces stay until the collection save is thrown away. Of 90 recorded planet traces, 79
 replay with zero position error, including every acceleration, oil-ocean, lava and deep-lake
 run. The rest are contacts with planet obstacles; four exceed 0.05 tiles, the largest 0.31 tiles
 (car into an ashland lichen tree at 0.1 tiles/tick) and 0.16 tiles (car into a lightning-attractor

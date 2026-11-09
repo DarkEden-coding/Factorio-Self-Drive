@@ -339,6 +339,34 @@
       }
     },
     {
+      "path": "data/game/traces/car-accelerate-lowland-olive-blubber-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-accelerate-lowland-olive-blubber-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 3.1086244689504383e-15,
+          "rms": 1.215894948196016e-15
+        }
+      }
+    },
+    {
       "path": "data/game/traces/car-accelerate-oil-ocean-deep-coal.json",
       "report": {
         "first_position_error_tick": null,
@@ -9351,6 +9379,34 @@
         "speed": {
           "max": 6.938893903907228e-16,
           "rms": 2.442545012321435e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-lowland-olive-blubber-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-accelerate-lowland-olive-blubber-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 6.661338147750939e-16,
+          "rms": 3.0139093592155074e-16
         }
       }
     },
