@@ -83,3 +83,4 @@ The RL environment's Python module (`import fsim`) builds with maturin; see
 - [docs/simulator.md](docs/simulator.md): core layout
 - [docs/mod.md](docs/mod.md): the export mod, trace recording and replay, map export
 - [docs/planets-results.md](docs/planets-results.md): Vulcanus, Gleba and Fulgora support and results
+- [docs/vulcanus-long-test.md](docs/vulcanus-long-test.md): long-distance Vulcanus simulator test set (hits at speed)

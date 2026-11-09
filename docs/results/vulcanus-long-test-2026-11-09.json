@@ -1,0 +1,475 @@
+{
+ "date": "2026-11-09",
+ "checkpoint": "runs/students/planets-v2/checkpoints/latest.pt",
+ "split": "holdout",
+ "seed": 67890,
+ "episodes": 600,
+ "long_distance_set": {
+  "pool": "data/game/maps-vulcanus-open",
+  "scenario": {
+   "kind": "long",
+   "min_distance": 500,
+   "max_distance": 1000,
+   "max_tortuosity": 3.0
+  },
+  "eval": {
+   "episodes": 600,
+   "success_rate": 0.9183333333333333,
+   "spl": 0.903607507971796,
+   "mean_time_s": 36.8389594676346,
+   "mean_damage": 44.85085385640462,
+   "destroyed_rate": 0.013333333333333334,
+   "timeout_rate": 0.0,
+   "stalled_rate": 0.06833333333333333,
+   "mean_return": 28.967235438274063,
+   "collisions_per_episode": {
+    "tree": 0.325,
+    "rock": 15.778333333333334,
+    "cliff": 45.77333333333333,
+    "nest": 0.0,
+    "water": 11.728333333333333
+   },
+   "tree_hit_rate": 0.17833333333333334,
+   "nest_zone_fraction": 0.0,
+   "reversed_rate": 0.7533333333333333,
+   "mean_end_speed_kmh": 0.9806494366982952,
+   "mean_end_target_distance": 29.58007732267802,
+   "per_vehicle": {
+    "car": {
+     "episodes": 312,
+     "success_rate": 0.9166666666666666,
+     "spl": 0.9005769324451762,
+     "mean_time_s": 25.12867132867133,
+     "mean_damage": 86.25164203154735,
+     "destroyed_rate": 0.02564102564102564,
+     "timeout_rate": 0.0,
+     "stalled_rate": 0.057692307692307696,
+     "mean_return": 35.33588476239408,
+     "collisions_per_episode": {
+      "tree": 0.21474358974358973,
+      "rock": 20.26923076923077,
+      "cliff": 31.477564102564102,
+      "nest": 0.0,
+      "water": 6.708333333333333
+     },
+     "tree_hit_rate": 0.11538461538461539,
+     "nest_zone_fraction": 0.0,
+     "reversed_rate": 0.8012820512820513,
+     "mean_end_speed_kmh": 0.5105681251734495,
+     "mean_end_target_distance": 30.871804738166528
+    },
+    "tank": {
+     "episodes": 288,
+     "success_rate": 0.9201388888888888,
+     "spl": 0.9068906314589675,
+     "mean_time_s": 49.47723270440252,
+     "mean_damage": 0.0,
+     "destroyed_rate": 0.0,
+     "timeout_rate": 0.0,
+     "stalled_rate": 0.0798611111111111,
+     "mean_return": 22.067865337144045,
+     "collisions_per_episode": {
+      "tree": 0.4444444444444444,
+      "rock": 10.913194444444445,
+      "cliff": 61.260416666666664,
+      "nest": 0.0,
+      "water": 17.166666666666668
+     },
+     "tree_hit_rate": 0.2465277777777778,
+     "nest_zone_fraction": 0.0,
+     "reversed_rate": 0.7013888888888888,
+     "mean_end_speed_kmh": 1.4899041908502113,
+     "mean_end_target_distance": 28.1807059558988
+    }
+   },
+   "per_scenario": {
+    "long": {
+     "episodes": 600,
+     "success_rate": 0.9183333333333333,
+     "spl": 0.903607507971796,
+     "mean_time_s": 36.8389594676346,
+     "mean_damage": 44.85085385640462,
+     "destroyed_rate": 0.013333333333333334,
+     "timeout_rate": 0.0,
+     "stalled_rate": 0.06833333333333333,
+     "mean_return": 28.967235438274063,
+     "collisions_per_episode": {
+      "tree": 0.325,
+      "rock": 15.778333333333334,
+      "cliff": 45.77333333333333,
+      "nest": 0.0,
+      "water": 11.728333333333333
+     },
+     "tree_hit_rate": 0.17833333333333334,
+     "nest_zone_fraction": 0.0,
+     "reversed_rate": 0.7533333333333333,
+     "mean_end_speed_kmh": 0.9806494366982952,
+     "mean_end_target_distance": 29.58007732267802
+    }
+   },
+   "split": "holdout",
+   "scenario": "long",
+   "policy": "reactive",
+   "escape": true,
+   "checkpoint": "runs/students/planets-v2/checkpoints/latest.pt",
+   "global_step": 9961472
+  },
+  "impacts": {
+   "all": {
+    "episodes": 600,
+    "success": 0.9183333333333333,
+    "destroyed": 0.013333333333333334,
+    "stalled": 0.06833333333333333,
+    "mean_damage": 44.85085374911626,
+    "damaged": 0.29333333333333333,
+    "top_kmh": 103.95875113338232,
+    "hits_over_50kmh": 1.265,
+    "hits_per_1000_tiles": 4.12671670584104
+   },
+   "car/coal": {
+    "episodes": 61,
+    "success": 0.9180327868852459,
+    "destroyed": 0.0,
+    "stalled": 0.08196721311475409,
+    "mean_damage": 31.53413516185323,
+    "damaged": 0.5081967213114754,
+    "top_kmh": 111.16329355904314,
+    "hits_over_50kmh": 1.0491803278688525,
+    "hits_per_1000_tiles": 4.680684743715138
+   },
+   "car/nuclear-fuel": {
+    "episodes": 57,
+    "success": 0.7543859649122807,
+    "destroyed": 0.12280701754385964,
+    "stalled": 0.12280701754385964,
+    "mean_damage": 184.8203056820652,
+    "damaged": 0.7368421052631579,
+    "top_kmh": 178.21810453816465,
+    "hits_over_50kmh": 2.6842105263157894,
+    "hits_per_1000_tiles": 7.800999494617072
+   },
+   "car/rocket-fuel": {
+    "episodes": 60,
+    "success": 0.9166666666666666,
+    "destroyed": 0.016666666666666666,
+    "stalled": 0.06666666666666667,
+    "mean_damage": 145.88038107554118,
+    "damaged": 0.6833333333333333,
+    "top_kmh": 161.89104523658753,
+    "hits_over_50kmh": 2.433333333333333,
+    "hits_per_1000_tiles": 6.8447481972207145
+   },
+   "car/solid-fuel": {
+    "episodes": 68,
+    "success": 0.9852941176470589,
+    "destroyed": 0.0,
+    "stalled": 0.014705882352941176,
+    "mean_damage": 45.68757001091452,
+    "damaged": 0.45588235294117646,
+    "top_kmh": 129.03823755067938,
+    "hits_over_50kmh": 0.9411764705882353,
+    "hits_per_1000_tiles": 3.1166367259604866
+   },
+   "car/wood": {
+    "episodes": 66,
+    "success": 0.9848484848484849,
+    "destroyed": 0.0,
+    "stalled": 0.015151515151515152,
+    "mean_damage": 39.2817417491566,
+    "damaged": 0.4696969696969697,
+    "top_kmh": 113.43158249421553,
+    "hits_over_50kmh": 0.9090909090909091,
+    "hits_per_1000_tiles": 2.8183009771200616
+   },
+   "tank/coal": {
+    "episodes": 52,
+    "success": 0.9615384615384616,
+    "destroyed": 0.0,
+    "stalled": 0.038461538461538464,
+    "mean_damage": 0.0,
+    "damaged": 0.0,
+    "top_kmh": 52.92399862523262,
+    "hits_over_50kmh": 0.36538461538461536,
+    "hits_per_1000_tiles": 1.5558488129485497
+   },
+   "tank/nuclear-fuel": {
+    "episodes": 46,
+    "success": 0.8913043478260869,
+    "destroyed": 0.0,
+    "stalled": 0.10869565217391304,
+    "mean_damage": 0.0,
+    "damaged": 0.0,
+    "top_kmh": 93.91370903927347,
+    "hits_over_50kmh": 1.7391304347826086,
+    "hits_per_1000_tiles": 5.683908233628985
+   },
+   "tank/rocket-fuel": {
+    "episodes": 66,
+    "success": 0.8787878787878788,
+    "destroyed": 0.0,
+    "stalled": 0.12121212121212122,
+    "mean_damage": 0.0,
+    "damaged": 0.0,
+    "top_kmh": 81.42402749711817,
+    "hits_over_50kmh": 1.6363636363636365,
+    "hits_per_1000_tiles": 5.5838829082259105
+   },
+   "tank/solid-fuel": {
+    "episodes": 48,
+    "success": 0.9375,
+    "destroyed": 0.0,
+    "stalled": 0.0625,
+    "mean_damage": 0.0,
+    "damaged": 0.0,
+    "top_kmh": 61.52168172597885,
+    "hits_over_50kmh": 0.75,
+    "hits_per_1000_tiles": 2.6071905200726904
+   },
+   "tank/wood": {
+    "episodes": 76,
+    "success": 0.9342105263157895,
+    "destroyed": 0.0,
+    "stalled": 0.06578947368421052,
+    "mean_damage": 0.0,
+    "damaged": 0.0,
+    "top_kmh": 53.45007131601635,
+    "hits_over_50kmh": 0.3815789473684211,
+    "hits_per_1000_tiles": 1.501707814441265
+   }
+  }
+ },
+ "existing_long_scenario": {
+  "pool": "data/game/maps-vulcanus",
+  "scenario": {
+   "kind": "long",
+   "min_distance": 200,
+   "max_distance": 700,
+   "max_tortuosity": 3.0
+  },
+  "eval": {
+   "episodes": 600,
+   "success_rate": 0.9883333333333333,
+   "spl": 0.9804281955191112,
+   "mean_time_s": 16.93038223721192,
+   "mean_damage": 11.999957173665365,
+   "destroyed_rate": 0.0016666666666666668,
+   "timeout_rate": 0.0,
+   "stalled_rate": 0.01,
+   "mean_return": 24.16793850724807,
+   "collisions_per_episode": {
+    "tree": 0.36,
+    "rock": 6.665,
+    "cliff": 9.133333333333333,
+    "nest": 0.0,
+    "water": 0.425
+   },
+   "tree_hit_rate": 0.11666666666666667,
+   "nest_zone_fraction": 0.06727435202838025,
+   "reversed_rate": 0.4716666666666667,
+   "mean_end_speed_kmh": 0.16989156156778334,
+   "mean_end_target_distance": 2.4750295572541656,
+   "per_vehicle": {
+    "car": {
+     "episodes": 309,
+     "success_rate": 0.9870550161812298,
+     "spl": 0.9747825952370789,
+     "mean_time_s": 12.00551912568306,
+     "mean_damage": 23.300887715855076,
+     "destroyed_rate": 0.003236245954692557,
+     "timeout_rate": 0.0,
+     "stalled_rate": 0.009708737864077669,
+     "mean_return": 25.73181835177905,
+     "collisions_per_episode": {
+      "tree": 0.5080906148867314,
+      "rock": 10.537216828478964,
+      "cliff": 6.948220064724919,
+      "nest": 0.0,
+      "water": 0.35275080906148865
+     },
+     "tree_hit_rate": 0.10355987055016182,
+     "nest_zone_fraction": 0.06431758100025389,
+     "reversed_rate": 0.5145631067961165,
+     "mean_end_speed_kmh": 0.018478064065419353,
+     "mean_end_target_distance": 2.490605030498169
+    },
+    "tank": {
+     "episodes": 291,
+     "success_rate": 0.9896907216494846,
+     "spl": 0.9864230081897231,
+     "mean_time_s": 22.145949074074075,
+     "mean_damage": 0.0,
+     "destroyed_rate": 0.0,
+     "timeout_rate": 0.0,
+     "stalled_rate": 0.010309278350515464,
+     "mean_return": 22.507323826972907,
+     "collisions_per_episode": {
+      "tree": 0.2027491408934708,
+      "rock": 2.5532646048109964,
+      "cliff": 11.45360824742268,
+      "nest": 0.0,
+      "water": 0.5017182130584192
+     },
+     "tree_hit_rate": 0.13058419243986255,
+     "nest_zone_fraction": 0.07041401610979278,
+     "reversed_rate": 0.4261168384879725,
+     "mean_end_speed_kmh": 0.3306708424208091,
+     "mean_end_target_distance": 2.458490652675481
+    }
+   },
+   "per_scenario": {
+    "long": {
+     "episodes": 600,
+     "success_rate": 0.9883333333333333,
+     "spl": 0.9804281955191112,
+     "mean_time_s": 16.93038223721192,
+     "mean_damage": 11.999957173665365,
+     "destroyed_rate": 0.0016666666666666668,
+     "timeout_rate": 0.0,
+     "stalled_rate": 0.01,
+     "mean_return": 24.16793850724807,
+     "collisions_per_episode": {
+      "tree": 0.36,
+      "rock": 6.665,
+      "cliff": 9.133333333333333,
+      "nest": 0.0,
+      "water": 0.425
+     },
+     "tree_hit_rate": 0.11666666666666667,
+     "nest_zone_fraction": 0.06727435202838025,
+     "reversed_rate": 0.4716666666666667,
+     "mean_end_speed_kmh": 0.16989156156778334,
+     "mean_end_target_distance": 2.4750295572541656
+    }
+   },
+   "split": "holdout",
+   "scenario": "long",
+   "policy": "reactive",
+   "escape": true,
+   "checkpoint": "runs/students/planets-v2/checkpoints/latest.pt",
+   "global_step": 9961472
+  },
+  "impacts": {
+   "all": {
+    "episodes": 600,
+    "success": 0.9883333333333333,
+    "destroyed": 0.0016666666666666668,
+    "stalled": 0.01,
+    "mean_damage": 11.999957173665365,
+    "damaged": 0.16833333333333333,
+    "top_kmh": 95.15574782788754,
+    "hits_over_50kmh": 0.33666666666666667,
+    "hits_per_1000_tiles": 2.1073306642462373
+   },
+   "car/coal": {
+    "episodes": 62,
+    "success": 1.0,
+    "destroyed": 0.0,
+    "stalled": 0.0,
+    "mean_damage": 8.329341273153982,
+    "damaged": 0.24193548387096775,
+    "top_kmh": 104.60176154874986,
+    "hits_over_50kmh": 0.3064516129032258,
+    "hits_per_1000_tiles": 1.7902382511989183
+   },
+   "car/nuclear-fuel": {
+    "episodes": 55,
+    "success": 0.9818181818181818,
+    "destroyed": 0.01818181818181818,
+    "stalled": 0.0,
+    "mean_damage": 56.05483176491477,
+    "damaged": 0.4,
+    "top_kmh": 156.91801651174373,
+    "hits_over_50kmh": 0.6363636363636364,
+    "hits_per_1000_tiles": 3.505180338097519
+   },
+   "car/rocket-fuel": {
+    "episodes": 64,
+    "success": 0.984375,
+    "destroyed": 0.0,
+    "stalled": 0.015625,
+    "mean_damage": 31.26199960708618,
+    "damaged": 0.40625,
+    "top_kmh": 143.58119002729654,
+    "hits_over_50kmh": 0.609375,
+    "hits_per_1000_tiles": 3.7618596811450975
+   },
+   "car/solid-fuel": {
+    "episodes": 64,
+    "success": 1.0,
+    "destroyed": 0.0,
+    "stalled": 0.0,
+    "mean_damage": 15.143782615661621,
+    "damaged": 0.328125,
+    "top_kmh": 117.48199886083603,
+    "hits_over_50kmh": 0.359375,
+    "hits_per_1000_tiles": 2.7232096914888424
+   },
+   "car/wood": {
+    "episodes": 64,
+    "success": 0.96875,
+    "destroyed": 0.0,
+    "stalled": 0.03125,
+    "mean_damage": 9.852645874023438,
+    "damaged": 0.265625,
+    "top_kmh": 102.68157969228923,
+    "hits_over_50kmh": 0.265625,
+    "hits_per_1000_tiles": 3.033372644485521
+   },
+   "tank/coal": {
+    "episodes": 66,
+    "success": 0.9696969696969697,
+    "destroyed": 0.0,
+    "stalled": 0.030303030303030304,
+    "mean_damage": 0.0,
+    "damaged": 0.0,
+    "top_kmh": 52.22351191260598,
+    "hits_over_50kmh": 0.06060606060606061,
+    "hits_per_1000_tiles": 0.7372266041137951
+   },
+   "tank/nuclear-fuel": {
+    "episodes": 38,
+    "success": 1.0,
+    "destroyed": 0.0,
+    "stalled": 0.0,
+    "mean_damage": 0.0,
+    "damaged": 0.0,
+    "top_kmh": 88.61874705866764,
+    "hits_over_50kmh": 0.7105263157894737,
+    "hits_per_1000_tiles": 2.9256591839043082
+   },
+   "tank/rocket-fuel": {
+    "episodes": 65,
+    "success": 1.0,
+    "destroyed": 0.0,
+    "stalled": 0.0,
+    "mean_damage": 0.0,
+    "damaged": 0.0,
+    "top_kmh": 76.99881970332218,
+    "hits_over_50kmh": 0.36923076923076925,
+    "hits_per_1000_tiles": 1.4333169799949486
+   },
+   "tank/solid-fuel": {
+    "episodes": 61,
+    "success": 0.9836065573770492,
+    "destroyed": 0.0,
+    "stalled": 0.01639344262295082,
+    "mean_damage": 0.0,
+    "damaged": 0.0,
+    "top_kmh": 60.06302562697989,
+    "hits_over_50kmh": 0.19672131147540983,
+    "hits_per_1000_tiles": 0.9848162035991262
+   },
+   "tank/wood": {
+    "episodes": 61,
+    "success": 1.0,
+    "destroyed": 0.0,
+    "stalled": 0.0,
+    "mean_damage": 0.0,
+    "damaged": 0.0,
+    "top_kmh": 52.70412073760736,
+    "hits_over_50kmh": 0.03278688524590164,
+    "hits_per_1000_tiles": 0.6861726800949062
+   }
+  }
+ }
+}
