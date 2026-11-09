@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "wall_seconds": 14.027,
+  "wall_seconds": 951.682,
   "mods": {
     "base": true,
     "fsim-export": true,
@@ -12,16 +12,18 @@
   },
   "map_generation": "default preset, no map-gen overrides",
   "planets": [
-    "gleba"
+    "vulcanus",
+    "gleba",
+    "fulgora"
   ],
   "runs": [
     {
       "seed": 12345,
-      "wall_seconds": 9.712,
+      "wall_seconds": 23.677,
       "marker": {
         "schema_version": 1,
         "started_tick": 0,
-        "finished_tick": 7026,
+        "finished_tick": 3267,
         "game_version": "2.1.24",
         "active_mods": {
           "base": "2.1.24",
@@ -33,20 +35,1265 @@
           "fsim-autorun": "0.1.0"
         },
         "options": {
-          "traces": true,
-          "maps": false,
+          "traces": false,
+          "maps": true,
           "radius": 16,
-          "filters": [
-            "lowland"
-          ],
+          "filters": [],
           "planets": [
-            "gleba"
+            "vulcanus",
+            "gleba",
+            "fulgora"
           ]
         },
-        "completed": [
-          "car-accelerate-lowland-olive-blubber-coal",
-          "tank-accelerate-lowland-olive-blubber-coal"
-        ],
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2654448106,
+      "wall_seconds": 24.053,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1013916571,
+      "wall_seconds": 23.884,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3668352332,
+      "wall_seconds": 24.072,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2027820797,
+      "wall_seconds": 23.65,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 387289262,
+      "wall_seconds": 23.055,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3041725023,
+      "wall_seconds": 23.87,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1401193488,
+      "wall_seconds": 24.196,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4055629249,
+      "wall_seconds": 24.109,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2415097714,
+      "wall_seconds": 23.645,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 774566179,
+      "wall_seconds": 23.66,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3429001940,
+      "wall_seconds": 23.507,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1788470405,
+      "wall_seconds": 23.475,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 147938870,
+      "wall_seconds": 23.439,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2802374631,
+      "wall_seconds": 23.49,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1161843096,
+      "wall_seconds": 23.587,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3816278857,
+      "wall_seconds": 23.834,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2175747322,
+      "wall_seconds": 24.057,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 535215787,
+      "wall_seconds": 23.29,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3189651548,
+      "wall_seconds": 23.641,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1549120013,
+      "wall_seconds": 23.077,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4203555774,
+      "wall_seconds": 23.616,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2563024239,
+      "wall_seconds": 23.632,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 922492704,
+      "wall_seconds": 23.546,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3576928465,
+      "wall_seconds": 23.864,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1936396930,
+      "wall_seconds": 23.467,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 295865395,
+      "wall_seconds": 24.127,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2950301156,
+      "wall_seconds": 23.321,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1309769621,
+      "wall_seconds": 23.592,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3964205382,
+      "wall_seconds": 23.764,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2323673847,
+      "wall_seconds": 23.732,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 683142312,
+      "wall_seconds": 23.709,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3337578073,
+      "wall_seconds": 23.45,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1697046538,
+      "wall_seconds": 23.145,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 56515003,
+      "wall_seconds": 23.879,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2710950764,
+      "wall_seconds": 23.882,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1070419229,
+      "wall_seconds": 23.925,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3724854990,
+      "wall_seconds": 23.591,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2084323455,
+      "wall_seconds": 23.71,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 443791920,
+      "wall_seconds": 24.009,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
         "players": 0
       }
     }
@@ -487,163 +1734,163 @@
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-1013916571.fsmap",
-      "bytes": 212971
+      "bytes": 212848
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-1070419229.fsmap",
-      "bytes": 200504
+      "bytes": 200497
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-1161843096.fsmap",
-      "bytes": 200619
+      "bytes": 200552
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-12345.fsmap",
-      "bytes": 209971
+      "bytes": 210071
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-1309769621.fsmap",
-      "bytes": 210115
+      "bytes": 210073
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-1401193488.fsmap",
-      "bytes": 207223
+      "bytes": 207486
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-147938870.fsmap",
-      "bytes": 208299
+      "bytes": 208310
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-1549120013.fsmap",
-      "bytes": 220800
+      "bytes": 220700
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-1697046538.fsmap",
-      "bytes": 205186
+      "bytes": 205054
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-1788470405.fsmap",
-      "bytes": 208483
+      "bytes": 208256
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-1936396930.fsmap",
-      "bytes": 202759
+      "bytes": 202773
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-2027820797.fsmap",
-      "bytes": 207713
+      "bytes": 207724
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-2084323455.fsmap",
-      "bytes": 224847
+      "bytes": 224979
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-2175747322.fsmap",
-      "bytes": 211594
+      "bytes": 211604
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-2323673847.fsmap",
-      "bytes": 218916
+      "bytes": 218856
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-2415097714.fsmap",
-      "bytes": 215998
+      "bytes": 216005
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-2563024239.fsmap",
-      "bytes": 204062
+      "bytes": 203924
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-2654448106.fsmap",
-      "bytes": 215897
+      "bytes": 216011
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-2710950764.fsmap",
-      "bytes": 213755
+      "bytes": 213842
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-2802374631.fsmap",
-      "bytes": 206722
+      "bytes": 206681
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-2950301156.fsmap",
-      "bytes": 191548
+      "bytes": 191481
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-295865395.fsmap",
-      "bytes": 201036
+      "bytes": 201127
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-3041725023.fsmap",
-      "bytes": 235054
+      "bytes": 235055
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-3189651548.fsmap",
-      "bytes": 202635
+      "bytes": 202620
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-3337578073.fsmap",
-      "bytes": 196600
+      "bytes": 196496
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-3429001940.fsmap",
-      "bytes": 200734
+      "bytes": 200695
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-3576928465.fsmap",
-      "bytes": 212742
+      "bytes": 212708
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-3668352332.fsmap",
-      "bytes": 208064
+      "bytes": 208111
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-3724854990.fsmap",
-      "bytes": 211541
+      "bytes": 211526
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-3816278857.fsmap",
-      "bytes": 215189
+      "bytes": 215096
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-387289262.fsmap",
-      "bytes": 209038
+      "bytes": 208990
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-3964205382.fsmap",
-      "bytes": 189941
+      "bytes": 189834
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-4055629249.fsmap",
-      "bytes": 209929
+      "bytes": 209907
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-4203555774.fsmap",
-      "bytes": 193230
+      "bytes": 193259
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-443791920.fsmap",
-      "bytes": 211915
+      "bytes": 211819
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-535215787.fsmap",
-      "bytes": 196487
+      "bytes": 196568
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-56515003.fsmap",
-      "bytes": 207554
+      "bytes": 207609
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-683142312.fsmap",
-      "bytes": 211889
+      "bytes": 211957
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-774566179.fsmap",
-      "bytes": 209145
+      "bytes": 208719
     },
     {
       "path": "data/game/maps-fulgora/fulgora-seed-922492704.fsmap",
-      "bytes": 200418
+      "bytes": 200474
     },
     {
       "path": "data/game/maps-fulgora/index.json",
@@ -651,163 +1898,163 @@
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-1013916571.fsmap",
-      "bytes": 405062
+      "bytes": 405035
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-1070419229.fsmap",
-      "bytes": 406920
+      "bytes": 406938
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-1161843096.fsmap",
-      "bytes": 406252
+      "bytes": 406228
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-12345.fsmap",
-      "bytes": 396439
+      "bytes": 396346
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-1309769621.fsmap",
-      "bytes": 344068
+      "bytes": 344036
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-1401193488.fsmap",
-      "bytes": 390990
+      "bytes": 390911
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-147938870.fsmap",
-      "bytes": 398552
+      "bytes": 398498
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-1549120013.fsmap",
-      "bytes": 397053
+      "bytes": 396990
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-1697046538.fsmap",
-      "bytes": 359018
+      "bytes": 359008
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-1788470405.fsmap",
-      "bytes": 408285
+      "bytes": 408260
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-1936396930.fsmap",
-      "bytes": 365407
+      "bytes": 365420
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-2027820797.fsmap",
-      "bytes": 383196
+      "bytes": 383135
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-2084323455.fsmap",
-      "bytes": 370706
+      "bytes": 370653
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-2175747322.fsmap",
-      "bytes": 406494
+      "bytes": 406430
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-2323673847.fsmap",
-      "bytes": 398966
+      "bytes": 398941
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-2415097714.fsmap",
-      "bytes": 371641
+      "bytes": 371616
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-2563024239.fsmap",
-      "bytes": 391921
+      "bytes": 391779
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-2654448106.fsmap",
-      "bytes": 393153
+      "bytes": 393065
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-2710950764.fsmap",
-      "bytes": 403222
+      "bytes": 403305
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-2802374631.fsmap",
-      "bytes": 375909
+      "bytes": 375917
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-2950301156.fsmap",
-      "bytes": 411621
+      "bytes": 411806
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-295865395.fsmap",
-      "bytes": 368426
+      "bytes": 368361
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-3041725023.fsmap",
-      "bytes": 422922
+      "bytes": 422885
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-3189651548.fsmap",
-      "bytes": 412508
+      "bytes": 412395
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-3337578073.fsmap",
-      "bytes": 379144
+      "bytes": 379096
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-3429001940.fsmap",
-      "bytes": 398052
+      "bytes": 398132
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-3576928465.fsmap",
-      "bytes": 394804
+      "bytes": 394811
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-3668352332.fsmap",
-      "bytes": 429228
+      "bytes": 429204
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-3724854990.fsmap",
-      "bytes": 370046
+      "bytes": 370060
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-3816278857.fsmap",
-      "bytes": 383675
+      "bytes": 383668
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-387289262.fsmap",
-      "bytes": 291471
+      "bytes": 291373
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-3964205382.fsmap",
-      "bytes": 380127
+      "bytes": 380059
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-4055629249.fsmap",
-      "bytes": 393163
+      "bytes": 393044
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-4203555774.fsmap",
-      "bytes": 393560
+      "bytes": 393547
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-443791920.fsmap",
-      "bytes": 380483
+      "bytes": 380498
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-535215787.fsmap",
-      "bytes": 380899
+      "bytes": 380871
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-56515003.fsmap",
-      "bytes": 406194
+      "bytes": 406273
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-683142312.fsmap",
-      "bytes": 361733
+      "bytes": 361674
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-774566179.fsmap",
-      "bytes": 410147
+      "bytes": 410062
     },
     {
       "path": "data/game/maps-gleba/gleba-seed-922492704.fsmap",
-      "bytes": 404886
+      "bytes": 404900
     },
     {
       "path": "data/game/maps-gleba/index.json",
@@ -819,163 +2066,163 @@
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-1013916571.fsmap",
-      "bytes": 296315
+      "bytes": 296300
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-1070419229.fsmap",
-      "bytes": 296298
+      "bytes": 296185
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-1161843096.fsmap",
-      "bytes": 298222
+      "bytes": 298024
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-12345.fsmap",
-      "bytes": 304321
+      "bytes": 304216
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-1309769621.fsmap",
-      "bytes": 301260
+      "bytes": 301182
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-1401193488.fsmap",
-      "bytes": 298313
+      "bytes": 298190
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-147938870.fsmap",
-      "bytes": 298596
+      "bytes": 298534
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-1549120013.fsmap",
-      "bytes": 297775
+      "bytes": 297559
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-1697046538.fsmap",
-      "bytes": 297041
+      "bytes": 296955
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-1788470405.fsmap",
-      "bytes": 294540
+      "bytes": 294343
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-1936396930.fsmap",
-      "bytes": 295298
+      "bytes": 295360
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-2027820797.fsmap",
-      "bytes": 293052
+      "bytes": 292709
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-2084323455.fsmap",
-      "bytes": 302491
+      "bytes": 302355
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-2175747322.fsmap",
-      "bytes": 302584
+      "bytes": 302425
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-2323673847.fsmap",
-      "bytes": 300957
+      "bytes": 300953
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-2415097714.fsmap",
-      "bytes": 298640
+      "bytes": 298497
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-2563024239.fsmap",
-      "bytes": 297402
+      "bytes": 297317
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-2654448106.fsmap",
-      "bytes": 303087
+      "bytes": 302874
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-2710950764.fsmap",
-      "bytes": 302546
+      "bytes": 302456
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-2802374631.fsmap",
-      "bytes": 299047
+      "bytes": 298995
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-2950301156.fsmap",
-      "bytes": 299490
+      "bytes": 299380
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-295865395.fsmap",
-      "bytes": 298833
+      "bytes": 298633
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-3041725023.fsmap",
-      "bytes": 297355
+      "bytes": 297301
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-3189651548.fsmap",
-      "bytes": 291415
+      "bytes": 291434
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-3337578073.fsmap",
-      "bytes": 298483
+      "bytes": 298420
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-3429001940.fsmap",
-      "bytes": 301175
+      "bytes": 301126
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-3576928465.fsmap",
-      "bytes": 300958
+      "bytes": 300909
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-3668352332.fsmap",
-      "bytes": 295909
+      "bytes": 295852
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-3724854990.fsmap",
-      "bytes": 298459
+      "bytes": 298288
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-3816278857.fsmap",
-      "bytes": 300978
+      "bytes": 300957
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-387289262.fsmap",
-      "bytes": 299859
+      "bytes": 299602
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-3964205382.fsmap",
-      "bytes": 300902
+      "bytes": 300745
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-4055629249.fsmap",
-      "bytes": 297376
+      "bytes": 297263
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-4203555774.fsmap",
-      "bytes": 292072
+      "bytes": 292007
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-443791920.fsmap",
-      "bytes": 293709
+      "bytes": 293601
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-535215787.fsmap",
-      "bytes": 298460
+      "bytes": 298290
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-56515003.fsmap",
-      "bytes": 303663
+      "bytes": 303404
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-683142312.fsmap",
-      "bytes": 304302
+      "bytes": 304192
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-774566179.fsmap",
-      "bytes": 302788
+      "bytes": 302663
     },
     {
       "path": "data/game/maps-vulcanus/vulcanus-seed-922492704.fsmap",
-      "bytes": 297174
+      "bytes": 297123
     },
     {
       "path": "data/game/prototypes.diff",

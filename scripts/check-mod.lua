@@ -96,4 +96,18 @@ assert(exported.vehicles[1].consumption == 150000)
 assert(exported.vehicles[1].braking_power == 180000)
 assert(exported.vehicles[1].resistances[1].percent == 25)
 assert(#exported.tiles == 21 and #exported.resources == #catalog.resources)
-print("Mod offline checks passed: companion, normalization, runtime dump, " .. #scenarios .. " scenarios")
+-- Generated exports request the whole area plus a margin before reading any chunk, so
+-- cliffs fixed up by later neighbour generation are read in their final state.
+storage, game = {}, {tick = 7, print = function() end}
+local requests, written = {}, {}
+local surface = {name = "vulcanus", map_gen_settings = {seed = 3},
+  request_to_generate_chunks = function(position, radius) requests[#requests + 1] = radius end,
+  force_generate_chunk_requests = function() end}
+game.surfaces = {nauvis = {map_gen_settings = {seed = 12345}}, vulcanus = surface}
+helpers.write_file = function(path) written[#written + 1] = path end
+helpers.table_to_json = function() return "{}" end
+local map_export = require("map-export")
+map_export.start_generated({"vulcanus"}, 4)
+assert(requests[1] == 5, "export must generate radius + 1 before reading chunks")
+assert(written[1] == "fsim/maps/vulcanus-seed-12345.json", "planet maps are named after the Nauvis seed")
+print("Mod offline checks passed: companion, normalization, runtime dump, map export, " .. #scenarios .. " scenarios")
