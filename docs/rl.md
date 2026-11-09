@@ -9,6 +9,10 @@ evaluation and the viewer compute exactly the same thing.
 
 - A map comes from the pool (`data/game/maps/index.json`). Each index entry has
   `"split": "train" | "holdout"`. Training uses `train`; evaluation defaults to `holdout`.
+  `map_pools` (a list of `{pool, weight}`) replaces `map_pool` with several pools, such as
+  Nauvis and one per Space Age planet (`data/game/maps-<planet>`). A reset picks a pool by
+  weight (weights count episodes), then one of its maps uniformly. `info["map_index"]`
+  counts entries of earlier pools first.
 - Vehicle and fuel are sampled per episode from `vehicle_mix` (weighted list), and the scenario
   kind from `scenarios` (weighted list, see "Scenarios"). The rules below are the `standard` kind.
 - Start: a random valid pose (collision-free hull, not in water, not in a nest zone) with a random
@@ -92,8 +96,10 @@ hundreds of decisions, so the cost per decision stays small.
 ## Distance field
 
 Computed once per episode on the tile grid, 8-connected Dijkstra from the target over a region
-covering start and target plus a margin (default 48 tiles). Blocked cells: water, cliffs, nests,
+covering start and target plus a margin (default 48 tiles). Blocked cells: water (any tile whose
+collision mask meets the car's: water, deep water, lava, Gleba's deep lakes), cliffs, nests,
 rocks; trees are blocked for the car and cost `tank_tree_cost` extra per tile for the tank.
+Vulcanus demolisher territory counts as nest zone, tile by tile (whole chunks).
 Obstacles are dilated by the vehicle's half-width (rounded up) so the field never routes through
 gaps the hull can't pass. Tiles within `nest_zone_margin` (default 2) tiles of a nest-zone tile cost
 `nest_zone_cost` (default 3) extra, so the field, and with it the progress reward and the A*
@@ -109,7 +115,13 @@ the start and target points) is `optimal_length`; SPL uses it.
 - Values are at tile centers; infinity marks blocked or unreachable tiles. The target tile starts
   at the straight distance from the target to its center.
 - Steps cost 1 or sqrt(2) times `1 + (e_a + e_b) / 2`, where `e` is `tank_tree_cost` on tank tree
-  tiles plus `nest_zone_cost` on (dilated) zone tiles, and 0 otherwise. The tree cost is dilated
+  tiles plus `nest_zone_cost` on (dilated) zone tiles, plus the slow-ground cost, and 0 otherwise.
+  The slow-ground cost (`friction_cost` [0], off by default) is
+  `friction_cost * max(0, sqrt(g(m) / g(1.6)) - 1)` for a tile with `vehicle_friction_modifier`
+  `m`, where `g(m) = 1 + (m - 1) * terrain_friction_modifier` of the vehicle: how much slower
+  the vehicle's terminal speed is than on grass. With weight 1 the field is a travel-time
+  estimate, so routes leave Fulgora's oil ocean (modifier 10) or Gleba's wetland (8) when a
+  detour on firm ground is faster. The game's pathfinder stand-in (`pathfinder.rs`) ignores it. The tree cost is dilated
   with the obstacles. Diagonal steps need both orthogonal neighbors open (no corner cutting).
 - Interpolation uses only finite corners. If none applies, the value is the best finite tile within
   3 tiles plus the straight distance to its center. If the vehicle reaches a tile with no finite
@@ -424,7 +436,7 @@ env.set_recording(enabled: bool)
 
 ```json
 {
-  "map_pool": "data/game/maps", "split": "train",
+  "map_pool": "data/game/maps", "map_pools": [], "split": "train",
   "mode": "reactive", "decision_ticks": 4, "gamma": 0.99,
   "vehicle_mix": [{"vehicle": "car", "fuel": "coal", "weight": 1.0}],
   "target": {"min_distance": 16, "max_distance": 64, "max_tortuosity": 1.5, "radius": 3},
@@ -432,7 +444,8 @@ env.set_recording(enabled: bool)
   "reward": {"progress": 0.1, "time": -0.005, "damage": -5.0, "collision": -0.2,
              "nest_zone": -0.15, "success": 10.0, "destroyed": -10.0,
              "arrival": 2.0, "target_speed": -1.0},
-  "distance_field": {"margin": 48, "tank_tree_cost": 4.0, "nest_zone_cost": 3.0, "nest_zone_margin": 2},
+  "distance_field": {"margin": 48, "tank_tree_cost": 4.0, "nest_zone_cost": 3.0, "nest_zone_margin": 2,
+                     "friction_cost": 0.0},
   "direct_plan": {"horizon": 24, "execute": 4},
   "path_planner": {"waypoints": 8, "max_reach": 100, "replan_ticks": 30, "drift_tiles": 3},
   "scenarios": [{"kind": "standard", "weight": 1.0}],

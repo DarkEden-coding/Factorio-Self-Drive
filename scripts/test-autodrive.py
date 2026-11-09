@@ -56,8 +56,10 @@ def run(args,temp):
     (companion/'info.json').write_text(json.dumps(dict(name='factorio-autodrive-verify',version='0.1.0',
         title='Isolated autodrive verification',author='Fsim',factorio_version='2.1',
         dependencies=['base >= 2.1.23',mod_name])))
-    # Prevent biter AI in fixtures while retaining unmodified collision geometry.
-    (companion/'data.lua').write_text('for _, nest in pairs(data.raw["unit-spawner"]) do nest.result_units={} end\n')
+    # Prevent biter AI in Nauvis fixtures while retaining unmodified collision geometry.
+    # The planets suite keeps enemies (demolishers, pentapods) as they are in the game.
+    if args.suite!='planets':
+        (companion/'data.lua').write_text('for _, nest in pairs(data.raw["unit-spawner"]) do nest.result_units={} end\n')
     (companion/'control.lua').write_text('''script.on_event(defines.events.on_tick,function()
   if not storage.started then
     storage.started=true
@@ -67,10 +69,12 @@ def run(args,temp):
 end)
 '''.replace('SUITE',args.suite).replace('SEED',str(args.seed)).replace('RELOAD','true' if args.save_reload else 'false').replace('CASE',json.dumps(args.case) if args.case else 'nil'))
     enabled={'base',mod_name,'factorio-autodrive-verify'}
+    if args.suite=='planets':
+        enabled|={'space-age','quality','elevated-rails','recycler'}
     names=[*sorted(enabled),'space-age','quality','elevated-rails','recycler']
     (mods/'mod-list.json').write_text(json.dumps({'mods':[dict(name=n,enabled=n in enabled) for n in names]}))
     config=temp/'config.ini'
-    config.write_text(f'[path]\nread-data={args.factorio.parent.parent / "data"}\nwrite-data={write}\n'
+    config.write_text(f'[path]\nread-data={collector.data_dir(args.factorio)}\nwrite-data={write}\n'
         '[general]\ncheck-updates=false\nautosave-interval=0\n')
     base=[args.factorio,'-c',config,'--mod-directory',mods,'--disable-audio']
     save=temp/'verification.zip'
@@ -79,7 +83,7 @@ end)
     battery_guard(args.allow_low_battery)
     output=write/'script-output/factorio-autodrive'
     server_settings=temp/'server-settings.json'
-    server_config=json.loads((args.factorio.parent.parent/'data/server-settings.example.json').read_text())
+    server_config=json.loads((collector.data_dir(args.factorio)/'server-settings.example.json').read_text())
     server_config.update(name='Isolated autodrive verification',description='Disposable local test',
         visibility=dict(public=False,lan=False),require_user_verification=False,auto_pause=False)
     server_settings.write_text(json.dumps(server_config))
@@ -108,12 +112,12 @@ end)
     for name in ('create.log','drive.log'): shutil.copyfile(temp/name,args.output/name)
     if (output/'timing.txt').exists(): shutil.copyfile(output/'timing.txt',args.output/'timing.txt')
     results=marker['results']
-    report=dict(engine='Factorio 2.1.23',suite=args.suite,seed=args.seed,save_reload_verified=reload_verified,results=results,
+    report=dict(engine=marker.get('game_version','Factorio 2.1'),suite=args.suite,seed=args.seed,save_reload_verified=reload_verified,results=results,
         success_rate=sum(r['status']=='arrived' for r in results)/len(results),
         timing=timings(output/'timing.txt'),contacts='blocked moving powered tick estimate, not engine collision events')
     (args.output/'driving-report.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
-    if args.engine_only:
+    if args.engine_only or args.suite=='planets':
         return
     subprocess.run([sys.executable,'scripts/check-autodrive-parity.py','--engine-output',args.output,
         '--output',args.output/'parity-report.json'],cwd=ROOT,check=True)
@@ -144,7 +148,8 @@ def main():
         help='run the production mod in Factorio; skip the legacy field-route simulator comparison')
     parser.add_argument('--case',help='run only this exact fixture name')
     parser.add_argument('--seed',type=int,default=12345,help='terrain seed for paired long trips')
-    parser.add_argument('--suite',choices=('short','long'),default='short',help='short parity fixtures or long end-to-end trips')
+    parser.add_argument('--suite',choices=('short','long','planets'),default='short',
+        help='short parity fixtures, long end-to-end trips, or trips on Vulcanus, Gleba and Fulgora (Space Age)')
     parser.add_argument('--save-reload',action='store_true',help='also verify a checkpoint saved by a disposable private server')
     parser.add_argument('--allow-low-battery',action='store_true',help='explicitly authorized short-run battery override')
     args=parser.parse_args();args.factorio=args.factorio.expanduser().resolve()

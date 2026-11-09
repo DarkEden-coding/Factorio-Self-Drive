@@ -58,6 +58,26 @@ other activity away from the export area when reproducibility matters. Only
 resources and natural obstacles are included, not player structures or enemies
 that move. Simple entities must have the game's rock deconstruction flag.
 
+## Space Age planets
+
+With Space Age active, the catalog adds the Vulcanus, Gleba and Fulgora tiles, natural
+obstacles, resources and cliffs (`catalog.space_age`). A tile's `is_water` means "blocks
+vehicles": its collision mask shares a layer with the car's. That is true for water, deep water,
+lava, hot lava and Gleba's deep lakes, and false for Gleba's wetland and Fulgora's oil ocean,
+which are drivable but slow (`vehicle_friction_modifier` 8 and 4-10). Planet cliffs go in
+`other_cliffs`; all but `crater-cliff` share the Nauvis geometry. Plants count as trees and
+Fulgora's lightning-attractor ruins as rocks.
+
+The trace table adds planet scenarios when Space Age is active: acceleration on planet ground,
+crossing oil ocean, driving into lava and deep lakes, and impacts with planet trees, plants,
+rocks, ruins and cliffs, for both vehicles. Their surfaces copy the planet's gravity and
+pressure. Factorio 2.1.24 crashes deleting a surface after `set_property`, so those test
+surfaces stay until the collection save is thrown away. Of 88 recorded planet traces, 77
+replay with zero position error, including every acceleration, oil-ocean, lava and deep-lake
+run. The rest are contacts with planet obstacles; four exceed 0.05 tiles, the largest 0.31 tiles
+(car into an ashland lichen tree at 0.1 tiles/tick) and 0.16 tiles (car into a lightning-attractor
+ruin at 0.3 tiles/tick). All 341 Nauvis traces still replay with zero error.
+
 ## Prototype import
 
 The data-stage companion reads all four vehicle immunity flags and the full

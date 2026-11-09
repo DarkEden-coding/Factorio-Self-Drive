@@ -8,7 +8,35 @@ local function write(name,value)
   helpers.write_file("factorio-autodrive/"..name..".json",helpers.table_to_json(value),false)
 end
 local cases={}
-local function make_cases(long,filter)
+-- Space Age suite: trips on generated planet surfaces, enemies left in place.
+local PLANETS={"vulcanus","gleba","fulgora"}
+local PLANET_TRIPS=8
+local function planet_cases(seed,filter)
+  cases={}
+  local random=game.create_random_generator(seed)
+  for index,planet in ipairs(PLANETS) do
+    for _,vehicle in ipairs({"car","tank"}) do
+      for trip=1,PLANET_TRIPS do
+        -- Starts within 120 tiles of the origin, targets 60-180 tiles away, all
+        -- inside the generated area with room for the 48-tile field margin.
+        local a,r=random()*2*math.pi,random()*120
+        local b,d=random()*2*math.pi,60+random()*120
+        local start={r*math.cos(a),r*math.sin(a)}
+        local target={start[1]+d*math.cos(b),start[2]+d*math.sin(b)}
+        target[1]=math.max(-200,math.min(200,target[1]))
+        target[2]=math.max(-200,math.min(200,target[2]))
+        local name=planet.."-"..vehicle.."-"..trip
+        if not filter or name==filter then
+          cases[#cases+1]={vehicle=vehicle,name=name,planet=planet,scenario={name=name,start=start,
+            target=target,fuel=trip%2==0 and "rocket-fuel" or "coal",speed=0,surface=index,
+            orientation=random()}}
+        end
+      end
+    end
+  end
+end
+local function make_cases(long,filter,planets,seed)
+  if planets then return planet_cases(seed,filter) end
   cases={}
   for _,vehicle in ipairs({"car","tank"}) do
     for _,scenario in ipairs(long and {
@@ -33,12 +61,23 @@ local function make_cases(long,filter)
 end
 function M.start(options)
   local long=options and options.suite=="long"
+  local planets=options and options.suite=="planets"
   local seed=options and options.seed or 12345
-  make_cases(long,options and options.case)
+  make_cases(long,options and options.case,planets,seed)
   assert(#cases>0,"Unknown test fixture")
   assert(not storage.autodrive_test,"Test already running")
   assert(#game.players==0,"Run tests only in a playerless disposable save")
   local force=game.create_force("factorio-autodrive-test")
+  if planets then
+    local surfaces={}
+    for i,name in ipairs(PLANETS) do
+      local planet=assert(game.planets[name],"Space Age is required for the planets suite")
+      surfaces[i]=planet.surface or planet.create_surface()
+    end
+    storage.autodrive_test={phase="prepare",surface_index=1,surfaces=surfaces,force=force,index=1,
+      results={},exports={},seed=seed,long=true,planets=true,case=options and options.case}
+    return
+  end
   local width,height=long and 1024 or 256,long and 512 or 256
   local flat=game.create_surface("factorio-autodrive-flat",{width=width,height=height,seed=seed,
     peaceful_mode=true,no_enemies_mode=true,default_enable_all_autoplace_controls=false})
@@ -48,6 +87,15 @@ function M.start(options)
     index=1,results={},exports={},seed=seed,long=long,case=options and options.case,save_reload=options and options.save_reload,nx=width/32,ny=height/32}
 end
 local function prepare(job)
+  if job.planets then
+    -- One planet per tick: generate 17x17 chunks around the origin.
+    local surface=job.surfaces[job.surface_index]
+    surface.request_to_generate_chunks({0,0},8)
+    surface.force_generate_chunk_requests()
+    job.surface_index=job.surface_index+1
+    if job.surface_index>#job.surfaces then job.phase="spawn" end
+    return
+  end
   local surface=job.surfaces[job.surface_index]
   local cx,cy=-job.nx/2+job.chunk%job.nx,-job.ny/2+math.floor(job.chunk/job.nx)
   local x0,y0=cx*32,cy*32
@@ -119,11 +167,11 @@ local function spawn(job)
   -- Match scheduler phase across baseline/candidate even after different trip durations.
   if game.tick%120~=0 then return end
   local case=cases[job.index]
-  if not case then write("done",{results=job.results,finished_tick=game.tick});storage.autodrive_test=nil;return end
+  if not case then write("done",{results=job.results,finished_tick=game.tick,game_version=helpers.game_version});storage.autodrive_test=nil;return end
   local scenario=case.scenario
-  local surface=job.surfaces[scenario.real and 2 or 1]
+  local surface=job.surfaces[scenario.surface or (scenario.real and 2 or 1)]
   -- Restore trees destroyed by an earlier vehicle for paired terrain.
-  if job.long then
+  if job.long and not job.planets then
     for _,e in pairs(surface.find_entities_filtered({type="tree"})) do e.destroy() end
     for _,e in ipairs(job.fixture_trees[scenario.real and 2 or 1]) do surface.create_entity({name=e.name,position=e.position,force="neutral"}) end
   end
@@ -134,6 +182,9 @@ local function spawn(job)
     job.index=job.index+1;return
   end
   job.vehicle=assert(surface.create_entity({name=case.vehicle,position=start,force=job.force,orientation=scenario.orientation or 0.25}))
+  -- Planet trips on Vulcanus may start in demolisher territory; note it for the report.
+  local territory=surface.get_territory_for_chunk({math.floor(start.x/32),math.floor(start.y/32)})
+  job.start_in_territory=territory~=nil
   job.driver=assert(surface.create_entity({name="character",position={-120,-120},force=job.force}))
   job.vehicle.set_driver(job.driver)
   job.vehicle.get_fuel_inventory().insert({name=scenario.fuel,count=50})
@@ -164,7 +215,9 @@ local function snapshot(job)
 end
 local function finish(job,result)
   if job.long then write("trace-"..cases[job.index].name,job.trace) end
-  job.results[#job.results+1]={name=cases[job.index].name,initial=job.initial,status=result,ticks=job.ticks,
+  job.results[#job.results+1]={name=cases[job.index].name,planet=cases[job.index].planet,
+    start_in_territory=job.start_in_territory,initial=job.initial,status=result,ticks=job.ticks,
+    straight_distance=u.distance(job.initial.start,job.initial.target),
     seconds=job.ticks/60,planning_ticks=job.state.planning_ticks,
     total_ticks=job.ticks+job.state.planning_ticks,path_length=job.path_length,
     segment_ticks=job.state.elapsed,contacts_estimate=job.contacts,damage=job.damage,
@@ -183,7 +236,7 @@ end
 function M.tick()
   local job=storage.autodrive_test
   if not job then return end
-  if #cases==0 then make_cases(job.long,job.case) end
+  if #cases==0 then make_cases(job.long and not job.planets,job.case,job.planets,job.seed) end
   local ok,error=pcall(function()
     if job.phase=="prepare" then prepare(job)
     elseif job.phase=="spawn" then spawn(job)

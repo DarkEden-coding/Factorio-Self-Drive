@@ -16,6 +16,22 @@ directory. `--skip-maps` preserves the current pool. `--skip-traces` skips new
 recordings but still replays existing trace files. All started engines are
 terminated and reaped on completion or failure.
 
+## Space Age planet pools
+
+`--planets vulcanus,gleba,fulgora` enables Space Age (and quality, elevated rails and recycler,
+which it needs) and exports those planets' surfaces instead of Nauvis. Each save's planet
+surfaces are created from its seed with default settings; the maps are named
+`<planet>-seed-<nauvis seed>` and go to `data/game/maps-<planet>/` with their own index and
+split. The Nauvis pool, graphics and the wasm build are left alone (`--skip-wasm` skips the
+build in any mode). Map chunks carry `"territory": true` where Vulcanus demolishers patrol.
+Obstacles are every tree, plant, simple entity, cliff, spawner and lightning attractor whose
+collision mask meets the car's, so Gleba's water canes and plants, Fulgora's ruins and
+Vulcanus chimneys are included and decoratives are not. Aquilo is not supported.
+
+The current planet pools are 40 seeds each (32 train, 8 holdout), radius 16: about 12 MB
+(Vulcanus), 15 MB (Gleba) and 8 MB (Fulgora), averaging 16,600, 35,500 and 6,500 entities per
+map. Collecting all three took 18 minutes on the Linux box.
+
 ## Binary layout
 
 Integers and floating point numbers are little endian. A `.fsmap` file contains:
@@ -31,7 +47,9 @@ Integers and floating point numbers are little endian. A `.fsmap` file contains:
 The small JSON header contains `name`, `seed`, `area: [[x0,y0],[x1,y1]]`,
 `spawn: [0,0]`, `source` provenance, `tile_names: string[]`,
 `resource_names: string[]`, `entity_names: [name,kind][]`,
-`cliff_names: string[]`, `entity_count`, and `warnings: string[]`.
+`cliff_names: string[]`, `entity_count`, `warnings: string[]`, and optionally
+`zone_chunks: [cx, cy][]`, the Factorio chunk positions of Vulcanus demolisher territory
+(every tile of those chunks is a zone tile, like a nest's penalty radius).
 Names use UTF-8. Name-table indices are local to this file, independent of the
 simulator prototype palette. Resource index 0 is always `"none"`. Missing chunks
 use `"deepwater"` and produce a warning. `spawn` is in source Factorio coordinates, bounded to ±2^31 tiles.

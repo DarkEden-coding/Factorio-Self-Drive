@@ -8,7 +8,7 @@ package.path='mod/factorio-autodrive/?.lua;'..package.path
 prototypes={entity={car={collision_mask={layers={player=true,train=true,car=true,is_object=true}}}}}
 local OBJECT={layers={object=true,player=true,is_object=true}}
 local function tile(name,friction,layers)
-  return {name=name,prototype={name=name,vehicle_friction_modifier=friction,collision_mask={layers=layers}}}
+  return {valid=true,name=name,prototype={name=name,vehicle_friction_modifier=friction,collision_mask={layers=layers}}}
 end
 local GRASS=tile('grass-1',1.6,{ground_tile=true})
 local grid,raster=require('grid'),require('raster')
@@ -69,5 +69,12 @@ assert(raster.friction(pg,6,2)==100 and raster.friction(pg,2,2)==10,'friction te
 assert(bit32.band(grid.mask(pg,36,8),4)~=0,'Gleba plants are trees')
 assert(raster.in_zone(pg,70,5)==1 and bit32.band(grid.mask(pg,70,5),32)~=0,'territory chunks are zone')
 assert(raster.in_zone(pg,36,5)==0,'outside territory is not zone')
+-- Ungenerated chunks return invalid tiles: they block like the map edge instead of erroring.
+local edge={get_tile=function() return {valid=false} end,get_territory_for_chunk=function() return nil end,
+  find_entities_filtered=function() return {} end}
+local eg=grid.new()
+grid.ensure(eg,0,0,16,16,true)
+assert(grid.slice(eg,edge,1))
+assert(grid.mask(eg,3,3)==17 and raster.friction(eg,3,3)==10,'ungenerated tiles read as off-map')
 print('Grid cache masks match the broad-query reference, including block edges and nest zones')
 print('Planet tiles, plants, friction and demolisher territory pass')

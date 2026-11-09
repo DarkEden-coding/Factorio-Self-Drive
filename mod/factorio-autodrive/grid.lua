@@ -69,7 +69,8 @@ local function build(grid,surface,next)
   for y = y0,y0+15 do
     for x = x0,x0+15 do
       local tile = surface.get_tile(x,y)
-      if tile.name == "out-of-map" then
+      -- Ungenerated chunks give an invalid tile; treat them like the map edge.
+      if not tile.valid or tile.name == "out-of-map" then
         tiles[#tiles+1], friction[#friction+1] = "offmap", 10
       else
         tiles[#tiles+1] = blocks_vehicles(tile.prototype)

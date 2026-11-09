@@ -33,7 +33,7 @@ local driver,u=require('driver'),require('math-util')
 local v={valid=true,name='car',position={x=0.5,y=0.5},orientation=0.25,speed=0,health=450,
   prototype={collision_box={},collision_mask={}},force={}}
 v.surface={is_chunk_generated=function() return true end,request_path=function() return 1 end,
-  get_tile=function() return {name='grass-1',prototype={name='grass-1',vehicle_friction_modifier=1.6,
+  get_tile=function() return {valid=true,name='grass-1',prototype={name='grass-1',vehicle_friction_modifier=1.6,
     collision_mask={layers={ground_tile=true}}}} end,
   get_territory_for_chunk=function() return nil end,
   find_entities_filtered=function() return {} end}
