@@ -1,0 +1,44 @@
+# PPO fine-tune of planets-v2 for long trips at speed (docs/vulcanus-long-test.md): on open
+# Vulcanus plains fast cars hit rocks and cliffs, and long trips were 2.5% of episodes, all on
+# pools whose routes detour around demolisher territory. Same rewards and observation; more
+# long trips (to 1000 tiles), the territory-free Vulcanus pool, and more fast fuel.
+#
+# OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 uv run fsim-rl train \
+#   --config configs/student_mlp64_planets_long.toml \
+#   --init-from runs/students/planets-v2/checkpoints/latest.pt --run-name students/planets-long-v1
+base = "student_mlp64_planets.toml"
+
+[env]
+map_pools = [
+  {pool = "data/game/maps", weight = 0.30},
+  {pool = "data/game/maps-vulcanus", weight = 0.15},
+  {pool = "data/game/maps-vulcanus-open", weight = 0.20},
+  {pool = "data/game/maps-gleba", weight = 0.175},
+  {pool = "data/game/maps-fulgora", weight = 0.175},
+]
+# Long episodes run 10-20 times as many decisions as arrival ones, so 6% of episodes is a
+# large share of steps.
+scenarios = [
+  { kind = "arrival", weight = 0.48 },
+  { kind = "standard", weight = 0.15 },
+  { kind = "long", weight = 0.06, min_distance = 200, max_distance = 1000, max_tortuosity = 3.0 },
+  { kind = "forest", weight = 0.14 },
+  { kind = "reverse", weight = 0.1 },
+  { kind = "nest", weight = 0.07 },
+]
+vehicle_mix = [
+  { vehicle = "car", fuel = "wood", weight = 1.0 },
+  { vehicle = "car", fuel = "coal", weight = 1.0 },
+  { vehicle = "car", fuel = "solid-fuel", weight = 1.0 },
+  { vehicle = "car", fuel = "rocket-fuel", weight = 1.5 },
+  { vehicle = "car", fuel = "nuclear-fuel", weight = 2.0 },
+  { vehicle = "tank", fuel = "wood", weight = 1.0 },
+  { vehicle = "tank", fuel = "coal", weight = 1.0 },
+  { vehicle = "tank", fuel = "solid-fuel", weight = 1.0 },
+  { vehicle = "tank", fuel = "rocket-fuel", weight = 1.5 },
+  { vehicle = "tank", fuel = "nuclear-fuel", weight = 2.0 },
+]
+
+[ppo]
+total_steps = 30_000_000
+learning_rate = 5e-5
