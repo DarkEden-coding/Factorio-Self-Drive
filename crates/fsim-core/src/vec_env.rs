@@ -36,6 +36,104 @@ pub struct MapData {
     pub raster: MapRaster,
 }
 
+/// What drawing an episode reads, owned so that prefetch jobs can run on other threads.
+/// Rebuilt when the config changes (`set_curriculum`).
+struct SampleCtx {
+    data: Arc<Prototypes>,
+    maps: Vec<Arc<MapData>>,
+    /// Weight per pool group; empty for a single pool.
+    pool_weights: Vec<f64>,
+    config: RlConfig,
+    rules: EpisodeRules,
+    vehicles: Vec<(usize, usize)>,
+}
+
+/// A drawn episode: the scenario kind, map, vehicle choice and sampled start and target.
+/// Drawing reads only the shared map data and advances only the env's RNG, so it can run
+/// ahead of time without changing any episode.
+struct Draw {
+    scenario: usize,
+    map: Arc<MapData>,
+    choice: usize,
+    seed: u64,
+    sampled: sampler::Sampled,
+}
+
+/// Draws an episode of a weighted-random scenario kind. If that kind finds nothing on
+/// `EPISODE_ATTEMPTS` maps, falls back to `standard`.
+fn draw_episode(ctx: &SampleCtx, rng: &mut Pcg32) -> Result<Draw, String> {
+    let scenarios = &ctx.config.scenarios;
+    // A single kind draws nothing, so standard-only runs keep their sequences.
+    let pick = if scenarios.len() > 1 {
+        weighted_pick(rng, scenarios.iter().map(Scenario::weight))
+    } else {
+        0
+    };
+    let scenario = scenarios[pick];
+    match try_draw(ctx, rng, &scenario) {
+        Err(_) if scenario.index() != 0 => {
+            try_draw(ctx, rng, &Scenario::Standard(Default::default()))
+        }
+        result => result,
+    }
+}
+
+fn try_draw(ctx: &SampleCtx, rng: &mut Pcg32, scenario: &Scenario) -> Result<Draw, String> {
+    let mut last_error = String::new();
+    for _ in 0..EPISODE_ATTEMPTS {
+        let map = pick_map(rng, &ctx.maps, &ctx.pool_weights).clone();
+        let choice = weighted_pick(rng, ctx.config.vehicle_mix.iter().map(|v| v.weight));
+        let seed = rng.gen::<u64>();
+        // Episodes start on the pristine map, so sampling reads the template.
+        match sampler::sample_scenario(
+            &map.template,
+            &map.raster,
+            &ctx.data,
+            ctx.vehicles[choice].0,
+            &ctx.rules,
+            scenario,
+            &ctx.config.target,
+            seed,
+            &mut sampler::SampleStats::default(),
+        ) {
+            Ok(sampled) => {
+                return Ok(Draw {
+                    scenario: scenario.index(),
+                    map,
+                    choice,
+                    seed,
+                    sampled,
+                })
+            }
+            Err(e) => last_error = e,
+        }
+    }
+    Err(format!("episode sampling failed: {last_error}"))
+}
+
+/// The next episode, drawn on the prefetch pool while the current one runs. The env's own
+/// RNG stays at the state before the draw until the result is taken, so dropping a pending
+/// draw (when the config changes) leaves the sequence exactly as if it had never started.
+struct Pending {
+    // A Mutex makes the env Sync (baseline actions read envs from several threads).
+    rx: std::sync::Mutex<std::sync::mpsc::Receiver<(Result<Draw, String>, Pcg32)>>,
+}
+
+/// Threads for prefetching episodes, separate from the stepping threads so a long draw
+/// never holds up a step.
+#[cfg(feature = "parallel")]
+fn prefetch_pool() -> &'static rayon::ThreadPool {
+    static POOL: std::sync::OnceLock<rayon::ThreadPool> = std::sync::OnceLock::new();
+    POOL.get_or_init(|| {
+        let threads = std::thread::available_parallelism().map_or(4, |n| n.get());
+        rayon::ThreadPoolBuilder::new()
+            .num_threads(threads)
+            .thread_name(|i| format!("fsim-prefetch-{i}"))
+            .build()
+            .expect("prefetch thread pool")
+    })
+}
+
 /// Per-policy-call overlay for replays. Python adds model outputs.
 #[derive(Clone, Debug, Default, Deserialize, Serialize, PartialEq)]
 pub struct Overlay {
@@ -341,14 +439,14 @@ pub enum OwnedActions {
 
 struct Shared<'a> {
     data: &'a Prototypes,
-    maps: &'a [Arc<MapData>],
-    /// Weight per pool group; empty for a single pool.
-    pool_weights: &'a [f64],
     config: &'a RlConfig,
     rules: &'a EpisodeRules,
     vehicles: &'a [(usize, usize)],
     recording: bool,
     step: u64,
+    ctx: &'a Arc<SampleCtx>,
+    #[cfg_attr(not(feature = "parallel"), allow(dead_code))]
+    prefetch: bool,
 }
 
 struct Env {
@@ -368,11 +466,13 @@ struct Env {
     overlays: Vec<Overlay>,
     /// Finished records with the VecEnv step that finished them.
     finished: Vec<(u64, EpisodeRecord)>,
+    /// The next episode, drawn ahead of time (`VecEnv::set_prefetch`).
+    pending: Option<Pending>,
 }
 
 impl Env {
     fn new(shared: &Shared<'_>, index: usize, rng: Pcg32) -> Result<Self, String> {
-        let map = shared.maps[0].clone();
+        let map = shared.ctx.maps[0].clone();
         let world = map.template.clone();
         let mut vehicles = Vehicles::default();
         vehicles.push(shared.data, shared.vehicles[0].0, shared.vehicles[0].1);
@@ -390,95 +490,94 @@ impl Env {
             route_source: shared.config.route_source,
             overlays: Vec::new(),
             finished: Vec::new(),
+            pending: None,
         };
         env.new_episode(shared)?;
         Ok(env)
     }
 
-    /// Starts an episode of a weighted-random scenario kind. If that kind
-    /// finds nothing on `EPISODE_ATTEMPTS` maps, falls back to `standard`.
+    /// Starts the next episode: the prefetched draw if there is one, else a draw now (the
+    /// same draw either way), then prefetches the one after.
     fn new_episode(&mut self, shared: &Shared<'_>) -> Result<(), String> {
-        let scenarios = &shared.config.scenarios;
-        // A single kind draws nothing, so standard-only runs keep their sequences.
-        let pick = if scenarios.len() > 1 {
-            weighted_pick(&mut self.rng, scenarios.iter().map(Scenario::weight))
-        } else {
-            0
-        };
-        let scenario = scenarios[pick];
-        match self.try_new_episode(shared, &scenario) {
-            Err(_) if scenario.index() != 0 => {
-                self.try_new_episode(shared, &Scenario::Standard(Default::default()))
+        let draw = match self.pending.take() {
+            Some(pending) => {
+                let received = pending.rx.into_inner().map(|rx| rx.recv());
+                let (draw, rng) = match received {
+                    Ok(Ok(result)) => result,
+                    _ => return Err("episode prefetch failed".into()),
+                };
+                self.rng = rng;
+                draw
             }
-            result => result,
-        }
+            None => draw_episode(shared.ctx, &mut self.rng),
+        }?;
+        self.begin(shared, draw)?;
+        self.prefetch(shared);
+        Ok(())
     }
 
-    fn try_new_episode(&mut self, shared: &Shared<'_>, scenario: &Scenario) -> Result<(), String> {
-        let mut last_error = String::new();
-        for _ in 0..EPISODE_ATTEMPTS {
-            let map = pick_map(&mut self.rng, shared.maps, shared.pool_weights).clone();
-            let choice = weighted_pick(
-                &mut self.rng,
-                shared.config.vehicle_mix.iter().map(|v| v.weight),
-            );
-            let seed = self.rng.gen::<u64>();
-            if Arc::ptr_eq(&map, &self.map) {
-                self.world.restore_entities();
-            } else {
-                self.world.restore_from(&map.template);
-                self.map = map;
-            }
-            let vehicle = shared.vehicles[choice].0;
-            let sampled = match sampler::sample_scenario(
-                &self.world,
-                &self.map.raster,
-                shared.data,
-                vehicle,
-                shared.rules,
-                scenario,
-                &shared.config.target,
-                seed,
-                &mut sampler::SampleStats::default(),
-            ) {
-                Ok(s) => s,
-                Err(e) => {
-                    last_error = e;
-                    continue;
-                }
-            };
-            let choice_config = &shared.config.vehicle_mix[choice];
-            let setup = EpisodeSetup {
-                map: self.world.info.name.clone(),
-                vehicle: choice_config.vehicle.clone(),
-                fuel: choice_config.fuel.clone(),
-                start: sampled.start,
-                target: sampled.target,
-                radius: shared.config.target.radius,
-                start_speed: sampled.start_speed,
-                seed: Some(seed),
-            };
-            self.episode = Episode::start_with_field(
-                self.ctx(shared.data),
-                setup,
-                shared.rules.clone(),
-                sampled.field,
-            )?;
-            self.scenario = scenario.index();
-            self.path = (shared.config.route_source == RouteSource::Pathfinder).then(|| {
-                let s = &self.episode.setup;
-                PathRoute::new(
-                    &self.map.raster,
-                    &shared.data.vehicles[vehicle],
-                    &shared.rules.distance_field,
-                    [s.start.x, s.start.y],
-                    [s.target.x, s.target.y],
-                )
+    /// Draws the next episode on the prefetch pool from a copy of the RNG.
+    fn prefetch(&mut self, shared: &Shared<'_>) {
+        #[cfg(feature = "parallel")]
+        if shared.prefetch {
+            let ctx = Arc::clone(shared.ctx);
+            let mut rng = self.rng.clone();
+            let (tx, rx) = std::sync::mpsc::channel();
+            prefetch_pool().spawn(move || {
+                let draw = draw_episode(&ctx, &mut rng);
+                let _ = tx.send((draw, rng));
             });
-            self.overlays.clear();
-            return Ok(());
+            self.pending = Some(Pending { rx: std::sync::Mutex::new(rx) });
         }
-        Err(format!("episode sampling failed: {last_error}"))
+        #[cfg(not(feature = "parallel"))]
+        let _ = shared;
+    }
+
+    fn begin(&mut self, shared: &Shared<'_>, draw: Draw) -> Result<(), String> {
+        let Draw {
+            scenario,
+            map,
+            choice,
+            seed,
+            sampled,
+        } = draw;
+        if Arc::ptr_eq(&map, &self.map) {
+            self.world.restore_entities();
+        } else {
+            self.world.restore_from(&map.template);
+            self.map = map;
+        }
+        let vehicle = shared.vehicles[choice].0;
+        let choice_config = &shared.config.vehicle_mix[choice];
+        let setup = EpisodeSetup {
+            map: self.world.info.name.clone(),
+            vehicle: choice_config.vehicle.clone(),
+            fuel: choice_config.fuel.clone(),
+            start: sampled.start,
+            target: sampled.target,
+            radius: shared.config.target.radius,
+            start_speed: sampled.start_speed,
+            seed: Some(seed),
+        };
+        self.episode = Episode::start_with_field(
+            self.ctx(shared.data),
+            setup,
+            shared.rules.clone(),
+            sampled.field,
+        )?;
+        self.scenario = scenario;
+        self.path = (shared.config.route_source == RouteSource::Pathfinder).then(|| {
+            let s = &self.episode.setup;
+            PathRoute::new(
+                &self.map.raster,
+                &shared.data.vehicles[vehicle],
+                &shared.rules.distance_field,
+                [s.start.x, s.start.y],
+                [s.target.x, s.target.y],
+            )
+        });
+        self.overlays.clear();
+        Ok(())
     }
 
     fn ctx<'a>(&'a mut self, data: &'a Prototypes) -> Ctx<'a> {
@@ -722,6 +821,9 @@ pub struct VecEnv {
     envs: Vec<Env>,
     recording: bool,
     steps: u64,
+    ctx: Arc<SampleCtx>,
+    /// Draw each env's next episode in the background (`set_prefetch`).
+    prefetch: bool,
 }
 
 impl VecEnv {
@@ -789,6 +891,17 @@ impl VecEnv {
         } else {
             Vec::new()
         };
+        let ctx = Arc::new(SampleCtx {
+            data: Arc::clone(&data),
+            maps: maps.clone(),
+            pool_weights: pool_weights.clone(),
+            config: config.clone(),
+            rules: rules.clone(),
+            vehicles: vehicles.clone(),
+        });
+        // FSIM_PREFETCH=0 draws every episode at its reset, for comparisons.
+        let prefetch = cfg!(feature = "parallel")
+            && std::env::var("FSIM_PREFETCH").map_or(true, |v| v != "0");
         let mut env = Self {
             config,
             rules,
@@ -799,6 +912,8 @@ impl VecEnv {
             envs: Vec::new(),
             recording: false,
             steps: 0,
+            ctx,
+            prefetch,
         };
         let (shared, _) = env.parts();
         let envs = map_tasks((0..num_envs).collect(), |i| {
@@ -812,15 +927,32 @@ impl VecEnv {
     fn parts(&mut self) -> (Shared<'_>, &mut [Env]) {
         let shared = Shared {
             data: &self.data,
-            maps: &self.maps,
-            pool_weights: &self.pool_weights,
             config: &self.config,
             rules: &self.rules,
             vehicles: &self.vehicles,
             recording: self.recording,
             step: self.steps,
+            ctx: &self.ctx,
+            prefetch: self.prefetch,
         };
         (shared, &mut self.envs)
+    }
+
+    /// Turns background episode drawing on or off. Episodes are the same either way: a
+    /// draw reads only the shared maps and the env's own RNG.
+    pub fn set_prefetch(&mut self, enabled: bool) {
+        self.prefetch = enabled && cfg!(feature = "parallel");
+        self.redraw();
+    }
+
+    /// Drops pending draws (their RNG copies are discarded, so each env's sequence is
+    /// unchanged) and draws again with the current config.
+    fn redraw(&mut self) {
+        let (shared, envs) = self.parts();
+        for env in envs.iter_mut() {
+            env.pending = None;
+            env.prefetch(&shared);
+        }
     }
 
     pub fn num_envs(&self) -> usize {
@@ -925,6 +1057,17 @@ impl VecEnv {
         };
         validate_target(&target)?;
         self.config.target = target;
+        let mut ctx = SampleCtx {
+            data: Arc::clone(&self.data),
+            maps: self.maps.clone(),
+            pool_weights: self.pool_weights.clone(),
+            config: self.config.clone(),
+            rules: self.rules.clone(),
+            vehicles: self.vehicles.clone(),
+        };
+        ctx.config.target = target;
+        self.ctx = Arc::new(ctx);
+        self.redraw();
         Ok(())
     }
 

@@ -53,6 +53,16 @@ VIRTUAL_ENV=/tmp/fsim-py-venv uv pip install maturin numpy
 
 `crates/fsim-py` is a PyO3 0.30 + numpy crate built with maturin as an abi3 wheel for Python 3.12 or newer (`import fsim`). The trainer in `python/` depends on it as a path dependency. A plain `cargo build` of the workspace also compiles it and links libpython; maturin builds the importable extension. `rl-benchmark` reports scenario sampler acceptance and reset cost per kind, distance-field, observation and reset cost, VecEnv decisions/sec per mode and env count, and A* baseline success on the train split. `--scenarios-only` stops after the scenario table.
 
+Training throughput is set by episode resets, not by stepping or the policy: sampling a forest
+or long episode costs 15-55 ms, and a batched step waits for its slowest env. `VecEnv` therefore
+draws each env's next episode on a separate prefetch thread pool while the current one runs. A
+draw reads only the shared pool maps and the env's own RNG, so episodes are identical with and
+without prefetching (`tests/rl.rs`); `FSIM_PREFETCH=0` turns it off for comparisons. The forest
+sampler reads tree density from a per-map table of tree counts (`MapRaster::tree_counts`),
+equal to summing the window. With both, PPO on the planet mix runs at about 54k steps/s with
+512 envs on 16 threads and an RTX 5060, against 12-13k before; the first iterations of a run
+match exactly with and without prefetching.
+
 Collect maps with `scripts/collect-game-data.sh`. The default pool has 16
 1056 × 1056 maps. Use `--map-count`, `--map-radius`, or `--seeds` to configure it.
 See [map-format.md](map-format.md) for collection, native MapPool signatures,

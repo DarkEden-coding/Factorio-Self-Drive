@@ -512,3 +512,35 @@ fn nest_scenarios_sample_with_a_zone_blind_field() {
         "the zone-blind field mostly crosses: {crossing}/8"
     );
 }
+
+#[test]
+fn cached_tree_density_matches_the_window_sum() {
+    // The forest sampler reads tree density from a per-map table; it must equal summing the
+    // window tile by tile everywhere, including where the window leaves the map.
+    let data = data();
+    let map = scenario_map(&data);
+    let raster = &map.raster;
+    let window = |x: i32, y: i32, r: i32| {
+        let mut trees = 0;
+        for ny in y - r..=y + r {
+            for nx in x - r..=x + r {
+                trees += (raster.mask_at(nx, ny) & fsim_core::raster::TREE != 0) as u32;
+            }
+        }
+        trees as f64 / ((2 * r + 1) * (2 * r + 1)) as f64
+    };
+    let r = ForestScenario::default().density_radius;
+    assert!(raster.tree_counts(r).is_some());
+    let mut dense = 0;
+    for y in raster.y_min - 2..raster.y_min + raster.height as i32 + 2 {
+        for x in raster.x_min - 2..raster.x_min + raster.width as i32 + 2 {
+            let d = sampler::tree_density(raster, x, y, r);
+            assert_eq!(d, window(x, y, r), "tile {x},{y}");
+            dense += usize::from(d >= 0.2);
+        }
+    }
+    assert!(dense > 100, "fixture has too few dense tiles: {dense}");
+    // Another radius is not cached and falls back to the sum.
+    assert!(raster.tree_counts(r - 1).is_none());
+    assert_eq!(sampler::tree_density(raster, 0, -40, r - 1), window(0, -40, r - 1));
+}

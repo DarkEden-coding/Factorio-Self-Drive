@@ -650,6 +650,10 @@ fn tile_center(x: i32, y: i32) -> Point {
 
 /// Fraction of tree tiles in the square of half-size `radius` around a tile.
 pub fn tree_density(raster: &MapRaster, x: i32, y: i32, radius: i32) -> f64 {
+    let side = (2 * radius + 1) as f64;
+    if let (Some(counts), Some(i)) = (raster.tree_counts(radius), raster.index(x, y)) {
+        return f64::from(counts[i]) / (side * side);
+    }
     let mut trees = 0;
     for ny in y - radius..=y + radius {
         for nx in x - radius..=x + radius {

@@ -31,6 +31,9 @@ pub struct MapRaster {
     pub modifier: Vec<u8>,
     /// Entity indices of nests, for the nest-zone reward.
     pub nests: Vec<usize>,
+    /// Tree tiles in the square of a radius around each tile, built on first use by the
+    /// forest sampler (`tree_counts`). Same counts as summing `mask_at`, so the same episodes.
+    pub tree_counts: std::sync::OnceLock<(i32, Vec<u8>)>,
 }
 
 pub fn friction_byte(modifier: f64) -> u8 {
@@ -97,6 +100,7 @@ impl MapRaster {
             friction,
             modifier,
             nests: Vec::new(),
+            tree_counts: Default::default(),
         };
         for (index, e) in world.entities.iter().enumerate() {
             if e.kind == "nest" {
@@ -139,6 +143,40 @@ impl MapRaster {
         let iy = y - self.y_min;
         (ix >= 0 && iy >= 0 && (ix as usize) < self.width && (iy as usize) < self.height)
             .then(|| iy as usize * self.width + ix as usize)
+    }
+
+    /// Per-tile count of tree tiles in the `(2r+1)^2` square around it (off-map tiles
+    /// count as no tree), for the first radius asked; `None` for any other radius.
+    pub fn tree_counts(&self, radius: i32) -> Option<&[u8]> {
+        if !(0..=7).contains(&radius) {
+            return None; // counts above 255 would not fit a u8
+        }
+        let (r, counts) = self.tree_counts.get_or_init(|| {
+            let (w, h) = (self.width, self.height);
+            // Summed-area table of tree tiles.
+            let mut sat = vec![0u32; (w + 1) * (h + 1)];
+            for y in 0..h {
+                let mut row = 0;
+                for x in 0..w {
+                    row += u32::from(self.mask[y * w + x] & TREE != 0);
+                    sat[(y + 1) * (w + 1) + x + 1] = sat[y * (w + 1) + x + 1] + row;
+                }
+            }
+            let rr = radius as usize;
+            let mut counts = vec![0u8; w * h];
+            for y in 0..h {
+                let (y0, y1) = (y.saturating_sub(rr), (y + rr + 1).min(h));
+                for x in 0..w {
+                    let (x0, x1) = (x.saturating_sub(rr), (x + rr + 1).min(w));
+                    let n = sat[y1 * (w + 1) + x1] + sat[y0 * (w + 1) + x0]
+                        - sat[y0 * (w + 1) + x1]
+                        - sat[y1 * (w + 1) + x0];
+                    counts[y * w + x] = n as u8;
+                }
+            }
+            (radius, counts)
+        });
+        (*r == radius).then_some(counts.as_slice())
     }
 
     pub fn mask_at(&self, x: i32, y: i32) -> u8 {

@@ -447,6 +447,7 @@ mod tests {
             friction: vec![0; 256],
             modifier: vec![10; 256],
             nests: Vec::new(),
+            tree_counts: Default::default(),
         };
         raster.mask[8 * 16 + 10] = WATER;
         raster.mask[10 * 16 + 8] = WATER;

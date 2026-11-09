@@ -3,7 +3,7 @@ use fsim_core::{
     policy_obs::{self, ObsScratch, COARSE_LEN, LOCAL_LEN, VECTOR_LEN},
     raster::{friction_byte, MapRaster, RasterPatches},
     rl_config::{
-        ArrivalMode, EpisodeRules, Mode, Observation, RlConfig, TargetConfig, VehicleChoice,
+        ArrivalMode, EpisodeRules, Mode, Observation, RlConfig, Scenario, TargetConfig, VehicleChoice,
     },
     rl_episode::{self, encode_action, Ctx, Episode, EpisodeSetup, Point, Pose, Status},
     sampler,
@@ -139,6 +139,46 @@ fn episodes_are_deterministic_given_seed() {
         (trace, b.obs, b.vector)
     };
     assert_eq!(run(), run());
+}
+
+#[test]
+fn prefetched_episodes_match_episodes_drawn_at_reset() {
+    // Background drawing must not change any episode: same observations, rewards and
+    // outcomes as drawing at reset, including across a curriculum change.
+    let run = |prefetch: bool| {
+        let mut cfg = config(Mode::Reactive, "car");
+        cfg.vehicle_mix.push(VehicleChoice {
+            vehicle: "tank".into(),
+            fuel: "nuclear-fuel".into(),
+            weight: 1.0,
+        });
+        cfg.scenarios = vec![
+            Scenario::Standard(Default::default()),
+            Scenario::Arrival(Default::default()),
+            Scenario::Reverse(Default::default()),
+            Scenario::Forest(Default::default()),
+        ];
+        let mut env = env(cfg, 6, 7);
+        env.set_prefetch(prefetch);
+        let mut b = Buffers::new(6);
+        b.reset(&mut env);
+        let mut trace = Vec::new();
+        let mut episodes = 0;
+        for step in 0..900 {
+            if step == 300 {
+                env.set_curriculum(16.0, 60.0, 2.0).unwrap();
+            }
+            for info in b.step_baseline(&mut env) {
+                episodes += usize::from(info.terminated || info.truncated);
+                trace.push(format!("{info:?}"));
+            }
+        }
+        (trace, b.obs, b.vector, episodes)
+    };
+    let with = run(true);
+    let without = run(false);
+    assert!(with.3 > 30, "too few episodes to compare: {}", with.3);
+    assert_eq!(with, without);
 }
 
 #[test]
