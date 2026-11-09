@@ -60,6 +60,8 @@ def build(model_path, destination):
     data = json.loads((ROOT / 'data/prototypes.json').read_text())
     geometry = {'vehicles': {v['name']: v for v in data['vehicles']},
                 'cliffs': data['cliffs']['orientations'],
+                # Planet cliffs by name; most share the Nauvis geometry.
+                'other_cliffs': {c['name']: c['orientations'] for c in data.get('other_cliffs', [])},
                 'nest_radius': data['physics']['nest_penalty_radius']}
     (destination / 'geometry-data.lua').write_text('-- Generated from data/prototypes.json.\nreturn ' + lua(geometry) + '\n')
 

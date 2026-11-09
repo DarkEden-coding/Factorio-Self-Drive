@@ -1,3 +1,4 @@
+from pathlib import Path
 import json
 
 import pytest
@@ -37,7 +38,7 @@ def test_env_json_matches_contract_keys():
     assert data["mode"] == "direct_plan" and data["split"] == "holdout"
     assert data["map_pool"].endswith("data/game/maps")
     assert set(data) == {
-        "map_pool", "split", "mode", "decision_ticks", "steer_levels", "gamma", "vehicle_mix", "target",
+        "map_pool", "map_pools", "split", "mode", "decision_ticks", "steer_levels", "gamma", "vehicle_mix", "target",
         "time_limit", "reward", "distance_field", "direct_plan", "path_planner", "scenarios",
         "observation", "student_map", "route_source", "arrival",
     }
@@ -45,6 +46,17 @@ def test_env_json_matches_contract_keys():
     pairs = {(m["vehicle"], m["fuel"]) for m in data["vehicle_mix"]}
     fuels = {"wood", "coal", "solid-fuel", "rocket-fuel", "nuclear-fuel"}
     assert pairs == {(v, f) for v in ("car", "tank") for f in fuels}
+
+
+def test_planet_config_mixes_absolute_pools_and_prices_slow_ground():
+    config = load_config(CONFIG_DIR / "student_mlp64_planets.toml")
+    data = json.loads(env_config_json(config))
+    pools = {Path(p["pool"]).name: p["weight"] for p in data["map_pools"]}
+    assert set(pools) == {"maps", "maps-vulcanus", "maps-gleba", "maps-fulgora"}
+    assert all(Path(p["pool"]).is_absolute() for p in data["map_pools"])
+    assert abs(sum(pools.values()) - 1) < 1e-9
+    assert data["distance_field"]["friction_cost"] > 0
+    assert data["route_source"] == "field_smooth"
 
 
 @pytest.mark.parametrize("name", ["finetune_moderate", "finetune_strong"])

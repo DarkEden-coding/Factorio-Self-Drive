@@ -37,6 +37,13 @@ local function pop(f)
   f.pending = f.pending - 1
   return table.remove(ids), table.remove(distances)
 end
+-- Slow-ground cost for a tile with friction `tenths` (distance_field.rs friction_extra):
+-- the vehicle's slowdown against grass, times friction_cost, rounded to f32 like Rust.
+function M.friction_extra(f, tenths)
+  if f.friction_cost <= 0 then return 0 end
+  local function g(m) return 1 + (m - 1) * f.tfm end
+  return u.f32(f.friction_cost * math.max(0, math.sqrt(g(tenths / 10) / g(1.6)) - 1))
+end
 -- `margin` defaults to the simulator's 48 tiles.
 function M.new(position, target, half_width, tank, bounds, margin, options)
   options = options or {}
@@ -48,6 +55,7 @@ function M.new(position, target, half_width, tank, bounds, margin, options)
     dilation = math.ceil(half_width), tank = tank, target = target,
     smooth = options.smooth or false, tree_cost = options.tank_tree_cost or 4,
     zone_cost = options.nest_zone_cost or 3, zone_margin = options.nest_zone_margin or 2,
+    friction_cost = options.friction_cost or 0, tfm = options.terrain_friction_modifier or 1,
     bucket_nodes = {}, bucket_distances = {}, pending = 0, current = 0, cursor = 1, phase = "base"}
   if bounds then
     f.x0,f.y0=math.max(f.x0,bounds.x0),math.max(f.y0,bounds.y0)
@@ -55,7 +63,7 @@ function M.new(position, target, half_width, tank, bounds, margin, options)
   end
   f.w, f.h = f.x1 - f.x0, f.y1 - f.y0
   -- The base masks cover the field plus a border wide enough for both dilations.
-  f.bucket_count = math.ceil(SQRT2 * (1 + f.tree_cost + f.zone_cost)) + 2
+  f.bucket_count = math.ceil(SQRT2 * (1 + f.tree_cost + f.zone_cost + M.friction_extra(f, 255))) + 2
   f.r = math.max(f.dilation, f.zone_margin)
   f.bw, f.bh = f.w + 2 * f.r, f.h + 2 * f.r
   f.hard, f.tree, f.zone = {}, {}, {}
@@ -88,7 +96,7 @@ local function row_cell(f, i)
   end
   f.rh[i], f.rt[i], f.rz[i] = hard, tree, zone
 end
-local function col_cell(f, i)
+local function col_cell(f, i, friction)
   local x, y = (i - 1) % f.w, math.floor((i - 1) / f.w)
   local d, hard, tree, zone = f.dilation, false, false, false
   for k = -f.r, f.r do
@@ -100,7 +108,8 @@ local function col_cell(f, i)
     if k >= -f.zone_margin and k <= f.zone_margin then zone = zone or f.rz[j] end
   end
   f.flags[i] = hard
-  f.extra[i] = (tree and f.tank and f.tree_cost or 0) + (zone and f.zone_cost or 0)
+  local slow = (friction and f.friction_cost > 0) and M.friction_extra(f, friction(f.x0 + x, f.y0 + y)) or 0
+  f.extra[i] = (tree and f.tank and f.tree_cost or 0) + (zone and f.zone_cost or 0) + slow
 end
 local function start_search(f)
   local t = f.target
@@ -140,8 +149,9 @@ local function search_step(f)
   end
 end
 -- Budget is in work units: one per cell in the cell phases, POP_COST per bucket pop.
+-- `friction(x, y)` gives friction tenths per tile; needed only with friction_cost > 0.
 -- Returns true once the field is ready.
-function M.slice(f, mask, budget)
+function M.slice(f, mask, budget, friction)
   while budget > 0 do
     local phase = f.phase
     if phase == "base" then
@@ -164,7 +174,7 @@ function M.slice(f, mask, budget)
     elseif phase == "cols" then
       local n = f.w * f.h
       local last = math.min(n, f.cursor + budget - 1)
-      for i = f.cursor, last do col_cell(f, i) end
+      for i = f.cursor, last do col_cell(f, i, friction) end
       budget = budget - (last - f.cursor + 1)
       f.cursor = last + 1
       if f.cursor > n then

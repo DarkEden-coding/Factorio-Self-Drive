@@ -1,0 +1,25 @@
+# PPO fine-tune of the smooth-route student (steady rewards: steering changes cost) on Nauvis plus the Space Age
+# planets Vulcanus, Gleba and Fulgora (docs/planets-results.md). The observation
+# layout and spec hash are unchanged, so it starts from the shipped weights:
+#
+# OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 uv run fsim-rl train \
+#   --config configs/student_mlp64_planets.toml \
+#   --init-from runs/students/field-smooth-v1/checkpoints/latest.pt --run-name students/planets-v1
+base = "student_mlp64_steady.toml"
+
+[env]
+# Episodes per pool, not maps: Nauvis keeps a large share so it doesn't regress.
+map_pools = [
+  {pool = "data/game/maps", weight = 0.34},
+  {pool = "data/game/maps-vulcanus", weight = 0.22},
+  {pool = "data/game/maps-gleba", weight = 0.22},
+  {pool = "data/game/maps-fulgora", weight = 0.22},
+]
+
+[env.distance_field]
+# Route by travel time: Gleba wetland, Fulgora land and oil ocean are slow ground.
+friction_cost = 1.0
+
+[ppo]
+total_steps = 20_000_000
+learning_rate = 5e-5

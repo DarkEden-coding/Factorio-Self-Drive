@@ -23,7 +23,8 @@ function M.stats(vehicle)
     rotation_speed=p.rotation_speed,braking_power=p.braking_power,power=power,top_speed=top,
     half_width=math.max(math.abs(p.collision_box[1][1]),math.abs(p.collision_box[2][1])),
     half_length=math.max(math.abs(p.collision_box[1][2]),math.abs(p.collision_box[2][2])),
-    fuel_acceleration=a,fuel_top_speed=t,tile_friction=tile.prototype.vehicle_friction_modifier}
+    fuel_acceleration=a,fuel_top_speed=t,tile_friction=tile.prototype.vehicle_friction_modifier,
+    terrain_friction_modifier=p.terrain_friction_modifier}
 end
 function M.apply(vehicle,action)
   local throttle,steer = math.floor(action/3)-1,action%3-1

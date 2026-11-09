@@ -6,6 +6,7 @@ if not bit32 then
 end
 package.path='mod/factorio-autodrive/?.lua;'..package.path
 game={tick=0}
+prototypes={entity={car={collision_mask={layers={player=true,train=true,car=true,is_object=true}}}}}
 helpers={create_profiler=function() return {stop=function() end} end}
 local stats={half_width=0.7,half_length=1,tank_driving=false,weight=700,max_health=450,
   rotation_speed=0.015,braking_power=200000,power=150000,top_speed=0.4,
@@ -32,7 +33,9 @@ local driver,u=require('driver'),require('math-util')
 local v={valid=true,name='car',position={x=0.5,y=0.5},orientation=0.25,speed=0,health=450,
   prototype={collision_box={},collision_mask={}},force={}}
 v.surface={is_chunk_generated=function() return true end,request_path=function() return 1 end,
-  get_tile=function() return {name='grass-1',collides_with=function() return false end} end,
+  get_tile=function() return {name='grass-1',prototype={name='grass-1',vehicle_friction_modifier=1.6,
+    collision_mask={layers={ground_tile=true}}}} end,
+  get_territory_for_chunk=function() return nil end,
   find_entities_filtered=function() return {} end}
 local s=driver.start(v,{x=1000.5,y=0.5})
 local function tick()

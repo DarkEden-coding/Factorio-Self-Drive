@@ -1,0 +1,3952 @@
+{
+  "schema_version": 1,
+  "wall_seconds": 1099.987,
+  "mods": {
+    "base": true,
+    "fsim-export": true,
+    "fsim-autorun": true,
+    "space-age": true,
+    "quality": true,
+    "elevated-rails": true,
+    "recycler": true
+  },
+  "map_generation": "default preset, no map-gen overrides",
+  "planets": [
+    "vulcanus",
+    "gleba",
+    "fulgora"
+  ],
+  "runs": [
+    {
+      "seed": 12345,
+      "wall_seconds": 27.773,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2654448106,
+      "wall_seconds": 28.036,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1013916571,
+      "wall_seconds": 28.356,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3668352332,
+      "wall_seconds": 27.832,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2027820797,
+      "wall_seconds": 28.123,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 387289262,
+      "wall_seconds": 27.647,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3041725023,
+      "wall_seconds": 27.597,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1401193488,
+      "wall_seconds": 27.468,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4055629249,
+      "wall_seconds": 27.398,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2415097714,
+      "wall_seconds": 27.102,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 774566179,
+      "wall_seconds": 27.548,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3429001940,
+      "wall_seconds": 27.289,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1788470405,
+      "wall_seconds": 27.245,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 147938870,
+      "wall_seconds": 27.371,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2802374631,
+      "wall_seconds": 26.933,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1161843096,
+      "wall_seconds": 27.375,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3816278857,
+      "wall_seconds": 27.326,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2175747322,
+      "wall_seconds": 27.397,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 535215787,
+      "wall_seconds": 27.152,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3189651548,
+      "wall_seconds": 27.229,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1549120013,
+      "wall_seconds": 26.86,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 4203555774,
+      "wall_seconds": 27.092,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2563024239,
+      "wall_seconds": 27.034,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 922492704,
+      "wall_seconds": 27.148,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3576928465,
+      "wall_seconds": 27.806,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1936396930,
+      "wall_seconds": 27.16,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 295865395,
+      "wall_seconds": 27.164,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2950301156,
+      "wall_seconds": 27.341,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1309769621,
+      "wall_seconds": 27.427,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3964205382,
+      "wall_seconds": 28.642,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2323673847,
+      "wall_seconds": 27.286,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 683142312,
+      "wall_seconds": 26.928,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3337578073,
+      "wall_seconds": 27.137,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1697046538,
+      "wall_seconds": 27.026,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 56515003,
+      "wall_seconds": 27.485,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2710950764,
+      "wall_seconds": 27.351,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 1070419229,
+      "wall_seconds": 27.494,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 3724854990,
+      "wall_seconds": 27.381,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 2084323455,
+      "wall_seconds": 27.108,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    },
+    {
+      "seed": 443791920,
+      "wall_seconds": 27.18,
+      "marker": {
+        "schema_version": 1,
+        "started_tick": 0,
+        "finished_tick": 3267,
+        "game_version": "2.1.24",
+        "active_mods": {
+          "base": "2.1.24",
+          "elevated-rails": "2.1.24",
+          "recycler": "2.1.24",
+          "quality": "2.1.24",
+          "space-age": "2.1.24",
+          "fsim-export": "0.1.0",
+          "fsim-autorun": "0.1.0"
+        },
+        "options": {
+          "traces": false,
+          "maps": true,
+          "radius": 16,
+          "filters": [],
+          "planets": [
+            "vulcanus",
+            "gleba",
+            "fulgora"
+          ]
+        },
+        "completed": [],
+        "players": 0
+      }
+    }
+  ],
+  "replayed_traces": 429,
+  "files": [
+    {
+      "path": "data/game/graphics.json",
+      "bytes": 431866
+    },
+    {
+      "path": "data/game/map-collection.json",
+      "bytes": 99983
+    },
+    {
+      "path": "data/game/maps/index.json",
+      "bytes": 29973
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1013916571.fsmap",
+      "bytes": 198716
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1035498020.fsmap",
+      "bytes": 188611
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1070419229.fsmap",
+      "bytes": 157782
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1126921887.fsmap",
+      "bytes": 202910
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-113017661.fsmap",
+      "bytes": 260161
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1161843096.fsmap",
+      "bytes": 89965
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1218345754.fsmap",
+      "bytes": 238453
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-12345.fsmap",
+      "bytes": 275704
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1274848412.fsmap",
+      "bytes": 322974
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1309769621.fsmap",
+      "bytes": 244301
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1366272279.fsmap",
+      "bytes": 173235
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1401193488.fsmap",
+      "bytes": 333626
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1422774937.fsmap",
+      "bytes": 163048
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1457696146.fsmap",
+      "bytes": 223834
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-147938870.fsmap",
+      "bytes": 182360
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1514198804.fsmap",
+      "bytes": 145335
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1549120013.fsmap",
+      "bytes": 151301
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1605622671.fsmap",
+      "bytes": 197176
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1662125329.fsmap",
+      "bytes": 298838
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-169520319.fsmap",
+      "bytes": 310697
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1697046538.fsmap",
+      "bytes": 269817
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1753549196.fsmap",
+      "bytes": 219581
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1788470405.fsmap",
+      "bytes": 150558
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1810051854.fsmap",
+      "bytes": 252800
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1844973063.fsmap",
+      "bytes": 310353
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1901475721.fsmap",
+      "bytes": 246506
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1936396930.fsmap",
+      "bytes": 315653
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-1992899588.fsmap",
+      "bytes": 197517
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2027820797.fsmap",
+      "bytes": 292484
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-204441528.fsmap",
+      "bytes": 112889
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2049402246.fsmap",
+      "bytes": 158238
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2084323455.fsmap",
+      "bytes": 260201
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2140826113.fsmap",
+      "bytes": 309999
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-21593794.fsmap",
+      "bytes": 225392
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2175747322.fsmap",
+      "bytes": 149008
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2232249980.fsmap",
+      "bytes": 274223
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2288752638.fsmap",
+      "bytes": 255170
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2323673847.fsmap",
+      "bytes": 265618
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2380176505.fsmap",
+      "bytes": 305978
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2415097714.fsmap",
+      "bytes": 309966
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2436679163.fsmap",
+      "bytes": 218746
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2471600372.fsmap",
+      "bytes": 220751
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2528103030.fsmap",
+      "bytes": 236940
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2563024239.fsmap",
+      "bytes": 254730
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-260944186.fsmap",
+      "bytes": 324758
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2619526897.fsmap",
+      "bytes": 290532
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2654448106.fsmap",
+      "bytes": 172172
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2676029555.fsmap",
+      "bytes": 168443
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2710950764.fsmap",
+      "bytes": 231813
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2767453422.fsmap",
+      "bytes": 317013
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2802374631.fsmap",
+      "bytes": 116802
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2823956080.fsmap",
+      "bytes": 267902
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2858877289.fsmap",
+      "bytes": 329012
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2915379947.fsmap",
+      "bytes": 248828
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-2950301156.fsmap",
+      "bytes": 212884
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-295865395.fsmap",
+      "bytes": 254971
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3006803814.fsmap",
+      "bytes": 251155
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3041725023.fsmap",
+      "bytes": 99905
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3063306472.fsmap",
+      "bytes": 70888
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3098227681.fsmap",
+      "bytes": 328500
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3154730339.fsmap",
+      "bytes": 298906
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3189651548.fsmap",
+      "bytes": 258459
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3246154206.fsmap",
+      "bytes": 181492
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3302656864.fsmap",
+      "bytes": 266156
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3337578073.fsmap",
+      "bytes": 82138
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3394080731.fsmap",
+      "bytes": 313636
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3429001940.fsmap",
+      "bytes": 227999
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3450583389.fsmap",
+      "bytes": 260089
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3485504598.fsmap",
+      "bytes": 354901
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-352368053.fsmap",
+      "bytes": 259817
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3542007256.fsmap",
+      "bytes": 246331
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3576928465.fsmap",
+      "bytes": 170479
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3633431123.fsmap",
+      "bytes": 247120
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3668352332.fsmap",
+      "bytes": 261833
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3689933781.fsmap",
+      "bytes": 272674
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3724854990.fsmap",
+      "bytes": 314109
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3781357648.fsmap",
+      "bytes": 181940
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3816278857.fsmap",
+      "bytes": 317868
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3872781515.fsmap",
+      "bytes": 311191
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-387289262.fsmap",
+      "bytes": 306115
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3929284173.fsmap",
+      "bytes": 306487
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-3964205382.fsmap",
+      "bytes": 325504
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4020708040.fsmap",
+      "bytes": 258005
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4055629249.fsmap",
+      "bytes": 246682
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4077210698.fsmap",
+      "bytes": 77673
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-408870711.fsmap",
+      "bytes": 207300
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4112131907.fsmap",
+      "bytes": 301372
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4168634565.fsmap",
+      "bytes": 281825
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4203555774.fsmap",
+      "bytes": 278858
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-4260058432.fsmap",
+      "bytes": 232747
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-443791920.fsmap",
+      "bytes": 279371
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-500294578.fsmap",
+      "bytes": 270624
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-535215787.fsmap",
+      "bytes": 325770
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-56515003.fsmap",
+      "bytes": 330910
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-591718445.fsmap",
+      "bytes": 276753
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-648221103.fsmap",
+      "bytes": 102583
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-683142312.fsmap",
+      "bytes": 185658
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-739644970.fsmap",
+      "bytes": 223481
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-774566179.fsmap",
+      "bytes": 302878
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-796147628.fsmap",
+      "bytes": 287089
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-831068837.fsmap",
+      "bytes": 311248
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-887571495.fsmap",
+      "bytes": 208655
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-922492704.fsmap",
+      "bytes": 96517
+    },
+    {
+      "path": "data/game/maps/nauvis-seed-978995362.fsmap",
+      "bytes": 281608
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-1013916571.fsmap",
+      "bytes": 212971
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-1070419229.fsmap",
+      "bytes": 200504
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-1161843096.fsmap",
+      "bytes": 200619
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-12345.fsmap",
+      "bytes": 209971
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-1309769621.fsmap",
+      "bytes": 210115
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-1401193488.fsmap",
+      "bytes": 207223
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-147938870.fsmap",
+      "bytes": 208299
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-1549120013.fsmap",
+      "bytes": 220800
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-1697046538.fsmap",
+      "bytes": 205186
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-1788470405.fsmap",
+      "bytes": 208483
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-1936396930.fsmap",
+      "bytes": 202759
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-2027820797.fsmap",
+      "bytes": 207713
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-2084323455.fsmap",
+      "bytes": 224847
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-2175747322.fsmap",
+      "bytes": 211594
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-2323673847.fsmap",
+      "bytes": 218916
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-2415097714.fsmap",
+      "bytes": 215998
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-2563024239.fsmap",
+      "bytes": 204062
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-2654448106.fsmap",
+      "bytes": 215897
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-2710950764.fsmap",
+      "bytes": 213755
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-2802374631.fsmap",
+      "bytes": 206722
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-2950301156.fsmap",
+      "bytes": 191548
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-295865395.fsmap",
+      "bytes": 201036
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-3041725023.fsmap",
+      "bytes": 235054
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-3189651548.fsmap",
+      "bytes": 202635
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-3337578073.fsmap",
+      "bytes": 196600
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-3429001940.fsmap",
+      "bytes": 200734
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-3576928465.fsmap",
+      "bytes": 212742
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-3668352332.fsmap",
+      "bytes": 208064
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-3724854990.fsmap",
+      "bytes": 211541
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-3816278857.fsmap",
+      "bytes": 215189
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-387289262.fsmap",
+      "bytes": 209038
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-3964205382.fsmap",
+      "bytes": 189941
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-4055629249.fsmap",
+      "bytes": 209929
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-4203555774.fsmap",
+      "bytes": 193230
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-443791920.fsmap",
+      "bytes": 211915
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-535215787.fsmap",
+      "bytes": 196487
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-56515003.fsmap",
+      "bytes": 207554
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-683142312.fsmap",
+      "bytes": 211889
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-774566179.fsmap",
+      "bytes": 209145
+    },
+    {
+      "path": "data/game/maps-fulgora/fulgora-seed-922492704.fsmap",
+      "bytes": 200418
+    },
+    {
+      "path": "data/game/maps-fulgora/index.json",
+      "bytes": 12579
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-1013916571.fsmap",
+      "bytes": 405062
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-1070419229.fsmap",
+      "bytes": 406920
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-1161843096.fsmap",
+      "bytes": 406252
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-12345.fsmap",
+      "bytes": 396439
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-1309769621.fsmap",
+      "bytes": 344068
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-1401193488.fsmap",
+      "bytes": 390990
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-147938870.fsmap",
+      "bytes": 398552
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-1549120013.fsmap",
+      "bytes": 397053
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-1697046538.fsmap",
+      "bytes": 359018
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-1788470405.fsmap",
+      "bytes": 408285
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-1936396930.fsmap",
+      "bytes": 365407
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-2027820797.fsmap",
+      "bytes": 383196
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-2084323455.fsmap",
+      "bytes": 370706
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-2175747322.fsmap",
+      "bytes": 406494
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-2323673847.fsmap",
+      "bytes": 398966
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-2415097714.fsmap",
+      "bytes": 371641
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-2563024239.fsmap",
+      "bytes": 391921
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-2654448106.fsmap",
+      "bytes": 393153
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-2710950764.fsmap",
+      "bytes": 403222
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-2802374631.fsmap",
+      "bytes": 375909
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-2950301156.fsmap",
+      "bytes": 411621
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-295865395.fsmap",
+      "bytes": 368426
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-3041725023.fsmap",
+      "bytes": 422922
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-3189651548.fsmap",
+      "bytes": 412508
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-3337578073.fsmap",
+      "bytes": 379144
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-3429001940.fsmap",
+      "bytes": 398052
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-3576928465.fsmap",
+      "bytes": 394804
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-3668352332.fsmap",
+      "bytes": 429228
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-3724854990.fsmap",
+      "bytes": 370046
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-3816278857.fsmap",
+      "bytes": 383675
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-387289262.fsmap",
+      "bytes": 291471
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-3964205382.fsmap",
+      "bytes": 380127
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-4055629249.fsmap",
+      "bytes": 393163
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-4203555774.fsmap",
+      "bytes": 393560
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-443791920.fsmap",
+      "bytes": 380483
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-535215787.fsmap",
+      "bytes": 380899
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-56515003.fsmap",
+      "bytes": 406194
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-683142312.fsmap",
+      "bytes": 361733
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-774566179.fsmap",
+      "bytes": 410147
+    },
+    {
+      "path": "data/game/maps-gleba/gleba-seed-922492704.fsmap",
+      "bytes": 404886
+    },
+    {
+      "path": "data/game/maps-gleba/index.json",
+      "bytes": 12380
+    },
+    {
+      "path": "data/game/maps-vulcanus/index.json",
+      "bytes": 12741
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-1013916571.fsmap",
+      "bytes": 296315
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-1070419229.fsmap",
+      "bytes": 296298
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-1161843096.fsmap",
+      "bytes": 298222
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-12345.fsmap",
+      "bytes": 304321
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-1309769621.fsmap",
+      "bytes": 301260
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-1401193488.fsmap",
+      "bytes": 298313
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-147938870.fsmap",
+      "bytes": 298596
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-1549120013.fsmap",
+      "bytes": 297775
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-1697046538.fsmap",
+      "bytes": 297041
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-1788470405.fsmap",
+      "bytes": 294540
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-1936396930.fsmap",
+      "bytes": 295298
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-2027820797.fsmap",
+      "bytes": 293052
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-2084323455.fsmap",
+      "bytes": 302491
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-2175747322.fsmap",
+      "bytes": 302584
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-2323673847.fsmap",
+      "bytes": 300957
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-2415097714.fsmap",
+      "bytes": 298640
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-2563024239.fsmap",
+      "bytes": 297402
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-2654448106.fsmap",
+      "bytes": 303087
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-2710950764.fsmap",
+      "bytes": 302546
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-2802374631.fsmap",
+      "bytes": 299047
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-2950301156.fsmap",
+      "bytes": 299490
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-295865395.fsmap",
+      "bytes": 298833
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-3041725023.fsmap",
+      "bytes": 297355
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-3189651548.fsmap",
+      "bytes": 291415
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-3337578073.fsmap",
+      "bytes": 298483
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-3429001940.fsmap",
+      "bytes": 301175
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-3576928465.fsmap",
+      "bytes": 300958
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-3668352332.fsmap",
+      "bytes": 295909
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-3724854990.fsmap",
+      "bytes": 298459
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-3816278857.fsmap",
+      "bytes": 300978
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-387289262.fsmap",
+      "bytes": 299859
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-3964205382.fsmap",
+      "bytes": 300902
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-4055629249.fsmap",
+      "bytes": 297376
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-4203555774.fsmap",
+      "bytes": 292072
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-443791920.fsmap",
+      "bytes": 293709
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-535215787.fsmap",
+      "bytes": 298460
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-56515003.fsmap",
+      "bytes": 303663
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-683142312.fsmap",
+      "bytes": 304302
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-774566179.fsmap",
+      "bytes": 302788
+    },
+    {
+      "path": "data/game/maps-vulcanus/vulcanus-seed-922492704.fsmap",
+      "bytes": 297174
+    },
+    {
+      "path": "data/game/prototypes.diff",
+      "bytes": 0
+    },
+    {
+      "path": "data/game/prototypes.json",
+      "bytes": 52781
+    },
+    {
+      "path": "data/game/replay-report.json",
+      "bytes": 268617
+    },
+    {
+      "path": "data/game/traces/car-accelerate-dirt-1-coal.json",
+      "bytes": 1269582
+    },
+    {
+      "path": "data/game/traces/car-accelerate-dirt-1-nuclear-fuel.json",
+      "bytes": 1269182
+    },
+    {
+      "path": "data/game/traces/car-accelerate-dirt-1-rocket-fuel.json",
+      "bytes": 1267955
+    },
+    {
+      "path": "data/game/traces/car-accelerate-dirt-1-solid-fuel.json",
+      "bytes": 1269127
+    },
+    {
+      "path": "data/game/traces/car-accelerate-dirt-1-wood.json",
+      "bytes": 1269582
+    },
+    {
+      "path": "data/game/traces/car-accelerate-fulgoran-paving-coal.json",
+      "bytes": 631022
+    },
+    {
+      "path": "data/game/traces/car-accelerate-fulgoran-rock-coal.json",
+      "bytes": 633992
+    },
+    {
+      "path": "data/game/traces/car-accelerate-grass-1-coal.json",
+      "bytes": 1277444
+    },
+    {
+      "path": "data/game/traces/car-accelerate-grass-1-nuclear-fuel.json",
+      "bytes": 1275355
+    },
+    {
+      "path": "data/game/traces/car-accelerate-grass-1-rocket-fuel.json",
+      "bytes": 1268529
+    },
+    {
+      "path": "data/game/traces/car-accelerate-grass-1-solid-fuel.json",
+      "bytes": 1262504
+    },
+    {
+      "path": "data/game/traces/car-accelerate-grass-1-wood.json",
+      "bytes": 1277444
+    },
+    {
+      "path": "data/game/traces/car-accelerate-oil-ocean-deep-coal.json",
+      "bytes": 636268
+    },
+    {
+      "path": "data/game/traces/car-accelerate-oil-ocean-shallow-coal.json",
+      "bytes": 634000
+    },
+    {
+      "path": "data/game/traces/car-accelerate-sand-1-coal.json",
+      "bytes": 1269475
+    },
+    {
+      "path": "data/game/traces/car-accelerate-sand-1-nuclear-fuel.json",
+      "bytes": 1272398
+    },
+    {
+      "path": "data/game/traces/car-accelerate-sand-1-rocket-fuel.json",
+      "bytes": 1258326
+    },
+    {
+      "path": "data/game/traces/car-accelerate-sand-1-solid-fuel.json",
+      "bytes": 1270591
+    },
+    {
+      "path": "data/game/traces/car-accelerate-sand-1-wood.json",
+      "bytes": 1269475
+    },
+    {
+      "path": "data/game/traces/car-accelerate-volcanic-folds-coal.json",
+      "bytes": 632897
+    },
+    {
+      "path": "data/game/traces/car-accelerate-volcanic-soil-dark-coal.json",
+      "bytes": 635599
+    },
+    {
+      "path": "data/game/traces/car-accelerate-wetland-blue-slime-coal.json",
+      "bytes": 640460
+    },
+    {
+      "path": "data/game/traces/car-brake-reverse.json",
+      "bytes": 441043
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-0.json",
+      "bytes": 1018
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-1.json",
+      "bytes": 1020
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-10.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-100.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-101.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-102.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-103.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-104.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-105.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-106.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-107.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-108.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-109.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-11.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-110.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-111.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-112.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-113.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-114.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-115.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-116.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-117.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-118.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-119.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-12.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-120.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-121.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-122.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-123.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-124.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-125.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-126.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-127.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-128.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-129.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-13.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-130.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-131.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-132.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-133.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-134.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-135.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-136.json",
+      "bytes": 1013
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-137.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-138.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-139.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-14.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-140.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-141.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-142.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-143.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-144.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-145.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-146.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-147.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-148.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-149.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-15.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-150.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-151.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-152.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-153.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-154.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-155.json",
+      "bytes": 1009
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-156.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-157.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-158.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-159.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-16.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-160.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-161.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-162.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-163.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-164.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-165.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-166.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-167.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-168.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-169.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-17.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-170.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-171.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-172.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-173.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-174.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-175.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-176.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-177.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-178.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-179.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-18.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-180.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-181.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-182.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-183.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-184.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-185.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-186.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-187.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-188.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-189.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-19.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-190.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-191.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-192.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-193.json",
+      "bytes": 1024
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-194.json",
+      "bytes": 1024
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-195.json",
+      "bytes": 1020
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-196.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-197.json",
+      "bytes": 1024
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-198.json",
+      "bytes": 1024
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-199.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-2.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-20.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-200.json",
+      "bytes": 1008
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-21.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-22.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-23.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-24.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-25.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-26.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-27.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-28.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-29.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-3.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-30.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-31.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-32.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-33.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-34.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-35.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-36.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-37.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-38.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-39.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-4.json",
+      "bytes": 1020
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-40.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-41.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-42.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-43.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-44.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-45.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-46.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-47.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-48.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-49.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-5.json",
+      "bytes": 1016
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-50.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-51.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-52.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-53.json",
+      "bytes": 1013
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-54.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-55.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-56.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-57.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-58.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-59.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-6.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-60.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-61.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-62.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-63.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-64.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-65.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-66.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-67.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-68.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-69.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-7.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-70.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-71.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-72.json",
+      "bytes": 1011
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-73.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-74.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-75.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-76.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-77.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-78.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-79.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-8.json",
+      "bytes": 1012
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-80.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-81.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-82.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-83.json",
+      "bytes": 1019
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-84.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-85.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-86.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-87.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-88.json",
+      "bytes": 1017
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-89.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-9.json",
+      "bytes": 1020
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-90.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-91.json",
+      "bytes": 1013
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-92.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-93.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-94.json",
+      "bytes": 1023
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-95.json",
+      "bytes": 1021
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-96.json",
+      "bytes": 1018
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-97.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-98.json",
+      "bytes": 1022
+    },
+    {
+      "path": "data/game/traces/car-calibration-angle-grid-99.json",
+      "bytes": 1018
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0--1.json",
+      "bytes": 18434
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0-1.json",
+      "bytes": 18311
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0.05--1.json",
+      "bytes": 28701
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0.05-1.json",
+      "bytes": 28462
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0.2--1.json",
+      "bytes": 27912
+    },
+    {
+      "path": "data/game/traces/car-calibration-contact-turn-0.2-1.json",
+      "bytes": 27670
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.002--0.008.json",
+      "bytes": 1601
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.002-0.008.json",
+      "bytes": 1598
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.002-0.2.json",
+      "bytes": 1592
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.002-0.json",
+      "bytes": 1470
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.014--0.008.json",
+      "bytes": 1601
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.014-0.008.json",
+      "bytes": 1598
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.014-0.2.json",
+      "bytes": 1613
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.014-0.json",
+      "bytes": 1470
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.016--0.008.json",
+      "bytes": 1731
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.016-0.008.json",
+      "bytes": 1728
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.016-0.2.json",
+      "bytes": 1748
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.016-0.json",
+      "bytes": 1464
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.124--0.008.json",
+      "bytes": 1654
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.124-0.008.json",
+      "bytes": 1647
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.124-0.2.json",
+      "bytes": 1634
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.124-0.json",
+      "bytes": 1458
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.248--0.008.json",
+      "bytes": 1619
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.248-0.008.json",
+      "bytes": 1608
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.248-0.2.json",
+      "bytes": 1602
+    },
+    {
+      "path": "data/game/traces/car-calibration-snap-0.248-0.json",
+      "bytes": 1476
+    },
+    {
+      "path": "data/game/traces/car-calibration-turn-0.13.json",
+      "bytes": 40352
+    },
+    {
+      "path": "data/game/traces/car-calibration-turn-0.375.json",
+      "bytes": 40227
+    },
+    {
+      "path": "data/game/traces/car-calibration-turn-0.62.json",
+      "bytes": 40521
+    },
+    {
+      "path": "data/game/traces/car-calibration-turn-0.875.json",
+      "bytes": 40548
+    },
+    {
+      "path": "data/game/traces/car-coast.json",
+      "bytes": 1458282
+    },
+    {
+      "path": "data/game/traces/car-cross-oil-ocean.json",
+      "bytes": 318335
+    },
+    {
+      "path": "data/game/traces/car-gleba-deep-lake-0.125.json",
+      "bytes": 23150
+    },
+    {
+      "path": "data/game/traces/car-gleba-deep-lake-0.json",
+      "bytes": 21320
+    },
+    {
+      "path": "data/game/traces/car-impact-ashland-lichen-tree-0.1.json",
+      "bytes": 53796
+    },
+    {
+      "path": "data/game/traces/car-impact-ashland-lichen-tree-0.3.json",
+      "bytes": 55028
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.05-0.0625.json",
+      "bytes": 58224
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.05-0.json",
+      "bytes": 48984
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.2-0.0625.json",
+      "bytes": 55584
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.2-0.json",
+      "bytes": 45969
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.43-0.0625.json",
+      "bytes": 55079
+    },
+    {
+      "path": "data/game/traces/car-impact-big-rock-0.43-0.json",
+      "bytes": 45704
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.05-0.0625.json",
+      "bytes": 54250
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.05-0.json",
+      "bytes": 44498
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.2-0.0625.json",
+      "bytes": 48317
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.2-0.json",
+      "bytes": 39283
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.43-0.0625.json",
+      "bytes": 47597
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-0.43-0.json",
+      "bytes": 38394
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-fulgora-0.1.json",
+      "bytes": 41020
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-fulgora-0.3.json",
+      "bytes": 40066
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-gleba-0.1.json",
+      "bytes": 40759
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-gleba-0.3.json",
+      "bytes": 40116
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-vulcanus-0.1.json",
+      "bytes": 40762
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-vulcanus-0.3.json",
+      "bytes": 40119
+    },
+    {
+      "path": "data/game/traces/car-impact-crater-cliff-0.1.json",
+      "bytes": 40858
+    },
+    {
+      "path": "data/game/traces/car-impact-crater-cliff-0.3.json",
+      "bytes": 40105
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgoran-ruin-attractor-0.1.json",
+      "bytes": 49247
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgoran-ruin-attractor-0.3.json",
+      "bytes": 52302
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgoran-ruin-big-0.1.json",
+      "bytes": 47356
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgoran-ruin-big-0.3.json",
+      "bytes": 47252
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgurite-0.1.json",
+      "bytes": 47736
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgurite-0.3.json",
+      "bytes": 48014
+    },
+    {
+      "path": "data/game/traces/car-impact-funneltrunk-0.1.json",
+      "bytes": 47457
+    },
+    {
+      "path": "data/game/traces/car-impact-funneltrunk-0.3.json",
+      "bytes": 47977
+    },
+    {
+      "path": "data/game/traces/car-impact-hairyclubnub-0.1.json",
+      "bytes": 48131
+    },
+    {
+      "path": "data/game/traces/car-impact-hairyclubnub-0.3.json",
+      "bytes": 46711
+    },
+    {
+      "path": "data/game/traces/car-impact-huge-volcanic-rock-0.1.json",
+      "bytes": 47319
+    },
+    {
+      "path": "data/game/traces/car-impact-huge-volcanic-rock-0.3.json",
+      "bytes": 47394
+    },
+    {
+      "path": "data/game/traces/car-impact-iron-stromatolite-0.1.json",
+      "bytes": 47291
+    },
+    {
+      "path": "data/game/traces/car-impact-iron-stromatolite-0.3.json",
+      "bytes": 47604
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.05-0.0625.json",
+      "bytes": 58965
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.05-0.json",
+      "bytes": 49366
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.2-0.0625.json",
+      "bytes": 55579
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.2-0.json",
+      "bytes": 46612
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.43-0.0625.json",
+      "bytes": 63681
+    },
+    {
+      "path": "data/game/traces/car-impact-tree-02-0.43-0.json",
+      "bytes": 53897
+    },
+    {
+      "path": "data/game/traces/car-impact-vulcanus-chimney-0.1.json",
+      "bytes": 47767
+    },
+    {
+      "path": "data/game/traces/car-impact-vulcanus-chimney-0.3.json",
+      "bytes": 47491
+    },
+    {
+      "path": "data/game/traces/car-impact-water-cane-0.1.json",
+      "bytes": 54557
+    },
+    {
+      "path": "data/game/traces/car-impact-water-cane-0.3.json",
+      "bytes": 54823
+    },
+    {
+      "path": "data/game/traces/car-impact-yumako-tree-0.1.json",
+      "bytes": 53829
+    },
+    {
+      "path": "data/game/traces/car-impact-yumako-tree-0.3.json",
+      "bytes": 55063
+    },
+    {
+      "path": "data/game/traces/car-lava-0.125.json",
+      "bytes": 23125
+    },
+    {
+      "path": "data/game/traces/car-lava-0.json",
+      "bytes": 21295
+    },
+    {
+      "path": "data/game/traces/car-lava-hot-0.125.json",
+      "bytes": 23133
+    },
+    {
+      "path": "data/game/traces/car-lava-hot-0.json",
+      "bytes": 21303
+    },
+    {
+      "path": "data/game/traces/car-steer--0.15--1.json",
+      "bytes": 89355
+    },
+    {
+      "path": "data/game/traces/car-steer--0.15-1.json",
+      "bytes": 89038
+    },
+    {
+      "path": "data/game/traces/car-steer-0--1.json",
+      "bytes": 64292
+    },
+    {
+      "path": "data/game/traces/car-steer-0-1.json",
+      "bytes": 64050
+    },
+    {
+      "path": "data/game/traces/car-steer-0.005--1.json",
+      "bytes": 64304
+    },
+    {
+      "path": "data/game/traces/car-steer-0.005-1.json",
+      "bytes": 64062
+    },
+    {
+      "path": "data/game/traces/car-steer-0.05--1.json",
+      "bytes": 89272
+    },
+    {
+      "path": "data/game/traces/car-steer-0.05-1.json",
+      "bytes": 89058
+    },
+    {
+      "path": "data/game/traces/car-steer-0.25--1.json",
+      "bytes": 85749
+    },
+    {
+      "path": "data/game/traces/car-steer-0.25-1.json",
+      "bytes": 85070
+    },
+    {
+      "path": "data/game/traces/car-water-0.125.json",
+      "bytes": 23077
+    },
+    {
+      "path": "data/game/traces/car-water-0.json",
+      "bytes": 21151
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-dirt-1-coal.json",
+      "bytes": 1282960
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-dirt-1-nuclear-fuel.json",
+      "bytes": 1276850
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-dirt-1-rocket-fuel.json",
+      "bytes": 1286871
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-dirt-1-solid-fuel.json",
+      "bytes": 1287139
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-dirt-1-wood.json",
+      "bytes": 1282960
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-fulgoran-paving-coal.json",
+      "bytes": 641703
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-fulgoran-rock-coal.json",
+      "bytes": 640450
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-grass-1-coal.json",
+      "bytes": 1287599
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-grass-1-nuclear-fuel.json",
+      "bytes": 1276612
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-grass-1-rocket-fuel.json",
+      "bytes": 1282556
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-grass-1-solid-fuel.json",
+      "bytes": 1281505
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-grass-1-wood.json",
+      "bytes": 1287599
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-oil-ocean-deep-coal.json",
+      "bytes": 638060
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-oil-ocean-shallow-coal.json",
+      "bytes": 640458
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-sand-1-coal.json",
+      "bytes": 1283095
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-sand-1-nuclear-fuel.json",
+      "bytes": 1277287
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-sand-1-rocket-fuel.json",
+      "bytes": 1282374
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-sand-1-solid-fuel.json",
+      "bytes": 1286995
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-sand-1-wood.json",
+      "bytes": 1283095
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-volcanic-folds-coal.json",
+      "bytes": 639288
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-volcanic-soil-dark-coal.json",
+      "bytes": 641428
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-wetland-blue-slime-coal.json",
+      "bytes": 640770
+    },
+    {
+      "path": "data/game/traces/tank-brake-reverse.json",
+      "bytes": 443232
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0--1.json",
+      "bytes": 24041
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0-1.json",
+      "bytes": 23918
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0.05--1.json",
+      "bytes": 25394
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0.05-1.json",
+      "bytes": 25271
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0.2--1.json",
+      "bytes": 30618
+    },
+    {
+      "path": "data/game/traces/tank-calibration-contact-turn-0.2-1.json",
+      "bytes": 30376
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.002--0.008.json",
+      "bytes": 1606
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.002-0.008.json",
+      "bytes": 1603
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.002-0.2.json",
+      "bytes": 1600
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.002-0.json",
+      "bytes": 1478
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.014--0.008.json",
+      "bytes": 1738
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.014-0.008.json",
+      "bytes": 1735
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.014-0.2.json",
+      "bytes": 1750
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.014-0.json",
+      "bytes": 1478
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.016--0.008.json",
+      "bytes": 1736
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.016-0.008.json",
+      "bytes": 1733
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.016-0.2.json",
+      "bytes": 1756
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.016-0.json",
+      "bytes": 1472
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.124--0.008.json",
+      "bytes": 1659
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.124-0.008.json",
+      "bytes": 1652
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.124-0.2.json",
+      "bytes": 1641
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.124-0.json",
+      "bytes": 1466
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.248--0.008.json",
+      "bytes": 1624
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.248-0.008.json",
+      "bytes": 1613
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.248-0.2.json",
+      "bytes": 1610
+    },
+    {
+      "path": "data/game/traces/tank-calibration-snap-0.248-0.json",
+      "bytes": 1484
+    },
+    {
+      "path": "data/game/traces/tank-calibration-turn-0.13.json",
+      "bytes": 40544
+    },
+    {
+      "path": "data/game/traces/tank-calibration-turn-0.375.json",
+      "bytes": 39678
+    },
+    {
+      "path": "data/game/traces/tank-calibration-turn-0.62.json",
+      "bytes": 39800
+    },
+    {
+      "path": "data/game/traces/tank-calibration-turn-0.875.json",
+      "bytes": 39832
+    },
+    {
+      "path": "data/game/traces/tank-coast.json",
+      "bytes": 1487614
+    },
+    {
+      "path": "data/game/traces/tank-cross-oil-ocean.json",
+      "bytes": 318745
+    },
+    {
+      "path": "data/game/traces/tank-gleba-deep-lake-0.125.json",
+      "bytes": 22440
+    },
+    {
+      "path": "data/game/traces/tank-gleba-deep-lake-0.json",
+      "bytes": 21267
+    },
+    {
+      "path": "data/game/traces/tank-impact-ashland-lichen-tree-0.1.json",
+      "bytes": 51806
+    },
+    {
+      "path": "data/game/traces/tank-impact-ashland-lichen-tree-0.3.json",
+      "bytes": 51640
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-fulgora-0.1.json",
+      "bytes": 41633
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-fulgora-0.3.json",
+      "bytes": 40043
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-gleba-0.1.json",
+      "bytes": 40878
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-gleba-0.3.json",
+      "bytes": 40610
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-vulcanus-0.1.json",
+      "bytes": 40881
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-vulcanus-0.3.json",
+      "bytes": 40613
+    },
+    {
+      "path": "data/game/traces/tank-impact-crater-cliff-0.1.json",
+      "bytes": 41719
+    },
+    {
+      "path": "data/game/traces/tank-impact-crater-cliff-0.3.json",
+      "bytes": 40646
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgoran-ruin-attractor-0.1.json",
+      "bytes": 51964
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgoran-ruin-attractor-0.3.json",
+      "bytes": 51859
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgoran-ruin-big-0.1.json",
+      "bytes": 45002
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgoran-ruin-big-0.3.json",
+      "bytes": 51847
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgurite-0.1.json",
+      "bytes": 51929
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgurite-0.3.json",
+      "bytes": 51902
+    },
+    {
+      "path": "data/game/traces/tank-impact-funneltrunk-0.1.json",
+      "bytes": 51896
+    },
+    {
+      "path": "data/game/traces/tank-impact-funneltrunk-0.3.json",
+      "bytes": 51826
+    },
+    {
+      "path": "data/game/traces/tank-impact-hairyclubnub-0.1.json",
+      "bytes": 51911
+    },
+    {
+      "path": "data/game/traces/tank-impact-hairyclubnub-0.3.json",
+      "bytes": 51828
+    },
+    {
+      "path": "data/game/traces/tank-impact-huge-volcanic-rock-0.1.json",
+      "bytes": 45234
+    },
+    {
+      "path": "data/game/traces/tank-impact-huge-volcanic-rock-0.3.json",
+      "bytes": 51722
+    },
+    {
+      "path": "data/game/traces/tank-impact-iron-stromatolite-0.1.json",
+      "bytes": 51897
+    },
+    {
+      "path": "data/game/traces/tank-impact-iron-stromatolite-0.3.json",
+      "bytes": 51875
+    },
+    {
+      "path": "data/game/traces/tank-impact-vulcanus-chimney-0.1.json",
+      "bytes": 51918
+    },
+    {
+      "path": "data/game/traces/tank-impact-vulcanus-chimney-0.3.json",
+      "bytes": 51891
+    },
+    {
+      "path": "data/game/traces/tank-impact-water-cane-0.1.json",
+      "bytes": 51804
+    },
+    {
+      "path": "data/game/traces/tank-impact-water-cane-0.3.json",
+      "bytes": 51714
+    },
+    {
+      "path": "data/game/traces/tank-impact-yumako-tree-0.1.json",
+      "bytes": 51820
+    },
+    {
+      "path": "data/game/traces/tank-impact-yumako-tree-0.3.json",
+      "bytes": 51616
+    },
+    {
+      "path": "data/game/traces/tank-lava-0.125.json",
+      "bytes": 22415
+    },
+    {
+      "path": "data/game/traces/tank-lava-0.json",
+      "bytes": 21242
+    },
+    {
+      "path": "data/game/traces/tank-lava-hot-0.125.json",
+      "bytes": 22423
+    },
+    {
+      "path": "data/game/traces/tank-lava-hot-0.json",
+      "bytes": 21250
+    },
+    {
+      "path": "data/game/traces/tank-rock-0.1.json",
+      "bytes": 44180
+    },
+    {
+      "path": "data/game/traces/tank-rock-0.23.json",
+      "bytes": 50741
+    },
+    {
+      "path": "data/game/traces/tank-steer--0.15--1.json",
+      "bytes": 89863
+    },
+    {
+      "path": "data/game/traces/tank-steer--0.15-1.json",
+      "bytes": 89309
+    },
+    {
+      "path": "data/game/traces/tank-steer-0--1.json",
+      "bytes": 64776
+    },
+    {
+      "path": "data/game/traces/tank-steer-0-1.json",
+      "bytes": 63964
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.005--1.json",
+      "bytes": 83235
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.005-1.json",
+      "bytes": 82786
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.05--1.json",
+      "bytes": 89815
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.05-1.json",
+      "bytes": 88883
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.25--1.json",
+      "bytes": 89947
+    },
+    {
+      "path": "data/game/traces/tank-steer-0.25-1.json",
+      "bytes": 88882
+    },
+    {
+      "path": "data/game/traces/tank-trees-0.1.json",
+      "bytes": 65887
+    },
+    {
+      "path": "data/game/traces/tank-trees-0.23.json",
+      "bytes": 65949
+    },
+    {
+      "path": "data/game/traces/tank-water-0.125.json",
+      "bytes": 23687
+    },
+    {
+      "path": "data/game/traces/tank-water-0.json",
+      "bytes": 21180
+    }
+  ]
+}

@@ -76,6 +76,8 @@ class DistanceFieldConfig:
     tank_tree_cost: float = 4.0
     nest_zone_cost: float = 3.0
     nest_zone_margin: int = 2
+    # Slow-ground cost weight (docs/rl.md, "Distance field"); 0 = every open tile costs 1.
+    friction_cost: float = 0.0
 
 
 @dataclass
@@ -95,6 +97,8 @@ class PathPlannerConfig:
 @dataclass
 class EnvConfig:
     map_pool: str = "data/game/maps"
+    # Weighted pools ({pool, weight} tables, e.g. one per planet); replaces map_pool when set.
+    map_pools: list[dict[str, Any]] = field(default_factory=list)
     split: str = "train"
     decision_ticks: int = 4
     steer_levels: int = 1        # steering strengths per side; 1 = left/straight/right (9 actions)

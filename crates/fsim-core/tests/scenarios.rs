@@ -40,6 +40,7 @@ fn scenario_map(data: &Prototypes) -> Arc<MapData> {
     let raster = MapRaster::build(&world, data);
     Arc::new(MapData {
         pool_index: 0,
+        pool: 0,
         template: world,
         raster,
     })

@@ -143,6 +143,62 @@
       }
     },
     {
+      "path": "data/game/traces/car-accelerate-fulgoran-paving-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-accelerate-fulgoran-paving-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 1.7763568394002505e-15,
+          "rms": 6.775025847369149e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-accelerate-fulgoran-rock-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-accelerate-fulgoran-rock-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 3.552713678800501e-15,
+          "rms": 2.114923322268429e-15
+        }
+      }
+    },
+    {
       "path": "data/game/traces/car-accelerate-grass-1-coal.json",
       "report": {
         "first_position_error_tick": null,
@@ -283,6 +339,62 @@
       }
     },
     {
+      "path": "data/game/traces/car-accelerate-oil-ocean-deep-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-accelerate-oil-ocean-deep-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 2.498001805406602e-16,
+          "rms": 1.7563309281176186e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-accelerate-oil-ocean-shallow-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-accelerate-oil-ocean-shallow-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 3.552713678800501e-15,
+          "rms": 2.114923322268429e-15
+        }
+      }
+    },
+    {
       "path": "data/game/traces/car-accelerate-sand-1-coal.json",
       "report": {
         "first_position_error_tick": null,
@@ -419,6 +531,90 @@
         "speed": {
           "max": 4.107825191113079e-15,
           "rms": 2.594101804121691e-15
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-accelerate-volcanic-folds-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-accelerate-volcanic-folds-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 1.3322676295501878e-15,
+          "rms": 5.134907251952054e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-accelerate-volcanic-soil-dark-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-accelerate-volcanic-soil-dark-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 3.1086244689504383e-15,
+          "rms": 1.215894948196016e-15
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-accelerate-wetland-blue-slime-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-accelerate-wetland-blue-slime-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 3.608224830031759e-16,
+          "rms": 2.450336215519473e-16
         }
       }
     },
@@ -6947,6 +7143,146 @@
       }
     },
     {
+      "path": "data/game/traces/car-cross-oil-ocean.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-cross-oil-ocean",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 1501,
+        "speed": {
+          "max": 8.881784197001252e-16,
+          "rms": 2.814770655953938e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-gleba-deep-lake-0.125.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-gleba-deep-lake-0.125",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 2.9861972436597187e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-gleba-deep-lake-0.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-gleba-deep-lake-0",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 2.5739771126519542e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-ashland-lichen-tree-0.1.json",
+      "report": {
+        "first_position_error_tick": 75,
+        "health": {
+          "max": 0.012359619140625,
+          "rms": 0.008074729458089652
+        },
+        "name": "car-impact-ashland-lichen-tree-0.1",
+        "obstacle_health": {
+          "max": 0.900721549987793,
+          "rms": 0.13600206097974837
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.3125,
+          "rms": 0.19942284085598122
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.04864874059956546,
+          "rms": 0.00463397971127492
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-ashland-lichen-tree-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-ashland-lichen-tree-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 7.216449660063518e-16,
+          "rms": 3.0560957686083075e-16
+        }
+      }
+    },
+    {
       "path": "data/game/traces/car-impact-big-rock-0.05-0.0625.json",
       "report": {
         "first_position_error_tick": null,
@@ -7283,6 +7619,622 @@
       }
     },
     {
+      "path": "data/game/traces/car-impact-cliff-fulgora-0.1.json",
+      "report": {
+        "first_position_error_tick": 36,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-cliff-fulgora-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.05859375,
+          "rms": 0.025438892937613033
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.058811601719668545,
+          "rms": 0.004383252387045275
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-fulgora-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-cliff-fulgora-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 5.551115123125783e-17,
+          "rms": 8.972929363817348e-18
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-gleba-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-cliff-gleba-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 8.326672684688674e-17,
+          "rms": 1.5341024767661667e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-gleba-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-cliff-gleba-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 1.4743349930302682e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-vulcanus-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-cliff-vulcanus-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 8.326672684688674e-17,
+          "rms": 1.5341024767661667e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-cliff-vulcanus-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-cliff-vulcanus-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 1.4743349930302682e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-crater-cliff-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-crater-cliff-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 1.8364028031227432e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-crater-cliff-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-crater-cliff-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 1.4971942630845737e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgoran-ruin-attractor-0.1.json",
+      "report": {
+        "first_position_error_tick": 226,
+        "health": {
+          "max": 0.005615234375,
+          "rms": 0.0009008687690132168
+        },
+        "name": "car-impact-fulgoran-ruin-attractor-0.1",
+        "obstacle_health": {
+          "max": 0.41002655029296875,
+          "rms": 0.06357452170679452
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.06640625,
+          "rms": 0.03202350060595169
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.03422725174338077,
+          "rms": 0.0022325684355535215
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgoran-ruin-attractor-0.3.json",
+      "report": {
+        "first_position_error_tick": 24,
+        "health": {
+          "max": 0.014129638671875,
+          "rms": 0.008812631589416675
+        },
+        "name": "car-impact-fulgoran-ruin-attractor-0.3",
+        "obstacle_health": {
+          "max": 2.448444366455078,
+          "rms": 0.22054019888514018
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.15625,
+          "rms": 0.0939018317970794
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.06764014895220259,
+          "rms": 0.005588374934187527
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgoran-ruin-big-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.01220703125,
+          "rms": 0.004529362791908093
+        },
+        "name": "car-impact-fulgoran-ruin-big-0.1",
+        "obstacle_health": {
+          "max": 0.888427734375,
+          "rms": 0.28373603410658593
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.046875,
+          "rms": 0.014620180430824905
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.04821141383452479,
+          "rms": 0.0038086193934201377
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgoran-ruin-big-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-fulgoran-ruin-big-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 5.551115123125783e-17,
+          "rms": 9.659177928801861e-18
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgurite-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-fulgurite-0.1",
+        "obstacle_health": {
+          "max": 8.392333984375e-05,
+          "rms": 3.8690766927021805e-05
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.3877787807814457e-16,
+          "rms": 2.997722664298267e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-fulgurite-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-fulgurite-0.3",
+        "obstacle_health": {
+          "max": 8.392333984375e-05,
+          "rms": 6.095744761779835e-05
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 5.551115123125783e-17,
+          "rms": 1.0902854307228354e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-funneltrunk-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.005706787109375,
+          "rms": 0.0009269872965997139
+        },
+        "name": "car-impact-funneltrunk-0.1",
+        "obstacle_health": {
+          "max": 0.415008544921875,
+          "rms": 0.20232146407114415
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.03125,
+          "rms": 0.02818185240503635
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.03443427141118348,
+          "rms": 0.002218106410479853
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-funneltrunk-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-funneltrunk-0.3",
+        "obstacle_health": {
+          "max": 0.2999076843261719,
+          "rms": 0.1665368693644917
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 1.7620053920566432e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-hairyclubnub-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-hairyclubnub-0.1",
+        "obstacle_health": {
+          "max": 0.29986572265625,
+          "rms": 0.14625645140341073
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 2.2935444184832334e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-hairyclubnub-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-hairyclubnub-0.3",
+        "obstacle_health": {
+          "max": 0.29991912841796875,
+          "rms": 0.1665451333340806
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 1.7529111099557192e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-huge-volcanic-rock-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-huge-volcanic-rock-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 2.1640163092655526e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-huge-volcanic-rock-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-huge-volcanic-rock-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 1.5802897833173852e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-iron-stromatolite-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.005706787109375,
+          "rms": 0.0009269872965997139
+        },
+        "name": "car-impact-iron-stromatolite-0.1",
+        "obstacle_health": {
+          "max": 0.415008544921875,
+          "rms": 0.0689937190245705
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.03125,
+          "rms": 0.02818185240503635
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.03443427141118348,
+          "rms": 0.002218106410479853
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-iron-stromatolite-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-iron-stromatolite-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 1.7620053920566432e-17
+        }
+      }
+    },
+    {
       "path": "data/game/traces/car-impact-tree-02-0.05-0.0625.json",
       "report": {
         "first_position_error_tick": null,
@@ -7447,6 +8399,286 @@
         "speed": {
           "max": 1.1379786002407855e-15,
           "rms": 8.375170886140843e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-vulcanus-chimney-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-vulcanus-chimney-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 2.0434069629807515e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-vulcanus-chimney-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-vulcanus-chimney-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 1.5701433555656038e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-water-cane-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-water-cane-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 8.881784197001252e-16,
+          "rms": 4.3239500820898154e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-water-cane-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-water-cane-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 6.106226635438361e-16,
+          "rms": 2.680648498668736e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-yumako-tree-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-yumako-tree-0.1",
+        "obstacle_health": {
+          "max": 1.430511474609375e-06,
+          "rms": 3.6123704866870976e-07
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 4.5700607704396434e-08,
+          "rms": 5.448618073829115e-09
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-impact-yumako-tree-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-impact-yumako-tree-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 4.996003610813204e-16,
+          "rms": 1.5938348685034223e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-lava-0.125.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-lava-0.125",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 2.9861972436597187e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-lava-0.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-lava-0",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 2.5739771126519542e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-lava-hot-0.125.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-lava-hot-0.125",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 2.9861972436597187e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/car-lava-hot-0.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "car-lava-hot-0",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 1.1102230246251565e-16,
+          "rms": 2.5739771126519542e-17
         }
       }
     },
@@ -7927,6 +9159,62 @@
       }
     },
     {
+      "path": "data/game/traces/tank-accelerate-fulgoran-paving-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-accelerate-fulgoran-paving-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 1.6653345369377348e-15,
+          "rms": 1.056311058587992e-15
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-fulgoran-rock-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-accelerate-fulgoran-rock-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 1.304512053934559e-15,
+          "rms": 8.180277998002951e-16
+        }
+      }
+    },
+    {
       "path": "data/game/traces/tank-accelerate-grass-1-coal.json",
       "report": {
         "first_position_error_tick": null,
@@ -8067,6 +9355,62 @@
       }
     },
     {
+      "path": "data/game/traces/tank-accelerate-oil-ocean-deep-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-accelerate-oil-ocean-deep-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 2.6645352591003757e-15,
+          "rms": 8.091019673925133e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-oil-ocean-shallow-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-accelerate-oil-ocean-shallow-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 1.304512053934559e-15,
+          "rms": 8.180277998002951e-16
+        }
+      }
+    },
+    {
       "path": "data/game/traces/tank-accelerate-sand-1-coal.json",
       "report": {
         "first_position_error_tick": null,
@@ -8203,6 +9547,90 @@
         "speed": {
           "max": 7.494005416219807e-16,
           "rms": 2.384086671377983e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-volcanic-folds-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-accelerate-volcanic-folds-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 4.996003610813204e-16,
+          "rms": 2.3123200689436845e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-volcanic-soil-dark-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-accelerate-volcanic-soil-dark-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 6.661338147750939e-16,
+          "rms": 3.0139093592155074e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-accelerate-wetland-blue-slime-coal.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-accelerate-wetland-blue-slime-coal",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 3001,
+        "speed": {
+          "max": 4.718447854656915e-16,
+          "rms": 1.7346856711945483e-16
         }
       }
     },
@@ -9099,6 +10527,1042 @@
         "speed": {
           "max": 7.216449660063518e-16,
           "rms": 1.2541266437391876e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-cross-oil-ocean.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-cross-oil-ocean",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 1501,
+        "speed": {
+          "max": 2.9983396450966593e-05,
+          "rms": 6.005518695771651e-06
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-gleba-deep-lake-0.125.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-gleba-deep-lake-0.125",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 4.440892098500626e-16,
+          "rms": 1.5668482823505853e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-gleba-deep-lake-0.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-gleba-deep-lake-0",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 3.885780586188048e-16,
+          "rms": 1.0537335154851255e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-ashland-lichen-tree-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-ashland-lichen-tree-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 2.7755575615628914e-16,
+          "rms": 1.4424159381666746e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-ashland-lichen-tree-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-ashland-lichen-tree-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 7.771561172376096e-16,
+          "rms": 4.767210190477412e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-fulgora-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-cliff-fulgora-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 6.938893903907228e-17,
+          "rms": 1.1724003650252e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-fulgora-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-cliff-fulgora-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 5.551115123125783e-17,
+          "rms": 1.1307633214867475e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-gleba-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-cliff-gleba-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.015625,
+          "rms": 0.014090926202518174
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.01577976552424021,
+          "rms": 0.0010164640525490713
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-gleba-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-cliff-gleba-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 2.220446049250313e-16,
+          "rms": 3.868128472487727e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-vulcanus-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-cliff-vulcanus-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.015625,
+          "rms": 0.014090926202518174
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.01577976552424021,
+          "rms": 0.0010164640525490713
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-cliff-vulcanus-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-cliff-vulcanus-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 2.220446049250313e-16,
+          "rms": 3.868128472487727e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-crater-cliff-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-crater-cliff-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.942890293094024e-16,
+          "rms": 5.814779279500173e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-crater-cliff-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-crater-cliff-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 2.220446049250313e-16,
+          "rms": 4.1238599794103605e-17
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgoran-ruin-attractor-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-fulgoran-ruin-attractor-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 3.608224830031759e-16,
+          "rms": 1.139002014890483e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgoran-ruin-attractor-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-fulgoran-ruin-attractor-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 6.38378239159465e-16,
+          "rms": 3.989648048221078e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgoran-ruin-big-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-fulgoran-ruin-big-0.1",
+        "obstacle_health": {
+          "max": 4.968017578125,
+          "rms": 0.8204872522576867
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.015625,
+          "rms": 0.014018849380987193
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.015760791857996472,
+          "rms": 0.001015241851265269
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgoran-ruin-big-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-fulgoran-ruin-big-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 4.440892098500626e-16,
+          "rms": 3.0097215311847804e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgurite-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-fulgurite-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 2.498001805406602e-16,
+          "rms": 1.0435466049426536e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-fulgurite-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-fulgurite-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 3.0531133177191805e-16,
+          "rms": 1.3909997570854474e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-funneltrunk-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-funneltrunk-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 2.3592239273284576e-16,
+          "rms": 1.0821189347796085e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-funneltrunk-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-funneltrunk-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 9.992007221626409e-16,
+          "rms": 5.987816208887075e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-hairyclubnub-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-hairyclubnub-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 2.7755575615628914e-16,
+          "rms": 1.8353581062695666e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-hairyclubnub-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-hairyclubnub-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 9.992007221626409e-16,
+          "rms": 5.987816208887075e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-huge-volcanic-rock-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-huge-volcanic-rock-0.1",
+        "obstacle_health": {
+          "max": 4.97998046875,
+          "rms": 0.8208742593839327
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.015625,
+          "rms": 0.013946400061980033
+        },
+        "samples": 241,
+        "speed": {
+          "max": 0.01577976552424021,
+          "rms": 0.0010164640525490713
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-huge-volcanic-rock-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-huge-volcanic-rock-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 5.551115123125783e-16,
+          "rms": 2.9822475815716943e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-iron-stromatolite-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-iron-stromatolite-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 3.0531133177191805e-16,
+          "rms": 1.676692673111662e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-iron-stromatolite-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-iron-stromatolite-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 6.661338147750939e-16,
+          "rms": 3.4872638171163594e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-vulcanus-chimney-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-vulcanus-chimney-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 5.273559366969494e-16,
+          "rms": 2.671076829995832e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-vulcanus-chimney-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-vulcanus-chimney-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 4.440892098500626e-16,
+          "rms": 2.0027602919676457e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-water-cane-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-water-cane-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 2.7755575615628914e-16,
+          "rms": 1.4486077793268696e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-water-cane-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-water-cane-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 1.0547118733938987e-15,
+          "rms": 5.68640176690656e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-yumako-tree-0.1.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-yumako-tree-0.1",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 4.440892098500626e-16,
+          "rms": 2.1631113692073434e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-impact-yumako-tree-0.3.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-impact-yumako-tree-0.3",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 241,
+        "speed": {
+          "max": 6.106226635438361e-16,
+          "rms": 2.6696553320065195e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-lava-0.125.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-lava-0.125",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 4.440892098500626e-16,
+          "rms": 1.5668482823505853e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-lava-0.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-lava-0",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 3.885780586188048e-16,
+          "rms": 1.0537335154851255e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-lava-hot-0.125.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-lava-hot-0.125",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 4.440892098500626e-16,
+          "rms": 1.5668482823505853e-16
+        }
+      }
+    },
+    {
+      "path": "data/game/traces/tank-lava-hot-0.json",
+      "report": {
+        "first_position_error_tick": null,
+        "health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "name": "tank-lava-hot-0",
+        "obstacle_health": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "orientation": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "position": {
+          "max": 0.0,
+          "rms": 0.0
+        },
+        "samples": 121,
+        "speed": {
+          "max": 3.885780586188048e-16,
+          "rms": 1.0537335154851255e-16
         }
       }
     },

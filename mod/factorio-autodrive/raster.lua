@@ -5,7 +5,9 @@ local bor, band = bit32.bor, bit32.band
 local function shape(entity)
   local box, orientation = entity.box, entity.orientation or 0
   if entity.kind == "cliff" then
-    local cliff = assert(geometry.cliffs[entity.cliff_orientation], "Unknown cliff orientation")
+    -- Planet cliffs with their own geometry (crater cliffs) are listed by name.
+    local orientations = geometry.other_cliffs and geometry.other_cliffs[entity.name] or geometry.cliffs
+    local cliff = assert(orientations[entity.cliff_orientation], "Unknown cliff orientation")
     box, orientation = cliff.collision_box, cliff.orientation
   end
   local c, s = math.cos(orientation * 2 * math.pi), math.sin(orientation * 2 * math.pi)
@@ -22,9 +24,13 @@ local function intersects(b,x,y)
   if math.abs(-dx*b.s+dy*b.c) >= b.hy+0.5*(ac+as)-1e-9 then return false end
   return true
 end
-function M.build(x0,y0,tiles,entities)
-  local block = {x0=x0,y0=y0,mask={},nests={}}
-  for i = 1,256 do block.mask[i] = tiles[i] and 17 or 0 end
+-- `territory` marks a whole block as zone (demolisher territory). `friction` holds
+-- vehicle_friction_modifier tenths per tile (10 when omitted).
+function M.build(x0,y0,tiles,entities,territory,friction)
+  local block = {x0=x0,y0=y0,mask={},nests={},territory=territory or false,friction=friction}
+  for i = 1,256 do
+    block.mask[i] = (tiles[i] and 17 or 0) + ((territory and tiles[i] ~= "offmap") and 32 or 0)
+  end
   for _, e in ipairs(entities) do
     if e.kind == "cliff" or (e.health or 1) > 0 then
       local b = shape(e)
@@ -70,10 +76,20 @@ function M.known_mask(grid,x,y)
   if not block then return 0 end
   return block.mask[(y-block.y0)*16+x-block.x0+1]
 end
-function M.in_zone(grid,x,y)
+local function block_at(grid,x,y)
   local row = grid.rows and grid.rows[math.floor(y/16)]
-  local block = grid.rows and row and row[math.floor(x/16)] or
+  return grid.rows and row and row[math.floor(x/16)] or
     (not grid.rows and grid.blocks[M.key(x,y)])
+end
+-- Friction modifier in tenths at a tile; 10 (modifier 1) where unknown.
+function M.friction(grid,x,y)
+  local block = block_at(grid,x,y)
+  if not block or not block.friction then return 10 end
+  return block.friction[(y-block.y0)*16+x-block.x0+1]
+end
+function M.in_zone(grid,x,y)
+  local block = block_at(grid,x,y)
+  if block and block.territory then return 1 end
   if block then
     for _, n in ipairs(block.nests) do
       if (x-n.x)^2+(y-n.y)^2 <= geometry.nest_radius^2 then return 1 end

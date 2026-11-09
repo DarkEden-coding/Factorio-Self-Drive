@@ -37,13 +37,44 @@ function M.dirty(grid,position)
     end
   end
 end
+-- Tile and obstacle facts by prototype name. Cars and tanks share the default car
+-- collision mask; anything meeting it blocks them, like lava or Gleba's deep lakes.
+local blocks_cache, friction_cache = {}, {}
+local function blocks_vehicles(prototype)
+  local cached = blocks_cache[prototype.name]
+  if cached == nil then
+    local car = prototypes.entity["car"].collision_mask.layers
+    cached = false
+    for layer in pairs(prototype.collision_mask.layers) do
+      if car[layer] then cached = true; break end
+    end
+    blocks_cache[prototype.name] = cached
+  end
+  return cached
+end
+-- vehicle_friction_modifier in tenths, as the simulator raster stores it.
+local function friction_tenths(tile)
+  local cached = friction_cache[tile.name]
+  if not cached then
+    cached = math.max(1, math.min(255, math.floor(tile.prototype.vehicle_friction_modifier * 10 + 0.5)))
+    friction_cache[tile.name] = cached
+  end
+  return cached
+end
+local kinds = {tree="tree",plant="tree",["simple-entity"]="rock",["lightning-attractor"]="rock",
+  cliff="cliff",["unit-spawner"]="nest"}
 local function build(grid,surface,next)
   local x0,y0 = next.x,next.y
-  local tiles,entities = {},{}
+  local tiles,friction,entities = {},{},{}
   for y = y0,y0+15 do
     for x = x0,x0+15 do
       local tile = surface.get_tile(x,y)
-      tiles[#tiles+1] = tile.name == "out-of-map" and "offmap" or tile.collides_with("water_tile")
+      if tile.name == "out-of-map" then
+        tiles[#tiles+1], friction[#friction+1] = "offmap", 10
+      else
+        tiles[#tiles+1] = blocks_vehicles(tile.prototype)
+        friction[#friction+1] = friction_tenths(tile)
+      end
     end
   end
   -- Only nest zones need the wide query. Querying every tree in that area
@@ -52,18 +83,20 @@ local function build(grid,surface,next)
   local function collect(types,reach)
     for _, entity in pairs(surface.find_entities_filtered({
       area={{x0-reach,y0-reach},{x0+16+reach,y0+16+reach}},type=types})) do
-      if entity.type ~= "simple-entity" or entity.prototype.count_as_rock_for_filtered_deconstruction then
-        entities[#entities+1] = {x=entity.position.x,y=entity.position.y,
-          kind=({tree="tree",["simple-entity"]="rock",cliff="cliff",["unit-spawner"]="nest"})[entity.type],
+      if blocks_vehicles(entity.prototype) then
+        entities[#entities+1] = {x=entity.position.x,y=entity.position.y,name=entity.name,
+          kind=kinds[entity.type],
           orientation=entity.orientation,health=entity.health,
           box=box(entity.prototype.collision_box),
           cliff_orientation=entity.type == "cliff" and entity.cliff_orientation or nil}
       end
     end
   end
-  collect({"tree","simple-entity","cliff"},8)
+  collect({"tree","plant","simple-entity","cliff","lightning-attractor"},8)
   collect({"unit-spawner"},raster.nest_radius+8)
-  local block = raster.build(x0,y0,tiles,entities)
+  -- Demolisher territory (Vulcanus) counts as a nest zone; a block lies in one chunk.
+  local territory = surface.get_territory_for_chunk({math.floor(x0/32),math.floor(y0/32)}) ~= nil
+  local block = raster.build(x0,y0,tiles,entities,territory,friction)
   grid.blocks[next.key] = block
   local bx,by=math.floor(x0/16),math.floor(y0/16)
   grid.rows[by]=grid.rows[by] or {}

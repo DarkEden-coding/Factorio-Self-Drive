@@ -82,7 +82,9 @@ end
 
 local function new_plan(s,from,target,final,margin)
   local stats = s.stats
-  local f = field.new(from,target,stats.half_width,stats.tank_driving,nil,margin,field_options)
+  local options = {terrain_friction_modifier=stats.terrain_friction_modifier}
+  for k,v in pairs(field_options) do options[k]=v end
+  local f = field.new(from,target,stats.half_width,stats.tank_driving,nil,margin,options)
   grid.ensure(s.grid,f.x0-3,f.y0-3,f.x1+3,f.y1+3,false)
   return {from=from,target=target,aim=target,final=final,margin=margin,field=f,phase="grid",attempt=0}
 end
@@ -107,7 +109,8 @@ local function step_plan(s,p,probe)
     p.phase = "field"
   end
   if p.phase == "field" then
-    if not field.slice(p.field,function(x,y) return raster.mask(s.grid,x,y) end,FIELD_BUDGET) then return end
+    if not field.slice(p.field,function(x,y) return raster.mask(s.grid,x,y) end,FIELD_BUDGET,
+      function(x,y) return raster.friction(s.grid,x,y) end) then return end
     if field.sample(p.field,probe.x,probe.y) == math.huge then p.phase = "unreachable"; return "failed" end
     p.phase = "ready"
     return "ready"

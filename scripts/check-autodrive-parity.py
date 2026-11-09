@@ -41,16 +41,18 @@ def decode(path):
     entities = []
     prototypes = json.loads((ROOT/'data/prototypes.json').read_text())
     boxes = {e['name']:e for e in prototypes['entities']}
+    # Demolisher territory as simulator tile coordinates of each chunk's corner.
+    territory = {(cx*32-offset[0], cy*32-offset[1]) for cx, cy in h.get('zone_chunks', [])}
     for i in range(h['entity_count']):
         name,x,y,orientation,cliff,health = struct.unpack_from('<HdddHf',body,2*w*height+i*32)
         name,kind = h['entity_names'][name]
         p=boxes.get(name) or boxes[{'tree':'tree-02','nest':'biter-spawner','rock':'big-rock'}.get(kind,'big-rock')]
-        entities.append(dict(x=x-offset[0],y=y-offset[1],orientation=orientation,kind=kind,
+        entities.append(dict(x=x-offset[0],y=y-offset[1],orientation=orientation,kind=kind,name=name,
             box=p['collision_box'],health=health if math.isfinite(health) else 1,
             cliff_orientation=h['cliff_names'][cliff] if cliff!=65535 else None))
     tiles = body[:w*height]
     bounds=dict(x0=-w//2,y0=-height//2,x1=w//2,y1=height//2)
-    return h,tiles,entities,bounds
+    return h,tiles,entities,bounds,territory
 
 
 def stats(data, vehicle, fuel, tile):
@@ -65,11 +67,13 @@ def stats(data, vehicle, fuel, tile):
         top_speed=math.sqrt(2*power/(60*p['weight'])*r*r/(1-r*r))/60,
         half_width=max(abs(p['collision_box'][0][0]),abs(p['collision_box'][1][0])),
         half_length=max(abs(p['collision_box'][0][1]),abs(p['collision_box'][1][1])),
-        fuel_acceleration=a,fuel_top_speed=t,tile_friction=tile)
+        fuel_acceleration=a,fuel_top_speed=t,tile_friction=tile,
+        terrain_friction_modifier=p['terrain_friction_modifier'])
 
 
 def fixture(path, result, data):
-    h,tiles,entities,bounds=decode(path)
+    h,tiles,entities,bounds,territory=decode(path)
+    by_name={t['name']:t for t in data['tiles']}
     v,e=result['state'],result['episode']
     target=result['target']
     state=dict(x=v['x'],y=v['y'],orientation=v['orientation'],speed=v['speed'],health=v['health'],
@@ -88,13 +92,19 @@ def fixture(path, result, data):
     x1, y1 = max(vx+MAP_REACH,f['x_min']+f['width']+3), max(vy+MAP_REACH,f['y_min']+f['height']+3)
     for y in range(y0//16*16,(y1+16)//16*16,16):
         for x in range(x0//16*16,(x1+16)//16*16,16):
-            water=[]
+            water,tenths=[],[]
             for dy in range(16):
                 for dx in range(16):
                     name=tile(x+dx,y+dy)
-                    water.append('offmap' if name=='offmap' else name in ('water','deepwater','out-of-map'))
+                    known=by_name.get(name)
+                    water.append('offmap' if name=='offmap' else (known['is_water'] if known else True))
+                    modifier=known['vehicle_friction_modifier'] if known else 1
+                    tenths.append(10 if name=='offmap' else max(1,min(255,math.floor(modifier*10+0.5))))
             nearby=[a for a in entities if x-26<=a['x']<x+42 and y-26<=a['y']<y+42]
-            blocks.append(dict(x=x,y=y,tiles=water,entities=nearby))
+            # A 16-tile block lies in one 32-tile chunk; territory needs the block on the map.
+            chunk=(x-(x-bounds['x0'])%32, y-(y-bounds['y0'])%32)
+            in_territory=chunk in territory and bounds['x0']<=x<bounds['x1'] and bounds['y0']<=y<bounds['y1']
+            blocks.append(dict(x=x,y=y,tiles=water,entities=nearby,territory=in_territory,friction=tenths))
     route=[dict(x=a,y=b) for a,b in zip(result['route'][::2],result['route'][1::2])]
     return dict(state=state,stats=stats(data,v['kind'],v['fuel'],friction),blocks=blocks,bounds=bounds,route=route,field=f)
 
@@ -109,6 +119,8 @@ def main():
     data=json.loads((ROOT/'data/prototypes.json').read_text())
     maps=[ROOT/'crates/fsim-core/tests/fixtures/nauvis-origin.fsmap']
     maps += sorted((ROOT/'data/game/maps').glob('*.fsmap'))[:2]
+    for planet in ('vulcanus','gleba','fulgora'):
+        maps += sorted((ROOT/f'data/game/maps-{planet}').glob('*.fsmap'))[:1]
     cases=[]
     for path in maps:
         for vehicle in ('car','tank'):

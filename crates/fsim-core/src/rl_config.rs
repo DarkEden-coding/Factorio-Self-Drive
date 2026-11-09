@@ -332,6 +332,9 @@ pub const HEADING_LOOKAHEAD: f64 = 8.0;
 #[serde(default, deny_unknown_fields)]
 pub struct RlConfig {
     pub map_pool: String,
+    /// Several pools (e.g. one per planet), each drawn with its weight. When
+    /// set, `map_pool` is ignored.
+    pub map_pools: Vec<PoolChoice>,
     pub split: Split,
     pub mode: Mode,
     pub decision_ticks: u32,
@@ -353,11 +356,35 @@ pub struct RlConfig {
     pub arrival: ArrivalRules,
 }
 
+/// One map pool of a weighted mix (`RlConfig::map_pools`). Weights count
+/// episodes: a reset picks a pool by weight, then one of its maps uniformly.
+#[derive(Clone, Debug, Deserialize, Serialize, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct PoolChoice {
+    pub pool: String,
+    pub weight: f64,
+}
+
+impl RlConfig {
+    /// `(pool path, weight)` for every pool, `map_pool` alone when no mix is set.
+    pub fn pools(&self) -> Vec<(String, f64)> {
+        if self.map_pools.is_empty() {
+            vec![(self.map_pool.clone(), 1.0)]
+        } else {
+            self.map_pools
+                .iter()
+                .map(|p| (p.pool.clone(), p.weight))
+                .collect()
+        }
+    }
+}
+
 impl Default for RlConfig {
     fn default() -> Self {
         let rules = EpisodeRules::default();
         Self {
             map_pool: "data/game/maps".into(),
+            map_pools: Vec::new(),
             split: Split::Train,
             mode: rules.mode,
             decision_ticks: rules.decision_ticks,
@@ -397,6 +424,14 @@ impl RlConfig {
     pub fn from_json(json: &str) -> Result<Self, String> {
         let config: Self = serde_json::from_str(json).map_err(|e| e.to_string())?;
         config.rules().validate()?;
+        if config
+            .map_pools
+            .iter()
+            .any(|p| !(p.weight.is_finite() && p.weight >= 0.0))
+            || (!config.map_pools.is_empty() && config.map_pools.iter().all(|p| p.weight == 0.0))
+        {
+            return Err("map_pools weights must be finite, nonnegative and not all zero".into());
+        }
         validate_target(&config.target)?;
         if config.vehicle_mix.is_empty()
             || config.vehicle_mix.iter().any(|v| !nonnegative(v.weight))

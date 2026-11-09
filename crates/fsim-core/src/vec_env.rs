@@ -28,7 +28,10 @@ const EPISODE_ATTEMPTS: usize = 32;
 
 /// A loaded pool map shared by all envs.
 pub struct MapData {
+    /// Index over all configured pools: entries of earlier pools come first.
     pub pool_index: usize,
+    /// Which of `RlConfig::pools()` the map came from.
+    pub pool: usize,
     pub template: World,
     pub raster: MapRaster,
 }
@@ -339,6 +342,8 @@ pub enum OwnedActions {
 struct Shared<'a> {
     data: &'a Prototypes,
     maps: &'a [Arc<MapData>],
+    /// Weight per pool group; empty for a single pool.
+    pool_weights: &'a [f64],
     config: &'a RlConfig,
     rules: &'a EpisodeRules,
     vehicles: &'a [(usize, usize)],
@@ -412,7 +417,7 @@ impl Env {
     fn try_new_episode(&mut self, shared: &Shared<'_>, scenario: &Scenario) -> Result<(), String> {
         let mut last_error = String::new();
         for _ in 0..EPISODE_ATTEMPTS {
-            let map = shared.maps[self.rng.gen_range(0..shared.maps.len())].clone();
+            let map = pick_map(&mut self.rng, shared.maps, shared.pool_weights).clone();
             let choice = weighted_pick(
                 &mut self.rng,
                 shared.config.vehicle_mix.iter().map(|v| v.weight),
@@ -712,6 +717,7 @@ pub struct VecEnv {
     rules: EpisodeRules,
     data: Arc<Prototypes>,
     maps: Vec<Arc<MapData>>,
+    pool_weights: Vec<f64>,
     vehicles: Vec<(usize, usize)>,
     envs: Vec<Env>,
     recording: bool,
@@ -725,22 +731,30 @@ impl VecEnv {
         num_envs: usize,
         seed: u64,
     ) -> Result<Self, String> {
-        let pool = MapPool::load(&config.map_pool, seed)?;
-        let indices = pool.split_indices(config.split);
-        if indices.is_empty() {
-            return Err(format!("map pool has no {:?} maps", config.split));
-        }
-        let loaded = map_tasks(indices, |index| {
-            pool.map(index, &data).map(|(world, _)| {
-                let raster = MapRaster::build(&world, &data);
-                Arc::new(MapData {
-                    pool_index: index,
-                    template: world,
-                    raster,
+        let mut maps = Vec::new();
+        let mut offset = 0;
+        for (group, (path, weight)) in config.pools().into_iter().enumerate() {
+            let pool = MapPool::load(&path, seed)?;
+            let indices = pool.split_indices(config.split);
+            if indices.is_empty() && weight > 0.0 {
+                return Err(format!("map pool {path} has no {:?} maps", config.split));
+            }
+            let loaded = map_tasks(indices, |index| {
+                pool.map(index, &data).map(|(world, _)| {
+                    let raster = MapRaster::build(&world, &data);
+                    Arc::new(MapData {
+                        pool_index: offset + index,
+                        pool: group,
+                        template: world,
+                        raster,
+                    })
                 })
-            })
-        });
-        let maps = loaded.into_iter().collect::<Result<Vec<_>, _>>()?;
+            });
+            for map in loaded {
+                maps.push(map?);
+            }
+            offset += pool.entries.len();
+        }
         Self::with_maps(config, data, maps, num_envs, seed)
     }
 
@@ -769,11 +783,18 @@ impl VecEnv {
                 data.fuel_index(&choice.fuel)?,
             ));
         }
+        let pools = config.pools();
+        let pool_weights = if pools.len() > 1 {
+            pools.iter().map(|p| p.1).collect()
+        } else {
+            Vec::new()
+        };
         let mut env = Self {
             config,
             rules,
             data,
             maps,
+            pool_weights,
             vehicles,
             envs: Vec::new(),
             recording: false,
@@ -792,6 +813,7 @@ impl VecEnv {
         let shared = Shared {
             data: &self.data,
             maps: &self.maps,
+            pool_weights: &self.pool_weights,
             config: &self.config,
             rules: &self.rules,
             vehicles: &self.vehicles,
@@ -971,6 +993,33 @@ impl VecEnv {
 }
 
 /// Index drawn with probability proportional to its weight.
+/// A uniform map, or with several pools a pool by weight and then one of its
+/// maps uniformly. A single pool draws once, as before pools could be mixed.
+fn pick_map<'a>(
+    rng: &mut Pcg32,
+    maps: &'a [Arc<MapData>],
+    pool_weights: &[f64],
+) -> &'a Arc<MapData> {
+    if pool_weights.is_empty() {
+        return &maps[rng.gen_range(0..maps.len())];
+    }
+    // Pools without maps in this split can't be drawn.
+    let present: Vec<f64> = pool_weights
+        .iter()
+        .enumerate()
+        .map(|(g, w)| {
+            if maps.iter().any(|m| m.pool == g) {
+                *w
+            } else {
+                0.0
+            }
+        })
+        .collect();
+    let group = weighted_pick(rng, present.iter().copied());
+    let members: Vec<&Arc<MapData>> = maps.iter().filter(|m| m.pool == group).collect();
+    members[rng.gen_range(0..members.len())]
+}
+
 fn weighted_pick(rng: &mut Pcg32, weights: impl Iterator<Item = f64> + Clone) -> usize {
     let total: f64 = weights.clone().sum();
     let mut pick = rng.gen::<f64>() * total;

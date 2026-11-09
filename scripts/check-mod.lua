@@ -1,6 +1,7 @@
 -- Offline checks for the data-stage companion and normalization. No engine emulation.
 package.path = "mod/fsim-export/?.lua;" .. package.path
 local normalize = require("normalize")
+script = {active_mods = {base = "2.1.24"}}
 helpers = {table_to_json = function() return '{"obstacles":{},"resistances":{},"active_mods":{}}' end}
 assert(normalize.json({}) == '{"obstacles":[],"resistances":[],"active_mods":{}}')
 local routed
@@ -62,7 +63,8 @@ local function entity(name)
     consumption = 2500, braking_force = 3000, friction_force = 0.002,
     weight = 700, effectivity = 1, rotation_speed = 0.01, rotation_snap_angle = 0.01,
     terrain_friction_modifier = 1, energy_per_hit_point = 1, tank_driving = false,
-    map_color = {r = 1, g = 0.5, b = 0}}
+    map_color = {r = 1, g = 0.5, b = 0},
+    collision_mask = {layers = {player = true, train = true, car = true, is_object = true}}}
 end
 for _, name in ipairs(catalog.vehicles) do prototypes.entity[name] = entity(name) end
 for _, name in ipairs(catalog.entities) do prototypes.entity[name] = entity(name) end
@@ -71,7 +73,7 @@ for _, name in ipairs(catalog.fuels) do prototypes.item[name] = {
   fuel_value = 4000000, fuel_acceleration_multiplier = 1, fuel_top_speed_multiplier = 1} end
 for _, name in ipairs(catalog.tiles) do prototypes.tile[name] = {
   map_color = {r = 1, g = 0.5, b = 0}, vehicle_friction_modifier = 1.6,
-  collision_mask = {layers = {ground_tile = true}}} end
+  collision_mask = {layers = name:find("water") and {water_tile = true, player = true} or {ground_tile = true}}} end
 script = {active_mods = {base = "2.1.23", ["fsim-export"] = "0.1.0"}}
 local exported
 helpers = {game_version = "2.1.23", table_to_json = function(value)
@@ -87,6 +89,9 @@ assert(exported.schema_version == 2)
 assert(not exported.vehicles[1].immune_to_all_impacts)
 assert(exported.vehicles[2].immune_to_all_impacts)
 assert(exported.source.game_version == "2.1.23")
+for _, tile in ipairs(exported.tiles) do
+  assert(tile.is_water == (tile.name == "water" or tile.name == "deepwater"), "tile blocking follows the car mask")
+end
 assert(exported.vehicles[1].consumption == 150000)
 assert(exported.vehicles[1].braking_power == 180000)
 assert(exported.vehicles[1].resistances[1].percent == 25)

@@ -46,8 +46,12 @@ def policy_spec_hash(spec: dict, config: Config) -> str:
 
 def env_config_json(config: Config, split: str | None = None) -> str:
     env = dataclasses.asdict(config.env)
-    pool = Path(env["map_pool"])
-    env["map_pool"] = str(pool if pool.is_absolute() else REPO_ROOT / pool)
+    def resolve(path: str) -> str:
+        pool = Path(path)
+        return str(pool if pool.is_absolute() else REPO_ROOT / pool)
+
+    env["map_pool"] = resolve(env["map_pool"])
+    env["map_pools"] = [dict(p, pool=resolve(p["pool"])) for p in env["map_pools"]]
     env["mode"] = config.model.kind
     if split is not None:
         env["split"] = split
