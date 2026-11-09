@@ -50,6 +50,12 @@ def run(args,temp):
     # Install verification hooks only in the disposable copy of the mod.
     fixtures = ROOT/'scripts/fixtures/autodrive'
     shutil.copyfile(fixtures/'test-runner.lua',staged/'test-runner.lua')
+    if args.trips:
+        # Reachable trips from scripts/planet-trips.mjs replace the runner's random ones.
+        sys.path.insert(0,str(ROOT/'scripts'))
+        spec=importlib.util.spec_from_file_location('build_weights',ROOT/'scripts/build-autodrive-weights.py')
+        weights=importlib.util.module_from_spec(spec);spec.loader.exec_module(weights)
+        (staged/'test-trips.lua').write_text('return '+weights.lua(json.loads(args.trips.read_text()))+'\n')
     with (staged/'control.lua').open('a') as control:
         control.write('\n'+(fixtures/'control.lua').read_text())
     companion=mods/'factorio-autodrive-verify';companion.mkdir()
@@ -79,7 +85,9 @@ end)
     base=[args.factorio,'-c',config,'--mod-directory',mods,'--disable-audio']
     save=temp/'verification.zip'
     battery_guard(args.allow_low_battery)
-    collector.run_engine(base+['--create',save,'--map-gen-seed','12345'],temp/'create.log',args.timeout)
+    # Planet surfaces follow the save's seed, so the planets suite creates it from --seed.
+    map_seed=str(args.seed) if args.suite=='planets' else '12345'
+    collector.run_engine(base+['--create',save,'--map-gen-seed',map_seed],temp/'create.log',args.timeout)
     battery_guard(args.allow_low_battery)
     output=write/'script-output/factorio-autodrive'
     server_settings=temp/'server-settings.json'
@@ -88,8 +96,14 @@ end)
         visibility=dict(public=False,lan=False),require_user_verification=False,auto_pause=False)
     server_settings.write_text(json.dumps(server_config))
     engine_args=['--start-server',save,'--server-settings',server_settings] if args.save_reload else ['--benchmark',save,'--benchmark-ticks','100000']
-    marker=collector.run_engine(base+engine_args,
-        temp/'drive.log',args.timeout,output)
+    try:
+        marker=collector.run_engine(base+engine_args,temp/'drive.log',args.timeout,output)
+    except RuntimeError:
+        # Keep the trips finished before a failure for the report.
+        if (output/'results.json').exists():
+            args.output.mkdir(parents=True,exist_ok=True)
+            shutil.copyfile(output/'results.json',args.output/'partial-results.json')
+        raise
     checkpoints=list((write/'saves').glob('autodrive-checkpoint.zip'))
     reload_verified=False
     if checkpoints:
@@ -147,6 +161,7 @@ def main():
     parser.add_argument('--engine-only',action='store_true',
         help='run the production mod in Factorio; skip the legacy field-route simulator comparison')
     parser.add_argument('--case',help='run only this exact fixture name')
+    parser.add_argument('--trips',type=Path,help='planets suite: trip list from scripts/planet-trips.mjs')
     parser.add_argument('--seed',type=int,default=12345,help='terrain seed for paired long trips')
     parser.add_argument('--suite',choices=('short','long','planets'),default='short',
         help='short parity fixtures, long end-to-end trips, or trips on Vulcanus, Gleba and Fulgora (Space Age)')

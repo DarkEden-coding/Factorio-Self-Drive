@@ -13,6 +13,19 @@ local PLANETS={"vulcanus","gleba","fulgora"}
 local PLANET_TRIPS=8
 local function planet_cases(seed,filter)
   cases={}
+  -- test-autodrive.py --trips installs reachable trips chosen on the simulator's copy of the maps.
+  local ok,trips=pcall(require,"test-trips")
+  if ok then
+    for i,planet in ipairs(PLANETS) do
+      for _,t in ipairs(trips) do
+        if t.planet==planet and (not filter or t.name==filter) then
+          cases[#cases+1]={vehicle=t.vehicle,name=t.name,planet=planet,scenario={name=t.name,start=t.start,
+            target=t.target,fuel=t.fuel,speed=0,surface=i,orientation=t.orientation}}
+        end
+      end
+    end
+    return
+  end
   local random=game.create_random_generator(seed)
   for index,planet in ipairs(PLANETS) do
     for _,vehicle in ipairs({"car","tank"}) do
@@ -229,6 +242,8 @@ local function finish(job,result)
     route_slices=job.state.slices,segments=job.state.segments,
     max_horizon=job.state.max_horizon,refinements=job.state.refinements,
     frontier_wait_ticks=job.state.frontier_wait_ticks,max_cached_sections=job.state.max_cached_sections}
+  -- Partial results survive a later script error.
+  write("results",job.results)
   if job.vehicle.valid then job.vehicle.destroy() end
   if job.driver.valid then job.driver.destroy() end
   job.phase,job.index="spawn",job.index+1

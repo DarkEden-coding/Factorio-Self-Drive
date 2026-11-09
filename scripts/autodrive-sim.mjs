@@ -14,9 +14,15 @@ const cases=JSON.parse(input),result=[];
 for (const c of cases) {
   const sim=new Sim(JSON.stringify({vehicle:c.vehicle??'car',fuel:c.fuel??'coal'}),await readFile(c.map));
   let setup;
+  // `drive` cases report a failed start (e.g. an unreachable target) instead of aborting the batch.
+  try {
   if(c.request) setup=JSON.parse(sim.start_episode(JSON.stringify({...c.request,distance_field:c.field??c.request.distance_field??model.field})));
   else setup=JSON.parse(sim.sample_episode(JSON.stringify({seed:c.seed??12345,min_distance:15,max_distance:100,
     arrival:{mode:'stop',stop_radius:1,stop_speed:0.01},vehicle:c.vehicle??'car',fuel:c.fuel??'coal',distance_field:c.field??model.field})));
+  } catch(error) {
+    if(!c.drive) throw error;
+    result.push({error:String(error)});sim.free();continue;
+  }
   if(c.drive){
     let count=0;
     while(JSON.parse(sim.episode_state()).status==='running' && count++<10000) sim.decide(action(model.route_source==='field_smooth'?sim.policy_student_smooth():sim.policy_student()));
