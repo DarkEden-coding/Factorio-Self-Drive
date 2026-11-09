@@ -49,6 +49,7 @@ struct EpisodeRequest {
     max_tortuosity: Option<f64>,
     mode: Option<Mode>,
     decision_ticks: Option<u32>,
+    steer_levels: Option<u32>,
     gamma: Option<f64>,
     reward: Option<RewardWeights>,
     time_limit: Option<TimeLimit>,
@@ -82,7 +83,7 @@ impl EpisodeRequest {
         EpisodeRules {
             mode: self.mode.unwrap_or(d.mode),
             decision_ticks: self.decision_ticks.unwrap_or(d.decision_ticks),
-            steer_levels: d.steer_levels,
+            steer_levels: self.steer_levels.unwrap_or(d.steer_levels),
             gamma: self.gamma.unwrap_or(d.gamma),
             reward: self.reward.unwrap_or(d.reward),
             time_limit: self.time_limit.unwrap_or(d.time_limit),

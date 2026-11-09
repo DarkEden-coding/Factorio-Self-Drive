@@ -31,7 +31,7 @@ assert.equal(tiles.length, 128*128);
 assert.equal(resources.length, tiles.length);
 const tilePalette = JSON.parse(sim.tile_palette());
 const resourcePalette = JSON.parse(sim.resource_palette());
-assert.equal(tilePalette.length, 21);
+assert.equal(tilePalette.length, prototypes.tiles.length);
 assert.equal(resourcePalette.length, prototypes.resources.length + 1);
 for (const id of tiles) assert.equal(tilePalette[id].id, id);
 for (const id of resources) assert.equal(resourcePalette[id].id, id);
