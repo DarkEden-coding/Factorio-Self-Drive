@@ -276,7 +276,11 @@ are 16 seeds, chunk radius 16, and all trace scenarios on the first seed only.
 traces are still replayed. `--scenarios substring1,substring2` filters trace names.
 
 The manual map command above only reads generated chunks. In contrast, autorun
-explicitly requests and forces missing chunk generation before exporting. Each
+generates the whole area plus a one-chunk margin before it reads any chunk. Generating a
+chunk can still change cliffs in neighbouring chunks (cliff ends, removed pieces), so the
+earlier chunk-by-chunk generation kept planet cliffs that the finished map doesn't have
+(Nauvis cliffs were unaffected: the seed-12345 pool map matched the game on all 1,136 cliff
+pieces). Each
 map export is converted straight into `data/game/maps/<name>.fsmap`; raw JSON
 exists only in the temporary engine directory and is deleted after collection.
 The collector writes the map index, imports live prototypes while preserving

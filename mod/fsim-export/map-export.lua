@@ -11,6 +11,13 @@ local function start(surface, radius, cx, cy, player, name, generate)
       {(cx + radius + 1) * 32, (cy + radius + 1) * 32}},
     seed = surface.map_gen_settings.seed, started_tick = game.tick})
   normalize.write_file(job.path, header:sub(1, -2) .. ',"chunks":[', false, player)
+  if generate then
+    -- Generate everything before reading any chunk. Generating a chunk can still change
+    -- cliffs in its already generated neighbours (ends and removed pieces), so reading
+    -- chunk by chunk as they generate kept cliffs the finished map doesn't have.
+    surface.request_to_generate_chunks({cx * 32 + 16, cy * 32 + 16}, radius + 1)
+    surface.force_generate_chunk_requests()
+  end
   storage.fsim_map = job
 end
 function M.start(player, radius)

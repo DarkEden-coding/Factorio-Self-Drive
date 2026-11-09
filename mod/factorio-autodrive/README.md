@@ -29,9 +29,13 @@ default. `/autodrive-dump` writes a diagnostic snapshot during a drive.
 
 ## Limitations
 
-The controller was trained for base cars and tanks on Nauvis terrain. Modified
-vehicles, player structures, moving units, equipment and quality or research
-bonuses are outside its trained driving domain. Watch the vehicle and take over
+The controller was trained for base cars and tanks on Nauvis, Vulcanus, Gleba and
+Fulgora terrain. Lava and Gleba's deep lakes block the way; Gleba's wetland and
+Fulgora's oil ocean are drivable but slow, and routes avoid them when firm ground is
+faster. Vulcanus demolisher territory is avoided like a biter nest's surroundings,
+but the demolishers themselves and Gleba's pentapods are not modeled. Aquilo is not
+supported. Modified vehicles, player structures, moving units, equipment and quality
+or research bonuses are outside its trained driving domain. Watch the vehicle and take over
 if needed. A stalled or timed-out trip brakes until manual input or a new target.
 
 Updating the mod clears active trips. Set a target again after loading the update.

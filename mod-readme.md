@@ -26,5 +26,8 @@ model is following.
 
 - Supports base cars and tanks on Factorio 2.1.23 or newer in the 2.1 series.
 - Destinations must be on the same surface, in generated terrain, and within 4096 tiles.
-- Trained for driving on Nauvis. Modded vehicles and busy factory layouts can trip it up,
-  so keep an eye on the ride and take the wheel when needed.
+- Trained for driving on Nauvis, Vulcanus, Gleba and Fulgora (not Aquilo). It keeps out of
+  lava and deep lakes, avoids slow wetland and oil ocean when firm ground is faster, and keeps
+  clear of demolisher territory. It doesn't dodge moving enemies.
+- Modded vehicles and busy factory layouts can trip it up, so keep an eye on the ride and take
+  the wheel when needed.

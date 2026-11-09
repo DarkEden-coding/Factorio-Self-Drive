@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.9.0
+Date: 2026-11-09
+  Features:
+    - Drive on Vulcanus, Gleba and Fulgora. Lava and deep lakes block the way, wetland and oil
+      ocean are slow ground, and demolisher territory is avoided like nest surroundings.
+    - Routes weigh slow ground by travel time.
+    - Retrained driving model covering the three planets as well as Nauvis.
+  Bugfixes:
+    - Fixed a script error when a route reached ungenerated terrain.
+    - Fixed trips stalling at a destination beside a tree, plant or rock: guidance no longer
+      loops back through an earlier route section, and arrival is detected there.
+---------------------------------------------------------------------------------------------------
 Version: 0.7.1
 Date: 2026-10-28
   Changes:
