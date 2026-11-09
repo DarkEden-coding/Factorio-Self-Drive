@@ -28,11 +28,15 @@ function M.covered(plans,route,first)
   end
   return true
 end
+-- Starts in the newest section that covers the position with a finite field value. The
+-- position's own tile may be blocked in the inflated grid (a vehicle brushing a plant, or a
+-- target beside one); field.route starts from the nearest open tile, as the simulator does.
+-- Requiring an open tile here used to fall back to the first section and loop back.
 function M.extract(plans,position)
   local first=1
   for i=2,#plans do
     local cost=field.cost(plans[i].field,math.floor(position.x),math.floor(position.y))
-    if cost and cost<math.huge and field.sample(plans[i].field,position.x,position.y)<math.huge then first=i end
+    if cost and field.sample(plans[i].field,position.x,position.y)<math.huge then first=i end
   end
   local route=field.route(plans[first].field,position)
   for i=first+1,#plans do

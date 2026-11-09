@@ -59,6 +59,14 @@ def test_planet_config_mixes_absolute_pools_and_prices_slow_ground():
     assert data["route_source"] == "field_smooth"
 
 
+def test_setting_one_map_pool_replaces_a_pool_mix():
+    from fsim_rl.cli import parse_overrides
+    config = load_config(CONFIG_DIR / "student_mlp64_planets.toml",
+                         parse_overrides(["env.map_pool=data/game/maps-gleba"]))
+    data = json.loads(env_config_json(config))
+    assert data["map_pools"] == [] and data["map_pool"].endswith("maps-gleba")
+
+
 @pytest.mark.parametrize("name", ["finetune_moderate", "finetune_strong"])
 def test_finetune_configs_mix_scenarios_and_inherit_the_reactive_model(name):
     config = load_config(CONFIG_DIR / f"{name}.toml")

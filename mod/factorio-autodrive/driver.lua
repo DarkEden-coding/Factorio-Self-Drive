@@ -397,8 +397,9 @@ function M.tick(s)
     profile(s,"route",profiler)
     return
   end
-  -- Engine-tick arrival check, only at the final target.
-  if s.final_segment and u.distance(v.position,s.target)<=1 and math.abs(v.speed)<=0.01 then
+  -- Engine-tick arrival check at the destination (s.target is always the final target,
+  -- whichever section is active).
+  if u.distance(v.position,s.target)<=1 and math.abs(v.speed)<=0.01 then
     return finish(s,"arrived")
   end
   if s.path_retry_at and game.tick >= s.path_retry_at then s.path_retry_at = nil; request_path(s) end
@@ -409,12 +410,16 @@ function M.tick(s)
     local route=route_at(s)
     -- A union shortcut can skip several section windows. Select the farthest
     -- covering field whose remaining corridor still verifies the entire route.
+    -- The final section needs no route check: its field reaches the destination by
+    -- itself, and a destination beside an obstacle (inside its clearance) never passes
+    -- the check, which used to leave stall tracking on an earlier section's field.
     for i=#s.corridor,2,-1 do
       local next=s.corridor[i]
       local f=next.field
       if v.position.x>f.x0+4 and v.position.x<f.x1-4 and
         v.position.y>f.y0+4 and v.position.y<f.y1-4 and
-        field.sample(f,v.position.x,v.position.y)<math.huge and corridor.covered(s.corridor,route,i) then
+        field.sample(f,v.position.x,v.position.y)<math.huge and
+        (next.final or corridor.covered(s.corridor,route,i)) then
         for _=1,i-1 do table.remove(s.corridor,1) end
         activate(s,next)
         break

@@ -49,6 +49,10 @@ def parse_overrides(items: list[str] | None) -> dict:
         for part in parents:
             node = node.setdefault(part, {})
         node[leaf] = value
+    # Naming one pool means that pool alone, also for configs that mix several.
+    env = overrides.get("env", {})
+    if "map_pool" in env and "map_pools" not in env:
+        env["map_pools"] = []
     return overrides
 
 

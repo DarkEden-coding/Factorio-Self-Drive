@@ -4,6 +4,9 @@ local driver=require("driver")
 local grid=require("grid")
 local u=require("math-util")
 local M={}
+-- test-autodrive.py --trips installs reachable trips chosen on the simulator's copy of the maps.
+-- Factorio allows require only while loading, so it is looked up here.
+local has_trips,TRIPS=pcall(require,"test-trips")
 local function write(name,value)
   helpers.write_file("factorio-autodrive/"..name..".json",helpers.table_to_json(value),false)
 end
@@ -13,11 +16,9 @@ local PLANETS={"vulcanus","gleba","fulgora"}
 local PLANET_TRIPS=8
 local function planet_cases(seed,filter)
   cases={}
-  -- test-autodrive.py --trips installs reachable trips chosen on the simulator's copy of the maps.
-  local ok,trips=pcall(require,"test-trips")
-  if ok then
+  if has_trips then
     for i,planet in ipairs(PLANETS) do
-      for _,t in ipairs(trips) do
+      for _,t in ipairs(TRIPS) do
         if t.planet==planet and (not filter or t.name==filter) then
           cases[#cases+1]={vehicle=t.vehicle,name=t.name,planet=planet,scenario={name=t.name,start=t.start,
             target=t.target,fuel=t.fuel,speed=0,surface=i,orientation=t.orientation}}
@@ -88,7 +89,8 @@ function M.start(options)
       surfaces[i]=planet.surface or planet.create_surface()
     end
     storage.autodrive_test={phase="prepare",surface_index=1,surfaces=surfaces,force=force,index=1,
-      results={},exports={},seed=seed,long=true,planets=true,case=options and options.case}
+      results={},exports={},seed=seed,long=true,planets=true,case=options and options.case,
+      log_obs=options and options.log_obs}
     return
   end
   local width,height=long and 1024 or 256,long and 512 or 256
@@ -210,6 +212,7 @@ local function spawn(job)
   job.last_position,job.last_speed=nil,nil
   job.moving_ticks,job.off_grid_ticks=0,0
   job.trace={}
+  job.obs_log={}
   job.phase="planning"
 end
 local function snapshot(job)
@@ -228,6 +231,7 @@ local function snapshot(job)
 end
 local function finish(job,result)
   if job.long then write("trace-"..cases[job.index].name,job.trace) end
+  if job.log_obs then write("obs-"..cases[job.index].name,job.obs_log) end
   job.results[#job.results+1]={name=cases[job.index].name,planet=cases[job.index].planet,
     start_in_territory=job.start_in_territory,initial=job.initial,status=result,ticks=job.ticks,
     straight_distance=u.distance(job.initial.start,job.initial.target),
@@ -311,6 +315,13 @@ function M.tick()
         job.last_position={x=v.position.x,y=v.position.y};job.last_speed=v.speed
         local health=v.health
         job.damage=job.damage+math.max(0,job.health-health);job.health=health
+      end
+      -- --log-observations: the observation of every decision (the driver decides when
+      -- elapsed, before its increment, is a multiple of 4).
+      if job.log_obs and job.state.status=="driving" and job.state.elapsed%4==0 and v.valid then
+        local action,sample=driver.observe(job.state)
+        job.obs_log[#job.obs_log+1]={state=sample.state,observation=sample.observation,action=action,
+          route=sample.route}
       end
       local result=driver.tick(job.state)
       if result then finish(job,result) end

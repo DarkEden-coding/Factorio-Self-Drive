@@ -46,4 +46,17 @@ assert(#route>2,'shortcut crossed an inflated wall')
 assert(corridor.cost({p},50,0)==math.huge)
 assert(corridor.cost({p},1000,1000)==math.huge,'unknown terrain cannot authorize shortcuts')
 assert(not field.cost(p.field,1000,1000),'outside coverage must differ from blocked terrain')
+-- A final target inside an obstacle's clearance (a Gleba plant beside it) is blocked in the
+-- inflated grid even in the field rooted at it. Guidance near the target must still end
+-- there, not fall back to an earlier section and loop back.
+local tree=function(x,y) return x==97 and y==0 and 4 or 0 end
+local s1=plan({x=0.5,y=0.5},{x=60.5,y=0.5},tree)
+local f2=field.new({x=40.5,y=0.5},{x=96.5,y=0.5},1,false,nil,16,{smooth=true})
+repeat until field.slice(f2,tree,100)
+local s2={field=f2,from={x=40.5,y=0.5},target={x=96.5,y=0.5},final=true}
+assert(field.cost(f2,96,0)==math.huge,'fixture: the target tile lies in the dilated tree')
+local near=corridor.refine({s1,s2},{x=90.5,y=0.5},corridor.refine({s1,s2},{x=80.5,y=0.5}))
+assert(u.length(near)<12,'guidance near the target looped through an earlier section: '..u.length(near))
+local at=corridor.extract({s1,s2},{x=96.5,y=0.5})
+assert(u.length(at)<2,'route from the target left it: '..u.length(at))
 print('Progressive corridor: bounded slices, farther guidance, stable prefix, immutable consumption and safe shortcuts pass')

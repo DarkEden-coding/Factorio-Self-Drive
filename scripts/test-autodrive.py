@@ -70,10 +70,10 @@ def run(args,temp):
   if not storage.started then
     storage.started=true
     game.speed=8
-    remote.call("factorio-autodrive-test","start",{suite="SUITE",seed=SEED,save_reload=RELOAD,case=CASE})
+    remote.call("factorio-autodrive-test","start",{suite="SUITE",seed=SEED,save_reload=RELOAD,case=CASE,log_obs=LOGOBS})
   end
 end)
-'''.replace('SUITE',args.suite).replace('SEED',str(args.seed)).replace('RELOAD','true' if args.save_reload else 'false').replace('CASE',json.dumps(args.case) if args.case else 'nil'))
+'''.replace('SUITE',args.suite).replace('SEED',str(args.seed)).replace('RELOAD','true' if args.save_reload else 'false').replace('CASE',json.dumps(args.case) if args.case else 'nil').replace('LOGOBS','true' if args.log_observations else 'false'))
     enabled={'base',mod_name,'factorio-autodrive-verify'}
     if args.suite=='planets':
         enabled|={'space-age','quality','elevated-rails','recycler'}
@@ -117,7 +117,7 @@ end)
     if args.save_reload and not reload_verified:
         raise RuntimeError('no checkpoint was produced; save/reload was not verified')
     args.output.mkdir(parents=True,exist_ok=True)
-    for pattern in ('parity-*.json','trace-*.json'):
+    for pattern in ('parity-*.json','trace-*.json','obs-*.json'):
         for path in output.glob(pattern): shutil.copyfile(path,args.output/path.name)
     for path in output.glob('map-*.json'):
         suffix=path.stem.removeprefix('map-')
@@ -126,6 +126,8 @@ end)
     for name in ('create.log','drive.log'): shutil.copyfile(temp/name,args.output/name)
     if (output/'timing.txt').exists(): shutil.copyfile(output/'timing.txt',args.output/'timing.txt')
     results=marker['results']
+    if args.trips and not args.case and len(results)!=len(json.loads(args.trips.read_text())):
+        raise RuntimeError('the engine ran its own trips instead of the --trips list')
     report=dict(engine=marker.get('game_version','Factorio 2.1'),suite=args.suite,seed=args.seed,save_reload_verified=reload_verified,results=results,
         success_rate=sum(r['status']=='arrived' for r in results)/len(results),
         timing=timings(output/'timing.txt'),contacts='blocked moving powered tick estimate, not engine collision events')
@@ -161,6 +163,7 @@ def main():
     parser.add_argument('--engine-only',action='store_true',
         help='run the production mod in Factorio; skip the legacy field-route simulator comparison')
     parser.add_argument('--case',help='run only this exact fixture name')
+    parser.add_argument('--log-observations',action='store_true',help='planets suite: write every decision observation')
     parser.add_argument('--trips',type=Path,help='planets suite: trip list from scripts/planet-trips.mjs')
     parser.add_argument('--seed',type=int,default=12345,help='terrain seed for paired long trips')
     parser.add_argument('--suite',choices=('short','long','planets'),default='short',
