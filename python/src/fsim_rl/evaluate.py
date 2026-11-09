@@ -17,6 +17,7 @@ from .config import (
 )
 from .env import FsimEnv
 from .episodes import EpisodeTracker, eval_report
+from .escape import Escape
 from .models import ActorCritic
 from .obs import Obs
 
@@ -93,9 +94,11 @@ def run_episodes(
     episodes: int,
     record: bool = False,
     max_steps: int = 1_000_000,
+    escape: bool = False,
 ) -> tuple[list[dict], list[dict]]:
     """Run until `episodes` episodes finish. Each env contributes a fixed quota so short episodes
-    are not over-represented. Returns (episode summaries, replay records)."""
+    are not over-represented. With `escape`, blocked vehicles follow `escape.Escape` (reactive
+    policies only). Returns (episode summaries, replay records)."""
     n = env.num_envs
     quota = np.full(n, episodes // n)
     quota[: episodes % n] += 1
@@ -110,14 +113,21 @@ def run_episodes(
     if record:
         env.set_recording(True)
         env.episode_records()  # drop anything recorded before
+    rule = Escape(n) if escape else None
     obs = env.reset()
     for _ in range(max_steps):
         if (done_count >= quota).all():
             break
         actions, overlays = policy(obs)
+        if rule is not None:
+            actions = rule.apply(actions)
+            for i in np.flatnonzero(rule.active):
+                overlays[i] = {**overlays[i], "escape": int(actions[i])}
         for i, overlay in enumerate(overlays):
             calls[i].append({"decision": int(decision[i]), "pose": pose[i], **overlay})
         step = env.step(actions)
+        if rule is not None:
+            rule.observe(step.info["x"], step.info["y"], step.done)
         decision += env.executed(step.discount)
         finished = tracker.step(step.reward, step.info, step.done)
         new_records = env.episode_records() if record and finished else []
@@ -175,9 +185,11 @@ def evaluate(
     spec_hash: str | None = None,
     backend: ModuleType | None = None,
     scenario: str | None = None,
+    escape: bool = True,
 ) -> dict:
     """Evaluate `model`, or the A* baseline when model is None. With `scenario`, every episode is
-    of that kind; otherwise the config's scenario mix applies."""
+    of that kind; otherwise the config's scenario mix applies. `escape` applies the mod's
+    escape rule to a deterministic reactive model, as the mod does."""
     if scenario is not None:
         config = with_scenario(config, scenario)
     env = FsimEnv(config, min(num_envs, episodes), seed, device, split=split, backend=backend)
@@ -188,12 +200,15 @@ def evaluate(
         policy = baseline_policy(env, config.model.kind)
     else:
         policy = model_policy(model, deterministic)
-    results, records = run_episodes(env, policy, episodes, record=replays is not None)
+    escape = (escape and model is not None and deterministic and config.model.kind == "reactive"
+              and config.env.steer_levels == 1)
+    results, records = run_episodes(env, policy, episodes, record=replays is not None, escape=escape)
     report = eval_report(results, vehicle_names(env.spec, config), scenario_names(env.spec))
     report["split"] = split
     if scenario is not None:
         report["scenario"] = scenario
     report["policy"] = "baseline" if model is None else config.model.kind
+    report["escape"] = escape
     if replays is not None:
         replays.parent.mkdir(parents=True, exist_ok=True)
         replays.write_text(json.dumps(records))
@@ -214,6 +229,7 @@ def evaluate_checkpoint(
     backend: ModuleType | None = None,
     scenario: str | None = None,
     overrides: dict | None = None,
+    escape: bool = True,
 ) -> dict:
     """`overrides` change the checkpoint's config for this evaluation (env settings only make
     sense here, e.g. `{"env": {"distance_field": {"nest_zone_cost": 0}}}`)."""
@@ -223,7 +239,7 @@ def evaluate_checkpoint(
     report = evaluate(
         config, split, episodes, num_envs, seed, torch_device,
         model=model, deterministic=deterministic, target=target, replays=replays,
-        spec_hash=state["spec_hash"], backend=backend, scenario=scenario,
+        spec_hash=state["spec_hash"], backend=backend, scenario=scenario, escape=escape,
     )
     report["checkpoint"] = str(checkpoint)
     report["global_step"] = state["global_step"]
@@ -242,6 +258,7 @@ def suite(
     spec_hash: str | None = None,
     kinds: list[str] | None = None,
     backend: ModuleType | None = None,
+    escape: bool = True,
 ) -> dict:
     """Evaluate every scenario kind with the model and/or the A* baseline. Both see the same
     episodes: each env's episode sequence depends only on the seed."""
@@ -254,12 +271,12 @@ def suite(
         for name, policy_model in policies:
             report = evaluate(
                 config, split, episodes, num_envs, seed, device, model=policy_model,
-                spec_hash=spec_hash, backend=backend, scenario=kind,
+                spec_hash=spec_hash, backend=backend, scenario=kind, escape=escape,
             )
             rows[kind][name] = report
             print(f"{kind:>8} {name:>8}: success {report['success_rate']:.3f} spl {report['spl']:.3f}",
                   flush=True)
-    return {"split": split, "episodes_per_scenario": episodes, "seed": seed, "rows": rows}
+    return {"split": split, "episodes_per_scenario": episodes, "seed": seed, "escape": escape, "rows": rows}
 
 
 SUITE_COLUMNS = (

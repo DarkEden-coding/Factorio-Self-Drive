@@ -6,12 +6,15 @@ obstacles and demolisher territory, and prices slow ground in the distance field
 student, `planets-v2`, is a PPO fine-tune of `field-smooth-v1` on Nauvis plus the three
 planets; its observation layout and spec hash (`d1c084cc679f1f71`) are unchanged.
 
-| Pool | Simulator holdout, shipped 0.7.1 model | `planets-v2` | A* baseline | In game, `planets-v2` (0.9.0) |
-|---|---:|---:|---:|---:|
-| Nauvis | 99.6% | 99.8% | 41.4% | 24/24 engine fixtures |
-| Vulcanus | 95.8% | 98.7% | 45.3% | 63/64 trips |
-| Gleba | 99.5% | 99.9% | 52.6% | 64/64 trips |
-| Fulgora | 98.1% | 98.8% | 52.5% | 64/64 trips |
+| Pool | Simulator holdout, shipped 0.7.1 model | `planets-v2` | `planets-v2` + escape rule | A* baseline | In game, 0.9.0 |
+|---|---:|---:|---:|---:|---:|
+| Nauvis | 99.6% | 99.8% | 99.9% | 41.4% | 24/24 engine fixtures |
+| Vulcanus | 95.8% | 98.7% | 99.6% | 45.3% | 64/64 trips |
+| Gleba | 99.5% | 99.9% | 99.9% | 52.6% | 64/64 trips |
+| Fulgora | 98.1% | 98.8% | 99.6% | 52.5% | 64/64 trips |
+
+The mod applies the [escape rule](#escape-rule) for blocked poses; the in-game column and
+`fsim-rl eval`/`suite` include it, the two columns before it do not.
 
 Simulator: holdout maps, seed 67890, 200 episodes for each of six scenario kinds (1,200 per
 pool), both models on identical episodes with the same field settings. In game: Factorio 2.1.24
@@ -109,19 +112,57 @@ slightly on Vulcanus (1.07 to 1.51 health), Gleba (1.43 to 1.69) and Nauvis (0.6
 on long trips, and fell on Fulgora (0.93 to 0.65).
 [Full holdout results](results/planets-holdout-67890-2026-11-09.json).
 
+## Escape rule
+
+Vulcanus long trips were the weakest scenario at 93.5%. Of 26 failures in 400 holdout
+episodes, 25 were stalls with the vehicle pressed against a cliff end or rock, repeating one
+action (mostly reverse-left) for the last 1,200 ticks. At those poses the policy splits its
+probability between reversing and driving forward, both steering left; the argmax policy
+repeats the blocked choice and the observation never changes. Training samples actions, so
+noise always got it out and PPO never saw the trap: sampled actions reach 98.5% on the same
+episodes.
+
+The mod now overrides the policy after 6 decisions that pushed (throttle not coasting) without
+moving the vehicle 0.02 tiles: the next 4 decisions use the opposite throttle and opposite
+steering of the blocked action, then the policy drives again. The rule needs only the last
+action and the vehicle position, so it is deterministic and identical in the mod
+(`escape.lua`), the evaluator (`fsim_rl/escape.py`) and `scripts/autodrive-sim.mjs`. The
+policy, observation and parity fixtures are unchanged.
+
+| | Argmax policy | With escape rule |
+|---|---:|---:|
+| Vulcanus long, holdout (seed 67890, 400 episodes) | 93.5% | 98.5% |
+| Vulcanus long, training split (seed 54321, 800 episodes) | 95.3% | 98.5% |
+| Vulcanus, all six kinds, holdout | 98.7% | 99.6% |
+| Fulgora, all six kinds, holdout | 98.8% | 99.6% |
+
+The parameters were chosen on the Vulcanus long holdout (variants: holding 4 or 8 decisions,
+after 3, 6 or 10, mirrored or opposite-throttle-only, escalating holds); differences between
+the better variants were within the noise of 400 episodes, so the simplest one ships. The
+training-split row was not used for tuning. On every pool and split the rule lowered or kept
+the stall rate and changed mean time by under 1%. In game it fires on 21 of the 192 planet
+trips, fixes the one remaining failure (`vulcanus-tank-3`), leaves the other trips' time
+within 0.5% and damage the same or lower (Fulgora 901 to 801). The Nauvis engine suites still
+arrive 24/24, time within 1%
+([escape results](results/planets-escape-2026-11-09.json)).
+
+What it does not fix (12 of 800 Vulcanus long episodes): a vehicle wedged so that the
+mirrored maneuver is blocked too, a car rocking between forward and reverse two to four tiles
+from the target without arriving, one timeout and one destroyed car.
+
 ## In-game results
 
-Same 192 trips for both weight sets, mod 0.9.0 code
-([engine results](results/planets-engine-2026-11-09.json)):
+Same 192 trips for both weight sets, mod 0.9.0 code before the escape rule
+([engine results](results/planets-engine-2026-11-09.json)), and `planets-v2` with it:
 
-| Planet | Shipped weights | `planets-v2` | Time on common arrivals |
-|---|---:|---:|---:|
-| Vulcanus | 64/64 | 63/64 | -3.0% |
-| Gleba | 63/64 | 64/64 | -1.0% |
-| Fulgora | 64/64 | 64/64 | -2.8% |
+| Planet | Shipped weights | `planets-v2` | Time on common arrivals | `planets-v2` + escape |
+|---|---:|---:|---:|---:|
+| Vulcanus | 64/64 | 63/64 | -3.0% | 64/64 |
+| Gleba | 63/64 | 64/64 | -1.0% | 64/64 |
+| Fulgora | 64/64 | 64/64 | -2.8% | 64/64 |
 
-Total damage over the planet's trips changed from 92 to 8 health on Vulcanus, 23 to 37 on Gleba
-and 601 to 901 on Fulgora (mostly ruin contacts). On Nauvis, the existing short and long engine
+Without the rule, total damage over the planet's trips changed from 92 to 8 health on Vulcanus,
+23 to 37 on Gleba and 601 to 901 on Fulgora (mostly ruin contacts); with it, 8, 37 and 801. On Nauvis, the existing short and long engine
 suites arrive 24/24 with both the 0.7.1 mod and 0.9.0, with planning plus driving time within 1%
 and no damage.
 
@@ -141,13 +182,11 @@ observation, as `field-smooth-v1` did.
 
 ## What is still weak
 
-- **Pinning against cliff ends.** The only in-game failure with the fixes (a tank on Vulcanus),
-  and the stalls left once the corridor bug was fixed, are a vehicle pressed against a cliff end
-  or rock, repeating a blocked reverse-and-turn. The simulator blocks the same poses, and the argmax policy has no way out
-  of a state it maps to that action. A mod-side escape (change action after N blocked powered
-  ticks) would likely remove these, but it is outside what the policy was trained with.
-- **Vulcanus long trips** are the weakest simulator scenario (93.5%): long cliff mazes and
-  territory detours.
+- **Wedged vehicles.** The escape rule handles a vehicle pinned in one direction. A vehicle
+  wedged so that the mirrored maneuver is blocked as well still stalls; these are most of
+  the remaining Vulcanus and Fulgora long-trip failures (98.5% and 98.0%).
+- **Rocking at the target.** Rarely a car alternates forward and reverse a few tiles from the
+  target and never stops within 1 tile.
 - **Moving enemies** are not modeled. Demolisher territory is avoided as a zone, but a
   demolisher that leaves its territory, or Gleba's pentapods, can still attack.
 - **Unreachable destinations.** On random clicks the mod reports most cut-off targets as

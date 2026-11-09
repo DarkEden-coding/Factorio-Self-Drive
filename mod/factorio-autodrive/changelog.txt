@@ -6,6 +6,8 @@ Date: 2026-11-09
       ocean are slow ground, and demolisher territory is avoided like nest surroundings.
     - Routes weigh slow ground by travel time.
     - Retrained driving model covering the three planets as well as Nauvis.
+    - A vehicle pushing against a cliff end or rock without moving backs off with the opposite
+      throttle and steering, instead of repeating the blocked maneuver until the trip stalls.
   Bugfixes:
     - Fixed a script error when a route reached ungenerated terrain.
     - Fixed trips stalling at a destination beside a tree, plant or rock: guidance no longer

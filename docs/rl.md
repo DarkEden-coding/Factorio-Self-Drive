@@ -345,6 +345,12 @@ PPO; `ppo.teacher_kl_coef > 0` adds `coef * KL(teacher || policy)` with the teac
 `ppo.teacher_checkpoint` (the env then returns both observations). Student checkpoints store the
 student `spec_hash`; `eval`, `suite` and `train --init-from` check it.
 
+`eval` and `suite` drive a deterministic reactive model (9 actions) with the mod's escape rule
+(`fsim_rl/escape.py`, `escape.lua` in the mod): after 6 decisions that pushed without moving
+the vehicle 0.02 tiles, the next 4 use the opposite throttle and steering. Training rollouts
+sample actions and never apply it. `--no-escape` measures the bare argmax policy; replays
+mark overridden decisions with `escape`.
+
 `fsim-rl export-student --checkpoint <ckpt> --out student.json` writes the actor for the mod:
 `{format: "fsim-student-v1", spec_hash, obs (spec()["student"] plus ray_count, ray_channels_count),
 actions, decision_ticks, normalizer: {mean, std, clip}, ray_conv: [{in, out, kernel, stride,

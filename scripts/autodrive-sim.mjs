@@ -24,8 +24,18 @@ for (const c of cases) {
     result.push({error:String(error)});sim.free();continue;
   }
   if(c.drive){
-    let count=0;
-    while(JSON.parse(sim.episode_state()).status==='running' && count++<10000) sim.decide(action(model.route_source==='field_smooth'?sim.policy_student_smooth():sim.policy_student()));
+    // The mod's escape rule (mod/factorio-autodrive/escape.lua, python/src/fsim_rl/escape.py).
+    const e={blocked:0,left:0,action:4,last:4},mirror=a=>(2-Math.floor(a/3))*3+(2-a%3);
+    let count=0,previous=null;
+    while(JSON.parse(sim.episode_state()).status==='running' && count++<10000){
+      let a=action(model.route_source==='field_smooth'?sim.policy_student_smooth():sim.policy_student());
+      if(e.blocked>=6&&e.left===0){e.action=mirror(e.last);e.left=4;e.blocked=0;}
+      if(e.left>0){a=e.action;e.left--;}
+      e.last=a;sim.decide(a);
+      const v=JSON.parse(sim.vehicle_state());
+      if(previous) e.blocked=Math.floor(a/3)!==1&&Math.hypot(v.x-previous.x,v.y-previous.y)<0.02?e.blocked+1:0;
+      previous=v;
+    }
     result.push({setup,final:JSON.parse(sim.episode_state()),vehicle:JSON.parse(sim.vehicle_state())});
     sim.free();continue;
   }

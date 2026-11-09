@@ -7,6 +7,7 @@ local observation = require("observation")
 local network = require("network")
 local vehicle_api = require("vehicle")
 local u = require("math-util")
+local escape = require("escape")
 local M = {}
 local field_options = {}
 for k,v in pairs(network.model.field or {}) do field_options[k]=v end
@@ -465,6 +466,8 @@ function M.tick(s)
   local decision=(s.elapsed-1)%4==0
   if decision then
     local action=M.observe(s)
+    s.escape=s.escape or escape.new()
+    action,s.escaping=escape.decide(s.escape,v.position,action)
     s.action,s.previous_action,s.decisions=action,action,s.decisions+1
   end
   if game.tick % 300 == 0 then grid.prune(s.grid,keep_regions(s,v)) end

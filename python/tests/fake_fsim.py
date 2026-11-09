@@ -99,6 +99,9 @@ class VecEnv:
             "reverse_distance": np.zeros(self.n, dtype=np.float32),
             "reversed": self.rng.random(self.n) < 0.3,
             "scenario": self.scenario.astype(np.int64),
+            "x": self.rng.uniform(0, 30, self.n),
+            "y": self.rng.uniform(0, 30, self.n),
+            "orientation": self.rng.random(self.n),
         }
         for kind in COLLISION_KINDS:
             info[f"collisions_{kind}"] = self.rng.integers(0, 2, self.n)

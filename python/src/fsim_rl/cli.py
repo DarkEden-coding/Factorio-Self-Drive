@@ -116,6 +116,7 @@ def cmd_eval(args: argparse.Namespace) -> None:
         replays=Path(args.replays) if args.replays else None,
         scenario=args.scenario,
         overrides=parse_overrides(args.set),
+        escape=not args.no_escape,
     )
     _print_report(report, args.out)
 
@@ -155,6 +156,7 @@ def cmd_suite(args: argparse.Namespace) -> None:
     report = suite(
         config, args.split, args.episodes, args.num_envs, args.seed, device,
         model=model, baseline=args.baseline, spec_hash=spec_hash, kinds=args.scenarios,
+        escape=not args.no_escape,
     )
     report["checkpoint"] = args.checkpoint
     report["overrides"] = overrides
@@ -321,6 +323,7 @@ def build_parser() -> argparse.ArgumentParser:
     ev.add_argument("--checkpoint", required=True)
     ev.add_argument("--device", default="auto")
     ev.add_argument("--sample", action="store_true", help="sample actions instead of the mode")
+    ev.add_argument("--no-escape", action="store_true", help="skip the mod's escape rule for blocked poses")
     eval_args(ev)
     ev.set_defaults(func=cmd_eval)
 
@@ -339,6 +342,7 @@ def build_parser() -> argparse.ArgumentParser:
     su.add_argument("--num-envs", type=int, default=16)
     su.add_argument("--seed", type=int, default=12345)
     su.add_argument("--device", default="auto")
+    su.add_argument("--no-escape", action="store_true", help="skip the mod's escape rule for blocked poses")
     su.add_argument("--scenarios", nargs="+", choices=SCENARIO_KINDS, help="subset of kinds")
     su.add_argument("--out", help="JSON path (default: next to the checkpoint, or runs/)")
     su.add_argument(

@@ -1,0 +1,1357 @@
+{
+ "date": "2026-11-09",
+ "model": "students/planets-v2",
+ "rule": "escape: 6 blocked pushing decisions (moved < 0.02 tiles) -> 4 decisions of opposite throttle and steering",
+ "simulator": {
+  "split": "holdout",
+  "seed": 67890,
+  "episodes_per_scenario": 200,
+  "pools": {
+   "nauvis": {
+    "standard": {
+     "success_rate": 1.0,
+     "spl": 0.9737131196331071,
+     "mean_time_s": 4.164750000000001,
+     "mean_damage": 0.00470245361328125,
+     "stalled_rate": 0.0
+    },
+    "long": {
+     "success_rate": 1.0,
+     "spl": 0.9970390995663461,
+     "mean_time_s": 21.504416666666668,
+     "mean_damage": 4.143650741577148,
+     "stalled_rate": 0.0
+    },
+    "forest": {
+     "success_rate": 1.0,
+     "spl": 0.9426903988491983,
+     "mean_time_s": 3.3340833333333335,
+     "mean_damage": 0.029737396240234373,
+     "stalled_rate": 0.0
+    },
+    "reverse": {
+     "success_rate": 1.0,
+     "spl": 0.9088782831452433,
+     "mean_time_s": 3.8309166666666665,
+     "mean_damage": 0.010412445068359375,
+     "stalled_rate": 0.0
+    },
+    "nest": {
+     "success_rate": 0.995,
+     "spl": 0.9888602418327868,
+     "mean_time_s": 8.329145728643216,
+     "mean_damage": 0.7282255554199218,
+     "stalled_rate": 0.005
+    },
+    "arrival": {
+     "success_rate": 1.0,
+     "spl": 0.9566315834188728,
+     "mean_time_s": 2.9955833333333333,
+     "mean_damage": 0.0015216064453125,
+     "stalled_rate": 0.0
+    }
+   },
+   "vulcanus": {
+    "standard": {
+     "success_rate": 0.995,
+     "spl": 0.9638927962798002,
+     "mean_time_s": 4.185594639865997,
+     "mean_damage": 0.05297012329101562,
+     "stalled_rate": 0.0
+    },
+    "long": {
+     "success_rate": 0.985,
+     "spl": 0.9772433486512623,
+     "mean_time_s": 16.794839255499156,
+     "mean_damage": 8.926746520996094,
+     "stalled_rate": 0.015
+    },
+    "forest": {
+     "success_rate": 1.0,
+     "spl": 0.956189109503024,
+     "mean_time_s": 3.3425833333333332,
+     "mean_damage": 0.010498504638671875,
+     "stalled_rate": 0.0
+    },
+    "reverse": {
+     "success_rate": 0.995,
+     "spl": 0.8960491127739272,
+     "mean_time_s": 3.693802345058627,
+     "mean_damage": 0.0241302490234375,
+     "stalled_rate": 0.0
+    },
+    "nest": {
+     "success_rate": 1.0,
+     "spl": 0.9646589130139546,
+     "mean_time_s": 4.3157499999999995,
+     "mean_damage": 0.5352175903320312,
+     "stalled_rate": 0.0
+    },
+    "arrival": {
+     "success_rate": 1.0,
+     "spl": 0.9479384578617505,
+     "mean_time_s": 3.0083333333333333,
+     "mean_damage": 0.020555877685546876,
+     "stalled_rate": 0.0
+    }
+   },
+   "gleba": {
+    "standard": {
+     "success_rate": 1.0,
+     "spl": 0.9748382777435448,
+     "mean_time_s": 4.162916666666667,
+     "mean_damage": 0.10140426635742188,
+     "stalled_rate": 0.0
+    },
+    "long": {
+     "success_rate": 0.995,
+     "spl": 0.9923686978939845,
+     "mean_time_s": 20.576800670016752,
+     "mean_damage": 8.492511444091797,
+     "stalled_rate": 0.005
+    },
+    "forest": {
+     "success_rate": 1.0,
+     "spl": 0.9367677531205559,
+     "mean_time_s": 3.376333333333333,
+     "mean_damage": 0.0464398193359375,
+     "stalled_rate": 0.0
+    },
+    "reverse": {
+     "success_rate": 1.0,
+     "spl": 0.9001252196305591,
+     "mean_time_s": 3.6177499999999996,
+     "mean_damage": 0.005674591064453125,
+     "stalled_rate": 0.0
+    },
+    "nest": {
+     "success_rate": 1.0,
+     "spl": 0.9904349616144785,
+     "mean_time_s": 9.145,
+     "mean_damage": 1.4474664306640626,
+     "stalled_rate": 0.0
+    },
+    "arrival": {
+     "success_rate": 1.0,
+     "spl": 0.9517699709397666,
+     "mean_time_s": 2.902916666666667,
+     "mean_damage": 0.006691131591796875,
+     "stalled_rate": 0.0
+    }
+   },
+   "fulgora": {
+    "standard": {
+     "success_rate": 1.0,
+     "spl": 0.9650548871853796,
+     "mean_time_s": 3.8482499999999997,
+     "mean_damage": 0.22000274658203126,
+     "stalled_rate": 0.0
+    },
+    "long": {
+     "success_rate": 0.98,
+     "spl": 0.9771575024060419,
+     "mean_time_s": 22.043622448979594,
+     "mean_damage": 3.196414337158203,
+     "stalled_rate": 0.02
+    },
+    "forest": {
+     "success_rate": 1.0,
+     "spl": 0.9579042551197019,
+     "mean_time_s": 3.76175,
+     "mean_damage": 0.04901962280273438,
+     "stalled_rate": 0.0
+    },
+    "reverse": {
+     "success_rate": 1.0,
+     "spl": 0.8774180111060395,
+     "mean_time_s": 3.7451666666666665,
+     "mean_damage": 0.13583389282226563,
+     "stalled_rate": 0.0
+    },
+    "nest": {
+     "success_rate": 1.0,
+     "spl": 0.9579042551197019,
+     "mean_time_s": 3.76175,
+     "mean_damage": 0.04901962280273438,
+     "stalled_rate": 0.0
+    },
+    "arrival": {
+     "success_rate": 0.995,
+     "spl": 0.9300717094428211,
+     "mean_time_s": 2.4416247906197657,
+     "mean_damage": 0.000379486083984375,
+     "stalled_rate": 0.0
+    }
+   }
+  }
+ },
+ "vulcanus_long_detail": {
+  "holdout_67890_400": {
+   "argmax": 0.935,
+   "sampled": 0.985,
+   "escape": 0.985
+  },
+  "train_54321_800": {
+   "argmax": 0.9525,
+   "escape": 0.985
+  }
+ },
+ "engine": {
+  "12345": {
+   "vulcanus-car-1": {
+    "status": "arrived",
+    "seconds": 8.4,
+    "total_ticks": 533,
+    "damage": 0
+   },
+   "vulcanus-car-2": {
+    "status": "arrived",
+    "seconds": 8.8,
+    "total_ticks": 550,
+    "damage": 6.10595703125
+   },
+   "vulcanus-car-3": {
+    "status": "arrived",
+    "seconds": 7.3,
+    "total_ticks": 464,
+    "damage": 0
+   },
+   "vulcanus-car-4": {
+    "status": "arrived",
+    "seconds": 6.7,
+    "total_ticks": 489,
+    "damage": 0
+   },
+   "vulcanus-car-5": {
+    "status": "arrived",
+    "seconds": 4.566666666666666,
+    "total_ticks": 301,
+    "damage": 0
+   },
+   "vulcanus-car-6": {
+    "status": "arrived",
+    "seconds": 6.166666666666667,
+    "total_ticks": 397,
+    "damage": 0
+   },
+   "vulcanus-car-7": {
+    "status": "arrived",
+    "seconds": 8.166666666666666,
+    "total_ticks": 515,
+    "damage": 0.18603515625
+   },
+   "vulcanus-car-8": {
+    "status": "arrived",
+    "seconds": 8.95,
+    "total_ticks": 562,
+    "damage": 1.4000244140625
+   },
+   "vulcanus-car-9": {
+    "status": "arrived",
+    "seconds": 8.916666666666666,
+    "total_ticks": 566,
+    "damage": 0.0228271484375
+   },
+   "vulcanus-car-10": {
+    "status": "arrived",
+    "seconds": 5.1,
+    "total_ticks": 335,
+    "damage": 0
+   },
+   "vulcanus-car-11": {
+    "status": "arrived",
+    "seconds": 6.4,
+    "total_ticks": 415,
+    "damage": 0
+   },
+   "vulcanus-car-12": {
+    "status": "arrived",
+    "seconds": 4.766666666666667,
+    "total_ticks": 314,
+    "damage": 0
+   },
+   "vulcanus-car-13": {
+    "status": "arrived",
+    "seconds": 4.4,
+    "total_ticks": 321,
+    "damage": 0
+   },
+   "vulcanus-car-14": {
+    "status": "arrived",
+    "seconds": 5.966666666666667,
+    "total_ticks": 387,
+    "damage": 0.03857421875
+   },
+   "vulcanus-car-15": {
+    "status": "arrived",
+    "seconds": 5.766666666666667,
+    "total_ticks": 373,
+    "damage": 0
+   },
+   "vulcanus-car-16": {
+    "status": "arrived",
+    "seconds": 4.7,
+    "total_ticks": 310,
+    "damage": 0
+   },
+   "vulcanus-tank-1": {
+    "status": "arrived",
+    "seconds": 12.95,
+    "total_ticks": 809,
+    "damage": 0
+   },
+   "vulcanus-tank-2": {
+    "status": "arrived",
+    "seconds": 7,
+    "total_ticks": 448,
+    "damage": 0
+   },
+   "vulcanus-tank-3": {
+    "status": "arrived",
+    "seconds": 11.183333333333334,
+    "total_ticks": 700,
+    "damage": 0
+   },
+   "vulcanus-tank-4": {
+    "status": "arrived",
+    "seconds": 7.15,
+    "total_ticks": 479,
+    "damage": 0
+   },
+   "vulcanus-tank-5": {
+    "status": "arrived",
+    "seconds": 9.216666666666667,
+    "total_ticks": 576,
+    "damage": 0
+   },
+   "vulcanus-tank-6": {
+    "status": "arrived",
+    "seconds": 7.833333333333333,
+    "total_ticks": 494,
+    "damage": 0
+   },
+   "vulcanus-tank-7": {
+    "status": "arrived",
+    "seconds": 16.2,
+    "total_ticks": 1001,
+    "damage": 0
+   },
+   "vulcanus-tank-8": {
+    "status": "arrived",
+    "seconds": 9.366666666666667,
+    "total_ticks": 591,
+    "damage": 0
+   },
+   "vulcanus-tank-9": {
+    "status": "arrived",
+    "seconds": 14.416666666666666,
+    "total_ticks": 891,
+    "damage": 0
+   },
+   "vulcanus-tank-10": {
+    "status": "arrived",
+    "seconds": 6.166666666666667,
+    "total_ticks": 426,
+    "damage": 0
+   },
+   "vulcanus-tank-11": {
+    "status": "arrived",
+    "seconds": 12.633333333333333,
+    "total_ticks": 788,
+    "damage": 0
+   },
+   "vulcanus-tank-12": {
+    "status": "arrived",
+    "seconds": 13.55,
+    "total_ticks": 842,
+    "damage": 0
+   },
+   "vulcanus-tank-13": {
+    "status": "arrived",
+    "seconds": 14.35,
+    "total_ticks": 939,
+    "damage": 0
+   },
+   "vulcanus-tank-14": {
+    "status": "arrived",
+    "seconds": 10.266666666666667,
+    "total_ticks": 643,
+    "damage": 0
+   },
+   "vulcanus-tank-15": {
+    "status": "arrived",
+    "seconds": 14.916666666666666,
+    "total_ticks": 925,
+    "damage": 0
+   },
+   "vulcanus-tank-16": {
+    "status": "arrived",
+    "seconds": 9.433333333333334,
+    "total_ticks": 593,
+    "damage": 0
+   },
+   "gleba-car-1": {
+    "status": "arrived",
+    "seconds": 8.433333333333334,
+    "total_ticks": 533,
+    "damage": 0
+   },
+   "gleba-car-2": {
+    "status": "arrived",
+    "seconds": 7.883333333333334,
+    "total_ticks": 500,
+    "damage": 0
+   },
+   "gleba-car-3": {
+    "status": "arrived",
+    "seconds": 7.883333333333334,
+    "total_ticks": 499,
+    "damage": 0.350006103515625
+   },
+   "gleba-car-4": {
+    "status": "arrived",
+    "seconds": 11.416666666666666,
+    "total_ticks": 716,
+    "damage": 0
+   },
+   "gleba-car-5": {
+    "status": "arrived",
+    "seconds": 10.3,
+    "total_ticks": 647,
+    "damage": 34.145904541015625
+   },
+   "gleba-car-6": {
+    "status": "arrived",
+    "seconds": 5.566666666666666,
+    "total_ticks": 359,
+    "damage": 0
+   },
+   "gleba-car-7": {
+    "status": "arrived",
+    "seconds": 9.483333333333333,
+    "total_ticks": 595,
+    "damage": 0
+   },
+   "gleba-car-8": {
+    "status": "arrived",
+    "seconds": 5.016666666666667,
+    "total_ticks": 351,
+    "damage": 0.0333251953125
+   },
+   "gleba-car-9": {
+    "status": "arrived",
+    "seconds": 9.166666666666666,
+    "total_ticks": 577,
+    "damage": 0
+   },
+   "gleba-car-10": {
+    "status": "arrived",
+    "seconds": 8.133333333333333,
+    "total_ticks": 511,
+    "damage": 0.366668701171875
+   },
+   "gleba-car-11": {
+    "status": "arrived",
+    "seconds": 9.633333333333333,
+    "total_ticks": 607,
+    "damage": 0.01666259765625
+   },
+   "gleba-car-12": {
+    "status": "arrived",
+    "seconds": 5.95,
+    "total_ticks": 385,
+    "damage": 0.174407958984375
+   },
+   "gleba-car-13": {
+    "status": "arrived",
+    "seconds": 8.35,
+    "total_ticks": 533,
+    "damage": 0
+   },
+   "gleba-car-14": {
+    "status": "arrived",
+    "seconds": 4.35,
+    "total_ticks": 317,
+    "damage": 0
+   },
+   "gleba-car-15": {
+    "status": "arrived",
+    "seconds": 8.95,
+    "total_ticks": 564,
+    "damage": 0
+   },
+   "gleba-car-16": {
+    "status": "arrived",
+    "seconds": 9.35,
+    "total_ticks": 588,
+    "damage": 0.350006103515625
+   },
+   "gleba-tank-1": {
+    "status": "arrived",
+    "seconds": 9.55,
+    "total_ticks": 601,
+    "damage": 0
+   },
+   "gleba-tank-2": {
+    "status": "arrived",
+    "seconds": 9.1,
+    "total_ticks": 571,
+    "damage": 0
+   },
+   "gleba-tank-3": {
+    "status": "arrived",
+    "seconds": 11.966666666666667,
+    "total_ticks": 745,
+    "damage": 0
+   },
+   "gleba-tank-4": {
+    "status": "arrived",
+    "seconds": 12.1,
+    "total_ticks": 754,
+    "damage": 0
+   },
+   "gleba-tank-5": {
+    "status": "arrived",
+    "seconds": 12.85,
+    "total_ticks": 797,
+    "damage": 0
+   },
+   "gleba-tank-6": {
+    "status": "arrived",
+    "seconds": 7.533333333333333,
+    "total_ticks": 479,
+    "damage": 0
+   },
+   "gleba-tank-7": {
+    "status": "arrived",
+    "seconds": 14.2,
+    "total_ticks": 881,
+    "damage": 0
+   },
+   "gleba-tank-8": {
+    "status": "arrived",
+    "seconds": 9.066666666666666,
+    "total_ticks": 574,
+    "damage": 0
+   },
+   "gleba-tank-9": {
+    "status": "arrived",
+    "seconds": 16.083333333333332,
+    "total_ticks": 1021,
+    "damage": 0
+   },
+   "gleba-tank-10": {
+    "status": "arrived",
+    "seconds": 15.866666666666667,
+    "total_ticks": 983,
+    "damage": 0
+   },
+   "gleba-tank-11": {
+    "status": "arrived",
+    "seconds": 13.416666666666666,
+    "total_ticks": 831,
+    "damage": 0
+   },
+   "gleba-tank-12": {
+    "status": "arrived",
+    "seconds": 12.9,
+    "total_ticks": 801,
+    "damage": 0
+   },
+   "gleba-tank-13": {
+    "status": "arrived",
+    "seconds": 9.683333333333334,
+    "total_ticks": 611,
+    "damage": 0
+   },
+   "gleba-tank-14": {
+    "status": "arrived",
+    "seconds": 6.683333333333334,
+    "total_ticks": 455,
+    "damage": 0
+   },
+   "gleba-tank-15": {
+    "status": "arrived",
+    "seconds": 11.066666666666666,
+    "total_ticks": 694,
+    "damage": 0
+   },
+   "gleba-tank-16": {
+    "status": "arrived",
+    "seconds": 11.483333333333333,
+    "total_ticks": 718,
+    "damage": 0
+   },
+   "fulgora-car-1": {
+    "status": "arrived",
+    "seconds": 5.3,
+    "total_ticks": 377,
+    "damage": 0
+   },
+   "fulgora-car-2": {
+    "status": "arrived",
+    "seconds": 8.766666666666667,
+    "total_ticks": 557,
+    "damage": 0
+   },
+   "fulgora-car-3": {
+    "status": "arrived",
+    "seconds": 14.683333333333334,
+    "total_ticks": 910,
+    "damage": 0
+   },
+   "fulgora-car-4": {
+    "status": "arrived",
+    "seconds": 3.533333333333333,
+    "total_ticks": 257,
+    "damage": 0
+   },
+   "fulgora-car-5": {
+    "status": "arrived",
+    "seconds": 8.366666666666667,
+    "total_ticks": 528,
+    "damage": 0
+   },
+   "fulgora-car-6": {
+    "status": "arrived",
+    "seconds": 7.816666666666666,
+    "total_ticks": 496,
+    "damage": 0
+   },
+   "fulgora-car-7": {
+    "status": "arrived",
+    "seconds": 13.75,
+    "total_ticks": 854,
+    "damage": 0
+   },
+   "fulgora-car-8": {
+    "status": "arrived",
+    "seconds": 5.133333333333334,
+    "total_ticks": 335,
+    "damage": 0
+   },
+   "fulgora-car-9": {
+    "status": "arrived",
+    "seconds": 14.75,
+    "total_ticks": 914,
+    "damage": 100
+   },
+   "fulgora-car-10": {
+    "status": "arrived",
+    "seconds": 7.416666666666667,
+    "total_ticks": 473,
+    "damage": 0
+   },
+   "fulgora-car-11": {
+    "status": "arrived",
+    "seconds": 7.833333333333333,
+    "total_ticks": 501,
+    "damage": 100
+   },
+   "fulgora-car-12": {
+    "status": "arrived",
+    "seconds": 5.183333333333334,
+    "total_ticks": 340,
+    "damage": 0
+   },
+   "fulgora-car-13": {
+    "status": "arrived",
+    "seconds": 6.7,
+    "total_ticks": 429,
+    "damage": 0
+   },
+   "fulgora-car-14": {
+    "status": "arrived",
+    "seconds": 4.15,
+    "total_ticks": 276,
+    "damage": 0
+   },
+   "fulgora-car-15": {
+    "status": "arrived",
+    "seconds": 7.3,
+    "total_ticks": 465,
+    "damage": 0
+   },
+   "fulgora-car-16": {
+    "status": "arrived",
+    "seconds": 7.033333333333333,
+    "total_ticks": 454,
+    "damage": 0
+   },
+   "fulgora-tank-1": {
+    "status": "arrived",
+    "seconds": 15.083333333333334,
+    "total_ticks": 937,
+    "damage": 0
+   },
+   "fulgora-tank-2": {
+    "status": "arrived",
+    "seconds": 6.8,
+    "total_ticks": 433,
+    "damage": 0
+   },
+   "fulgora-tank-3": {
+    "status": "arrived",
+    "seconds": 16.883333333333333,
+    "total_ticks": 1040,
+    "damage": 0
+   },
+   "fulgora-tank-4": {
+    "status": "arrived",
+    "seconds": 13.266666666666667,
+    "total_ticks": 824,
+    "damage": 0
+   },
+   "fulgora-tank-5": {
+    "status": "arrived",
+    "seconds": 11.95,
+    "total_ticks": 743,
+    "damage": 0
+   },
+   "fulgora-tank-6": {
+    "status": "arrived",
+    "seconds": 6.5,
+    "total_ticks": 447,
+    "damage": 0
+   },
+   "fulgora-tank-7": {
+    "status": "arrived",
+    "seconds": 8.4,
+    "total_ticks": 529,
+    "damage": 0
+   },
+   "fulgora-tank-8": {
+    "status": "arrived",
+    "seconds": 9.783333333333333,
+    "total_ticks": 611,
+    "damage": 0
+   },
+   "fulgora-tank-9": {
+    "status": "arrived",
+    "seconds": 13.45,
+    "total_ticks": 832,
+    "damage": 0
+   },
+   "fulgora-tank-10": {
+    "status": "arrived",
+    "seconds": 6.45,
+    "total_ticks": 470,
+    "damage": 0
+   },
+   "fulgora-tank-11": {
+    "status": "arrived",
+    "seconds": 14.7,
+    "total_ticks": 960,
+    "damage": 0
+   },
+   "fulgora-tank-12": {
+    "status": "arrived",
+    "seconds": 8.65,
+    "total_ticks": 549,
+    "damage": 0
+   },
+   "fulgora-tank-13": {
+    "status": "arrived",
+    "seconds": 14.866666666666667,
+    "total_ticks": 924,
+    "damage": 100
+   },
+   "fulgora-tank-14": {
+    "status": "arrived",
+    "seconds": 10.383333333333333,
+    "total_ticks": 654,
+    "damage": 100
+   },
+   "fulgora-tank-15": {
+    "status": "arrived",
+    "seconds": 10.883333333333333,
+    "total_ticks": 676,
+    "damage": 0
+   },
+   "fulgora-tank-16": {
+    "status": "arrived",
+    "seconds": 11.75,
+    "total_ticks": 737,
+    "damage": 0
+   }
+  },
+  "443791920": {
+   "vulcanus-car-1": {
+    "status": "arrived",
+    "seconds": 6.533333333333333,
+    "total_ticks": 416,
+    "damage": 0
+   },
+   "vulcanus-car-2": {
+    "status": "arrived",
+    "seconds": 7.766666666666667,
+    "total_ticks": 559,
+    "damage": 0
+   },
+   "vulcanus-car-3": {
+    "status": "arrived",
+    "seconds": 4.816666666666666,
+    "total_ticks": 317,
+    "damage": 0
+   },
+   "vulcanus-car-4": {
+    "status": "arrived",
+    "seconds": 5.166666666666667,
+    "total_ticks": 338,
+    "damage": 0
+   },
+   "vulcanus-car-5": {
+    "status": "arrived",
+    "seconds": 5.933333333333334,
+    "total_ticks": 431,
+    "damage": 0
+   },
+   "vulcanus-car-6": {
+    "status": "arrived",
+    "seconds": 5.5,
+    "total_ticks": 357,
+    "damage": 0.080963134765625
+   },
+   "vulcanus-car-7": {
+    "status": "arrived",
+    "seconds": 7.3,
+    "total_ticks": 463,
+    "damage": 0
+   },
+   "vulcanus-car-8": {
+    "status": "arrived",
+    "seconds": 6.3,
+    "total_ticks": 409,
+    "damage": 0
+   },
+   "vulcanus-car-9": {
+    "status": "arrived",
+    "seconds": 4.766666666666667,
+    "total_ticks": 337,
+    "damage": 0
+   },
+   "vulcanus-car-10": {
+    "status": "arrived",
+    "seconds": 6.5,
+    "total_ticks": 417,
+    "damage": 0
+   },
+   "vulcanus-car-11": {
+    "status": "arrived",
+    "seconds": 5.6,
+    "total_ticks": 362,
+    "damage": 0
+   },
+   "vulcanus-car-12": {
+    "status": "arrived",
+    "seconds": 9.266666666666667,
+    "total_ticks": 580,
+    "damage": 0
+   },
+   "vulcanus-car-13": {
+    "status": "arrived",
+    "seconds": 7.233333333333333,
+    "total_ticks": 460,
+    "damage": 0
+   },
+   "vulcanus-car-14": {
+    "status": "arrived",
+    "seconds": 8.1,
+    "total_ticks": 514,
+    "damage": 0
+   },
+   "vulcanus-car-15": {
+    "status": "arrived",
+    "seconds": 6.833333333333333,
+    "total_ticks": 435,
+    "damage": 0
+   },
+   "vulcanus-car-16": {
+    "status": "arrived",
+    "seconds": 7.033333333333333,
+    "total_ticks": 511,
+    "damage": 0
+   },
+   "vulcanus-tank-1": {
+    "status": "arrived",
+    "seconds": 11.966666666666667,
+    "total_ticks": 749,
+    "damage": 0
+   },
+   "vulcanus-tank-2": {
+    "status": "arrived",
+    "seconds": 6.016666666666667,
+    "total_ticks": 406,
+    "damage": 0
+   },
+   "vulcanus-tank-3": {
+    "status": "arrived",
+    "seconds": 9.9,
+    "total_ticks": 619,
+    "damage": 0
+   },
+   "vulcanus-tank-4": {
+    "status": "arrived",
+    "seconds": 9.75,
+    "total_ticks": 614,
+    "damage": 0
+   },
+   "vulcanus-tank-5": {
+    "status": "arrived",
+    "seconds": 11.033333333333333,
+    "total_ticks": 740,
+    "damage": 0
+   },
+   "vulcanus-tank-6": {
+    "status": "arrived",
+    "seconds": 10.033333333333333,
+    "total_ticks": 682,
+    "damage": 0
+   },
+   "vulcanus-tank-7": {
+    "status": "arrived",
+    "seconds": 13.283333333333333,
+    "total_ticks": 888,
+    "damage": 0
+   },
+   "vulcanus-tank-8": {
+    "status": "arrived",
+    "seconds": 19.95,
+    "total_ticks": 1277,
+    "damage": 0
+   },
+   "vulcanus-tank-9": {
+    "status": "arrived",
+    "seconds": 11.566666666666666,
+    "total_ticks": 721,
+    "damage": 0
+   },
+   "vulcanus-tank-10": {
+    "status": "arrived",
+    "seconds": 12,
+    "total_ticks": 751,
+    "damage": 0
+   },
+   "vulcanus-tank-11": {
+    "status": "arrived",
+    "seconds": 10.083333333333334,
+    "total_ticks": 630,
+    "damage": 0
+   },
+   "vulcanus-tank-12": {
+    "status": "arrived",
+    "seconds": 10.416666666666666,
+    "total_ticks": 651,
+    "damage": 0
+   },
+   "vulcanus-tank-13": {
+    "status": "arrived",
+    "seconds": 18.033333333333335,
+    "total_ticks": 1105,
+    "damage": 0
+   },
+   "vulcanus-tank-14": {
+    "status": "arrived",
+    "seconds": 9.533333333333333,
+    "total_ticks": 601,
+    "damage": 0
+   },
+   "vulcanus-tank-15": {
+    "status": "arrived",
+    "seconds": 10.566666666666666,
+    "total_ticks": 661,
+    "damage": 0
+   },
+   "vulcanus-tank-16": {
+    "status": "arrived",
+    "seconds": 11.133333333333333,
+    "total_ticks": 748,
+    "damage": 0
+   },
+   "gleba-car-1": {
+    "status": "arrived",
+    "seconds": 8.633333333333333,
+    "total_ticks": 541,
+    "damage": 0
+   },
+   "gleba-car-2": {
+    "status": "arrived",
+    "seconds": 6.55,
+    "total_ticks": 417,
+    "damage": 0.70001220703125
+   },
+   "gleba-car-3": {
+    "status": "arrived",
+    "seconds": 6.566666666666666,
+    "total_ticks": 418,
+    "damage": 0
+   },
+   "gleba-car-4": {
+    "status": "arrived",
+    "seconds": 6.5,
+    "total_ticks": 418,
+    "damage": 0
+   },
+   "gleba-car-5": {
+    "status": "arrived",
+    "seconds": 8.15,
+    "total_ticks": 517,
+    "damage": 0
+   },
+   "gleba-car-6": {
+    "status": "arrived",
+    "seconds": 8.166666666666666,
+    "total_ticks": 516,
+    "damage": 0
+   },
+   "gleba-car-7": {
+    "status": "arrived",
+    "seconds": 9.466666666666667,
+    "total_ticks": 594,
+    "damage": 0
+   },
+   "gleba-car-8": {
+    "status": "arrived",
+    "seconds": 6.766666666666667,
+    "total_ticks": 433,
+    "damage": 0.350006103515625
+   },
+   "gleba-car-9": {
+    "status": "arrived",
+    "seconds": 10.55,
+    "total_ticks": 661,
+    "damage": 0
+   },
+   "gleba-car-10": {
+    "status": "arrived",
+    "seconds": 4.466666666666667,
+    "total_ticks": 298,
+    "damage": 0
+   },
+   "gleba-car-11": {
+    "status": "arrived",
+    "seconds": 5.75,
+    "total_ticks": 374,
+    "damage": 0
+   },
+   "gleba-car-12": {
+    "status": "arrived",
+    "seconds": 6.966666666666667,
+    "total_ticks": 448,
+    "damage": 0.03717041015625
+   },
+   "gleba-car-13": {
+    "status": "arrived",
+    "seconds": 8.633333333333333,
+    "total_ticks": 544,
+    "damage": 0
+   },
+   "gleba-car-14": {
+    "status": "arrived",
+    "seconds": 6.416666666666667,
+    "total_ticks": 411,
+    "damage": 0
+   },
+   "gleba-car-15": {
+    "status": "arrived",
+    "seconds": 6.016666666666667,
+    "total_ticks": 390,
+    "damage": 0
+   },
+   "gleba-car-16": {
+    "status": "arrived",
+    "seconds": 6.233333333333333,
+    "total_ticks": 396,
+    "damage": 0
+   },
+   "gleba-tank-1": {
+    "status": "arrived",
+    "seconds": 7.766666666666667,
+    "total_ticks": 515,
+    "damage": 0
+   },
+   "gleba-tank-2": {
+    "status": "arrived",
+    "seconds": 15.533333333333333,
+    "total_ticks": 957,
+    "damage": 0
+   },
+   "gleba-tank-3": {
+    "status": "arrived",
+    "seconds": 10,
+    "total_ticks": 627,
+    "damage": 0
+   },
+   "gleba-tank-4": {
+    "status": "arrived",
+    "seconds": 12.7,
+    "total_ticks": 793,
+    "damage": 0
+   },
+   "gleba-tank-5": {
+    "status": "arrived",
+    "seconds": 11.816666666666666,
+    "total_ticks": 739,
+    "damage": 0
+   },
+   "gleba-tank-6": {
+    "status": "arrived",
+    "seconds": 8.216666666666667,
+    "total_ticks": 543,
+    "damage": 0
+   },
+   "gleba-tank-7": {
+    "status": "arrived",
+    "seconds": 18.466666666666665,
+    "total_ticks": 1139,
+    "damage": 0
+   },
+   "gleba-tank-8": {
+    "status": "arrived",
+    "seconds": 8.933333333333334,
+    "total_ticks": 564,
+    "damage": 0
+   },
+   "gleba-tank-9": {
+    "status": "arrived",
+    "seconds": 16.916666666666668,
+    "total_ticks": 1042,
+    "damage": 0
+   },
+   "gleba-tank-10": {
+    "status": "arrived",
+    "seconds": 14.4,
+    "total_ticks": 892,
+    "damage": 0
+   },
+   "gleba-tank-11": {
+    "status": "arrived",
+    "seconds": 16.3,
+    "total_ticks": 1009,
+    "damage": 0
+   },
+   "gleba-tank-12": {
+    "status": "arrived",
+    "seconds": 11.416666666666666,
+    "total_ticks": 771,
+    "damage": 0
+   },
+   "gleba-tank-13": {
+    "status": "arrived",
+    "seconds": 10.3,
+    "total_ticks": 645,
+    "damage": 0
+   },
+   "gleba-tank-14": {
+    "status": "arrived",
+    "seconds": 9.866666666666667,
+    "total_ticks": 671,
+    "damage": 0
+   },
+   "gleba-tank-15": {
+    "status": "arrived",
+    "seconds": 17.333333333333332,
+    "total_ticks": 1063,
+    "damage": 0
+   },
+   "gleba-tank-16": {
+    "status": "arrived",
+    "seconds": 8.9,
+    "total_ticks": 561,
+    "damage": 0
+   },
+   "fulgora-car-1": {
+    "status": "arrived",
+    "seconds": 5.433333333333334,
+    "total_ticks": 376,
+    "damage": 0
+   },
+   "fulgora-car-2": {
+    "status": "arrived",
+    "seconds": 8.016666666666667,
+    "total_ticks": 510,
+    "damage": 0
+   },
+   "fulgora-car-3": {
+    "status": "arrived",
+    "seconds": 9.75,
+    "total_ticks": 615,
+    "damage": 0
+   },
+   "fulgora-car-4": {
+    "status": "arrived",
+    "seconds": 7.816666666666666,
+    "total_ticks": 493,
+    "damage": 0
+   },
+   "fulgora-car-5": {
+    "status": "arrived",
+    "seconds": 16.416666666666668,
+    "total_ticks": 1013,
+    "damage": 0
+   },
+   "fulgora-car-6": {
+    "status": "arrived",
+    "seconds": 7.216666666666667,
+    "total_ticks": 461,
+    "damage": 0
+   },
+   "fulgora-car-7": {
+    "status": "arrived",
+    "seconds": 12.083333333333334,
+    "total_ticks": 751,
+    "damage": 100
+   },
+   "fulgora-car-8": {
+    "status": "arrived",
+    "seconds": 6.733333333333333,
+    "total_ticks": 434,
+    "damage": 0
+   },
+   "fulgora-car-9": {
+    "status": "arrived",
+    "seconds": 11.083333333333334,
+    "total_ticks": 695,
+    "damage": 0
+   },
+   "fulgora-car-10": {
+    "status": "arrived",
+    "seconds": 8.883333333333333,
+    "total_ticks": 560,
+    "damage": 0
+   },
+   "fulgora-car-11": {
+    "status": "arrived",
+    "seconds": 15.616666666666667,
+    "total_ticks": 959,
+    "damage": 0
+   },
+   "fulgora-car-12": {
+    "status": "arrived",
+    "seconds": 6.133333333333334,
+    "total_ticks": 395,
+    "damage": 0
+   },
+   "fulgora-car-13": {
+    "status": "arrived",
+    "seconds": 15.15,
+    "total_ticks": 934,
+    "damage": 0.96142578125
+   },
+   "fulgora-car-14": {
+    "status": "arrived",
+    "seconds": 8.5,
+    "total_ticks": 537,
+    "damage": 0
+   },
+   "fulgora-car-15": {
+    "status": "arrived",
+    "seconds": 12.683333333333334,
+    "total_ticks": 787,
+    "damage": 0.0330810546875
+   },
+   "fulgora-car-16": {
+    "status": "arrived",
+    "seconds": 18.35,
+    "total_ticks": 1130,
+    "damage": 0
+   },
+   "fulgora-tank-1": {
+    "status": "arrived",
+    "seconds": 13.25,
+    "total_ticks": 819,
+    "damage": 0
+   },
+   "fulgora-tank-2": {
+    "status": "arrived",
+    "seconds": 6.466666666666667,
+    "total_ticks": 416,
+    "damage": 0
+   },
+   "fulgora-tank-3": {
+    "status": "arrived",
+    "seconds": 10.733333333333333,
+    "total_ticks": 671,
+    "damage": 0
+   },
+   "fulgora-tank-4": {
+    "status": "arrived",
+    "seconds": 9.333333333333334,
+    "total_ticks": 585,
+    "damage": 0
+   },
+   "fulgora-tank-5": {
+    "status": "arrived",
+    "seconds": 14.216666666666667,
+    "total_ticks": 881,
+    "damage": 0
+   },
+   "fulgora-tank-6": {
+    "status": "arrived",
+    "seconds": 8.45,
+    "total_ticks": 530,
+    "damage": 100
+   },
+   "fulgora-tank-7": {
+    "status": "arrived",
+    "seconds": 14.066666666666666,
+    "total_ticks": 873,
+    "damage": 0
+   },
+   "fulgora-tank-8": {
+    "status": "arrived",
+    "seconds": 11.783333333333333,
+    "total_ticks": 732,
+    "damage": 0
+   },
+   "fulgora-tank-9": {
+    "status": "arrived",
+    "seconds": 15.7,
+    "total_ticks": 970,
+    "damage": 0
+   },
+   "fulgora-tank-10": {
+    "status": "arrived",
+    "seconds": 13.5,
+    "total_ticks": 901,
+    "damage": 100
+   },
+   "fulgora-tank-11": {
+    "status": "arrived",
+    "seconds": 20.083333333333332,
+    "total_ticks": 1281,
+    "damage": 0
+   },
+   "fulgora-tank-12": {
+    "status": "arrived",
+    "seconds": 7.766666666666667,
+    "total_ticks": 495,
+    "damage": 0
+   },
+   "fulgora-tank-13": {
+    "status": "arrived",
+    "seconds": 20.9,
+    "total_ticks": 1280,
+    "damage": 0
+   },
+   "fulgora-tank-14": {
+    "status": "arrived",
+    "seconds": 8.15,
+    "total_ticks": 518,
+    "damage": 0
+   },
+   "fulgora-tank-15": {
+    "status": "arrived",
+    "seconds": 16.816666666666666,
+    "total_ticks": 1040,
+    "damage": 0
+   },
+   "fulgora-tank-16": {
+    "status": "arrived",
+    "seconds": 13.333333333333334,
+    "total_ticks": 823,
+    "damage": 100
+   }
+  }
+ }
+}

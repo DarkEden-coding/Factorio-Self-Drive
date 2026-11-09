@@ -195,7 +195,7 @@ from its JSON APIs. API auditing is a name/record check, not a type checker.
 - Fields are bounded and remain fixed for a trip, as in the simulator. Live ray masks update after destruction. New structures, tile edits and newly grown obstacles do not trigger a field rebuild. Set the target again to replan.
 - GUI shortcut clicks, linked movement-key takeover, overlays and actual multi-client play still need a manual smoke test. Runtime names and prototypes loaded successfully in the engine; that does not verify those interactions.
 - Save/load has not been verified end to end. An extra private-server checkpoint attempt failed because its disposable saves directory was missing. The runner now creates that directory and offers `--save-reload`, but that extra test was not rerun after the request to finish. Production state uses serializable storage tables and entity handles; profiler objects are never stored.
-- The model can still become pinned against rocks or cliffs, as documented in `student-results.md`. Timeout or stall ends the attempt and holds brake until manual input or a new target.
+- The model can still become pinned against rocks or cliffs, as documented in `student-results.md`. Since 0.9.0, `escape.lua` backs a blocked vehicle off: after 6 decisions that pushed without moving it 0.02 tiles, the next 4 decisions use the opposite throttle and steering ([planets-results.md](planets-results.md#escape-rule)). A vehicle wedged in both directions can still stall. Timeout or stall ends the attempt and holds brake until manual input or a new target.
 
 ## Installation and release packaging
 
