@@ -17,7 +17,7 @@ from .config import (
 )
 from .env import FsimEnv
 from .episodes import EpisodeTracker, eval_report
-from .escape import Escape
+from .escape import Escape, SpeedLimit
 from .models import ActorCritic
 from .obs import Obs
 
@@ -97,8 +97,8 @@ def run_episodes(
     escape: bool = False,
 ) -> tuple[list[dict], list[dict]]:
     """Run until `episodes` episodes finish. Each env contributes a fixed quota so short episodes
-    are not over-represented. With `escape`, blocked vehicles follow `escape.Escape` (reactive
-    policies only). Returns (episode summaries, replay records)."""
+    are not over-represented. With `escape`, blocked vehicles follow `escape.Escape` and cars on
+    Vulcanus `escape.SpeedLimit`, as in the mod (reactive policies only). Returns (episode summaries, replay records)."""
     n = env.num_envs
     quota = np.full(n, episodes // n)
     quota[: episodes % n] += 1
@@ -114,6 +114,7 @@ def run_episodes(
         env.set_recording(True)
         env.episode_records()  # drop anything recorded before
     rule = Escape(n) if escape else None
+    limit = SpeedLimit(env.env.map_names, env.spec.get("vehicles", []), n) if escape else None
     obs = env.reset()
     for _ in range(max_steps):
         if (done_count >= quota).all():
@@ -123,11 +124,13 @@ def run_episodes(
             actions = rule.apply(actions)
             for i in np.flatnonzero(rule.active):
                 overlays[i] = {**overlays[i], "escape": int(actions[i])}
+            actions = limit.apply(actions)
         for i, overlay in enumerate(overlays):
             calls[i].append({"decision": int(decision[i]), "pose": pose[i], **overlay})
         step = env.step(actions)
         if rule is not None:
             rule.observe(step.info["x"], step.info["y"], step.done)
+            limit.observe(step.info, step.done)
         decision += env.executed(step.discount)
         finished = tracker.step(step.reward, step.info, step.done)
         new_records = env.episode_records() if record and finished else []

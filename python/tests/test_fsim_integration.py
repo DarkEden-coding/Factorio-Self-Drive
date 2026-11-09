@@ -15,7 +15,7 @@ def test_spec_has_contract_fields():
     spec = fsim.spec()
     assert spec["spec_hash"]
     assert len(spec["vector_features"]) > 0
-    assert spec["scenarios"] == ["standard", "long", "forest", "reverse", "nest", "arrival"]
+    assert spec["scenarios"] == ["standard", "long", "forest", "reverse", "nest", "arrival", "impact", "recover"]
 
 
 def test_spec_hash_still_matches_reactive_checkpoints():
@@ -50,7 +50,7 @@ def test_scenario_mix_runs_on_the_real_pool():
     for _ in range(40):
         step = env.step(np.asarray(env.baseline_actions()))
         seen.update(step.info["scenario"].tolist())
-    assert seen <= set(range(6)) and len(seen) >= 2
+    assert seen <= set(range(8)) and len(seen) >= 2
 
 
 def test_one_training_iteration(tmp_path):

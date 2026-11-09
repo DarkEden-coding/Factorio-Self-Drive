@@ -110,7 +110,7 @@ pub struct PolicySpec {
     pub reward_terms: [&'static str; crate::reward::TERMS.len()],
     pub modes: [&'static str; 3],
     /// Scenario kinds; `info["scenario"]` indexes this list.
-    pub scenarios: [&'static str; 6],
+    pub scenarios: [&'static str; 8],
     /// `info["collisions_<kind>"]` kinds.
     pub collision_kinds: [&'static str; 5],
     /// Vehicle prototype names; `info["vehicle_index"]` indexes this list.

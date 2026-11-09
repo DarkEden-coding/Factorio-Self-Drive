@@ -16,7 +16,7 @@ CONFIG_DIR = PYTHON_DIR / "configs"
 MODEL_KINDS = ("reactive", "direct_plan", "path_planner")
 OBSERVATIONS = ("full", "student", "both")
 # Scenario kinds in Rust's index order (`spec()["scenarios"]`, `info["scenario"]`).
-SCENARIO_KINDS = ("standard", "long", "forest", "reverse", "nest", "arrival")
+SCENARIO_KINDS = ("standard", "long", "forest", "reverse", "nest", "arrival", "impact", "recover")
 ARRIVAL_MODES = ("enter", "stop")
 
 

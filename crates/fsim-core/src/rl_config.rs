@@ -490,10 +490,16 @@ pub enum Scenario {
     Nest(NestScenario),
     /// Short targets, some approached at speed or backward, for learning to stop.
     Arrival(ArrivalScenario),
+    /// Start moving fast straight at a rock, cliff, tree or water a few tiles ahead.
+    Impact(ImpactScenario),
+    /// Start at rest with the hull touching an obstacle, ahead or behind.
+    Recover(RecoverScenario),
 }
 
 /// `Scenario` names in index order; `info["scenario"]` indexes this list.
-pub const SCENARIOS: [&str; 6] = ["standard", "long", "forest", "reverse", "nest", "arrival"];
+pub const SCENARIOS: [&str; 8] = [
+    "standard", "long", "forest", "reverse", "nest", "arrival", "impact", "recover",
+];
 
 impl Scenario {
     pub fn index(&self) -> usize {
@@ -504,6 +510,8 @@ impl Scenario {
             Scenario::Reverse(_) => 3,
             Scenario::Nest(_) => 4,
             Scenario::Arrival(_) => 5,
+            Scenario::Impact(_) => 6,
+            Scenario::Recover(_) => 7,
         }
     }
 
@@ -519,6 +527,8 @@ impl Scenario {
             Scenario::Reverse(s) => s.weight,
             Scenario::Nest(s) => s.weight,
             Scenario::Arrival(s) => s.weight,
+            Scenario::Impact(s) => s.weight,
+            Scenario::Recover(s) => s.weight,
         }
     }
 
@@ -553,6 +563,18 @@ impl Scenario {
                     && (0.0..=1.0).contains(&(s.moving_fraction + s.backward_fraction))
                     && s.backward_fraction >= 0.0
                     && nonnegative(s.max_start_speed)
+            }
+            Scenario::Impact(s) => {
+                valid_range(s.min_distance, s.max_distance, s.max_tortuosity)
+                    && positive(s.min_gap)
+                    && s.max_gap >= s.min_gap
+                    && s.max_gap.is_finite()
+                    && (0.0..=1.0).contains(&s.min_speed_fraction)
+                    && s.min_speed_fraction <= 1.0
+            }
+            Scenario::Recover(s) => {
+                valid_range(s.min_distance, s.max_distance, s.max_tortuosity)
+                    && (0.0..=1.0).contains(&s.behind_fraction)
             }
         };
         if !ok || !nonnegative(self.weight()) {
@@ -630,6 +652,58 @@ impl Default for ForestScenario {
             start_density: 0.2,
             route_density: 0.2,
             route_fraction: 0.5,
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq)]
+#[serde(default, deny_unknown_fields)]
+pub struct ImpactScenario {
+    pub weight: f64,
+    pub min_distance: f64,
+    pub max_distance: f64,
+    pub max_tortuosity: f64,
+    /// Free distance in tiles from the hull front to the obstacle straight ahead.
+    pub min_gap: f64,
+    pub max_gap: f64,
+    /// Start speed: uniform from this fraction to all of the vehicle's top speed on
+    /// grass with its fastest fuel.
+    pub min_speed_fraction: f64,
+}
+
+impl Default for ImpactScenario {
+    fn default() -> Self {
+        Self {
+            weight: 1.0,
+            min_distance: 24.0,
+            max_distance: 160.0,
+            max_tortuosity: 3.0,
+            min_gap: 3.0,
+            max_gap: 32.0,
+            min_speed_fraction: 0.2,
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq)]
+#[serde(default, deny_unknown_fields)]
+pub struct RecoverScenario {
+    pub weight: f64,
+    pub min_distance: f64,
+    pub max_distance: f64,
+    pub max_tortuosity: f64,
+    /// Share of starts with the obstacle behind the hull instead of ahead.
+    pub behind_fraction: f64,
+}
+
+impl Default for RecoverScenario {
+    fn default() -> Self {
+        Self {
+            weight: 1.0,
+            min_distance: 12.0,
+            max_distance: 96.0,
+            max_tortuosity: 3.0,
+            behind_fraction: 0.3,
         }
     }
 }

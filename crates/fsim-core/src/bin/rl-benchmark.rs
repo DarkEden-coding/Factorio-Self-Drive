@@ -7,8 +7,9 @@ use fsim_core::{
     policy_obs::{self, ObsScratch, ObsSource, COARSE_LEN, LOCAL_LEN, VECTOR_LEN},
     raster::RasterPatches,
     rl_config::{
-        ArrivalScenario, ForestScenario, LongScenario, Mode, NestScenario, ReverseScenario,
-        RlConfig, Scenario, StandardScenario, TargetConfig, VehicleChoice,
+        ArrivalScenario, ForestScenario, ImpactScenario, LongScenario, Mode, NestScenario,
+        RecoverScenario, ReverseScenario, RlConfig, Scenario, StandardScenario, TargetConfig,
+        VehicleChoice,
     },
     rl_episode::{Ctx, Episode, EpisodeSetup},
     sampler::{self, SampleStats},
@@ -139,6 +140,8 @@ fn scenario_table(
         Scenario::Reverse(ReverseScenario::default()),
         Scenario::Nest(NestScenario::default()),
         Scenario::Arrival(ArrivalScenario::default()),
+        Scenario::Impact(ImpactScenario::default()),
+        Scenario::Recover(RecoverScenario::default()),
     ];
     let samples = if quick { 48 } else { 192 };
     let resets = if quick { 24 } else { 96 };

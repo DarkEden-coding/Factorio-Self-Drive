@@ -8,6 +8,7 @@ import torch
 from conftest import tiny_config
 
 import fake_fsim
+from fsim_rl.config import SCENARIO_KINDS
 from fsim_rl.checkpoint import load_checkpoint, save_checkpoint
 from fsim_rl.evaluate import evaluate, evaluate_checkpoint, suite, suite_table
 from fsim_rl.trainer import Trainer
@@ -94,11 +95,11 @@ def test_suite_covers_every_scenario_for_model_and_baseline(tmp_path):
     model, config, state = load_policy(checkpoint, torch.device("cpu"))
     report = suite(config, "holdout", episodes=4, num_envs=2, seed=0, device=torch.device("cpu"),
                    model=model, spec_hash=state["spec_hash"], backend=fake_fsim)
-    assert list(report["rows"]) == ["standard", "long", "forest", "reverse", "nest", "arrival"]
+    assert list(report["rows"]) == list(SCENARIO_KINDS)
     for kind, row in report["rows"].items():
         assert set(row) == {"model", "baseline"}
         assert row["model"]["episodes"] == 4
         assert set(row["model"]["per_scenario"]) == {kind}
         assert set(row["model"]["collisions_per_episode"]) == {"tree", "rock", "cliff", "nest", "water"}
     table = suite_table(report).splitlines()
-    assert len(table) == 2 + 12 and "tree coll/ep" in table[0]
+    assert len(table) == 2 + 2 * len(SCENARIO_KINDS) and "tree coll/ep" in table[0]

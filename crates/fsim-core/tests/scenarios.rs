@@ -6,9 +6,9 @@ use fsim_core::{
     policy_obs::{self, COARSE_LEN, LOCAL_LEN, VECTOR_LEN},
     raster::{MapRaster, RasterPatches},
     rl_config::{
-        ArrivalScenario, EpisodeRules, FieldConfig, ForestScenario, LongScenario, Mode,
-        NestScenario, ReverseScenario, RlConfig, Scenario, StandardScenario, TargetConfig,
-        VehicleChoice, SCENARIOS,
+        ArrivalScenario, EpisodeRules, FieldConfig, ForestScenario, ImpactScenario, LongScenario,
+        Mode, NestScenario, RecoverScenario, ReverseScenario, RlConfig, Scenario, StandardScenario,
+        TargetConfig, VehicleChoice, SCENARIOS,
     },
     rl_episode::{self, encode_action, Ctx, Episode, EpisodeSetup, Point, Pose},
     sampler::{self, SampleStats},
@@ -47,7 +47,7 @@ fn scenario_map(data: &Prototypes) -> Arc<MapData> {
 }
 
 /// Scenario parameters sized for the 128 x 128 fixture.
-fn fixture_scenarios() -> [Scenario; 6] {
+fn fixture_scenarios() -> [Scenario; 8] {
     [
         Scenario::Standard(StandardScenario::default()),
         Scenario::Long(LongScenario {
@@ -64,6 +64,8 @@ fn fixture_scenarios() -> [Scenario; 6] {
         Scenario::Reverse(ReverseScenario::default()),
         Scenario::Nest(NestScenario::default()),
         Scenario::Arrival(ArrivalScenario::default()),
+        Scenario::Impact(ImpactScenario::default()),
+        Scenario::Recover(RecoverScenario::default()),
     ]
 }
 
@@ -238,6 +240,28 @@ fn every_scenario_kind_samples_valid_episodes_for_car_and_tank() {
                                 let ahead = e.field.descend(start.x, start.y, 4);
                                 assert!(sampler::route_angle(start, ahead.last()) < 20.0, "{what}");
                             }
+                        }
+                        Scenario::Impact(p) => {
+                            // Straight at an obstacle within the gap range, moving.
+                            let gap =
+                                sampler::forward_gap(world, &data, index, start, p.max_gap, !tank)
+                                    .unwrap_or_else(|| panic!("{what}: nothing ahead"));
+                            assert!((p.min_gap..=p.max_gap).contains(&gap), "{what} gap {gap}");
+                            assert!(e.setup.start_speed > 0.0, "{what}");
+                            assert_eq!(env.vehicles(i).speed[0], e.setup.start_speed, "{what}");
+                        }
+                        Scenario::Recover(_) => {
+                            // Touching an obstacle ahead or behind, at rest.
+                            let behind = Pose {
+                                orientation: (start.orientation + 0.5).rem_euclid(1.0),
+                                ..start
+                            };
+                            let touching = [start, behind].into_iter().any(|pose| {
+                                sampler::forward_gap(world, &data, index, pose, 0.2, !tank)
+                                    .is_some()
+                            });
+                            assert!(touching, "{what}");
+                            assert_eq!(e.setup.start_speed, 0.0, "{what}");
                         }
                         Scenario::Standard(_) => {}
                     }
@@ -434,7 +458,7 @@ fn scenario_mixes_are_deterministic_and_follow_weights() {
         let mut env = VecEnv::with_maps(c, data.clone(), vec![map.clone()], 32, 9).unwrap();
         let mut b = Buffers::new(32);
         b.reset(&mut env);
-        let mut kinds = [0; 6];
+        let mut kinds = [0; SCENARIOS.len()];
         let mut trace = Vec::new();
         for i in 0..32 {
             kinds[env.scenario(i)] += 1;
@@ -542,5 +566,8 @@ fn cached_tree_density_matches_the_window_sum() {
     assert!(dense > 100, "fixture has too few dense tiles: {dense}");
     // Another radius is not cached and falls back to the sum.
     assert!(raster.tree_counts(r - 1).is_none());
-    assert_eq!(sampler::tree_density(raster, 0, -40, r - 1), window(0, -40, r - 1));
+    assert_eq!(
+        sampler::tree_density(raster, 0, -40, r - 1),
+        window(0, -40, r - 1)
+    );
 }

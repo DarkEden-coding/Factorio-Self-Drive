@@ -25,12 +25,18 @@ for (const c of cases) {
   }
   if(c.drive){
     // The mod's escape rule (mod/factorio-autodrive/escape.lua, python/src/fsim_rl/escape.py).
-    const e={blocked:0,left:0,action:4,last:4},mirror=a=>(2-Math.floor(a/3))*3+(2-a%3);
+    const e={blocked:0,left:0,action:4,last:4,base:4,attempt:0};
+    const maneuvers=a=>{const t=Math.floor(a/3)-1,s=a%3-1,out=s?[[t,0]]:[];
+      out.push([-t,0],[-t,s?-s:-1],[-t,s?s:1]);return out.map(([t,s])=>(t+1)*3+s+1);};
     let count=0,previous=null;
     const limited=(c.vehicle??'car')==='car'&&/maps-vulcanus/.test(c.map);
     while(JSON.parse(sim.episode_state()).status==='running' && count++<10000){
       let a=action(model.route_source==='field_smooth'?sim.policy_student_smooth():sim.policy_student());
-      if(e.blocked>=6&&e.left===0){e.action=mirror(e.last);e.left=4;e.blocked=0;}
+      if(e.left===0&&(e.blocked>=6||(e.attempt>0&&e.blocked>=4))){
+        if(e.attempt===0) e.base=e.last;
+        const options=maneuvers(e.base);
+        e.action=options[e.attempt%options.length];e.attempt++;e.left=4;e.blocked=0;
+      }
       if(e.left>0){a=e.action;e.left--;}
       e.last=a;
       // The mod's Vulcanus car speed limit (driver.lua), after the escape rule: forward above
@@ -38,7 +44,11 @@ for (const c of cases) {
       if(limited&&previous&&previous.speed*216>130&&Math.floor(a/3)===2) a=3+a%3;
       sim.decide(a);
       const v=JSON.parse(sim.vehicle_state());
-      if(previous) e.blocked=Math.floor(a/3)!==1&&Math.hypot(v.x-previous.x,v.y-previous.y)<0.02?e.blocked+1:0;
+      if(previous){
+        const moved=Math.hypot(v.x-previous.x,v.y-previous.y)>=0.02;
+        e.blocked=Math.floor(e.last/3)!==1&&!moved?e.blocked+1:0;
+        if(moved) e.attempt=0;
+      }
       previous=v;
     }
     result.push({setup,final:JSON.parse(sim.episode_state()),vehicle:JSON.parse(sim.vehicle_state())});

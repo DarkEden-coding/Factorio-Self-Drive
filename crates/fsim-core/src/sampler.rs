@@ -8,8 +8,8 @@ use crate::{
     prototypes::Prototypes,
     raster::{MapRaster, CLIFF, NEST, NEST_ZONE, ROCK, TREE, WATER},
     rl_config::{
-        ArrivalScenario, EpisodeRules, FieldConfig, ForestScenario, LongScenario, NestScenario,
-        ReverseScenario, Scenario, TargetConfig,
+        ArrivalScenario, EpisodeRules, FieldConfig, ForestScenario, ImpactScenario, LongScenario,
+        NestScenario, RecoverScenario, ReverseScenario, Scenario, TargetConfig,
     },
     rl_episode::{episode_field, in_nest_zone, pose_is_clear, Point, Pose},
     world::World,
@@ -112,6 +112,8 @@ pub fn sample_scenario(
         Scenario::Reverse(p) => search.reverse(&mut rng, p, stats),
         Scenario::Nest(p) => search.nest(&mut rng, p, stats),
         Scenario::Arrival(p) => search.arrival(&mut rng, p, stats),
+        Scenario::Impact(p) => search.impact(&mut rng, p, stats),
+        Scenario::Recover(p) => search.recover(&mut rng, p, stats),
     };
     found.ok_or_else(|| {
         format!(
@@ -427,6 +429,148 @@ impl Search<'_> {
     /// A pose facing a blocking obstacle with the hull front `min_gap` to
     /// `max_gap` tiles from it. The tank drives through trees, so for it trees
     /// don't count as obstacles. The start may lie in a nest zone.
+    /// A target in `range` from `start`, confirmed with the episode field.
+    fn target_from(
+        &self,
+        rng: &mut Pcg32,
+        start: Pose,
+        range: &TargetConfig,
+        stats: &mut SampleStats,
+    ) -> Option<Sampled> {
+        let field = self.start_field(start, range.max_distance, self.params);
+        let mut candidates = candidates(&field, start, range, |_, _| true);
+        for i in 0..candidates.len().min(TARGET_ATTEMPTS) {
+            let (x, y, _) = shuffle_step(rng, &mut candidates, i);
+            if let Some(found) = self.confirm(start, tile_center(x, y), Some(range), stats) {
+                stats.targets += 1;
+                return Some(found);
+            }
+        }
+        None
+    }
+
+    /// A clear pose on an open tile heading straight at an obstacle whose free distance
+    /// from the hull front is within `gaps`. Rays march the raster from the tile in a few
+    /// random directions; the hull check (`forward_gap`) decides.
+    fn facing_obstacle(
+        &self,
+        rng: &mut Pcg32,
+        gaps: (f64, f64),
+        stats: &mut SampleStats,
+    ) -> Option<(Pose, f64)> {
+        let b = self.data.vehicles[self.vehicle].collision_box;
+        let half_length = b[0][1].abs().max(b[1][1].abs());
+        let blocking = CLIFF | NEST | ROCK | WATER | if self.params.trees_block { TREE } else { 0 };
+        for _ in 0..START_DRAWS {
+            stats.start_draws += 1;
+            let (tx, ty, pose) = self.area.draw(rng);
+            if self.raster.mask_at(tx, ty) & blocking != 0
+                || in_nest_zone(self.world, self.raster, pose.x, pose.y)
+            {
+                continue;
+            }
+            for _ in 0..4 {
+                let heading = physics::quantize_orientation(rng.gen::<f64>());
+                let (sin, cos) = (heading * TAU).sin_cos();
+                let mut t = half_length;
+                let hit = loop {
+                    if t > half_length + gaps.1 + 1.0 {
+                        break false;
+                    }
+                    let (x, y) = (pose.x + t * sin, pose.y - t * cos);
+                    if self.raster.mask_at(x.floor() as i32, y.floor() as i32) & blocking != 0 {
+                        break true;
+                    }
+                    t += 0.5;
+                };
+                let pose = Pose {
+                    orientation: heading,
+                    ..pose
+                };
+                if !hit || !pose_is_clear(self.world, self.data, self.vehicle, pose) {
+                    continue;
+                }
+                let gap = forward_gap(
+                    self.world,
+                    self.data,
+                    self.vehicle,
+                    pose,
+                    gaps.1,
+                    self.params.trees_block,
+                );
+                if let Some(gap) = gap.filter(|g| (gaps.0..=gaps.1).contains(g)) {
+                    stats.starts += 1;
+                    return Some((pose, gap));
+                }
+            }
+        }
+        None
+    }
+
+    /// Moving fast at an obstacle `min_gap..max_gap` tiles ahead, with a ranged target.
+    fn impact(
+        &self,
+        rng: &mut Pcg32,
+        p: &ImpactScenario,
+        stats: &mut SampleStats,
+    ) -> Option<Sampled> {
+        let range = TargetConfig {
+            min_distance: p.min_distance,
+            max_distance: p.max_distance,
+            max_tortuosity: p.max_tortuosity,
+            ..TargetConfig::default()
+        };
+        let grass = self.data.tile_id("grass-1");
+        let top = (0..self.data.fuels.len())
+            .map(|fuel| physics::terminal_speed(self.data, self.vehicle, fuel, grass, false))
+            .fold(0.0, f64::max);
+        for _ in 0..RARE_START_ATTEMPTS {
+            let (start, _) = self.facing_obstacle(rng, (p.min_gap, p.max_gap), stats)?;
+            let speed = top * rng.gen_range(p.min_speed_fraction..=1.0);
+            if let Some(mut found) = self.target_from(rng, start, &range, stats) {
+                found.start_speed = speed;
+                return Some(found);
+            }
+        }
+        None
+    }
+
+    /// At rest with the hull touching an obstacle ahead (or, for `behind_fraction` of
+    /// starts, behind), with a ranged target.
+    fn recover(
+        &self,
+        rng: &mut Pcg32,
+        p: &RecoverScenario,
+        stats: &mut SampleStats,
+    ) -> Option<Sampled> {
+        let range = TargetConfig {
+            min_distance: p.min_distance,
+            max_distance: p.max_distance,
+            max_tortuosity: p.max_tortuosity,
+            ..TargetConfig::default()
+        };
+        for _ in 0..RARE_START_ATTEMPTS {
+            let (pose, gap) = self.facing_obstacle(rng, (GAP_STEP, 4.0), stats)?;
+            let (sin, cos) = (pose.orientation * TAU).sin_cos();
+            let mut start = Pose {
+                x: pose.x + gap * sin,
+                y: pose.y - gap * cos,
+                ..pose
+            };
+            if rng.gen::<f64>() < p.behind_fraction {
+                start.orientation =
+                    physics::quantize_orientation((start.orientation + 0.5).rem_euclid(1.0));
+            }
+            if !pose_is_clear(self.world, self.data, self.vehicle, start) {
+                continue;
+            }
+            if let Some(found) = self.target_from(rng, start, &range, stats) {
+                return Some(found);
+            }
+        }
+        None
+    }
+
     fn reverse_start(
         &self,
         rng: &mut Pcg32,

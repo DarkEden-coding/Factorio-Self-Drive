@@ -72,12 +72,16 @@ assert(not s.repair_index,'dirty coverage was not rebuilt')
 assert(s.target==target and s.elapsed>elapsed,'repair reset the destination or trip clock')
 print('Progressive driver: frontier braking, cached extension, continuous trip state and selective repair pass')
 -- Escape rule (same sequence as python/tests/test_escape.py): reversing left into a cliff
--- end without moving switches to forward right for HOLD decisions, then hands back.
+-- end without moving switches to reversing straight for HOLD decisions, then hands back.
 local escape=require('escape')
 local e,executed=escape.new(),{}
 for i=1,12 do
   local position=i<=10 and {x=5,y=5} or {x=5,y=5+i}
   executed[i]=escape.decide(e,position,0)
 end
-assert(table.concat(executed,',')=='0,0,0,0,0,0,0,8,8,8,8,0','escape sequence: '..table.concat(executed,','))
-print('Escape: blocked pushing triggers the mirrored maneuver for its hold, then hands back')
+assert(table.concat(executed,',')=='0,0,0,0,0,0,0,1,1,1,1,0','escape sequence: '..table.concat(executed,','))
+-- Fully wedged: each maneuver that does not move hands straight to the next.
+local w,seen=escape.new(),{}
+for i=1,40 do seen[#seen+1]=escape.decide(w,{x=5,y=5},6) end
+assert(table.concat(seen,',',8,23)=='7,7,7,7,1,1,1,1,2,2,2,2,0,0,0,0','wedge sequence: '..table.concat(seen,','))
+print('Escape: blocked pushing tries straight, then opposite maneuvers, and hands back on movement')

@@ -16,7 +16,7 @@ REWARD_TERMS = [
     "progress", "time", "damage", "collision", "nest_zone", "success", "destroyed", "arrival",
     "target_speed", "path_length", "steer_change", "heading_error",
 ]
-SCENARIOS = ["standard", "long", "forest", "reverse", "nest", "arrival"]
+SCENARIOS = ["standard", "long", "forest", "reverse", "nest", "arrival", "impact", "recover"]
 COLLISION_KINDS = ["tree", "rock", "cliff", "nest", "water"]
 
 
@@ -35,6 +35,7 @@ class VecEnv:
     def __init__(self, config_json: str, num_envs: int, seed: int):
         self.config = json.loads(config_json)
         self.mode = self.config["mode"]
+        self.map_names = [(0, "fixture")]
         self.gamma = self.config["gamma"]
         self.n = num_envs
         self.rng = np.random.default_rng(seed)
@@ -99,6 +100,7 @@ class VecEnv:
             "reverse_distance": np.zeros(self.n, dtype=np.float32),
             "reversed": self.rng.random(self.n) < 0.3,
             "scenario": self.scenario.astype(np.int64),
+            "speed": self.rng.uniform(0, 0.8, self.n),
             "x": self.rng.uniform(0, 30, self.n),
             "y": self.rng.uniform(0, 30, self.n),
             "orientation": self.rng.random(self.n),

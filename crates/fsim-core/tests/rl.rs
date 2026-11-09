@@ -3,7 +3,8 @@ use fsim_core::{
     policy_obs::{self, ObsScratch, COARSE_LEN, LOCAL_LEN, VECTOR_LEN},
     raster::{friction_byte, MapRaster, RasterPatches},
     rl_config::{
-        ArrivalMode, EpisodeRules, Mode, Observation, RlConfig, Scenario, TargetConfig, VehicleChoice,
+        ArrivalMode, EpisodeRules, Mode, Observation, RlConfig, Scenario, TargetConfig,
+        VehicleChoice,
     },
     rl_episode::{self, encode_action, Ctx, Episode, EpisodeSetup, Point, Pose, Status},
     sampler,

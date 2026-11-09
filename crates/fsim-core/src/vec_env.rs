@@ -527,7 +527,9 @@ impl Env {
                 let draw = draw_episode(&ctx, &mut rng);
                 let _ = tx.send((draw, rng));
             });
-            self.pending = Some(Pending { rx: std::sync::Mutex::new(rx) });
+            self.pending = Some(Pending {
+                rx: std::sync::Mutex::new(rx),
+            });
         }
         #[cfg(not(feature = "parallel"))]
         let _ = shared;
@@ -900,8 +902,8 @@ impl VecEnv {
             vehicles: vehicles.clone(),
         });
         // FSIM_PREFETCH=0 draws every episode at its reset, for comparisons.
-        let prefetch = cfg!(feature = "parallel")
-            && std::env::var("FSIM_PREFETCH").map_or(true, |v| v != "0");
+        let prefetch =
+            cfg!(feature = "parallel") && std::env::var("FSIM_PREFETCH").map_or(true, |v| v != "0");
         let mut env = Self {
             config,
             rules,
