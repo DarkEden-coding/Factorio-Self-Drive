@@ -19,6 +19,7 @@ local FINAL_WITHIN = 200     -- the final target becomes the sub-target when thi
 local SINGLE_WITHIN = 64     -- targets this close are planned as one segment, like training
 local MARGIN = 32            -- field margin around a segment
 local FINAL_MARGIN = 48      -- the simulator's margin, for single-segment trips
+local MAX_MARGIN = 128       -- a route clipped by its window replans with a doubled margin up to this
 local HANDOFF = 50           -- overlap includes 20 extra tiles beyond the old handoff span
 local FIELD_BUDGET = 4000    -- field work units per tick (~1-2 ms)
 local GRID_BLOCKS = 4        -- 16x16 cache blocks built per tick (forest blocks are costly)
@@ -89,6 +90,15 @@ local function new_plan(s,from,target,final,margin)
   grid.ensure(s.grid,f.x0-3,f.y0-3,f.x1+3,f.y1+3,false)
   return {from=from,target=target,aim=target,final=final,margin=margin,field=f,phase="grid",attempt=0}
 end
+-- Within EDGE tiles of the window counts as along it: a vehicle cutting a corner there at
+-- speed leaves the covered region (two tiles was not enough for a tank in a cliff maze).
+local EDGE = 6
+local function clipped(f,route)
+  for _,p in ipairs(route) do
+    if p.x<f.x0+EDGE or p.y<f.y0+EDGE or p.x>f.x1-EDGE or p.y>f.y1-EDGE then return true end
+  end
+  return false
+end
 -- Advances a plan by one tick of work. Returns "ready", "failed" or nil.
 local function step_plan(s,p,probe)
   if p.phase == "grid" then
@@ -113,6 +123,13 @@ local function step_plan(s,p,probe)
     if not field.slice(p.field,function(x,y) return raster.mask(s.grid,x,y) end,FIELD_BUDGET,
       function(x,y) return raster.friction(s.grid,x,y) end) then return end
     if field.sample(p.field,probe.x,probe.y) == math.huge then p.phase = "unreachable"; return "failed" end
+    -- A route along the window edge means the window cut off the way around (cliff mazes):
+    -- the vehicle then leaves the covered region. Plan again with a doubled margin.
+    if p.margin < MAX_MARGIN and clipped(p.field,field.route(p.field,probe)) then
+      local q = new_plan(s,p.from,p.target,p.final,math.min(MAX_MARGIN,p.margin*2))
+      p.field, p.margin, p.phase = q.field, q.margin, q.phase
+      return
+    end
     p.phase = "ready"
     return "ready"
   end
@@ -146,6 +163,19 @@ local function retry(s,p)
   return q
 end
 
+-- The trip's time limit follows training (600 ticks plus 12 per tile of route), with the
+-- route length estimated as the longest of the straight line, the first field's distance
+-- (exact for single-section trips) and the pathfinder's path. Straight lines alone timed out
+-- winding cliff routes. Only ever raised.
+local function raise_time_limit(s,distance)
+  local limit=math.max(1,math.ceil(600+12*distance))
+  if not s.time_limit or limit>s.time_limit then s.time_limit=limit end
+end
+local function path_length(path)
+  local length=0
+  for i=2,#path do length=length+u.distance(path[i-1],path[i]) end
+  return length
+end
 local function request_path(s)
   local v = s.vehicle
   local ok, id = pcall(v.surface.request_path,{
@@ -162,6 +192,7 @@ function M.on_path(s,event)
   if event.path then
     s.path = {}
     for _, w in ipairs(event.path) do s.path[#s.path+1] = {x=w.position.x,y=w.position.y} end
+    if s.time_limit then raise_time_limit(s,path_length(s.path)) end
   elseif event.try_again_later and (s.path_retries or 0) < PATH_RETRIES then
     s.path_retries = (s.path_retries or 0) + 1
     s.path_retry_at = game.tick + 60
@@ -199,7 +230,14 @@ end
 local function activate(s,p)
   s.field, s.seg_target, s.final_segment = p.field, p.target, p.final
   s.best_distance=field.sample(p.field,s.vehicle.position.x,s.vehicle.position.y)
-  s.time_limit=s.time_limit or math.max(1,math.ceil(600+12*u.distance(s.vehicle.position,s.target)))
+  if not s.time_limit then
+    local estimate=u.distance(s.vehicle.position,s.target)
+    if s.best_distance<math.huge then
+      estimate=math.max(estimate,s.best_distance+(p.final and 0 or u.distance(p.target,s.target)))
+    end
+    if s.path then estimate=math.max(estimate,path_length(s.path)) end
+    raise_time_limit(s,estimate)
+  end
   s.segments = s.segments + 1
   s.plan=nil
 end

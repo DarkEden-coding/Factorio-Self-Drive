@@ -150,6 +150,38 @@ What it does not fix (12 of 800 Vulcanus long episodes): a vehicle wedged so tha
 mirrored maneuver is blocked too, a car rocking between forward and reverse two to four tiles
 from the target without arriving, one timeout and one destroyed car.
 
+## Cliff mazes on Vulcanus
+
+`scripts/cliff-trips.mjs` scores 96x96-tile windows of a Vulcanus pool map inside the engine
+area by cliff pieces and keeps those with at least 170 pieces and under 3% lava (the densest
+windows reach 220-350 pieces; the median window has 59). Trips start and end in such windows,
+40-160 tiles apart, with no tortuosity limit. Six seeds (holdout 3724854990 and 2084323455;
+train 2415097714, 387289262, 1936396930, 3668352332), 8 car and 8 tank trips each: route
+distance is a median 1.5-2.1 times the straight line, up to 3.8.
+
+| | Arrived |
+|---|---:|
+| Simulator (`planets-v2`, escape rule) | 95/96 |
+| Engine, mod before the fixes below | 89/96 |
+| Engine, mod with the fixes | 95/96 |
+
+The engine found two mod planning bugs the simulator cannot show:
+
+- **Clipped windows.** A section's field covers the bounding box of its endpoints plus a
+  margin. In a maze the way around can lie outside it; the best route inside then runs along
+  the edge, the vehicle cuts a corner past it and the trip ends `outside-route-region` (4
+  trips). A route within 6 tiles of its window edge now replans with a doubled margin, up to
+  128 tiles (2 tiles was not enough for a tank).
+- **Straight-line time limit.** The trip limit was 600 + 12 ticks per tile of straight
+  distance, too short for a 52-tile trip with a 154-tile route (3 timeouts). It now uses the
+  longest of the straight line, the first field's route distance and the pathfinder's path,
+  as training uses the route distance.
+
+The remaining failure (`3668352332`, `vulcanus-tank-3`, route 2.7 times the straight line)
+also fails in the simulator: the tank wanders the maze and times out. On the earlier 192
+planet trips and the Nauvis suites the fixes change nothing (192/192 and 24/24, time within
+0.6%) ([cliff results](results/vulcanus-cliffs-2026-11-09.json)).
+
 ## In-game results
 
 Same 192 trips for both weight sets, mod 0.9.0 code before the escape rule

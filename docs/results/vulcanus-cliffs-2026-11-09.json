@@ -1,0 +1,978 @@
+{
+ "date": "2026-11-09",
+ "trips": "scripts/cliff-trips.mjs SEED 8: start and target in 96x96 windows with >=170 cliff pieces and <3% lava, inside the engine area",
+ "seeds": {
+  "3724854990": {
+   "vulcanus-car-1": {
+    "straight": 82.9,
+    "route": 162.4,
+    "cliffs_nearby": 188,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 10.35,
+    "damage_after": 39.6
+   },
+   "vulcanus-car-2": {
+    "straight": 104.1,
+    "route": 170.7,
+    "cliffs_nearby": 251,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 18.57,
+    "damage_after": 71.5
+   },
+   "vulcanus-car-3": {
+    "straight": 64.6,
+    "route": 138.1,
+    "cliffs_nearby": 127,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 7.97,
+    "damage_after": 0
+   },
+   "vulcanus-car-4": {
+    "straight": 50.1,
+    "route": 137.0,
+    "cliffs_nearby": 122,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 6.9,
+    "damage_after": 0
+   },
+   "vulcanus-car-5": {
+    "straight": 105.0,
+    "route": 161.1,
+    "cliffs_nearby": 260,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 8.17,
+    "damage_after": 0
+   },
+   "vulcanus-car-6": {
+    "straight": 108.7,
+    "route": 244.2,
+    "cliffs_nearby": 269,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 11.63,
+    "damage_after": 0.0
+   },
+   "vulcanus-car-7": {
+    "straight": 71.7,
+    "route": 126.8,
+    "cliffs_nearby": 124,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 7.95,
+    "damage_after": 0.0
+   },
+   "vulcanus-car-8": {
+    "straight": 54.8,
+    "route": 88.0,
+    "cliffs_nearby": 55,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 4.48,
+    "damage_after": 0
+   },
+   "vulcanus-tank-1": {
+    "straight": 61.0,
+    "route": 142.3,
+    "cliffs_nearby": 133,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 13.23,
+    "damage_after": 0
+   },
+   "vulcanus-tank-2": {
+    "straight": 69.8,
+    "route": 193.3,
+    "cliffs_nearby": 126,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 15.38,
+    "damage_after": 0
+   },
+   "vulcanus-tank-3": {
+    "straight": 90.3,
+    "route": 151.8,
+    "cliffs_nearby": 215,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 22.22,
+    "damage_after": 0
+   },
+   "vulcanus-tank-4": {
+    "straight": 111.6,
+    "route": 153.3,
+    "cliffs_nearby": 281,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 16.08,
+    "damage_after": 0
+   },
+   "vulcanus-tank-5": {
+    "straight": 58.8,
+    "route": 95.8,
+    "cliffs_nearby": 109,
+    "simulator": "success",
+    "engine_before": "timeout",
+    "engine_after": "arrived",
+    "seconds_after": 13.53,
+    "damage_after": 0
+   },
+   "vulcanus-tank-6": {
+    "straight": 79.9,
+    "route": 86.0,
+    "cliffs_nearby": 89,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 7.98,
+    "damage_after": 0
+   },
+   "vulcanus-tank-7": {
+    "straight": 43.5,
+    "route": 147.5,
+    "cliffs_nearby": 106,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 14.77,
+    "damage_after": 0
+   },
+   "vulcanus-tank-8": {
+    "straight": 41.7,
+    "route": 113.8,
+    "cliffs_nearby": 102,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 13.38,
+    "damage_after": 0
+   }
+  },
+  "2084323455": {
+   "vulcanus-car-1": {
+    "straight": 41.7,
+    "route": 157.7,
+    "cliffs_nearby": 82,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 11.57,
+    "damage_after": 0
+   },
+   "vulcanus-car-2": {
+    "straight": 74.4,
+    "route": 180.5,
+    "cliffs_nearby": 90,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 8.63,
+    "damage_after": 0.2
+   },
+   "vulcanus-car-3": {
+    "straight": 52.7,
+    "route": 134.2,
+    "cliffs_nearby": 112,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 9.37,
+    "damage_after": 6.8
+   },
+   "vulcanus-car-4": {
+    "straight": 80.0,
+    "route": 112.6,
+    "cliffs_nearby": 80,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 6.03,
+    "damage_after": 0.0
+   },
+   "vulcanus-car-5": {
+    "straight": 48.5,
+    "route": 148.0,
+    "cliffs_nearby": 59,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 8,
+    "damage_after": 0
+   },
+   "vulcanus-car-6": {
+    "straight": 115.2,
+    "route": 163.1,
+    "cliffs_nearby": 209,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 10.7,
+    "damage_after": 54.5
+   },
+   "vulcanus-car-7": {
+    "straight": 75.1,
+    "route": 151.9,
+    "cliffs_nearby": 148,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 9.75,
+    "damage_after": 45.0
+   },
+   "vulcanus-car-8": {
+    "straight": 41.1,
+    "route": 82.2,
+    "cliffs_nearby": 59,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 6.17,
+    "damage_after": 0.0
+   },
+   "vulcanus-tank-1": {
+    "straight": 51.5,
+    "route": 102.5,
+    "cliffs_nearby": 82,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 11.1,
+    "damage_after": 0
+   },
+   "vulcanus-tank-2": {
+    "straight": 50.4,
+    "route": 166.2,
+    "cliffs_nearby": 101,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 12.1,
+    "damage_after": 0
+   },
+   "vulcanus-tank-3": {
+    "straight": 63.8,
+    "route": 138.8,
+    "cliffs_nearby": 76,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 14.35,
+    "damage_after": 0
+   },
+   "vulcanus-tank-4": {
+    "straight": 45.9,
+    "route": 59.3,
+    "cliffs_nearby": 54,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 5.57,
+    "damage_after": 0
+   },
+   "vulcanus-tank-5": {
+    "straight": 51.9,
+    "route": 153.5,
+    "cliffs_nearby": 55,
+    "simulator": "success",
+    "engine_before": "timeout",
+    "engine_after": "arrived",
+    "seconds_after": 25.1,
+    "damage_after": 0
+   },
+   "vulcanus-tank-6": {
+    "straight": 54.0,
+    "route": 169.6,
+    "cliffs_nearby": 87,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 16.93,
+    "damage_after": 0
+   },
+   "vulcanus-tank-7": {
+    "straight": 43.4,
+    "route": 65.8,
+    "cliffs_nearby": 59,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 8.03,
+    "damage_after": 0
+   },
+   "vulcanus-tank-8": {
+    "straight": 77.5,
+    "route": 163.1,
+    "cliffs_nearby": 139,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 13.33,
+    "damage_after": 0
+   }
+  },
+  "2415097714": {
+   "vulcanus-car-1": {
+    "straight": 40.6,
+    "route": 134.7,
+    "cliffs_nearby": 70,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 6.88,
+    "damage_after": 0
+   },
+   "vulcanus-car-2": {
+    "straight": 43.5,
+    "route": 63.5,
+    "cliffs_nearby": 112,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 3.63,
+    "damage_after": 0
+   },
+   "vulcanus-car-3": {
+    "straight": 48.9,
+    "route": 54.2,
+    "cliffs_nearby": 18,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 4,
+    "damage_after": 0
+   },
+   "vulcanus-car-4": {
+    "straight": 97.7,
+    "route": 192.5,
+    "cliffs_nearby": 139,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 8.17,
+    "damage_after": 0
+   },
+   "vulcanus-car-5": {
+    "straight": 61.1,
+    "route": 133.7,
+    "cliffs_nearby": 123,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 6.63,
+    "damage_after": 0
+   },
+   "vulcanus-car-6": {
+    "straight": 83.2,
+    "route": 153.9,
+    "cliffs_nearby": 112,
+    "simulator": "success",
+    "engine_before": "outside-route-region",
+    "engine_after": "arrived",
+    "seconds_after": 9.83,
+    "damage_after": 0.0
+   },
+   "vulcanus-car-7": {
+    "straight": 70.0,
+    "route": 81.4,
+    "cliffs_nearby": 74,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 6.55,
+    "damage_after": 0
+   },
+   "vulcanus-car-8": {
+    "straight": 53.3,
+    "route": 65.7,
+    "cliffs_nearby": 71,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 4.02,
+    "damage_after": 0.2
+   },
+   "vulcanus-tank-1": {
+    "straight": 56.8,
+    "route": 110.5,
+    "cliffs_nearby": 98,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 11.62,
+    "damage_after": 0
+   },
+   "vulcanus-tank-2": {
+    "straight": 57.6,
+    "route": 64.7,
+    "cliffs_nearby": 38,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 6.72,
+    "damage_after": 0
+   },
+   "vulcanus-tank-3": {
+    "straight": 89.6,
+    "route": 112.5,
+    "cliffs_nearby": 132,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 11.43,
+    "damage_after": 0
+   },
+   "vulcanus-tank-4": {
+    "straight": 88.8,
+    "route": 118.8,
+    "cliffs_nearby": 126,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 9.85,
+    "damage_after": 0
+   },
+   "vulcanus-tank-5": {
+    "straight": 71.9,
+    "route": 81.9,
+    "cliffs_nearby": 86,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 8.48,
+    "damage_after": 0
+   },
+   "vulcanus-tank-6": {
+    "straight": 45.5,
+    "route": 92.9,
+    "cliffs_nearby": 68,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 9.08,
+    "damage_after": 0
+   },
+   "vulcanus-tank-7": {
+    "straight": 94.0,
+    "route": 154.5,
+    "cliffs_nearby": 213,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 14.32,
+    "damage_after": 0
+   },
+   "vulcanus-tank-8": {
+    "straight": 66.2,
+    "route": 188.6,
+    "cliffs_nearby": 133,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 15.67,
+    "damage_after": 0
+   }
+  },
+  "387289262": {
+   "vulcanus-car-1": {
+    "straight": 75.6,
+    "route": 120.4,
+    "cliffs_nearby": 97,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 6.15,
+    "damage_after": 0
+   },
+   "vulcanus-car-2": {
+    "straight": 44.7,
+    "route": 140.1,
+    "cliffs_nearby": 89,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 11.13,
+    "damage_after": 0.3
+   },
+   "vulcanus-car-3": {
+    "straight": 67.1,
+    "route": 110.0,
+    "cliffs_nearby": 109,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 5.8,
+    "damage_after": 0
+   },
+   "vulcanus-car-4": {
+    "straight": 59.5,
+    "route": 66.2,
+    "cliffs_nearby": 98,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 3.97,
+    "damage_after": 0
+   },
+   "vulcanus-car-5": {
+    "straight": 61.4,
+    "route": 62.0,
+    "cliffs_nearby": 85,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 4.4,
+    "damage_after": 0
+   },
+   "vulcanus-car-6": {
+    "straight": 56.1,
+    "route": 73.2,
+    "cliffs_nearby": 30,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 3.9,
+    "damage_after": 0
+   },
+   "vulcanus-car-7": {
+    "straight": 82.5,
+    "route": 128.2,
+    "cliffs_nearby": 212,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 10.42,
+    "damage_after": 0
+   },
+   "vulcanus-car-8": {
+    "straight": 49.2,
+    "route": 56.7,
+    "cliffs_nearby": 55,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 3.42,
+    "damage_after": 0
+   },
+   "vulcanus-tank-1": {
+    "straight": 56.8,
+    "route": 102.9,
+    "cliffs_nearby": 55,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 10.55,
+    "damage_after": 0
+   },
+   "vulcanus-tank-2": {
+    "straight": 41.9,
+    "route": 46.4,
+    "cliffs_nearby": 37,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 5.53,
+    "damage_after": 0
+   },
+   "vulcanus-tank-3": {
+    "straight": 71.0,
+    "route": 92.8,
+    "cliffs_nearby": 92,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 10.43,
+    "damage_after": 0
+   },
+   "vulcanus-tank-4": {
+    "straight": 135.1,
+    "route": 347.7,
+    "cliffs_nearby": 340,
+    "simulator": "success",
+    "engine_before": "outside-route-region",
+    "engine_after": "arrived",
+    "seconds_after": 31.68,
+    "damage_after": 0
+   },
+   "vulcanus-tank-5": {
+    "straight": 47.8,
+    "route": 57.0,
+    "cliffs_nearby": 71,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 7.48,
+    "damage_after": 0
+   },
+   "vulcanus-tank-6": {
+    "straight": 83.7,
+    "route": 146.1,
+    "cliffs_nearby": 206,
+    "simulator": "success",
+    "engine_before": "timeout",
+    "engine_after": "arrived",
+    "seconds_after": 30.83,
+    "damage_after": 0
+   },
+   "vulcanus-tank-7": {
+    "straight": 100.6,
+    "route": 231.8,
+    "cliffs_nearby": 178,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 17.88,
+    "damage_after": 0
+   },
+   "vulcanus-tank-8": {
+    "straight": 122.9,
+    "route": 247.6,
+    "cliffs_nearby": 130,
+    "simulator": "success",
+    "engine_before": "outside-route-region",
+    "engine_after": "arrived",
+    "seconds_after": 27.02,
+    "damage_after": 0
+   }
+  },
+  "1936396930": {
+   "vulcanus-car-1": {
+    "straight": 124.7,
+    "route": 242.9,
+    "cliffs_nearby": 311,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 22.82,
+    "damage_after": 25.0
+   },
+   "vulcanus-car-2": {
+    "straight": 57.2,
+    "route": 65.7,
+    "cliffs_nearby": 65,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 3.63,
+    "damage_after": 0
+   },
+   "vulcanus-car-3": {
+    "straight": 95.0,
+    "route": 106.7,
+    "cliffs_nearby": 78,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 5.77,
+    "damage_after": 0
+   },
+   "vulcanus-car-4": {
+    "straight": 55.4,
+    "route": 108.8,
+    "cliffs_nearby": 105,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 4.88,
+    "damage_after": 0
+   },
+   "vulcanus-car-5": {
+    "straight": 52.2,
+    "route": 54.2,
+    "cliffs_nearby": 49,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 4.3,
+    "damage_after": 0
+   },
+   "vulcanus-car-6": {
+    "straight": 101.4,
+    "route": 160.2,
+    "cliffs_nearby": 211,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 7.1,
+    "damage_after": 0
+   },
+   "vulcanus-car-7": {
+    "straight": 86.5,
+    "route": 124.7,
+    "cliffs_nearby": 84,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 7.95,
+    "damage_after": 0
+   },
+   "vulcanus-car-8": {
+    "straight": 62.4,
+    "route": 70.3,
+    "cliffs_nearby": 83,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 4.08,
+    "damage_after": 0
+   },
+   "vulcanus-tank-1": {
+    "straight": 62.8,
+    "route": 64.3,
+    "cliffs_nearby": 39,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 8.33,
+    "damage_after": 0
+   },
+   "vulcanus-tank-2": {
+    "straight": 72.2,
+    "route": 155.8,
+    "cliffs_nearby": 140,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 11.3,
+    "damage_after": 0
+   },
+   "vulcanus-tank-3": {
+    "straight": 124.5,
+    "route": 165.5,
+    "cliffs_nearby": 253,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 14.68,
+    "damage_after": 0
+   },
+   "vulcanus-tank-4": {
+    "straight": 100.9,
+    "route": 145.5,
+    "cliffs_nearby": 153,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 10.93,
+    "damage_after": 0
+   },
+   "vulcanus-tank-5": {
+    "straight": 91.7,
+    "route": 164.8,
+    "cliffs_nearby": 157,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 16.3,
+    "damage_after": 0
+   },
+   "vulcanus-tank-6": {
+    "straight": 45.1,
+    "route": 97.2,
+    "cliffs_nearby": 64,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 9.13,
+    "damage_after": 0
+   },
+   "vulcanus-tank-7": {
+    "straight": 53.5,
+    "route": 160.9,
+    "cliffs_nearby": 110,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 15.55,
+    "damage_after": 0
+   },
+   "vulcanus-tank-8": {
+    "straight": 120.9,
+    "route": 239.5,
+    "cliffs_nearby": 306,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 17.28,
+    "damage_after": 0
+   }
+  },
+  "3668352332": {
+   "vulcanus-car-1": {
+    "straight": 42.1,
+    "route": 51.7,
+    "cliffs_nearby": 23,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 4.5,
+    "damage_after": 0
+   },
+   "vulcanus-car-2": {
+    "straight": 91.2,
+    "route": 169.2,
+    "cliffs_nearby": 154,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 7.7,
+    "damage_after": 0.4
+   },
+   "vulcanus-car-3": {
+    "straight": 45.3,
+    "route": 166.7,
+    "cliffs_nearby": 79,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 8.28,
+    "damage_after": 0
+   },
+   "vulcanus-car-4": {
+    "straight": 53.5,
+    "route": 59.0,
+    "cliffs_nearby": 64,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 4.17,
+    "damage_after": 0
+   },
+   "vulcanus-car-5": {
+    "straight": 40.5,
+    "route": 58.6,
+    "cliffs_nearby": 64,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 3.63,
+    "damage_after": 0
+   },
+   "vulcanus-car-6": {
+    "straight": 133.8,
+    "route": 227.1,
+    "cliffs_nearby": 133,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 10.23,
+    "damage_after": 6.9
+   },
+   "vulcanus-car-7": {
+    "straight": 76.1,
+    "route": 218.5,
+    "cliffs_nearby": 119,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 11.4,
+    "damage_after": 0
+   },
+   "vulcanus-car-8": {
+    "straight": 66.2,
+    "route": 186.4,
+    "cliffs_nearby": 125,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 7.32,
+    "damage_after": 0
+   },
+   "vulcanus-tank-1": {
+    "straight": 133.8,
+    "route": 188.7,
+    "cliffs_nearby": 167,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 16.9,
+    "damage_after": 0
+   },
+   "vulcanus-tank-2": {
+    "straight": 150.4,
+    "route": 202.5,
+    "cliffs_nearby": 167,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 14.8,
+    "damage_after": 0
+   },
+   "vulcanus-tank-3": {
+    "straight": 137.6,
+    "route": 366.3,
+    "cliffs_nearby": 264,
+    "simulator": "stalled",
+    "engine_before": "outside-route-region",
+    "engine_after": "timeout",
+    "seconds_after": 43.25,
+    "damage_after": 0
+   },
+   "vulcanus-tank-4": {
+    "straight": 107.3,
+    "route": 314.4,
+    "cliffs_nearby": 257,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 25.48,
+    "damage_after": 0
+   },
+   "vulcanus-tank-5": {
+    "straight": 61.4,
+    "route": 71.8,
+    "cliffs_nearby": 70,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 8.82,
+    "damage_after": 0
+   },
+   "vulcanus-tank-6": {
+    "straight": 43.4,
+    "route": 144.9,
+    "cliffs_nearby": 62,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 11.27,
+    "damage_after": 0
+   },
+   "vulcanus-tank-7": {
+    "straight": 54.3,
+    "route": 56.2,
+    "cliffs_nearby": 61,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 6.63,
+    "damage_after": 0
+   },
+   "vulcanus-tank-8": {
+    "straight": 74.4,
+    "route": 123.0,
+    "cliffs_nearby": 87,
+    "simulator": "success",
+    "engine_before": "arrived",
+    "engine_after": "arrived",
+    "seconds_after": 10.45,
+    "damage_after": 0
+   }
+  }
+ }
+}

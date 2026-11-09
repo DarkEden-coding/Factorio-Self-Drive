@@ -12,6 +12,10 @@ Date: 2026-11-09
     - Fixed a script error when a route reached ungenerated terrain.
     - Fixed trips stalling at a destination beside a tree, plant or rock: guidance no longer
       loops back through an earlier route section, and arrival is detected there.
+    - Fixed trips through cliff mazes ending as "outside-route-region": a route that runs along
+      the edge of its planning area is planned again with a larger area.
+    - Fixed winding trips timing out: the time limit now follows the route length estimate,
+      not the straight-line distance.
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.1
 Date: 2026-10-28
