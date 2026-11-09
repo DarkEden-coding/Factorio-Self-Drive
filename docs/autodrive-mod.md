@@ -19,7 +19,8 @@ reduces total time and driven distance modestly, with unchanged completion count
 individual regressions. See [progressive-route-results.md](progressive-route-results.md)
 for the complete measurements and limits.
 
-The model export is `python/runs/students/field-smooth-v1/field-smooth.json`, format
+The model export is `python/runs/students/planets-v2/planets-v2.json` (see
+[planets-results.md](planets-results.md)), format
 `fsim-student-v1`, with 13,312 multiply-adds per decision. Inference runs entirely in Factorio
 Lua and requires Factorio 2.1.23 or newer in the 2.1 series.
 

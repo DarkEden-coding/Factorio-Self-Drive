@@ -5,7 +5,7 @@ RL agents that drive the car and tank in Factorio 2.1.23 (Nauvis), trained in a 
 ## Settled decisions
 
 - Goal: models run in the real game. The simulator must match game behavior closely.
-- Factorio 2.1.23 / Space Age, Nauvis only for now.
+- Factorio 2.1.23 / Space Age: Nauvis, Vulcanus, Gleba and Fulgora (not Aquilo). Planet pools live in `data/game/maps-<planet>/`.
 - Task: drive from A to a target without destroying the vehicle.
 - Terrain: cliffs, trees, rocks, water and deep water, biome tiles, ore patches, biter nests. No player structures.
 - Tiles matter for driving: each tile has a `vehicle_friction_modifier`.

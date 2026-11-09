@@ -82,3 +82,4 @@ The RL environment's Python module (`import fsim`) builds with maturin; see
 - [docs/prototypes-schema.md](docs/prototypes-schema.md): `data/prototypes.json`
 - [docs/simulator.md](docs/simulator.md): core layout
 - [docs/mod.md](docs/mod.md): the export mod, trace recording and replay, map export
+- [docs/planets-results.md](docs/planets-results.md): Vulcanus, Gleba and Fulgora support and results

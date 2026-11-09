@@ -6,7 +6,7 @@ import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = ROOT / 'python/runs/students/field-steady-v1/field-steady.json'
+DEFAULT = ROOT / 'python/runs/students/planets-v2/planets-v2.json'
 FIELD_HASH = '49e75f8a02cb7e16'
 SMOOTH_HASH = 'd1c084cc679f1f71'
 
