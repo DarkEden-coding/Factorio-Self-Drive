@@ -4,6 +4,9 @@
   "title": "Factorio driving simulator exports",
   "author": "fsim",
   "factorio_version": "2.1",
-  "dependencies": ["base >= 2.1.23"],
+  "dependencies": [
+    "base >= 2.1.23",
+    "? space-age"
+  ],
   "description": "Prototype snapshots, calibration traces, and chunked map exports for fsim."
 }

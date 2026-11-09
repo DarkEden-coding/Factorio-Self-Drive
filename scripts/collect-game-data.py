@@ -14,9 +14,26 @@ import time
 from map_format import encode_map
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_BINARY = Path.home() / "Library/Application Support/Steam/steamapps/common/Factorio/factorio.app/Contents/MacOS/factorio"
+MAC_BINARY = Path.home() / "Library/Application Support/Steam/steamapps/common/Factorio/factorio.app/Contents/MacOS/factorio"
+LINUX_BINARY = Path.home() / ".steam/steam/steamapps/common/Factorio/bin/x64/factorio"
+DEFAULT_BINARY = MAC_BINARY if MAC_BINARY.exists() else LINUX_BINARY
 MODS = {"base": True, "fsim-export": True, "fsim-autorun": True,
         "space-age": False, "quality": False, "elevated-rails": False, "recycler": False}
+# Space Age planets the exporter knows (Aquilo is left out on purpose).
+PLANETS = ("vulcanus", "gleba", "fulgora")
+
+
+def mod_set(planets):
+    """Base-only for Nauvis; Space Age and its dependencies for planet collection."""
+    mods = dict(MODS)
+    if planets:
+        mods.update({"space-age": True, "quality": True, "elevated-rails": True, "recycler": True})
+    return mods
+
+
+def pool_dir(planet):
+    """Nauvis keeps the original pool; each planet gets its own directory."""
+    return ROOT / "data/game" / ("maps" if planet == "nauvis" else f"maps-{planet}")
 
 
 def stop(process):
@@ -77,18 +94,29 @@ def assign_splits(entries, holdout):
     return entries
 
 
+def data_dir(binary):
+    """The install's `data` directory: Contents/data on macOS, <install>/data on Linux."""
+    for parent in binary.parents:
+        if (parent / "data/core").is_dir():
+            return parent / "data"
+    raise ValueError(f"no Factorio data directory above {binary}")
+
+
 def collect(args, temporary):
     mods, write = temporary / "mods", temporary / "write"
     mods.mkdir()
     write.mkdir()
     for name in ("fsim-export", "fsim-autorun"):
         shutil.copytree(ROOT / "mod" / name, mods / name)
+    active_mods = mod_set(args.planets)
     (mods / "mod-list.json").write_text(json.dumps({"mods": [
-        {"name": name, "enabled": enabled} for name, enabled in MODS.items()]}))
+        {"name": name, "enabled": enabled} for name, enabled in active_mods.items()]}))
     config = temporary / "config.ini"
-    config.write_text(f"[path]\nread-data={args.factorio.parent.parent / 'data'}\nwrite-data={write}\n"
+    config.write_text(f"[path]\nread-data={data_dir(args.factorio)}\nwrite-data={write}\n"
                       "[general]\ncheck-updates=false\nautosave-interval=0\n")
-    # No map-gen overrides: --create uses the default Nauvis preset and the fixed seed.
+    # No map-gen overrides: --create uses the default preset and the fixed seed. Planet
+    # surfaces are created from that save, so their seeds follow from it.
+    planets = args.planets or ["nauvis"]
     base = [args.factorio, "-c", config, "--mod-directory", mods, "--disable-audio"]
     output = write / "script-output/fsim"
     destination = ROOT / "data/game"
@@ -101,11 +129,13 @@ def collect(args, temporary):
             shutil.rmtree(output)
         traces = index == 0 and not args.skip_traces
         filters = "{" + ",".join(json.dumps(f) for f in args.scenarios) + "}"
+        planet_list = "{" + ",".join(json.dumps(p) for p in planets) + "}"
         (mods / "fsim-autorun/config.lua").write_text(
             f"return {{traces = {str(traces).lower()}, maps = {str(not args.skip_maps).lower()}, "
-            f"radius = {args.map_radius}, filters = {filters}}}\n")
+            f"radius = {args.map_radius}, filters = {filters}, planets = {planet_list}}}\n")
         save = temporary / f"seed-{seed}.zip"
-        print(f"Seed {seed}: creating default Nauvis save; traces={traces}, maps={not args.skip_maps}", flush=True)
+        print(f"Seed {seed}: creating default save; planets={planets}, traces={traces}, "
+              f"maps={not args.skip_maps}", flush=True)
         started = time.monotonic()
         run_engine(base + ["--create", save, "--map-gen-seed", seed],
                    temporary / f"create-{seed}.log", args.timeout)
@@ -115,36 +145,42 @@ def collect(args, temporary):
         if marker["players"] != 0:
             raise RuntimeError("Expected a playerless collection save")
         active = marker["active_mods"]
-        if set(active) != {name for name, enabled in MODS.items() if enabled}:
+        if set(active) != {name for name, enabled in active_mods.items() if enabled}:
             raise RuntimeError(f"Unexpected active mods: {active}")
         copy_output(output / "prototypes.json", destination / "prototypes.json")
-        if index == 0:
+        if index == 0 and not args.planets:
             copy_output(output / "graphics.json", destination / "graphics.json")
         for path in sorted((output / "traces").glob("*.json")):
             json.loads(path.read_text())
             copy_output(path, destination / "traces" / path.name)
         for path in sorted((output / "maps").glob("*.json")):
+            planet = path.stem.split("-seed-")[0]
             encoded, entry = encode_map(json.loads(path.read_text()), path.stem)
-            pool = destination / "maps"
+            entry["planet"] = planet
+            pool = pool_dir(planet)
             pool.mkdir(exist_ok=True)
             (pool / entry["file"]).write_bytes(encoded)
             entries.append(entry)
         elapsed = time.monotonic() - started
         print(f"Seed {seed}: completed at tick {marker['finished_tick']} in {elapsed:.2f}s", flush=True)
         runs.append({"seed": seed, "wall_seconds": round(elapsed, 3), "marker": marker})
-    if entries:
-        assign_splits(entries, args.holdout_count)
-        pool = destination / "maps"
-        (pool / "index.json").write_text(json.dumps(entries, indent=2) + "\n")
-        wanted = {entry["file"] for entry in entries} | {"index.json"}
+    for planet in planets:
+        planet_entries = [entry for entry in entries if entry["planet"] == planet]
+        if not planet_entries:
+            continue
+        assign_splits(planet_entries, args.holdout_count)
+        pool = pool_dir(planet)
+        (pool / "index.json").write_text(json.dumps(planet_entries, indent=2) + "\n")
+        wanted = {entry["file"] for entry in planet_entries} | {"index.json"}
         for path in pool.iterdir():
             if path.suffix in (".json", ".fsmap") and path.name not in wanted:
                 path.unlink()
     return runs
 
 
-def process_outputs(factorio):
-    run([sys.executable, "scripts/build-game-assets.py", "--factorio", factorio.parent.parent])
+def process_outputs(factorio, args):
+    if not args.planets:
+        run([sys.executable, "scripts/build-game-assets.py", "--factorio", data_dir(factorio).parent])
     current = ROOT / "data/prototypes.json"
     before = current.read_text()
     run([sys.executable, "scripts/import-prototypes.py", "data/game/prototypes.json", current])
@@ -155,7 +191,8 @@ def process_outputs(factorio):
     removed = sum(line.startswith("-") and not line.startswith("---") for line in changes)
     print(f"Prototype diff: +{added}/-{removed} lines", flush=True)
     (ROOT / "data/game/prototypes.diff").write_text("\n".join(changes) + ("\n" if changes else ""))
-    run(["scripts/build-wasm.sh"])
+    if not args.skip_wasm:
+        run(["scripts/build-wasm.sh"])
     paths = sorted((ROOT / "data/game/traces").glob("*.json"))
     reports = []
     if paths:
@@ -188,6 +225,10 @@ def main():
     parser.add_argument("--skip-maps", action="store_true")
     parser.add_argument("--map-radius", type=int, default=16, help="origin-centered chunk radius, 0..31")
     parser.add_argument("--scenarios", default="", help="comma-separated literal name substrings, OR matched")
+    parser.add_argument("--planets", default="",
+                        help=f"comma-separated Space Age planets to export instead of Nauvis ({', '.join(PLANETS)}); "
+                        "enables Space Age and writes data/game/maps-<planet>/")
+    parser.add_argument("--skip-wasm", action="store_true", help="don't rebuild the wasm package")
     parser.add_argument("--keep-temp", action="store_true")
     parser.add_argument("--timeout", type=float, default=1800, help="seconds per Factorio invocation")
     args = parser.parse_args()
@@ -201,6 +242,9 @@ def main():
         if not args.seeds or any(s < 0 or s > 2**32 - 1 for s in args.seeds):
             raise ValueError("seeds must be uint32 values")
         args.scenarios = [s.strip() for s in args.scenarios.split(",") if s.strip()]
+        args.planets = [p.strip() for p in args.planets.split(",") if p.strip()]
+        if any(p not in PLANETS for p in args.planets):
+            raise ValueError(f"planets must be among {', '.join(PLANETS)}")
         if any(not all(c.isalnum() or c in "._-" for c in f) for f in args.scenarios):
             raise ValueError("scenario filters may contain letters, digits, dots, underscores and hyphens")
         if not 0 <= args.map_radius <= 31 or args.timeout <= 0:
@@ -213,17 +257,19 @@ def main():
     print(f"Isolated Factorio directory: {temporary}", flush=True)
     try:
         runs = collect(args, temporary)
-        count = process_outputs(args.factorio)
+        count = process_outputs(args.factorio, args)
         elapsed = round(time.monotonic() - started, 3)
         files = [{"path": str(p.relative_to(ROOT)), "bytes": p.stat().st_size}
                  for p in sorted((ROOT / "data/game").rglob("*"))
                  if p.is_file() and p.name not in ("collection.json", ".gitignore")]
-        manifest = {"schema_version": 1, "wall_seconds": elapsed, "mods": MODS,
-                    "map_generation": "default Nauvis, no map-gen overrides", "runs": runs,
+        manifest = {"schema_version": 1, "wall_seconds": elapsed, "mods": mod_set(args.planets),
+                    "map_generation": "default preset, no map-gen overrides",
+                    "planets": args.planets or ["nauvis"], "runs": runs,
                     "replayed_traces": count, "files": files}
         (ROOT / "data/game/collection.json").write_text(json.dumps(manifest, indent=2) + "\n")
         if not args.skip_maps:
-            (ROOT / "data/game/map-collection.json").write_text(json.dumps(manifest, indent=2) + "\n")
+            name = "map-collection.json" if not args.planets else f"map-collection-{'-'.join(args.planets)}.json"
+            (ROOT / "data/game" / name).write_text(json.dumps(manifest, indent=2) + "\n")
         print(f"Collected and processed {count} traces in {elapsed:.2f}s. Files:")
         for entry in files:
             print(f"  {entry['bytes']:>10,} bytes  {entry['path']}")

@@ -9,15 +9,23 @@ pub const VERSION: &str = "field-smooth-v1";
 pub struct RouteGrid {
     region: Region,
     flags: Vec<u8>,
+    /// Slow-ground cost per tile, same layout as `flags`; `None` when off.
+    friction: Option<Vec<f32>>,
     tree_cost: f64,
     zone_cost: f64,
 }
 
 impl RouteGrid {
-    pub(crate) fn new(region: Region, flags: Vec<u8>, params: FieldParams) -> Self {
+    pub(crate) fn new(
+        region: Region,
+        flags: Vec<u8>,
+        friction: Option<Vec<f32>>,
+        params: FieldParams,
+    ) -> Self {
         Self {
             region,
             flags,
+            friction,
             tree_cost: params.tree_cost,
             zone_cost: params.zone_cost,
         }
@@ -28,13 +36,14 @@ impl RouteGrid {
             return f64::INFINITY;
         }
         let stride = self.region.width() + 2;
-        let f = self.flags
-            [(y - self.region.y0 + 1) as usize * stride + (x - self.region.x0 + 1) as usize];
+        let i = (y - self.region.y0 + 1) as usize * stride + (x - self.region.x0 + 1) as usize;
+        let f = self.flags[i];
         if f & F_BLOCKED != 0 {
             return f64::INFINITY;
         }
         1.0 + if f & F_TREE != 0 { self.tree_cost } else { 0.0 }
             + if f & F_ZONE != 0 { self.zone_cost } else { 0.0 }
+            + self.friction.as_ref().map_or(0.0, |c| c[i] as f64)
     }
 
     pub fn smooth(&self, points: &[[f64; 2]]) -> Vec<[f64; 2]> {

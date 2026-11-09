@@ -36,6 +36,7 @@ local function start_next(queue, player)
       cliff_elevation_interval = 40, cliff_smoothing = 0, richness = 0}})
   surface.always_day, surface.daytime, surface.peaceful_mode = true, 0.5, true
   surface.freeze_daytime = true
+  for name, value in pairs(scenario.surface.properties or {}) do surface.set_property(name, value) end
   storage.fsim_record = {queue = queue, player = player, scenario = scenario, force = force,
     surface = surface, cx = scenario.surface.area[1][1] / 32, cy = scenario.surface.area[1][2] / 32,
     elapsed = 0, path = "fsim/traces/" .. scenario.name .. ".json", obstacles = {}}
@@ -164,7 +165,8 @@ function M.tick()
   game.print("fsim: trace complete: script-output/" .. job.path)
   storage.fsim_completed = storage.fsim_completed or {}
   storage.fsim_completed[#storage.fsim_completed + 1] = job.scenario.name
-  game.delete_surface(job.surface)
+  -- 2.1.24 crashes deleting a surface after set_property; such surfaces are left in place.
+  if not job.scenario.surface.properties then game.delete_surface(job.surface) end
   storage.fsim_record = {queue = job.queue, player = job.player, next_pending = true}
 end
 function M.on_died(event)

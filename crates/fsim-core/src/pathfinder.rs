@@ -36,15 +36,19 @@ impl PathRoute {
         target: [f64; 2],
     ) -> Self {
         let region = Region::around(&[start, target], config.margin, raster);
+        // The game's pathfinder ignores ground friction.
+        let base = FieldParams {
+            friction_cost: 0.0,
+            ..FieldParams::new(vehicle, config).without_zones()
+        };
         let params = FieldParams {
             trees_block: true,
-            ..FieldParams::new(vehicle, config).without_zones()
+            ..base
         };
         let mut field = DistanceField::compute(raster, region, params, target, f64::INFINITY);
         if !field.sample(start[0], start[1]).is_finite() {
             // Trees close the way (a tank in a forest): let them cost instead.
-            let params = FieldParams::new(vehicle, config).without_zones();
-            field = DistanceField::compute(raster, region, params, target, f64::INFINITY);
+            field = DistanceField::compute(raster, region, base, target, f64::INFINITY);
         }
         Self {
             field,

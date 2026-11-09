@@ -72,6 +72,9 @@ pub struct World {
     /// Bumped only when tiles change.
     pub tile_revision: u32,
     spatial: Arc<HashMap<(i32, i32), Vec<usize>>>,
+    /// Row-major per-tile flag for zone tiles that aren't nest radii: Vulcanus
+    /// demolisher territory. Empty when the map has none.
+    pub territory: Arc<Vec<bool>>,
 }
 
 impl World {
@@ -99,6 +102,7 @@ impl World {
             revision: 1,
             tile_revision: 1,
             spatial: Arc::default(),
+            territory: Arc::default(),
         }
     }
 
@@ -111,6 +115,33 @@ impl World {
 
     pub fn tile(&self, x: i32, y: i32) -> Option<u8> {
         self.index(x, y).map(|i| self.tiles[i])
+    }
+
+    /// Whether tile `(x, y)` is demolisher territory.
+    pub fn in_territory(&self, x: i32, y: i32) -> bool {
+        !self.territory.is_empty() && self.index(x, y).is_some_and(|i| self.territory[i])
+    }
+
+    /// Marks the 32x32 source chunks in `chunks` (Factorio chunk positions) as
+    /// territory. Needs `info.source_offset`.
+    pub fn set_territory_chunks(&mut self, chunks: &[[i32; 2]]) {
+        let offset = self.info.source_offset.unwrap_or([0, 0]);
+        let mut flags = vec![false; self.tiles.len()];
+        for &[cx, cy] in chunks {
+            for dy in 0..32 {
+                for dx in 0..32 {
+                    let (x, y) = (cx * 32 + dx - offset[0], cy * 32 + dy - offset[1]);
+                    if let Some(i) = self.index(x, y) {
+                        flags[i] = true;
+                    }
+                }
+            }
+        }
+        self.territory = Arc::new(if flags.contains(&true) {
+            flags
+        } else {
+            Vec::new()
+        });
     }
 
     pub fn water(&self, x: i32, y: i32, data: &Prototypes) -> bool {
@@ -174,6 +205,7 @@ impl World {
         self.resources = template.resources.clone();
         self.entities = template.entities.clone();
         self.spatial = template.spatial.clone();
+        self.territory = template.territory.clone();
         self.health.clone_from(&template.health);
         self.destroyed.clone_from(&template.destroyed);
         self.revision = template.revision;
@@ -200,11 +232,22 @@ impl World {
     }
 
     pub fn spawn_cliff(&mut self, data: &Prototypes, name: &str, x: f64, y: f64) -> usize {
-        let p = &data.cliffs.orientations[name];
+        self.spawn_cliff_of(&data.cliffs, name, x, y)
+    }
+
+    /// A cliff piece of prototype `cliff` with orientation `name`.
+    pub fn spawn_cliff_of(
+        &mut self,
+        cliff: &crate::prototypes::CliffPrototype,
+        name: &str,
+        x: f64,
+        y: f64,
+    ) -> usize {
+        let p = &cliff.orientations[name];
         self.add_entity(Entity {
             id: 0,
             kind: "cliff".into(),
-            name: data.cliffs.name.clone(),
+            name: cliff.name.clone(),
             x,
             y,
             collision_box: p.collision_box,

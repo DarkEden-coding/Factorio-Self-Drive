@@ -540,14 +540,16 @@ pub fn episode_field(
     DistanceField::compute(raster, region, params, target, f64::INFINITY)
 }
 
-/// Whether `(x, y)` is within a live nest's penalty radius.
+/// Whether `(x, y)` is within a live nest's penalty radius or in demolisher
+/// territory.
 pub fn in_nest_zone(world: &World, raster: &MapRaster, x: f64, y: f64) -> bool {
-    raster.nests.iter().any(|&i| {
-        let e = &world.entities[i];
-        e.penalty_radius
-            .is_some_and(|r| (x - e.x).hypot(y - e.y) <= r)
-            && world.alive(i)
-    })
+    world.in_territory(x.floor() as i32, y.floor() as i32)
+        || raster.nests.iter().any(|&i| {
+            let e = &world.entities[i];
+            e.penalty_radius
+                .is_some_and(|r| (x - e.x).hypot(y - e.y) <= r)
+                && world.alive(i)
+        })
 }
 
 /// Whether the vehicle hull fits at `pose` without touching obstacles or water.

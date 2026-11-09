@@ -16,16 +16,21 @@ def merge(dump, current):
         existing = set(names)
         extras = sorted(set(entries) - existing)
         if (len(entries) != len(dump[key]) or not existing <= set(entries) or
-                extras and key not in ("entities", "resources")):
-            raise ValueError(f"{key}: dump must contain exactly the current prototype names, with new entities/resources allowed")
+                extras and key not in ("tiles", "entities", "resources")):
+            raise ValueError(f"{key}: dump must contain exactly the current prototype names, with new tiles/entities/resources allowed")
         result[key] = [entries[name] for name in names + extras]
         if key in ("tiles", "resources"):
             for entry, old in zip(result[key], current[key]):
                 entry["id"] = old["id"]
-            for i, entry in enumerate(result[key][len(names):], start=len(names) + 1):
+            # Tile ids start at 0, resource ids at 1 (0 means none).
+            first = len(names) + (key == "resources")
+            for i, entry in enumerate(result[key][len(names):], start=first):
                 entry["id"] = i
     if result["cliffs"]["name"] != current["cliffs"]["name"]:
         raise ValueError("cliff prototype name changed")
+    # A base-only dump has no planet cliffs; keep the ones already in the snapshot.
+    if not result.get("other_cliffs"):
+        result["other_cliffs"] = current.get("other_cliffs", [])
     return result
 
 

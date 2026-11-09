@@ -7,6 +7,9 @@
 //! Diagonal steps need both orthogonal neighbors free, so paths never cut
 //! obstacle corners.
 //!
+//! With `friction_cost > 0`, slow ground (high `vehicle_friction_modifier`)
+//! costs extra per tile in proportion to how much it slows the vehicle.
+//!
 //! Every edge costs at least 1, so a bucket queue with unit-width buckets pops
 //! nodes in exact Dijkstra order without a heap.
 use crate::{
@@ -32,6 +35,22 @@ pub struct FieldParams {
     /// Extra cost per tile inside a nest penalty radius plus `zone_margin`.
     pub zone_cost: f64,
     pub zone_margin: i32,
+    /// Weight of the slow-ground cost (`friction_extra`); 0 disables it.
+    pub friction_cost: f64,
+    /// The vehicle's `terrain_friction_modifier`.
+    pub terrain_friction_modifier: f64,
+}
+
+/// Grass's `vehicle_friction_modifier`: the reference ground of the slow-ground cost.
+pub const REFERENCE_FRICTION: f64 = 1.6;
+
+/// Extra cost per tile for ground with `modifier`: `weight` times the vehicle's
+/// slowdown against grass, `sqrt(f(modifier) / f(1.6)) - 1` with
+/// `f(m) = 1 + (m - 1) * terrain_friction_modifier` (terminal speed goes as
+/// `1 / sqrt(friction)` for small friction), and 0 on ground faster than grass.
+pub fn friction_extra(modifier: f64, terrain_friction_modifier: f64, weight: f64) -> f64 {
+    let f = |m: f64| 1.0 + (m - 1.0) * terrain_friction_modifier;
+    weight * ((f(modifier) / f(REFERENCE_FRICTION)).sqrt() - 1.0).max(0.0)
 }
 
 impl FieldParams {
@@ -44,7 +63,35 @@ impl FieldParams {
             tree_cost: config.tank_tree_cost,
             zone_cost: config.nest_zone_cost,
             zone_margin: config.nest_zone_margin,
+            friction_cost: config.friction_cost,
+            terrain_friction_modifier: vehicle.terrain_friction_modifier,
         }
+    }
+
+    /// Extra slow-ground cost per tile of `region` with the one-tile border of
+    /// `cost_flags`, or `None` when the cost is off.
+    fn friction_costs(&self, raster: &MapRaster, region: Region) -> Option<Vec<f32>> {
+        if self.friction_cost <= 0.0 {
+            return None;
+        }
+        let table: Vec<f32> = (0..=255u32)
+            .map(|b| {
+                friction_extra(
+                    b as f64 / 10.0,
+                    self.terrain_friction_modifier,
+                    self.friction_cost,
+                ) as f32
+            })
+            .collect();
+        let stride = region.width() + 2;
+        let mut costs = vec![0.0; stride * (region.height() + 2)];
+        for y in 0..region.height() {
+            for x in 0..region.width() {
+                let b = raster.modifier_at(region.x0 + x as i32, region.y0 + y as i32);
+                costs[(y + 1) * stride + x + 1] = table[b as usize];
+            }
+        }
+        Some(costs)
     }
 
     /// The same parameters with nest zones at no extra cost.
@@ -203,9 +250,13 @@ impl DistanceField {
         let (w, h) = (region.width(), region.height());
         let stride = w + 2;
         let flags = cost_flags(raster, region, params);
+        let friction = params.friction_costs(raster, region);
+        let max_friction = friction
+            .as_ref()
+            .map_or(0.0, |f| f.iter().fold(0.0f32, |a, &b| a.max(b)) as f64);
         let mut dist = vec![f64::INFINITY; flags.len()];
         let (sx, sy) = (source[0].floor() as i32, source[1].floor() as i32);
-        let max_edge = SQRT_2 * (1.0 + params.tree_cost + params.zone_cost);
+        let max_edge = SQRT_2 * (1.0 + params.tree_cost + params.zone_cost + max_friction);
         let ring = max_edge.ceil() as usize + 2;
         let mut buckets: Vec<Vec<u32>> = vec![Vec::new(); ring];
         let mut pending = 0usize;
@@ -218,7 +269,9 @@ impl DistanceField {
         }
         let offsets: [isize; 8] =
             STEPS.map(|(dx, dy, _)| dy as isize * stride as isize + dx as isize);
-        let extra = |f: u8| {
+        let extra = |u: usize| {
+            let f = flags[u];
+            let slow = friction.as_ref().map_or(0.0, |c| c[u] as f64);
             let tree = if f & F_TREE != 0 {
                 params.tree_cost
             } else {
@@ -229,7 +282,7 @@ impl DistanceField {
             } else {
                 0.0
             };
-            tree + zone
+            tree + zone + slow
         };
         let mut done = vec![false; flags.len()];
         let mut current = 0usize;
@@ -244,7 +297,7 @@ impl DistanceField {
                 }
                 done[u] = true;
                 let du = dist[u];
-                let eu = extra(flags[u]);
+                let eu = extra(u);
                 for (k, &(_, _, length)) in STEPS.iter().enumerate() {
                     let v = (u as isize + offsets[k]) as usize;
                     if flags[v] & F_BLOCKED != 0 || done[v] {
@@ -258,7 +311,7 @@ impl DistanceField {
                             continue;
                         }
                     }
-                    let dv = du + length * (1.0 + 0.5 * (eu + extra(flags[v])));
+                    let dv = du + length * (1.0 + 0.5 * (eu + extra(v)));
                     if dv < dist[v] {
                         dist[v] = dv;
                         buckets[dv as usize % ring].push(v as u32);
@@ -282,7 +335,7 @@ impl DistanceField {
             region,
             values,
             route_grid: Some(crate::route_smoothing::RouteGrid::new(
-                region, flags, params,
+                region, flags, friction, params,
             )),
         }
     }

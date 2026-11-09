@@ -91,6 +91,9 @@ fn raster(
                 result[4 * plane + cell] = 1.0;
             }
             result[6 * plane + cell] = tile.map_or(1.0, |t| t.vehicle_friction_modifier as f32);
+            if world.in_territory(px.floor() as i32, py.floor() as i32) {
+                result[5 * plane + cell] = 1.0;
+            }
             if let Some(t) = target {
                 if (px - t.x).hypot(py - t.y) <= t.radius {
                     result[7 * plane + cell] = 1.0;

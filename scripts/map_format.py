@@ -19,7 +19,7 @@ def encode_map(export, name):
     tiles = bytearray(width * height)
     resources = bytearray(width * height)
     tile_names, resource_names, entity_names, cliff_names = ["deepwater"], ["none"], [], []
-    warnings, records, seen = [], [], set()
+    warnings, records, seen, zone_chunks = [], [], set(), []
 
     def intern(table, value, maximum):
         if value not in table:
@@ -35,6 +35,8 @@ def encode_map(export, name):
                 or len(chunk["tiles"]) != 1024):
             raise ValueError("duplicate, out-of-area, or incomplete chunk")
         seen.add((cx, cy))
+        if chunk.get("territory"):
+            zone_chunks.append([cx, cy])
         for i, tile in enumerate(chunk["tiles"]):
             index = (cy * 32 - y0 + i // 32) * width + cx * 32 - x0 + i % 32
             tiles[index] = intern(tile_names, tile, 255)
@@ -60,6 +62,9 @@ def encode_map(export, name):
     metadata = dict(name=name, seed=export.get("seed", 0), area=export["area"], spawn=[0, 0],
                     source=export.get("source", {}), tile_names=tile_names, resource_names=resource_names,
                     entity_names=entity_names, cliff_names=cliff_names, entity_count=len(records), warnings=warnings)
+    if zone_chunks:
+        # Source chunk positions of demolisher territory; every tile in them is a zone tile.
+        metadata["zone_chunks"] = zone_chunks
     header = json.dumps(metadata, separators=(",", ":"), ensure_ascii=False).encode()
     body = bytes(tiles + resources) + b"".join(records)
     encoded = MAGIC + struct.pack("<II", len(header), len(body)) + header + zlib.compress(body, 6)

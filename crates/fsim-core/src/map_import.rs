@@ -22,6 +22,9 @@ pub struct MapChunk {
     pub tiles: Vec<String>,
     pub resources: Vec<MapResource>,
     pub entities: Vec<MapEntity>,
+    /// Demolisher territory (Vulcanus).
+    #[serde(default)]
+    pub territory: bool,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
@@ -81,6 +84,12 @@ pub fn load_map(json: &str, data: &Prototypes) -> Result<(World, MapLoadReport),
     world.spawn = [-offset[0] as f64, -offset[1] as f64];
     let mut warnings = BTreeSet::new();
     let mut seen = HashSet::new();
+    let territory: Vec<[i32; 2]> = map
+        .chunks
+        .iter()
+        .filter(|c| c.territory)
+        .map(|c| c.position)
+        .collect();
     for chunk in map.chunks {
         let [cx, cy] = chunk.position;
         let x0 = i64::from(cx) * 32;
@@ -125,6 +134,7 @@ pub fn load_map(json: &str, data: &Prototypes) -> Result<(World, MapLoadReport),
     if seen.len() < (width as usize / 32) * (height as usize / 32) {
         warnings.insert("ungenerated chunks are blocked with deepwater".into());
     }
+    world.set_territory_chunks(&territory);
     let world_name = world.info.name.clone();
     Ok((
         world,
@@ -140,7 +150,7 @@ pub(crate) fn tile_id(name: &str, data: &Prototypes, warnings: &mut BTreeSet<Str
     if let Some(tile) = data.tiles.iter().find(|t| t.name == name) {
         return tile.id;
     }
-    let fallback = if name.contains("deepwater") || name == "out-of-map" {
+    let fallback = if name.contains("deepwater") || name == "out-of-map" || name.contains("lava") {
         "deepwater"
     } else if name.contains("water") || name.contains("ocean") {
         "water"
@@ -175,17 +185,18 @@ pub(crate) fn add_entity(
 ) -> Result<usize, String> {
     let [x, y] = entity.position;
     let index = if entity.kind == "cliff" {
-        if entity.name != data.cliffs.name {
+        let cliff = data.cliff(&entity.name).unwrap_or_else(|| {
             warnings.insert(format!(
                 "unknown cliff {} -> {}",
                 entity.name, data.cliffs.name
             ));
-        }
+            &data.cliffs
+        });
         let orientation = entity
             .cliff_orientation
             .as_deref()
             .unwrap_or("west-to-east");
-        let orientation = if data.cliffs.orientations.contains_key(orientation) {
+        let orientation = if cliff.orientations.contains_key(orientation) {
             orientation
         } else {
             warnings.insert(format!(
@@ -193,10 +204,10 @@ pub(crate) fn add_entity(
             ));
             "west-to-east"
         };
-        if !data.cliffs.orientations.contains_key(orientation) {
+        if !cliff.orientations.contains_key(orientation) {
             return Err("prototype snapshot has no fallback cliff orientation".into());
         }
-        world.spawn_cliff(data, orientation, x, y)
+        world.spawn_cliff_of(cliff, orientation, x, y)
     } else {
         let prototype = data
             .entities

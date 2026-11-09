@@ -1,4 +1,4 @@
-local catalog = require("catalog")
+local catalog_module = require("catalog")
 local normalize = require("normalize")
 local M = {}
 local function resistances(p)
@@ -11,8 +11,10 @@ local function resistances(p)
 end
 function M.dump(player)
   local companion = prototypes.mod_data["fsim-export-companion"].data
+  local catalog = catalog_module.active(script.active_mods["space-age"] ~= nil)
   local result = {schema_version = 2, source = normalize.source(), vehicles = {}, fuels = {},
-    tiles = {}, entities = {}, resources = {}, cliffs = companion.cliffs}
+    tiles = {}, entities = {}, resources = {}, cliffs = companion.cliffs,
+    other_cliffs = companion.other_cliffs or {}}
   for _, name in ipairs(catalog.vehicles) do
     local p = assert(prototypes.entity[name], "Missing vehicle " .. name)
     local v = {name = name, consumption = p.consumption * 60, braking_power = p.braking_force * 60,
@@ -38,7 +40,8 @@ function M.dump(player)
     table.sort(layers)
     result.tiles[#result.tiles + 1] = {id = i - 1, name = name, color = normalize.color(p.map_color),
       vehicle_friction_modifier = p.vehicle_friction_modifier, collision_mask = layers,
-      is_water = name == "water" or name == "deepwater"}
+      -- "water" in the simulator means any tile a vehicle can't enter (also lava, deep lakes).
+      is_water = normalize.blocks_vehicles(p.collision_mask)}
   end
   for _, name in ipairs(catalog.entities) do
     local p = assert(prototypes.entity[name], "Missing obstacle " .. name)

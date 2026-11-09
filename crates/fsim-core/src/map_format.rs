@@ -17,6 +17,9 @@ struct Header {
     entity_count: usize,
     #[serde(default)]
     warnings: Vec<String>,
+    /// Source chunk positions of demolisher territory.
+    #[serde(default)]
+    zone_chunks: Vec<[i32; 2]>,
 }
 
 pub fn load_map(
@@ -138,6 +141,7 @@ pub fn load_map(
         map_import::validate_entity(&entity)?;
         map_import::add_entity(&mut world, data, &entity, &mut warnings)?;
     }
+    world.set_territory_chunks(&header.zone_chunks);
     Ok((
         world,
         map_import::MapLoadReport {

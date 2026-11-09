@@ -154,6 +154,10 @@ pub struct FieldConfig {
     /// (a tile whose center is inside a nest penalty radius).
     pub nest_zone_cost: f64,
     pub nest_zone_margin: i32,
+    /// Weight of the slow-ground cost: each tile costs this times the
+    /// vehicle's slowdown relative to grass (`distance_field::friction_extra`).
+    /// 0 keeps every open tile at cost 1.
+    pub friction_cost: f64,
 }
 
 impl Default for FieldConfig {
@@ -163,6 +167,7 @@ impl Default for FieldConfig {
             tank_tree_cost: 4.0,
             nest_zone_cost: 3.0,
             nest_zone_margin: 2,
+            friction_cost: 0.0,
         }
     }
 }

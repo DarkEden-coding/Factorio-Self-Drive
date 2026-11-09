@@ -19,9 +19,30 @@ function M.start(player, radius)
     math.floor(player.position.y / 32), player.index, name, false)
   player.print("fsim: exporting to script-output/" .. storage.fsim_map.path)
 end
-function M.start_generated(surface, radius)
-  start(surface, radius, 0, 0, false, "nauvis-seed-" .. surface.map_gen_settings.seed, true)
+-- Exports `planets` (surface names; "nauvis" or Space Age planets, whose surfaces are created
+-- on demand) one after another. Maps are named after the save's Nauvis seed.
+function M.start_generated(planets, radius)
+  local seed = game.surfaces["nauvis"].map_gen_settings.seed
+  storage.fsim_map_queue = {}
+  for _, planet in ipairs(planets) do
+    storage.fsim_map_queue[#storage.fsim_map_queue + 1] = {planet = planet, radius = radius,
+      name = planet .. "-seed-" .. seed}
+  end
+  M.start_next()
 end
+function M.start_next()
+  local queue = storage.fsim_map_queue
+  if not queue or #queue == 0 then storage.fsim_map_queue = nil; return end
+  local item = table.remove(queue, 1)
+  local surface = game.surfaces[item.planet]
+  if not surface then
+    local planet = assert(game.planets[item.planet], "Unknown planet " .. item.planet)
+    surface = planet.surface or planet.create_surface()
+  end
+  start(surface, item.radius, 0, 0, false, item.name, true)
+end
+-- Natural obstacles: everything of these types whose collision mask meets the car's.
+local obstacle_types = {"tree", "plant", "simple-entity", "cliff", "unit-spawner", "lightning-attractor"}
 local function chunk(surface, cx, cy)
   local area = {{cx * 32, cy * 32}, {(cx + 1) * 32, (cy + 1) * 32}}
   local result = {position = {cx, cy}, tiles = {}, resources = {}, entities = {}}
@@ -29,12 +50,13 @@ local function chunk(surface, cx, cy)
     local i = (tile.position.y - cy * 32) * 32 + tile.position.x - cx * 32 + 1
     result.tiles[i] = tile.name
   end
-  for _, entity in pairs(surface.find_entities_filtered({area = area,
-    type = {"resource", "tree", "simple-entity", "cliff", "unit-spawner"}})) do
+  local types = {"resource"}
+  for _, t in ipairs(obstacle_types) do types[#types + 1] = t end
+  for _, entity in pairs(surface.find_entities_filtered({area = area, type = types})) do
     local p = entity.position
     -- Area queries include overlapping bounding boxes. Own each entity by its center chunk.
     if math.floor(p.x / 32) == cx and math.floor(p.y / 32) == cy and
-      (entity.type ~= "simple-entity" or entity.prototype.count_as_rock_for_filtered_deconstruction) then
+      (entity.type == "resource" or normalize.blocks_vehicles(entity.prototype.collision_mask)) then
       if entity.type == "resource" then
         result.resources[#result.resources + 1] = {name = entity.name,
           position = {math.floor(p.x), math.floor(p.y)}}
@@ -45,6 +67,8 @@ local function chunk(surface, cx, cy)
       end
     end
   end
+  -- Demolisher territory (Vulcanus): driving in it draws an attack, like a nest zone.
+  if surface.get_territory_for_chunk({cx, cy}) then result.territory = true end
   return result
 end
 function M.tick()
@@ -72,5 +96,6 @@ function M.tick()
     ',"exported_chunks":' .. (job.exported_chunks or 0) .. '}', true, job.player)
   game.print("fsim: map complete: script-output/" .. job.path)
   storage.fsim_map = nil
+  M.start_next()
 end
 return M

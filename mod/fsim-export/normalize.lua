@@ -1,7 +1,8 @@
 local M = {}
 local array_fields = {resistances = true, collision_mask = true, water = true, obstacles = true,
   obstacle_health = true, resources = true, entities = true, tiles = true, inputs = true,
-  filters = true, completed = true}
+  filters = true, completed = true, other_cliffs = true, zone_chunks = true,
+  planets = true}
 function M.json(value)
   -- Factorio serializes an empty Lua table as {}, even for schema array fields.
   return (helpers.table_to_json(value):gsub('"([%w_]+)"%s*:%s*{}', function(key)
@@ -17,8 +18,18 @@ function M.color(c)
   local scale = math.max(r, g, b, c.a or c[4] or 0) <= 1 and 255 or 1
   return {math.floor(r * scale + 0.5), math.floor(g * scale + 0.5), math.floor(b * scale + 0.5)}
 end
+-- Space Age plants are trees for driving; Fulgora's attractor ruins behave like rocks.
 function M.kind(t)
-  return ({tree = "tree", ["simple-entity"] = "rock", cliff = "cliff", ["unit-spawner"] = "nest"})[t]
+  return ({tree = "tree", plant = "tree", ["simple-entity"] = "rock", ["lightning-attractor"] = "rock",
+    cliff = "cliff", ["unit-spawner"] = "nest"})[t]
+end
+-- Whether a collision mask shares a layer with the car's (cars and tanks use the default mask).
+function M.blocks_vehicles(mask)
+  local car = prototypes.entity["car"].collision_mask.layers
+  for layer in pairs(mask.layers) do
+    if car[layer] then return true end
+  end
+  return false
 end
 function M.source()
   return {game_version = helpers.game_version, active_mods = script.active_mods}

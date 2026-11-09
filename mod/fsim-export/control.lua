@@ -43,7 +43,7 @@ script.on_event(defines.events.on_tick, function()
   ok, message = pcall(map_export.tick)
   if not ok then
     storage.fsim_error = tostring(message)
-    storage.fsim_map = nil
+    storage.fsim_map, storage.fsim_map_queue = nil, nil
     game.print("fsim: map export aborted: " .. tostring(message))
   end
 end)
@@ -57,10 +57,11 @@ remote.add_interface("fsim-export", {
     storage.fsim_error, storage.fsim_completed = nil, {}
     prototype_export.dump(false)
     if options.traces then recorder.start(nil, false, options.filters) end
-    if options.maps then map_export.start_generated(game.surfaces["nauvis"], options.radius) end
+    if options.maps then map_export.start_generated(options.planets or {"nauvis"}, options.radius) end
   end,
   status = function()
-    return {recording = storage.fsim_record ~= nil, mapping = storage.fsim_map ~= nil,
+    return {recording = storage.fsim_record ~= nil,
+      mapping = storage.fsim_map ~= nil or storage.fsim_map_queue ~= nil,
       error = storage.fsim_error, completed = storage.fsim_completed or {}}
   end
 })

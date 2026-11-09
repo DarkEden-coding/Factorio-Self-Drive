@@ -26,12 +26,20 @@ pub struct MapRaster {
     pub mask: Vec<u8>,
     /// `round(clamp(vehicle_friction_modifier - 1, 0, 1) * 255)` per tile.
     pub friction: Vec<u8>,
+    /// `vehicle_friction_modifier` per tile in tenths (`modifier_tenths`), for
+    /// friction-aware fields; unlike `friction` it doesn't saturate at 2.
+    pub modifier: Vec<u8>,
     /// Entity indices of nests, for the nest-zone reward.
     pub nests: Vec<usize>,
 }
 
 pub fn friction_byte(modifier: f64) -> u8 {
     ((modifier - 1.0).clamp(0.0, 1.0) * 255.0).round() as u8
+}
+
+/// `vehicle_friction_modifier * 10`, rounded, in 1..=255. Game tiles use 1 to 10.
+pub fn modifier_tenths(modifier: f64) -> u8 {
+    (modifier * 10.0).round().clamp(1.0, 255.0) as u8
 }
 
 fn kind_bits(kind: &str) -> u8 {
@@ -68,10 +76,17 @@ impl MapRaster {
         let (width, height) = (info.width as usize, info.height as usize);
         let mut mask = Vec::with_capacity(width * height);
         let mut friction = Vec::with_capacity(width * height);
-        for id in world.tiles.iter() {
+        let mut modifier = Vec::with_capacity(width * height);
+        for (i, id) in world.tiles.iter().enumerate() {
             let tile = &data.tiles[*id as usize];
-            mask.push(if tile.is_water { BLOCKED | WATER } else { 0 });
+            let zone = if world.territory.get(i).copied().unwrap_or(false) {
+                NEST_ZONE
+            } else {
+                0
+            };
+            mask.push(zone | if tile.is_water { BLOCKED | WATER } else { 0 });
             friction.push(friction_byte(tile.vehicle_friction_modifier));
+            modifier.push(modifier_tenths(tile.vehicle_friction_modifier));
         }
         let mut raster = Self {
             x_min: info.x_min,
@@ -80,6 +95,7 @@ impl MapRaster {
             height,
             mask,
             friction,
+            modifier,
             nests: Vec::new(),
         };
         for (index, e) in world.entities.iter().enumerate() {
@@ -133,8 +149,13 @@ impl MapRaster {
         self.index(x, y).map_or(0, |i| self.friction[i])
     }
 
+    /// Friction modifier in tenths at a tile; 10 (modifier 1) off the map.
+    pub fn modifier_at(&self, x: i32, y: i32) -> u8 {
+        self.index(x, y).map_or(10, |i| self.modifier[i])
+    }
+
     pub fn memory_bytes(&self) -> usize {
-        self.mask.len() + self.friction.len() + self.nests.len() * 8
+        self.mask.len() + self.friction.len() + self.modifier.len() + self.nests.len() * 8
     }
 }
 
@@ -185,6 +206,9 @@ fn tile_mask(world: &World, raster: &MapRaster, data: &Prototypes, x: i32, y: i3
     let mut mask = raster.mask_at(x, y) & WATER;
     if mask != 0 {
         mask |= BLOCKED;
+    }
+    if world.in_territory(x, y) {
+        mask |= NEST_ZONE;
     }
     let cell = unit_cell(x, y);
     for index in world.candidates(cell.aabb()) {

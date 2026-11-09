@@ -445,6 +445,7 @@ mod tests {
             height: 16,
             mask: vec![0; 256],
             friction: vec![0; 256],
+            modifier: vec![10; 256],
             nests: Vec::new(),
         };
         raster.mask[8 * 16 + 10] = WATER;

@@ -54,6 +54,8 @@ pub struct TilePrototype {
     pub name: String,
     pub color: [u8; 3],
     pub vehicle_friction_modifier: f64,
+    /// The tile blocks vehicles (its collision mask meets the car's): water,
+    /// deep water, lava, Gleba's deep lakes. Shallow wetland and oil ocean don't.
     pub is_water: bool,
     pub collision_mask: Vec<String>,
 }
@@ -106,7 +108,11 @@ pub struct Prototypes {
     pub fuels: Vec<FuelPrototype>,
     pub tiles: Vec<TilePrototype>,
     pub entities: Vec<EntityPrototype>,
+    /// The Nauvis cliff; also the fallback for unknown cliff names.
     pub cliffs: CliffPrototype,
+    /// Space Age planet cliffs, looked up by name.
+    #[serde(default)]
+    pub other_cliffs: Vec<CliffPrototype>,
     pub resources: Vec<ResourcePrototype>,
     pub physics: PhysicsTuning,
 }
@@ -184,6 +190,13 @@ impl Prototypes {
             .find(|v| v.name == name)
             .expect("required fallback tile")
             .id
+    }
+
+    /// The cliff prototype with this name, if the snapshot has it.
+    pub fn cliff(&self, name: &str) -> Option<&CliffPrototype> {
+        std::iter::once(&self.cliffs)
+            .chain(&self.other_cliffs)
+            .find(|c| c.name == name)
     }
 
     pub fn entity_index(&self, name: &str) -> usize {
