@@ -57,7 +57,8 @@ function M.new(position, target, half_width, tank, bounds, margin, options)
     zone_cost = options.nest_zone_cost or 3, zone_margin = options.nest_zone_margin or 2,
     friction_cost = options.friction_cost or 0, tfm = options.terrain_friction_modifier or 1,
     -- Off unless the driver asked to avoid rails (not part of the trained model's options).
-    rail_cost = options.rail_cost or 0, rail_margin = options.rail_cost and math.ceil(half_width) + 1 or 0,
+    -- Two tiles beyond the hull: the model follows a soft cost less tightly than a wall.
+    rail_cost = options.rail_cost or 0, rail_margin = options.rail_cost and math.ceil(half_width) + 2 or 0,
     clearance_cost = options.clearance_cost or 0,
     bucket_nodes = {}, bucket_distances = {}, pending = 0, current = 0, cursor = 1, phase = "base"}
   if bounds then

@@ -5,9 +5,14 @@ Date: 2026-11-09
     - Drive on Vulcanus, Gleba and Fulgora. Lava and deep lakes block the way, wetland and oil
       ocean are slow ground, and demolisher territory is avoided like nest surroundings.
     - Routes weigh slow ground by travel time.
-    - Retrained driving model covering the three planets as well as Nauvis.
-    - A vehicle pushing against a cliff end or rock without moving backs off with the opposite
-      throttle and steering, instead of repeating the blocked maneuver until the trip stalls.
+    - Retrained driving model covering the three planets as well as Nauvis, trained also on
+      long trips, near-collisions and getting unstuck. It keeps more room around rocks, cliffs
+      and trees and hits them much less often.
+    - Routes keep a margin around obstacles instead of hugging them.
+    - Cars on Vulcanus coast instead of accelerating above 130 km/h, where its open plains
+      otherwise let fast fuel outrun what the model can see.
+    - A vehicle pushing against a cliff or rock without moving tries driving straight, then
+      backing off in each direction, instead of repeating the blocked maneuver.
   Bugfixes:
     - Fixed a script error when a route reached ungenerated terrain.
     - Fixed trips stalling at a destination beside a tree, plant or rock: guidance no longer
@@ -16,6 +21,25 @@ Date: 2026-11-09
       the edge of its planning area is planned again with a larger area.
     - Fixed winding trips timing out: the time limit now follows the route length estimate,
       not the straight-line distance.
+---------------------------------------------------------------------------------------------------
+Version: 0.8.0
+Date: 2026-11-06
+  Features:
+    - Vehicles wait before a level crossing when a train could reach it before they are across. Automatic trains are predicted from their path, manual trains from the track ahead.
+    - Parked trains are obstacles in route planning. The route is updated when a train parks or leaves.
+    - Trains near the vehicle appear as obstacles in the driving model's input.
+    - New per-player setting "Avoid train tracks": routes go around ground-level tracks where a nearby detour exists, and cross them only when needed.
+  Changes:
+    - Waiting for a train does not count toward the trip's timeout or stall limit.
+---------------------------------------------------------------------------------------------------
+Version: 0.7.2
+Date: 2026-11-04
+  Changes:
+    - Movement keys only take over in the normal world view, not in map or remote view.
+    - Player buildings that block vehicles are now hard obstacles in the driving model's input and route planning.
+    - Any other entity that blocks vehicles, from any mod and of any type (including non-rock simple entities), is a hard obstacle too.
+    - Buildings that other mods place or remove without an event are noticed near the vehicle within a second, so the car drives around them.
+    - Rotating, flipping or cloning a building, and placing or removing landfill, update the obstacle map during a drive.
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.1
 Date: 2026-10-28
