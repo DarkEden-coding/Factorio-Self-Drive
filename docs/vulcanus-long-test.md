@@ -66,3 +66,30 @@ What the set shows:
 - The simulator records no damage for tanks, so their hits show only in the hit counts.
 - Long trips are 2.5% of training episodes and none crossed open plains of this length:
   the existing pool routes around demolisher territory.
+
+## Impact and recovery training (2026-11-09, simulator only)
+
+In game, five cliff-maze trips stalled with `planets-long-b2`: a car hit a rock at about 80
+km/h and stayed pinned. The simulator reproduces those states exactly, and showed the car only
+needed to drive straight ahead, which the old escape rule (mirror the blocked action) never
+tried. Two changes:
+
+- The escape rule now tries the same throttle straight, the opposite throttle straight, then
+  the opposite throttle with each steering, moving on as soon as one fails to move the vehicle.
+  From the in-game wedge every model gets free in 1.8 s; on the long set stalls fall from 1.9%
+  to 1.0% with b2.
+- Two training scenarios (docs/rl.md): `impact` starts moving fast straight at an obstacle
+  3-32 tiles ahead, `recover` starts at rest touching one. `configs/student_mlp64_planets_impact.toml`
+  fine-tunes b2 with them (v1: 10% impact, 5% recover; v2: 18% and 10%; v3: 25% and 15% from
+  b2; v2b: v2 for 30M more steps). Each 30M-step run takes about 16 minutes, two in parallel.
+
+| | b2 | v2 | v2b (shipped) | v3 |
+|---|---:|---:|---:|---:|
+| Long set success | 98.9% | 98.7% | 98.8% | 99.1% |
+| Nuclear car long: success, destroyed | 99.2%, 0.4% | 99.4%, 0% | 99.8%, 0% | 99.6%, 0.2% |
+| Impact collisions per episode, Nauvis / Vulcanus / Gleba / Fulgora | 2.6 / 11.6 / 2.6 / 1.5 | 1.7 / 4.2 / 1.7 / 0.9 | 1.4 / 4.4 / 1.7 / 1.9 | 1.6 / 5.0 / 2.2 / 1.3 |
+| Recover collisions per episode | 3.3 / 6.4 / 8.4 / 12.6 | 2.4 / 4.4 / 7.9 / 10.3 | 2.1 / 3.8 / 2.8 / 12.8 | 1.6 / 4.6 / 2.6 / 15.2 |
+
+The other six scenario kinds stay at 99.5-100% on every pool. Damage in impact episodes falls
+only a little: many starts are too close to stop, so the first hit is unavoidable. Not yet
+verified in game ([results](results/impact-training-2026-11-09.json)).

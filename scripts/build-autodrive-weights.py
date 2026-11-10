@@ -6,7 +6,7 @@ import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = ROOT / 'python/runs/students/planets-long-b2/planets-long-b2.json'
+DEFAULT = ROOT / 'python/runs/students/planets-impact-v2b/planets-impact-v2b.json'
 FIELD_HASH = '49e75f8a02cb7e16'
 SMOOTH_HASH = 'd1c084cc679f1f71'
 

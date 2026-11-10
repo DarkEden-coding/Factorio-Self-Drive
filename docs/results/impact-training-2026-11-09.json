@@ -1,0 +1,1816 @@
+{
+ "date": "2026-11-09",
+ "note": "simulator holdout; long set: maps-vulcanus-open, long 500-1000 tiles, seed 24680 (1000 mixed, 500 nuclear car, 500 nuclear tank); suites: seed 67890, 200 per kind; mod escape rule and Vulcanus car speed limit applied",
+ "models": {
+  "planets-long-b2 (old escape)": {
+   "checkpoint": "runs/students/planets-long-b2/checkpoints/latest.pt",
+   "old_escape": true,
+   "long_set": {
+    "success_rate": 0.98,
+    "destroyed_rate": 0.001,
+    "stalled_rate": 0.019,
+    "mean_time_s": 33.73755102040817,
+    "mean_damage": 20.11360804748535,
+    "per_vehicle": {
+     "car": {
+      "episodes": 489,
+      "success_rate": 0.9754601226993865,
+      "destroyed_rate": 0.002044989775051125,
+      "stalled_rate": 0.022494887525562373,
+      "mean_damage": 41.13212279649356
+     },
+     "tank": {
+      "episodes": 511,
+      "success_rate": 0.9843444227005871,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.015655577299412915,
+      "mean_damage": 0.0
+     }
+    }
+   },
+   "long_nuclear_car": {
+    "success_rate": 0.982,
+    "destroyed_rate": 0.004,
+    "stalled_rate": 0.014,
+    "mean_time_s": 21.777800407331974,
+    "mean_damage": 62.87517318725586
+   },
+   "long_nuclear_tank": {
+    "success_rate": 0.968,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.032,
+    "mean_time_s": 36.52747933884297,
+    "mean_damage": 0.0
+   },
+   "suites": {
+    "maps": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.053833333333333,
+      "mean_damage": 0.002795562744140625
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 22.341916666666666,
+      "mean_damage": 1.6361921691894532
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.3113333333333332,
+      "mean_damage": 0.01651031494140625
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.7449166666666667,
+      "mean_damage": 0.01028717041015625
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.08975,
+      "mean_damage": 0.38635147094726563
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.9151666666666665,
+      "mean_damage": 0.001522216796875
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.873583333333333,
+      "mean_damage": 2.3630296325683595
+     },
+     "recover": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.3219166666666675,
+      "mean_damage": 0.010975494384765624
+     }
+    },
+    "maps-vulcanus": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.145833333333333,
+      "mean_damage": 0.1457672119140625
+     },
+     "long": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.01,
+      "mean_time_s": 16.616498316498316,
+      "mean_damage": 4.873988800048828
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.3606666666666665,
+      "mean_damage": 0.0062762451171875
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.662916666666667,
+      "mean_damage": 0.03538497924804687
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.135583333333333,
+      "mean_damage": 0.3192781066894531
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.9189166666666666,
+      "mean_damage": 0.00313201904296875
+     },
+     "impact": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.01,
+      "mean_time_s": 7.166161616161617,
+      "mean_damage": 5.674977035522461
+     },
+     "recover": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 5.61952861952862,
+      "mean_damage": 0.62379638671875
+     }
+    },
+    "maps-gleba": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.0995,
+      "mean_damage": 0.045003662109375
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 24.47075,
+      "mean_damage": 5.736228713989258
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.341666666666667,
+      "mean_damage": 0.06129302978515625
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.5655,
+      "mean_damage": 0.05438446044921875
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.67675,
+      "mean_damage": 0.729439697265625
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.7975,
+      "mean_damage": 0.004650421142578125
+     },
+     "impact": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 6.637939698492462,
+      "mean_damage": 4.392699737548828
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.281909547738693,
+      "mean_damage": 0.018805999755859375
+     }
+    },
+    "maps-fulgora": {
+     "standard": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.738860971524288,
+      "mean_damage": 0.1263255310058594
+     },
+     "long": {
+      "success_rate": 0.985,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.015,
+      "mean_time_s": 25.775719120135363,
+      "mean_damage": 6.685575790405274
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.6413333333333333,
+      "mean_damage": 0.0385028076171875
+     },
+     "reverse": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.4734006734006733,
+      "mean_damage": 0.06676437377929688
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.6413333333333333,
+      "mean_damage": 0.0385028076171875
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.40475,
+      "mean_damage": 0.0
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.188416666666667,
+      "mean_damage": 3.603168792724609
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 5.231239530988274,
+      "mean_damage": 0.0988970947265625
+     }
+    }
+   }
+  },
+  "planets-long-b2": {
+   "checkpoint": "runs/students/planets-long-b2/checkpoints/latest.pt",
+   "old_escape": false,
+   "long_set": {
+    "success_rate": 0.989,
+    "destroyed_rate": 0.001,
+    "stalled_rate": 0.01,
+    "mean_time_s": 33.51594202898551,
+    "mean_damage": 20.145506301879884,
+    "per_vehicle": {
+     "car": {
+      "episodes": 489,
+      "success_rate": 0.9918200408997955,
+      "destroyed_rate": 0.002044989775051125,
+      "stalled_rate": 0.006134969325153374,
+      "mean_damage": 41.19735440057236
+     },
+     "tank": {
+      "episodes": 511,
+      "success_rate": 0.9863013698630136,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0136986301369863,
+      "mean_damage": 0.0
+     }
+    }
+   },
+   "long_nuclear_car": {
+    "success_rate": 0.992,
+    "destroyed_rate": 0.004,
+    "stalled_rate": 0.004,
+    "mean_time_s": 21.775840053763442,
+    "mean_damage": 62.31527938842773
+   },
+   "long_nuclear_tank": {
+    "success_rate": 0.978,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.022,
+    "mean_time_s": 36.730981595092025,
+    "mean_damage": 0.0
+   },
+   "suites": {
+    "maps": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.0575,
+      "mean_damage": 0.003592376708984375,
+      "collisions": 0.305
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 22.341916666666666,
+      "mean_damage": 1.6361921691894532,
+      "collisions": 1.3
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.3022500000000004,
+      "mean_damage": 0.014725189208984375,
+      "collisions": 2.35
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.7457499999999997,
+      "mean_damage": 0.011238861083984374,
+      "collisions": 0.79
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.057833333333333,
+      "mean_damage": 0.36297103881835935,
+      "collisions": 0.495
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.9151666666666665,
+      "mean_damage": 0.001522216796875,
+      "collisions": 0.14500000000000002
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.8885000000000005,
+      "mean_damage": 2.364755859375,
+      "collisions": 2.61
+     },
+     "recover": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.295416666666666,
+      "mean_damage": 0.014337921142578125,
+      "collisions": 3.2800000000000002
+     }
+    },
+    "maps-vulcanus": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.122,
+      "mean_damage": 0.1330303955078125,
+      "collisions": 0.575
+     },
+     "long": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.01,
+      "mean_time_s": 16.34259259259259,
+      "mean_damage": 4.800015869140625,
+      "collisions": 4.82
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.3664166666666664,
+      "mean_damage": 0.0066058349609375,
+      "collisions": 2.3649999999999998
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.612083333333333,
+      "mean_damage": 0.0078131103515625,
+      "collisions": 1.055
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.125916666666666,
+      "mean_damage": 0.3120509338378906,
+      "collisions": 0.39
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.912583333333333,
+      "mean_damage": 0.00313201904296875,
+      "collisions": 0.705
+     },
+     "impact": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 7.025795644891123,
+      "mean_damage": 5.675612106323242,
+      "collisions": 11.645
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 5.42286432160804,
+      "mean_damage": 0.30353515625,
+      "collisions": 6.444999999999999
+     }
+    },
+    "maps-gleba": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.106416666666666,
+      "mean_damage": 0.045389556884765626,
+      "collisions": 0.9500000000000001
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 24.439833333333333,
+      "mean_damage": 6.878699798583984,
+      "collisions": 4.685
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.326166666666667,
+      "mean_damage": 0.021813201904296874,
+      "collisions": 3.84
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.5677499999999998,
+      "mean_damage": 0.05461151123046875,
+      "collisions": 0.775
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.650416666666667,
+      "mean_damage": 0.7309431457519531,
+      "collisions": 1.77
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.784583333333333,
+      "mean_damage": 0.002691497802734375,
+      "collisions": 0.545
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.635750000000001,
+      "mean_damage": 4.512056579589844,
+      "collisions": 2.57
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.280234505862646,
+      "mean_damage": 0.02578887939453125,
+      "collisions": 8.395
+     }
+    },
+    "maps-fulgora": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.7455833333333333,
+      "mean_damage": 0.08755340576171874,
+      "collisions": 0.455
+     },
+     "long": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.01,
+      "mean_time_s": 25.68392255892256,
+      "mean_damage": 6.908605422973633,
+      "collisions": 2.835
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.6413333333333333,
+      "mean_damage": 0.0385028076171875,
+      "collisions": 0.045
+     },
+     "reverse": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.4905723905723907,
+      "mean_damage": 0.017292022705078125,
+      "collisions": 5.16
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.6413333333333333,
+      "mean_damage": 0.0385028076171875,
+      "collisions": 0.045
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.4026666666666667,
+      "mean_damage": 0.0,
+      "collisions": 0.245
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.203833333333333,
+      "mean_damage": 3.6007025146484377,
+      "collisions": 1.455
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 5.127638190954774,
+      "mean_damage": 0.03335006713867188,
+      "collisions": 12.555
+     }
+    }
+   }
+  },
+  "planets-impact-v1": {
+   "checkpoint": "runs/students/planets-impact-v1/checkpoints/latest.pt",
+   "old_escape": false,
+   "long_set": {
+    "success_rate": 0.989,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.011,
+    "mean_time_s": 33.48136164475901,
+    "mean_damage": 18.066898147583007,
+    "per_vehicle": {
+     "car": {
+      "episodes": 489,
+      "success_rate": 0.9938650306748467,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.006134969325153374,
+      "mean_damage": 36.94662197869736
+     },
+     "tank": {
+      "episodes": 511,
+      "success_rate": 0.9843444227005871,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.015655577299412915,
+      "mean_damage": 0.0
+     }
+    }
+   },
+   "long_nuclear_car": {
+    "success_rate": 0.994,
+    "destroyed_rate": 0.002,
+    "stalled_rate": 0.004,
+    "mean_time_s": 21.44047619047619,
+    "mean_damage": 52.92326800537109
+   },
+   "long_nuclear_tank": {
+    "success_rate": 0.982,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.018,
+    "mean_time_s": 36.336591989137816,
+    "mean_damage": 0.0
+   },
+   "suites": {
+    "maps": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.050666666666666,
+      "mean_damage": 0.00096038818359375,
+      "collisions": 0.06
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 22.392833333333332,
+      "mean_damage": 1.6256431579589843,
+      "collisions": 1.4000000000000001
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.3161666666666667,
+      "mean_damage": 0.014493408203125,
+      "collisions": 2.275
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.787,
+      "mean_damage": 0.011149749755859376,
+      "collisions": 0.8999999999999999
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.112333333333334,
+      "mean_damage": 0.9504745483398438,
+      "collisions": 2.71
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.9221666666666666,
+      "mean_damage": 0.00162078857421875,
+      "collisions": 0.15
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.899583333333334,
+      "mean_damage": 2.2942826843261717,
+      "collisions": 2.225
+     },
+     "recover": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.2947500000000005,
+      "mean_damage": 0.0120928955078125,
+      "collisions": 2.28
+     }
+    },
+    "maps-vulcanus": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.1325,
+      "mean_damage": 0.04878372192382813,
+      "collisions": 0.755
+     },
+     "long": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 16.4250418760469,
+      "mean_damage": 4.554507293701172,
+      "collisions": 1.26
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.39225,
+      "mean_damage": 0.00856903076171875,
+      "collisions": 2.325
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.6013333333333333,
+      "mean_damage": 0.035160064697265625,
+      "collisions": 0.74
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.134083333333333,
+      "mean_damage": 0.3522251892089844,
+      "collisions": 0.31
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.9290833333333337,
+      "mean_damage": 0.00282196044921875,
+      "collisions": 0.61
+     },
+     "impact": {
+      "success_rate": 0.98,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.015,
+      "mean_time_s": 6.841921768707483,
+      "mean_damage": 5.635551528930664,
+      "collisions": 5.3549999999999995
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 5.389363484087102,
+      "mean_damage": 0.2729258728027344,
+      "collisions": 5.1049999999999995
+     }
+    },
+    "maps-gleba": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.114833333333333,
+      "mean_damage": 0.04088531494140625,
+      "collisions": 1.1649999999999998
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 24.464333333333332,
+      "mean_damage": 5.054569854736328,
+      "collisions": 3.38
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.3095833333333333,
+      "mean_damage": 0.018682861328125,
+      "collisions": 3.175
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.5709166666666663,
+      "mean_damage": 0.004774932861328125,
+      "collisions": 0.675
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.704416666666667,
+      "mean_damage": 0.8735580444335938,
+      "collisions": 1.595
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.8010833333333336,
+      "mean_damage": 0.002628326416015625,
+      "collisions": 0.585
+     },
+     "impact": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 6.617169179229481,
+      "mean_damage": 4.179063568115234,
+      "collisions": 2.23
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.330402010050252,
+      "mean_damage": 0.02577789306640625,
+      "collisions": 8.51
+     }
+    },
+    "maps-fulgora": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.7445,
+      "mean_damage": 0.20338592529296876,
+      "collisions": 0.615
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 25.938916666666668,
+      "mean_damage": 8.070992126464844,
+      "collisions": 2.6
+     },
+     "forest": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 3.647571189279732,
+      "mean_damage": 0.06362350463867188,
+      "collisions": 2.3
+     },
+     "reverse": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.488860971524288,
+      "mean_damage": 0.01284332275390625,
+      "collisions": 3.27
+     },
+     "nest": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 3.647571189279732,
+      "mean_damage": 0.06362350463867188,
+      "collisions": 2.3
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.40425,
+      "mean_damage": 0.0,
+      "collisions": 0.78
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.211083333333334,
+      "mean_damage": 3.9378013610839844,
+      "collisions": 1.225
+     },
+     "recover": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 5.008164983164983,
+      "mean_damage": 0.05128524780273438,
+      "collisions": 11.835
+     }
+    }
+   }
+  },
+  "planets-impact-v2": {
+   "checkpoint": "runs/students/planets-impact-v2/checkpoints/latest.pt",
+   "old_escape": false,
+   "long_set": {
+    "success_rate": 0.987,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.013,
+    "mean_time_s": 33.38319824383654,
+    "mean_damage": 18.606858718872072,
+    "per_vehicle": {
+     "car": {
+      "episodes": 489,
+      "success_rate": 0.9959100204498977,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.00408997955010225,
+      "mean_damage": 38.050835825914255
+     },
+     "tank": {
+      "episodes": 511,
+      "success_rate": 0.9784735812133072,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.021526418786692758,
+      "mean_damage": 0.0
+     }
+    }
+   },
+   "long_nuclear_car": {
+    "success_rate": 0.994,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.006,
+    "mean_time_s": 21.53407109322602,
+    "mean_damage": 58.64684719848633
+   },
+   "long_nuclear_tank": {
+    "success_rate": 0.976,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.024,
+    "mean_time_s": 36.170252732240435,
+    "mean_damage": 0.0
+   },
+   "suites": {
+    "maps": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.09825,
+      "mean_damage": 0.001548309326171875,
+      "collisions": 0.245
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 22.36141666666667,
+      "mean_damage": 1.380535888671875,
+      "collisions": 1.48
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.3164999999999996,
+      "mean_damage": 0.0164874267578125,
+      "collisions": 2.6
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.794916666666667,
+      "mean_damage": 0.008494110107421874,
+      "collisions": 0.8
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.055833333333334,
+      "mean_damage": 0.7800196838378907,
+      "collisions": 0.27
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.9376666666666664,
+      "mean_damage": 0.000556640625,
+      "collisions": 0.065
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.897666666666667,
+      "mean_damage": 2.2922027587890623,
+      "collisions": 1.73
+     },
+     "recover": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.364583333333334,
+      "mean_damage": 0.015516204833984375,
+      "collisions": 2.44
+     }
+    },
+    "maps-vulcanus": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.154833333333333,
+      "mean_damage": 0.004563446044921875,
+      "collisions": 0.66
+     },
+     "long": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.01,
+      "mean_time_s": 16.36489898989899,
+      "mean_damage": 5.079082336425781,
+      "collisions": 2.13
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.3709166666666666,
+      "mean_damage": 0.0076971435546875,
+      "collisions": 2.27
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.6368333333333336,
+      "mean_damage": 0.0092657470703125,
+      "collisions": 1.21
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.171916666666666,
+      "mean_damage": 0.2615547180175781,
+      "collisions": 0.65
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.9231666666666665,
+      "mean_damage": 0.00309600830078125,
+      "collisions": 0.525
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 7.033333333333334,
+      "mean_damage": 5.301847457885742,
+      "collisions": 4.185
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 5.379229480737019,
+      "mean_damage": 0.2874604797363281,
+      "collisions": 4.37
+     }
+    },
+    "maps-gleba": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.119416666666667,
+      "mean_damage": 0.037510986328125,
+      "collisions": 1.085
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 24.515416666666667,
+      "mean_damage": 6.821493759155273,
+      "collisions": 6.6049999999999995
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.300416666666667,
+      "mean_damage": 0.0179510498046875,
+      "collisions": 2.815
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.62575,
+      "mean_damage": 0.03209716796875,
+      "collisions": 1.05
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.687666666666667,
+      "mean_damage": 0.34542327880859375,
+      "collisions": 2.165
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.8481666666666667,
+      "mean_damage": 0.002754974365234375,
+      "collisions": 0.66
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.608083333333334,
+      "mean_damage": 4.04719497680664,
+      "collisions": 1.7349999999999999
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.342294807370184,
+      "mean_damage": 0.02249420166015625,
+      "collisions": 7.944999999999999
+     }
+    },
+    "maps-fulgora": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.7551666666666663,
+      "mean_damage": 0.19743057250976562,
+      "collisions": 0.245
+     },
+     "long": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 25.670519262981575,
+      "mean_damage": 7.604151611328125,
+      "collisions": 2.015
+     },
+     "forest": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 3.671273031825796,
+      "mean_damage": 0.06185546875,
+      "collisions": 1.88
+     },
+     "reverse": {
+      "success_rate": 0.985,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.509983079526227,
+      "mean_damage": 0.031316070556640624,
+      "collisions": 6.465
+     },
+     "nest": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 3.671273031825796,
+      "mean_damage": 0.06185546875,
+      "collisions": 1.88
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.4138333333333333,
+      "mean_damage": 0.0,
+      "collisions": 0.81
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.203833333333333,
+      "mean_damage": 3.3752401733398436,
+      "collisions": 0.885
+     },
+     "recover": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.040656565656565,
+      "mean_damage": 0.05984283447265625,
+      "collisions": 10.285
+     }
+    }
+   }
+  },
+  "planets-impact-v2b": {
+   "checkpoint": "runs/students/planets-impact-v2b/checkpoints/latest.pt",
+   "old_escape": false,
+   "long_set": {
+    "success_rate": 0.988,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.012,
+    "mean_time_s": 33.426872469635626,
+    "mean_damage": 18.67804425048828,
+    "per_vehicle": {
+     "car": {
+      "episodes": 489,
+      "success_rate": 0.9959100204498977,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.00408997955010225,
+      "mean_damage": 38.196409510200986
+     },
+     "tank": {
+      "episodes": 511,
+      "success_rate": 0.9804305283757339,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.019569471624266144,
+      "mean_damage": 0.0
+     }
+    }
+   },
+   "long_nuclear_car": {
+    "success_rate": 0.998,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.002,
+    "mean_time_s": 21.436239144956577,
+    "mean_damage": 53.540546630859374
+   },
+   "long_nuclear_tank": {
+    "success_rate": 0.978,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.022,
+    "mean_time_s": 36.24209270620314,
+    "mean_damage": 0.0
+   },
+   "suites": {
+    "maps": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.072333333333334,
+      "mean_damage": 0.0015521240234375,
+      "collisions": 0.18
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 22.353333333333335,
+      "mean_damage": 1.6206477355957032,
+      "collisions": 1.1099999999999999
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.3751666666666664,
+      "mean_damage": 0.020765228271484373,
+      "collisions": 2.835
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.7855833333333333,
+      "mean_damage": 0.00441375732421875,
+      "collisions": 0.49000000000000005
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.116583333333333,
+      "mean_damage": 0.7566450500488281,
+      "collisions": 4.58
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.9385833333333333,
+      "mean_damage": 0.00064910888671875,
+      "collisions": 0.07
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.88825,
+      "mean_damage": 2.291640167236328,
+      "collisions": 1.4
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 5.285343383584589,
+      "mean_damage": 0.015086517333984376,
+      "collisions": 2.09
+     }
+    },
+    "maps-vulcanus": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.1805,
+      "mean_damage": 0.057749481201171876,
+      "collisions": 0.5650000000000001
+     },
+     "long": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 16.37822445561139,
+      "mean_damage": 4.386677551269531,
+      "collisions": 2.365
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.39625,
+      "mean_damage": 0.00731658935546875,
+      "collisions": 2.23
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.6910000000000003,
+      "mean_damage": 0.018765869140625,
+      "collisions": 3.145
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.14575,
+      "mean_damage": 0.16133041381835939,
+      "collisions": 0.26
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.911666666666667,
+      "mean_damage": 0.00131866455078125,
+      "collisions": 0.35
+     },
+     "impact": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 7.03358458961474,
+      "mean_damage": 5.22533950805664,
+      "collisions": 4.39
+     },
+     "recover": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.372083333333333,
+      "mean_damage": 0.307840576171875,
+      "collisions": 3.79
+     }
+    },
+    "maps-gleba": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.09675,
+      "mean_damage": 0.0058050537109375,
+      "collisions": 0.89
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 24.40983333333333,
+      "mean_damage": 7.536435775756836,
+      "collisions": 2.6999999999999997
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.2896666666666663,
+      "mean_damage": 0.020951690673828124,
+      "collisions": 3.34
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.620416666666667,
+      "mean_damage": 0.027614593505859375,
+      "collisions": 1.265
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.686,
+      "mean_damage": 0.151851806640625,
+      "collisions": 1.57
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.8550833333333334,
+      "mean_damage": 0.002547760009765625,
+      "collisions": 0.53
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.640083333333333,
+      "mean_damage": 3.9362664794921876,
+      "collisions": 1.74
+     },
+     "recover": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.383500000000001,
+      "mean_damage": 0.08101303100585938,
+      "collisions": 2.81
+     }
+    },
+    "maps-fulgora": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.7114166666666666,
+      "mean_damage": 0.04542694091796875,
+      "collisions": 0.01
+     },
+     "long": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 25.91457286432161,
+      "mean_damage": 5.491023254394531,
+      "collisions": 5.525
+     },
+     "forest": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 3.636097152428811,
+      "mean_damage": 0.052977294921875,
+      "collisions": 0.42
+     },
+     "reverse": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.569095477386935,
+      "mean_damage": 0.06405746459960937,
+      "collisions": 7.9799999999999995
+     },
+     "nest": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 3.636097152428811,
+      "mean_damage": 0.052977294921875,
+      "collisions": 0.42
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.4179166666666667,
+      "mean_damage": 0.000112152099609375,
+      "collisions": 1.16
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.1979999999999995,
+      "mean_damage": 3.4979759216308595,
+      "collisions": 1.925
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 5.264070351758794,
+      "mean_damage": 0.017853546142578124,
+      "collisions": 12.805
+     }
+    }
+   }
+  },
+  "planets-impact-v3": {
+   "checkpoint": "runs/students/planets-impact-v3/checkpoints/latest.pt",
+   "old_escape": false,
+   "long_set": {
+    "success_rate": 0.991,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.009,
+    "mean_time_s": 33.541086444668686,
+    "mean_damage": 20.024979934692382,
+    "per_vehicle": {
+     "car": {
+      "episodes": 489,
+      "success_rate": 0.9938650306748467,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.006134969325153374,
+      "mean_damage": 40.95087921204986
+     },
+     "tank": {
+      "episodes": 511,
+      "success_rate": 0.9882583170254403,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.011741682974559686,
+      "mean_damage": 0.0
+     }
+    }
+   },
+   "long_nuclear_car": {
+    "success_rate": 0.996,
+    "destroyed_rate": 0.002,
+    "stalled_rate": 0.002,
+    "mean_time_s": 21.48363453815261,
+    "mean_damage": 64.21584112548828
+   },
+   "long_nuclear_tank": {
+    "success_rate": 0.974,
+    "destroyed_rate": 0.0,
+    "stalled_rate": 0.026,
+    "mean_time_s": 36.27361396303901,
+    "mean_damage": 0.0
+   },
+   "suites": {
+    "maps": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.083166666666667,
+      "mean_damage": 0.000494537353515625,
+      "collisions": 0.049999999999999996
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 22.34658333333333,
+      "mean_damage": 0.8662763977050781,
+      "collisions": 1.275
+     },
+     "forest": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.322696817420436,
+      "mean_damage": 0.015150146484375,
+      "collisions": 2.445
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.787583333333333,
+      "mean_damage": 0.006152496337890625,
+      "collisions": 0.545
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.063416666666667,
+      "mean_damage": 0.8083416748046875,
+      "collisions": 0.325
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.944916666666667,
+      "mean_damage": 0.000846710205078125,
+      "collisions": 0.115
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.8785,
+      "mean_damage": 2.4176287841796875,
+      "collisions": 1.6199999999999999
+     },
+     "recover": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.30725,
+      "mean_damage": 0.010372467041015625,
+      "collisions": 1.645
+     }
+    },
+    "maps-vulcanus": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.160916666666666,
+      "mean_damage": 0.21125503540039062,
+      "collisions": 0.725
+     },
+     "long": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.01,
+      "mean_time_s": 16.276262626262625,
+      "mean_damage": 5.176919403076172,
+      "collisions": 1.955
+     },
+     "forest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.3581666666666665,
+      "mean_damage": 0.005029144287109375,
+      "collisions": 2.135
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.6443333333333334,
+      "mean_damage": 0.0101409912109375,
+      "collisions": 1.34
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.163083333333334,
+      "mean_damage": 0.2975247192382813,
+      "collisions": 0.535
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.9629166666666666,
+      "mean_damage": 0.0062213134765625,
+      "collisions": 0.8400000000000001
+     },
+     "impact": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 7.018509212730319,
+      "mean_damage": 5.795910797119141,
+      "collisions": 4.99
+     },
+     "recover": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.005,
+      "mean_time_s": 5.5139865996649915,
+      "mean_damage": 0.3243115234375,
+      "collisions": 4.61
+     }
+    },
+    "maps-gleba": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 4.112416666666666,
+      "mean_damage": 0.00921539306640625,
+      "collisions": 1.02
+     },
+     "long": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 24.406833333333335,
+      "mean_damage": 7.08935775756836,
+      "collisions": 3.3600000000000003
+     },
+     "forest": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.307035175879397,
+      "mean_damage": 0.0229766845703125,
+      "collisions": 3.465
+     },
+     "reverse": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.6019166666666664,
+      "mean_damage": 0.028193511962890626,
+      "collisions": 1.1199999999999999
+     },
+     "nest": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 8.6735,
+      "mean_damage": 0.5058201599121094,
+      "collisions": 1.42
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.841583333333333,
+      "mean_damage": 0.003265533447265625,
+      "collisions": 0.5900000000000001
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.6415,
+      "mean_damage": 4.268739166259766,
+      "collisions": 2.205
+     },
+     "recover": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 5.3347500000000005,
+      "mean_damage": 0.020828094482421875,
+      "collisions": 2.64
+     }
+    },
+    "maps-fulgora": {
+     "standard": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.761,
+      "mean_damage": 0.08449981689453125,
+      "collisions": 0.065
+     },
+     "long": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.01,
+      "mean_time_s": 25.696464646464644,
+      "mean_damage": 7.972105102539063,
+      "collisions": 4.515000000000001
+     },
+     "forest": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.672361809045226,
+      "mean_damage": 0.056453704833984375,
+      "collisions": 1.5
+     },
+     "reverse": {
+      "success_rate": 0.99,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.529882154882155,
+      "mean_damage": 0.01480499267578125,
+      "collisions": 5.085
+     },
+     "nest": {
+      "success_rate": 0.995,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 3.672361809045226,
+      "mean_damage": 0.056453704833984375,
+      "collisions": 1.5
+     },
+     "arrival": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 2.4175833333333334,
+      "mean_damage": 0.0,
+      "collisions": 0.565
+     },
+     "impact": {
+      "success_rate": 1.0,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.0,
+      "mean_time_s": 6.181416666666666,
+      "mean_damage": 3.8018626403808593,
+      "collisions": 1.3050000000000002
+     },
+     "recover": {
+      "success_rate": 0.98,
+      "destroyed_rate": 0.0,
+      "stalled_rate": 0.01,
+      "mean_time_s": 5.003316326530612,
+      "mean_damage": 0.17759262084960936,
+      "collisions": 15.185
+     }
+    }
+   }
+  }
+ }
+}

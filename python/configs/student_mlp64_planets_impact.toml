@@ -1,0 +1,25 @@
+# PPO fine-tune of planets-long-b2 for avoiding impacts and getting unstuck: adds the
+# `impact` (start moving fast at an obstacle) and `recover` (start touching one) scenarios to
+# the long-trip mix, with b2's stronger damage, destruction and collision penalties.
+#
+# OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 uv run fsim-rl train \
+#   --config configs/student_mlp64_planets_impact.toml \
+#   --init-from runs/students/planets-long-b2/checkpoints/latest.pt --run-name students/planets-impact-v1
+base = "student_mlp64_planets_long.toml"
+
+[env]
+scenarios = [
+  { kind = "arrival", weight = 0.40 },
+  { kind = "standard", weight = 0.13 },
+  { kind = "long", weight = 0.06, min_distance = 200, max_distance = 1000, max_tortuosity = 3.0 },
+  { kind = "forest", weight = 0.12 },
+  { kind = "reverse", weight = 0.08 },
+  { kind = "nest", weight = 0.06 },
+  { kind = "impact", weight = 0.10 },
+  { kind = "recover", weight = 0.05 },
+]
+
+[env.reward]
+damage = -30.0
+destroyed = -30.0
+collision = -1.5
