@@ -1,6 +1,6 @@
 //! Cost-aware string pulling over the vehicle-inflated field grid. Shortcuts
 //! use continuous headings and supercover traversal, including corner touches.
-use crate::distance_field::{FieldParams, Region, F_BLOCKED, F_TREE, F_ZONE};
+use crate::distance_field::{FieldParams, Region, F_BLOCKED, F_NEAR, F_TREE, F_ZONE};
 
 const EPS: f64 = 1e-10;
 pub const VERSION: &str = "field-smooth-v1";
@@ -13,6 +13,7 @@ pub struct RouteGrid {
     friction: Option<Vec<f32>>,
     tree_cost: f64,
     zone_cost: f64,
+    clearance_cost: f64,
 }
 
 impl RouteGrid {
@@ -28,6 +29,7 @@ impl RouteGrid {
             friction,
             tree_cost: params.tree_cost,
             zone_cost: params.zone_cost,
+            clearance_cost: params.clearance_cost,
         }
     }
 
@@ -44,6 +46,11 @@ impl RouteGrid {
         1.0 + if f & F_TREE != 0 { self.tree_cost } else { 0.0 }
             + if f & F_ZONE != 0 { self.zone_cost } else { 0.0 }
             + self.friction.as_ref().map_or(0.0, |c| c[i] as f64)
+            + if f & F_NEAR != 0 {
+                self.clearance_cost
+            } else {
+                0.0
+            }
     }
 
     pub fn smooth(&self, points: &[[f64; 2]]) -> Vec<[f64; 2]> {

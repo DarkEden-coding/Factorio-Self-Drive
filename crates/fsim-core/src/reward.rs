@@ -1,7 +1,7 @@
 //! Reward terms from docs/rl.md. Each term is reported separately; the reward is their sum.
 use serde::{Deserialize, Serialize};
 
-pub const TERMS: [&str; 12] = [
+pub const TERMS: [&str; 13] = [
     "progress",
     "time",
     "damage",
@@ -14,6 +14,7 @@ pub const TERMS: [&str; 12] = [
     "path_length",
     "steer_change",
     "heading_error",
+    "clearance",
 ];
 
 #[derive(Clone, Copy, Debug, Default, Deserialize, Serialize, PartialEq)]
@@ -34,11 +35,13 @@ pub struct RewardTerms {
     pub steer_change: f64,
     /// Cost of the angle between the heading and the route lookahead (radians).
     pub heading_error: f64,
+    /// Cost of ending a decision with the hull near an obstacle (`clearance_level`).
+    pub clearance: f64,
 }
 
 impl RewardTerms {
     /// Values in `TERMS` order.
-    pub fn values(&self) -> [f64; 12] {
+    pub fn values(&self) -> [f64; 13] {
         [
             self.progress,
             self.time,
@@ -52,6 +55,7 @@ impl RewardTerms {
             self.path_length,
             self.steer_change,
             self.heading_error,
+            self.clearance,
         ]
     }
 
@@ -73,5 +77,6 @@ impl RewardTerms {
         self.path_length += scale * other.path_length;
         self.steer_change += scale * other.steer_change;
         self.heading_error += scale * other.heading_error;
+        self.clearance += scale * other.clearance;
     }
 }

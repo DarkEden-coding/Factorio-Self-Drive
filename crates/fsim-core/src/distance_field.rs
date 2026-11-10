@@ -24,6 +24,8 @@ const HARD: u8 = CLIFF | NEST | ROCK | WATER;
 pub(crate) const F_BLOCKED: u8 = 1;
 pub(crate) const F_TREE: u8 = 2;
 pub(crate) const F_ZONE: u8 = 4;
+/// Within `clearance_margin` tiles beyond the dilation of something that blocks.
+pub(crate) const F_NEAR: u8 = 8;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct FieldParams {
@@ -39,6 +41,10 @@ pub struct FieldParams {
     pub friction_cost: f64,
     /// The vehicle's `terrain_friction_modifier`.
     pub terrain_friction_modifier: f64,
+    /// Extra cost per tile within `clearance_margin` tiles beyond the blocked dilation, so
+    /// routes keep room around obstacles; 0 disables.
+    pub clearance_cost: f64,
+    pub clearance_margin: i32,
 }
 
 /// Grass's `vehicle_friction_modifier`: the reference ground of the slow-ground cost.
@@ -65,6 +71,8 @@ impl FieldParams {
             zone_margin: config.nest_zone_margin,
             friction_cost: config.friction_cost,
             terrain_friction_modifier: vehicle.terrain_friction_modifier,
+            clearance_cost: config.clearance_cost,
+            clearance_margin: config.clearance_margin,
         }
     }
 
@@ -186,6 +194,16 @@ fn cost_flags(raster: &MapRaster, region: Region, params: FieldParams) -> Vec<u8
             }
         })
     });
+    let near = (params.clearance_cost > 0.0 && params.clearance_margin > 0).then(|| {
+        let d = params.dilation + params.clearance_margin;
+        dilate(raster, region, d, |mask| {
+            if mask & HARD != 0 || (mask & TREE != 0 && params.trees_block) {
+                F_NEAR
+            } else {
+                0
+            }
+        })
+    });
     let (w, h) = (region.width(), region.height());
     let stride = w + 2;
     let mut flags = vec![F_BLOCKED; stride * (h + 2)];
@@ -193,10 +211,11 @@ fn cost_flags(raster: &MapRaster, region: Region, params: FieldParams) -> Vec<u8
         for x in 0..w {
             let v = obstacles[y * w + x];
             let zone = zones.as_ref().map_or(0, |z| z[y * w + x]);
+            let near = near.as_ref().map_or(0, |n| n[y * w + x]);
             flags[(y + 1) * stride + x + 1] = if v & F_BLOCKED != 0 {
                 F_BLOCKED
             } else {
-                v | zone
+                v | zone | near
             };
         }
     }
@@ -256,7 +275,8 @@ impl DistanceField {
             .map_or(0.0, |f| f.iter().fold(0.0f32, |a, &b| a.max(b)) as f64);
         let mut dist = vec![f64::INFINITY; flags.len()];
         let (sx, sy) = (source[0].floor() as i32, source[1].floor() as i32);
-        let max_edge = SQRT_2 * (1.0 + params.tree_cost + params.zone_cost + max_friction);
+        let max_edge = SQRT_2
+            * (1.0 + params.tree_cost + params.zone_cost + max_friction + params.clearance_cost);
         let ring = max_edge.ceil() as usize + 2;
         let mut buckets: Vec<Vec<u32>> = vec![Vec::new(); ring];
         let mut pending = 0usize;
@@ -282,7 +302,12 @@ impl DistanceField {
             } else {
                 0.0
             };
-            tree + zone + slow
+            let near = if f & F_NEAR != 0 {
+                params.clearance_cost
+            } else {
+                0.0
+            };
+            tree + zone + slow + near
         };
         let mut done = vec![false; flags.len()];
         let mut current = 0usize;

@@ -503,6 +503,15 @@ impl Episode {
         if collided {
             terms.collision = weights.collision;
         }
+        if weights.clearance != 0.0 {
+            let pose = Pose {
+                x: v.x[0],
+                y: v.y[0],
+                orientation: v.orientation[0],
+            };
+            let level = clearance_level(ctx.world, ctx.data, v.prototype[0], pose);
+            terms.clearance = weights.clearance * level;
+        }
         if in_nest_zone(ctx.world, ctx.raster, v.x[0], v.y[0]) {
             terms.nest_zone = weights.nest_zone;
             self.nest_zone_decisions += 1;
@@ -542,6 +551,38 @@ pub fn episode_field(
 
 /// Whether `(x, y)` is within a live nest's penalty radius or in demolisher
 /// territory.
+/// Margins in tiles around the hull for the `clearance` reward.
+pub const CLEARANCE_MARGINS: [f64; 2] = [0.5, 0.25];
+
+/// 0 when the hull grown by `CLEARANCE_MARGINS[0]` touches nothing that blocks this vehicle,
+/// 0.5 when only that one does, 1 when the hull grown by `CLEARANCE_MARGINS[1]` does too.
+/// Trees block only vehicles that can't drive through them.
+pub fn clearance_level(world: &World, data: &Prototypes, vehicle: usize, pose: Pose) -> f64 {
+    let p = &data.vehicles[vehicle];
+    let near = |margin: f64| {
+        let b = p.collision_box;
+        let grown = [
+            [b[0][0] - margin, b[0][1] - margin],
+            [b[1][0] + margin, b[1][1] + margin],
+        ];
+        let shape = Obb::new(pose.x, pose.y, grown, pose.orientation);
+        world.touches_water(shape, data)
+            || world.candidates(shape.aabb()).into_iter().any(|i| {
+                let e = &world.entities[i];
+                (!p.tank_driving || e.kind != "tree")
+                    && world.alive(i)
+                    && shape.intersects(e.shape())
+            })
+    };
+    if !near(CLEARANCE_MARGINS[0]) {
+        0.0
+    } else if near(CLEARANCE_MARGINS[1]) {
+        1.0
+    } else {
+        0.5
+    }
+}
+
 pub fn in_nest_zone(world: &World, raster: &MapRaster, x: f64, y: f64) -> bool {
     world.in_territory(x.floor() as i32, y.floor() as i32)
         || raster.nests.iter().any(|&i| {

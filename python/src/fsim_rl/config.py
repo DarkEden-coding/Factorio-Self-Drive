@@ -60,6 +60,7 @@ class RewardConfig:
     path_length: float = 0.0     # per tile actually traveled, including reverse travel
     steer_change: float = 0.0    # per steering step changed from the previous decision (left to right = 2)
     heading_error: float = 0.0   # per radian between heading and the route 8 tiles ahead, after forward decisions
+    clearance: float = 0.0       # per decision ending near an obstacle: half within 0.5 tiles, all within 0.25
 
 
 @dataclass
@@ -78,6 +79,9 @@ class DistanceFieldConfig:
     nest_zone_margin: int = 2
     # Slow-ground cost weight (docs/rl.md, "Distance field"); 0 = every open tile costs 1.
     friction_cost: float = 0.0
+    # Extra cost per tile within clearance_margin tiles beyond the blocked dilation; 0 = off.
+    clearance_cost: float = 0.0
+    clearance_margin: int = 1
 
 
 @dataclass

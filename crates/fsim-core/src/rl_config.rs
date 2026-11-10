@@ -124,6 +124,10 @@ pub struct RewardWeights {
     /// Per radian between the heading and the point `HEADING_LOOKAHEAD` tiles along the route,
     /// charged after each forward decision (reactive mode); zero disables.
     pub heading_error: f64,
+    /// Per decision ending with the hull near a blocking obstacle: half within
+    /// `CLEARANCE_MARGINS[0]` tiles, all within `[1]` (trees count only for the car); zero
+    /// disables.
+    pub clearance: f64,
 }
 
 impl Default for RewardWeights {
@@ -141,6 +145,7 @@ impl Default for RewardWeights {
             path_length: 0.0,
             steer_change: 0.0,
             heading_error: 0.0,
+            clearance: 0.0,
         }
     }
 }
@@ -158,6 +163,10 @@ pub struct FieldConfig {
     /// vehicle's slowdown relative to grass (`distance_field::friction_extra`).
     /// 0 keeps every open tile at cost 1.
     pub friction_cost: f64,
+    /// Extra cost per tile within `clearance_margin` tiles beyond the blocked dilation of
+    /// anything that blocks the vehicle, so routes keep room around obstacles. 0 disables.
+    pub clearance_cost: f64,
+    pub clearance_margin: i32,
 }
 
 impl Default for FieldConfig {
@@ -168,6 +177,8 @@ impl Default for FieldConfig {
             nest_zone_cost: 3.0,
             nest_zone_margin: 2,
             friction_cost: 0.0,
+            clearance_cost: 0.0,
+            clearance_margin: 1,
         }
     }
 }
@@ -295,6 +306,8 @@ impl EpisodeRules {
             || !nonnegative(self.distance_field.tank_tree_cost)
             || !nonnegative(self.distance_field.nest_zone_cost)
             || self.distance_field.nest_zone_margin < 0
+            || !nonnegative(self.distance_field.clearance_cost)
+            || self.distance_field.clearance_margin < 0
             || !nonnegative(self.time_limit.base_ticks)
             || !nonnegative(self.time_limit.per_tile_ticks)
             || self.time_limit.stall_ticks == 0

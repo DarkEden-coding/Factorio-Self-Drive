@@ -118,6 +118,9 @@ the start and target points) is `optimal_length`; SPL uses it.
   at the straight distance from the target to its center.
 - Steps cost 1 or sqrt(2) times `1 + (e_a + e_b) / 2`, where `e` is `tank_tree_cost` on tank tree
   tiles plus `nest_zone_cost` on (dilated) zone tiles, plus the slow-ground cost, and 0 otherwise.
+  The clearance cost (`clearance_cost` [0], off by default) adds `clearance_cost` on tiles within
+  `clearance_margin` [1] tiles beyond the blocked dilation of anything that blocks the vehicle,
+  so routes keep room around obstacles instead of hugging the dilation edge.
   The slow-ground cost (`friction_cost` [0], off by default) is
   `friction_cost * max(0, sqrt(g(m) / g(1.6)) - 1)` for a tile with `vehicle_friction_modifier`
   `m`, where `g(m) = 1 + (m - 1) * terrain_friction_modifier` of the vehicle: how much slower
@@ -142,6 +145,7 @@ Per decision step, weights from `reward` config (defaults in brackets):
 | `path_length` [0.0] | per tile actually traveled during the decision, including reverse travel |
 | `steer_change` [0.0] | per steering step changed from the previous decision (left to right is 2) |
 | `heading_error` [0.0] | reactive mode: per radian between the heading and the route point 8 tiles ahead, after each decision driven forward |
+| `clearance` [0.0] | per decision ending with the hull near something that blocks this vehicle (trees only for the car): half the weight when the hull grown by 0.5 tiles touches it, all of it within 0.25 tiles |
 | `damage` [-5.0] | times damage taken / max health |
 | `collision` [-0.2] | per decision step with a new collision event |
 | `nest_zone` [-0.15] | per decision step with the vehicle center inside a nest penalty radius |

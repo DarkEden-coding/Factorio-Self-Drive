@@ -571,3 +571,44 @@ fn cached_tree_density_matches_the_window_sum() {
         window(0, -40, r - 1)
     );
 }
+
+#[test]
+fn clearance_cost_routes_keep_room_from_obstacles() {
+    // A rock beside a straight route: with clearance cost the route bends away from it.
+    let data = data();
+    let mut world = World::empty_rect(128, 128, 1, data.tile_id("grass-1"));
+    world.spawn_entity(&data, "big-rock", 0.5, 2.5);
+    let raster = MapRaster::build(&world, &data);
+    let (start, target) = ([-40.5, 0.5], [40.5, 0.5]);
+    let car = &data.vehicles[data.vehicle_index("car").unwrap()];
+    let region = Region::around(&[start, target], 24, &raster);
+    let mut config = FieldConfig::default();
+    let route_near = |config: &FieldConfig| {
+        let field = DistanceField::compute(
+            &raster,
+            region,
+            FieldParams::new(car, config),
+            target,
+            f64::INFINITY,
+        );
+        let route = field.smooth_route(start[0], start[1], target);
+        // Closest approach of the route to the rock center.
+        route
+            .windows(2)
+            .flat_map(|s| {
+                (0..=20).map(move |k| {
+                    let t = k as f64 / 20.0;
+                    [
+                        s[0][0] + t * (s[1][0] - s[0][0]),
+                        s[0][1] + t * (s[1][1] - s[0][1]),
+                    ]
+                })
+            })
+            .map(|p| (p[0] - 0.5).hypot(p[1] - 2.5))
+            .fold(f64::INFINITY, f64::min)
+    };
+    let tight = route_near(&config);
+    config.clearance_cost = 2.0;
+    let roomy = route_near(&config);
+    assert!(roomy >= tight + 0.9, "clearance {roomy} vs {tight}");
+}
